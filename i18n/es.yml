@@ -1,0 +1,34 @@
+code: es
+lang_name: Español
+title: Botón Liquid Glass
+eyebrow: Liquid Glass · recursos 4×
+lead: 'Según la tipografía web de Apple: SF Pro, cuerpo 17px, botón 56px. El ancho lo marca el texto, los recursos son 4× y el centro se puede repetir sin fin.'
+btn_download: Descargar
+btn_appstore: App Store
+sec_width_h: El ancho lo decide el texto
+sec_width_p: 'Sin ancho fijo. Un solo juego de recursos en tres partes: cuanto más largo el texto, más ancho el botón, y los extremos no cambian.'
+w_short: Descargar
+w_appstore: App Store
+w_long: Descargar para macOS
+sec_assets_h: Recursos en tres partes (4×)
+sec_assets_p: 224px de alto (4×, mostrados a 56px). Extremos de 112px, pieza central de 128px; las uniones coinciden al píxel.
+cap_sheet: completo
+cap_left: izquierda
+cap_mid: centro
+cap_right: derecha
+cap_tile: pieza central · repeat-x · sin deformación a cualquier ancho
+sec_usage_h: Uso
+sec_usage_p: Un solo elemento hace el estirado en nueve piezas; hover y active cambian el filtro SVG.
+sec_spec_h: Especificaciones
+spec_font_h: Tipografía
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, interletrado -0.022em; títulos 48px/1.08.
+spec_btn_h: Botón
+spec_btn_p: 56px de alto (48px en móvil), 28px a los lados, radio 980px, icono 20px.
+spec_asset_h: Recursos
+spec_asset_p: '4×: 224px de alto, extremos 112px, pieza 128px; WebP sin pérdida conserva la transparencia.'
+spec_icon_h: Iconos
+spec_icon_p: Fuentes SVG de 24px, minificadas con SVGO, mostradas a 20px.
+footer_1: Material generado con Qwen-Image-2.1 (alfa nativo); forma e iluminación redibujadas por un render procedural de vidrio líquido; refracción del borde con SVG feDisplacementMap.
+footer_2: El logotipo de Apple es una marca de Apple Inc.; se usa solo para mostrar el diseño del botón de App Store.
+lang_choose: Elegir idioma
+lang_aria: Cambiar idioma

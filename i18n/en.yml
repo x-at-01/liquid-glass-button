@@ -1,0 +1,34 @@
+code: en
+lang_name: English
+title: Liquid Glass Button
+eyebrow: Liquid Glass · 4× Assets
+lead: 'Built to Apple''s web typography: SF Pro, 17px body, 56px button. Width follows the label — no fixed width. Assets are 4× and the middle slice tiles forever.'
+btn_download: Download
+btn_appstore: App Store
+sec_width_h: Width comes from the text
+sec_width_p: No `width`. One set of three-slice assets; the longer the label, the wider the button, while the caps stay the same size.
+w_short: Download
+w_appstore: App Store
+w_long: Download for macOS
+sec_assets_h: Three-slice assets (4×)
+sec_assets_p: Assets are 224px tall (4×, shown at 56px). Caps are 112px each, the middle tile is 128px; seams are pixel-identical.
+cap_sheet: sheet
+cap_left: left
+cap_mid: mid
+cap_right: right
+cap_tile: mid · repeat-x · any width, no distortion
+sec_usage_h: Usage
+sec_usage_p: One element does the nine-patch stretch; hover and active swap the SVG filter.
+sec_spec_h: Specs
+spec_font_h: Type
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47 body, letter-spacing -0.022em; 48px/1.08 headings.
+spec_btn_h: Button
+spec_btn_p: 56px tall (48px on mobile), 28px caps, 980px radius, 20px icon.
+spec_asset_h: Assets
+spec_asset_p: '4×: 224px tall, 112px caps, 128px tile; lossless WebP keeps transparency.'
+spec_icon_h: Icons
+spec_icon_p: 24px SVG sources, minified with SVGO, rendered at 20px.
+footer_1: Material generated with Qwen-Image-2.1 (native alpha); shape and lighting redrawn by a procedural liquid-glass renderer; edge refraction via SVG feDisplacementMap.
+footer_2: Apple logo is a trademark of Apple Inc., used only to demonstrate the App Store button layout.
+lang_choose: Choose language
+lang_aria: Change language

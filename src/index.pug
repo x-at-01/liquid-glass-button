@@ -1,0 +1,127 @@
+//- 液态玻璃按钮 · 静态页面模板（语言由 i18n/<code>.yml 注入）
+doctype html
+html(lang=code, dir=dir)
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title= t.title
+    meta(name="description", content=t.lead)
+    meta(property="og:title", content=t.title)
+    meta(property="og:description", content=t.lead)
+    meta(property="og:type", content="website")
+    style!= css
+  body
+    header.hero
+      button.lang-btn#langBtn(type="button", aria-label=t.lang_aria, aria-haspopup="dialog")
+        img(src="./assets/icons/globe.svg", alt="", width="20", height="20")
+      .wrap
+        p.eyebrow= t.eyebrow
+        h1= t.title
+        p.lead= t.lead
+      .showcase
+        .wrap.cta
+          button.btn.btn--blue(type="button")
+            img(src="./assets/icons/download.svg", alt="", width="20", height="20")
+            span= t.btn_download
+          button.btn.btn--black(type="button")
+            img(src="./assets/icons/apple.svg", alt="", width="20", height="20")
+            span= t.btn_appstore
+
+    section.section
+      .wrap
+        .section-head
+          h2= t.sec_width_h
+          p.sub= t.sec_width_p
+        .measure-row
+          .measure
+            button.btn.btn--black(type="button")
+              span= t.w_short
+            span.w
+          .measure
+            button.btn.btn--black(type="button")
+              span= t.w_appstore
+            span.w
+          .measure
+            button.btn.btn--blue(type="button")
+              img(src="./assets/icons/download.svg", alt="", width="20", height="20")
+              span= t.w_long
+            span.w
+
+    section.section.section--tint
+      .wrap
+        .section-head
+          h2= t.sec_assets_h
+          p.sub= t.sec_assets_p
+        .pieces
+          figure
+            img(src="./assets/glass/black-sheet.webp", alt="")
+            figcaption= t.cap_sheet + " · 352×224 · 4×"
+          figure
+            img(src="./assets/glass/black-left.webp", alt="")
+            figcaption= t.cap_left + " · 112×224"
+          figure
+            img(src="./assets/glass/black-mid.webp", alt="")
+            figcaption= t.cap_mid + " · 128×224"
+          figure
+            img(src="./assets/glass/black-right.webp", alt="")
+            figcaption= t.cap_right + " · 112×224"
+        .tile-wrap
+          .checker
+            .tile-strip#tileStrip
+          p.cap= t.cap_tile
+
+    section.section
+      .wrap
+        .section-head
+          h2= t.sec_usage_h
+          p.sub= t.sec_usage_p
+        pre
+          code.
+            .btn {
+              display: inline-flex; align-items: center; gap: 9px;
+              height: 56px; width: auto;              /* 宽度由文字决定 */
+              border: 0 solid transparent;
+              border-left-width: 28px; border-right-width: 28px;
+              border-image: url(./assets/glass/black-sheet.webp) 0 112 0 112 fill stretch;
+              border-radius: 980px; color: #fff;
+              backdrop-filter: url(#glass-1) blur(6px) contrast(1.15) saturate(170%);
+            }
+            /* 位移图 + 滤镜模板都在 ./assets/glass-filters.svg */
+
+    section.section.section--tint
+      .wrap
+        h2= t.sec_spec_h
+        .specs
+          .spec
+            h3= t.spec_font_h
+            p= t.spec_font_p
+          .spec
+            h3= t.spec_btn_h
+            p= t.spec_btn_p
+          .spec
+            h3= t.spec_asset_h
+            p= t.spec_asset_p
+          .spec
+            h3= t.spec_icon_h
+            p= t.spec_icon_p
+
+    footer
+      .wrap
+        p= t.footer_1
+        p= t.footer_2
+
+    dialog.lang#langDialog
+      h2= t.lang_choose
+      ul.lang-list#langList
+        each l in langs
+          li
+            button(type="button", data-lang=l.code, aria-current=(l.code === code ? "true" : "false"))
+              span= l.name
+              span.code= l.code
+
+    //- SVG 滤镜（从 assets/glass-filters.svg 内联进来；运行时按按钮尺寸 clone）
+    svg.glass-defs(width="0", height="0", aria-hidden="true")!= filtersSvg
+    style#glass-styles
+    script.
+      window.__GLASS__ = !{JSON.stringify({ code: code, langs: langs.map(function (l) { return l.code; }) })};
+    script!= appJs
