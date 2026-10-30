@@ -38,10 +38,11 @@ Hover and active swap in pre-built filter variants (displacement ×1.45 / ×0.6)
 so smoothness comes from the `transform`/`box-shadow` transitions. `outline` is reserved for
 `:focus-visible`, never for the pressed state.
 
-The material comes from a **Qwen-Image-2.1** render (native alpha), then the shape and lighting are
-redrawn by a procedural liquid-glass renderer: an SDF capsule, a normal-based specular that follows the
-contour, an inner shadow for thickness, and a flattened middle tile so the slice repeats with
-pixel-identical seams. See the generator: [`example/pill-asset`](https://github.com/x-at-01/liquid-glass-button#credits).
+The material comes from a **Qwen-Image-2.1** render (native alpha channel), then the shape and lighting
+are redrawn by a procedural liquid-glass renderer: an SDF capsule, a normal-based specular that follows
+the contour, an inner shadow for thickness, and a flattened middle tile so the slice repeats with
+pixel-identical seams. The generator script (`generate_pill.py`) lives in the model repo that produced
+these assets; the important part — assets, filter and page — is all in this repo.
 
 ## Build & run
 
