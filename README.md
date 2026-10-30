@@ -34,8 +34,9 @@ Background blur alone gives you *frosted* glass, not liquid glass. The “liquid
 4. `backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) brightness(1.04) saturate(170%)`.
 
 Hover and active swap in pre-built filter variants (displacement ×1.45 / ×0.6) and change geometry
-(`transform`, shadow, a press overlay) — `backdrop-filter` does not interpolate between `url()` values,
-so smoothness comes from the `transform`/`box-shadow` transitions. `outline` is reserved for
+(`transform`, shadow, a press overlay) plus the label colour (`.9` → `#fff` on hover, dimmed while
+pressed) — `backdrop-filter` does not interpolate between `url()` values, so smoothness comes from the
+`transform`/`box-shadow`/`color` transitions. `outline` is reserved for
 `:focus-visible`, never for the pressed state.
 
 The material comes from a **Qwen-Image-2.1** render (native alpha channel), then the shape and lighting
@@ -92,7 +93,8 @@ Apple 风格的**液态玻璃按钮**：三段式 4× 素材 + SVG `feDisplaceme
 RGB 分通道后 screen 叠加做**边缘色散**，再用边缘遮罩让中心保持清晰，最后
 `backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) brightness(1.04) saturate(170%)`。
 
-hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6）并改变几何（transform、阴影、按压覆盖层）。
+hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6），并改变几何（transform、阴影、按压覆盖层）
+和文字颜色（常态 90% 白 → hover 纯白 → 按下略暗）。
 `backdrop-filter` 在两组 `url()` 之间不会插值，所以顺滑感来自 transform/box-shadow 过渡；
 `outline` 只留给 `:focus-visible`，不用于按下态。
 
