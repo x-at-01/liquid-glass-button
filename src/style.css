@@ -3,8 +3,8 @@
   --mono: "SF Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --ink:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --surface:#f5f5f7; --blue:#0071e3;
   --radius:22px; --w:1000px; --pad:24px;
-  --sp:52px;   /* 区块之间的留白 */
-  --gap:26px;  /* 区块内部元素间距 */
+  --sp:36px;   /* 区块之间的留白 */
+  --gap:20px;  /* 区块内部元素间距 */
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box}
@@ -38,7 +38,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
 /* ---------- Hero ---------- */
 .hero{padding:var(--sp) 0 0;text-align:center}
 .stage{
-  position:relative;margin:calc(var(--sp) - 20px) 0 0;border-radius:var(--radius);overflow:hidden;
+  position:relative;margin:var(--sp) 0 0;border-radius:var(--radius);overflow:hidden;
   padding:64px 32px 56px;
   background:
     radial-gradient(58% 130% at 14% 18%, rgba(110,168,255,.95) 0%, transparent 60%),
@@ -46,7 +46,6 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
     radial-gradient(70% 150% at 52% 116%, rgba(255,212,121,.85) 0%, transparent 60%),
     radial-gradient(40% 90% at 70% 85%, rgba(180,107,255,.75) 0%, transparent 60%),
     linear-gradient(118deg, #16224a 0%, #2f1c52 48%, #4d2418 100%);
-  box-shadow:0 40px 80px -40px rgba(22,24,54,.55), 0 2px 6px rgba(22,24,54,.18);
 }
 /* 暗角 + 颗粒：让它像“场景”，而不是一条纯色渐变 */
 .stage::before{content:"";position:absolute;inset:0;pointer-events:none;
@@ -67,7 +66,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
     radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.12),rgba(255,255,255,.03) 30%,transparent 55%),
     linear-gradient(180deg,transparent 66%,rgba(0,0,0,.10)),
     var(--tint,rgba(12,12,14,.82));
-  color:rgba(255,255,255,.90);
+  color:#fff;
   font:inherit;font-size:17px;line-height:1;
   white-space:nowrap;cursor:pointer;text-decoration:none;
   isolation:isolate;overflow:hidden; /* 扫光按圆角裁切 */
@@ -117,11 +116,11 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
 
 /* 浅色卡片：展示玻璃在浅色表面上的样子 */
 .card{margin-top:var(--gap);background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  padding:36px 32px 30px;box-shadow:0 18px 40px -30px rgba(16,24,40,.35)}
+  padding:28px 28px 24px}
 .measure-row{display:flex;flex-wrap:wrap;gap:20px 32px;align-items:flex-end}
 .measure{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .measure .w{font:400 12px/1 var(--mono);color:#86868b}
-.card .hint{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
+.card .hint{margin-top:var(--gap);padding-top:var(--gap);border-top:1px solid var(--line)}
 
 pre{margin:var(--gap) 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
   overflow:auto;font:400 13px/1.65 var(--mono);color:var(--ink)}
@@ -137,8 +136,7 @@ code{font-family:var(--mono)}
 .pack-sec{padding:var(--sp) 0 0}
 .pack{display:flex;align-items:center;justify-content:space-between;gap:32px;
   padding:30px 32px;border:1px solid var(--line);border-radius:var(--radius);
-  background:linear-gradient(180deg,#fbfbfd,#f4f4f7);
-  box-shadow:0 20px 44px -38px rgba(16,24,40,.45)}
+  background:linear-gradient(180deg,#fbfbfd,#f4f4f7)}
 .pack-head{min-width:0}
 .pack-head h2{font-size:22px;margin:0 0 6px}
 .pack-head p{margin:0;max-width:520px;color:var(--muted);font-size:15px;line-height:1.55}
@@ -152,7 +150,7 @@ code{font-family:var(--mono)}
 .spec h3{font-size:15px;font-weight:600;margin:0 0 6px;}
 .spec p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
 
-footer{border-top:1px solid var(--line);padding:36px 0 64px;color:var(--muted);font-size:13px;line-height:1.7}
+footer{border-top:1px solid var(--line);padding:var(--sp) 0 calc(var(--sp) + 24px);color:var(--muted);font-size:13px;line-height:1.7}
 footer p{margin:0 0 10px}
 .foot-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 14px}
 .foot-links a{color:var(--ink);text-decoration:none;font-size:13px;border-bottom:1px solid var(--line);padding-bottom:1px}
@@ -160,7 +158,7 @@ footer p{margin:0 0 10px}
 :where(a){color:var(--blue)}
 
 @media (max-width:734px){
-  :root{--sp:40px;--gap:20px}
+  :root{--sp:30px;--gap:16px}
   h1{font-size:34px;line-height:1.12}
   .lead{font-size:19px;line-height:1.42}
   h2{font-size:24px}
