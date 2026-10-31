@@ -10,7 +10,7 @@ html(lang="en")
     header.hero
       .wrap
         h1 Liquid Glass Button
-        p.lead A liquid-glass button whose width follows its label. One element — the rim refracts through an SVG displacement filter.
+        p.lead A liquid-glass button whose width follows its label — one element, pure CSS, no JavaScript.
         section.stage
           .cta
             button.btn.btn--blue(type="button")
@@ -39,8 +39,4 @@ html(lang="en")
               span.w
     footer
       .wrap
-        p Files: demo.html · button.css · page.css · app.js · glass-filters.svg · icons/
-    //- 滤镜模板（与站点同一份），运行时按按钮尺寸 clone
-    svg.glass-defs(width="0", height="0", aria-hidden="true")!= filterSvg
-    style#glass-styles
-    script!= appJs
+        p Files: demo.html · button.css · page.css · icons/

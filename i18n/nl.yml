@@ -1,7 +1,7 @@
 code: nl
 lang_name: Nederlands
 title: Liquid Glass-knop
-lead: Een Liquid Glass-knop die met het label meegroeit, met echte randbreking.
+lead: Een Liquid Glass-knop die met het label meegroeit, met een zachte randgloed.
 btn_download: Downloaden
 btn_appstore: App Store
 sec_width_h: De breedte komt van de tekst
@@ -10,7 +10,6 @@ w_short: Downloaden
 w_appstore: App Store
 w_long: Downloaden voor macOS
 sec_usage_h: Gebruik
-sec_usage_p: 'Eén element is het hele glas: vorm, rand en diepte zijn verlopen en schaduwen; de randbreking komt van een filter dat op exacte grootte is gemaakt.'
 sec_spec_h: Specificaties
 spec_font_h: Typografie
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; koppen 48px/1.08.
@@ -25,11 +24,6 @@ stage_hint: Beweeg eroverheen
 light_hint: Op licht vlak oogt het glas bleek; de tint houdt de tekst leesbaar.
 link_repo: GitHub-repository
 link_hig: Apple HIG · Materialen
-sec_svg_h: Hoe de SVG werkt
-sec_svg_p: 'Het vloeibare gevoel komt van de rand: een verplaatsingskaart wordt op exacte grootte gemaakt, drie passes zorgen voor dispersie en een randmasker houdt het midden scherp.'
-svg_p1: 'Verplaatsingskaart: op exacte knopgrootte gemaakt — R bevat de x-verplaatsing, G de y-verplaatsing, B de randsterkte (0 in het midden, 255 aan de rand).'
-svg_p2: 'Dispersie: drie passes over dezelfde kaart met iets verschillende schalen; de R/G/B-kanalen worden gesplitst en met screen samengevoegd, waardoor de rand als echt glas uiteenvalt.'
-svg_p3: 'Randmasker: het B-kanaal maskeert het resultaat — alleen de rand breekt, het midden onder het label blijft onaangetast.'
 link_pack: Pakket downloaden (tar.xz)
 pack_h: Het pakket
-pack_p: 'Uitpakken en openen: een zelfstandige demo, de styles, de runtime en de filtersjabloon.'
+pack_p: 'Uitpakken en openen: zelfstandige demo, knopstijlen en iconen.'

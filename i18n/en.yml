@@ -1,7 +1,7 @@
 code: en
 lang_name: English
 title: Liquid Glass Button
-lead: A liquid-glass button that stretches with its label, with real edge refraction.
+lead: A liquid-glass button that stretches with its label, with a soft specular rim.
 btn_download: Download
 btn_appstore: App Store
 sec_width_h: Width comes from the text
@@ -10,7 +10,6 @@ w_short: Download
 w_appstore: App Store
 w_long: Download for macOS
 sec_usage_h: Usage
-sec_usage_p: 'One element is the whole glass: shape, rim and depth are gradients and shadows; the edge refraction comes from a filter generated for the exact size.'
 sec_spec_h: Specs
 spec_font_h: Type
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47 body; 48px/1.08 headings.
@@ -25,11 +24,6 @@ stage_hint: Hover to see it
 light_hint: On light surfaces the glass reads pale — the tint keeps the label legible.
 link_repo: GitHub repository
 link_hig: Apple HIG · Materials
-sec_svg_h: How the SVG works
-sec_svg_p: 'The liquid feel comes from the rim: a displacement map is generated for the exact size, three passes create the dispersion, and an edge mask keeps the centre sharp.'
-svg_p1: 'Displacement map: generated for the button''s exact size — R holds the x offset, G the y offset, B the edge strength (0 in the centre, 255 at the rim).'
-svg_p2: 'Dispersion: three passes over the same map with slightly different scales; the R/G/B channels are split and screen-blended, so the rim disperses like real glass.'
-svg_p3: 'Edge mask: the B channel masks the result — only the rim refracts, the centre under the label stays untouched.'
 link_pack: Download the bundle (tar.xz)
 pack_h: The bundle
-pack_p: 'Unzip and open: a standalone demo, the styles, the runtime and the filter template.'
+pack_p: 'Unzip and open: a standalone demo, the button styles and the icons.'

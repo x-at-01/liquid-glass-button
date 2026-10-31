@@ -2,7 +2,7 @@
   "name": "liquid-glass-button",
   "version": "0.1.0",
   "private": true,
-  "description": "Apple-style Liquid Glass button in pure CSS + SVG (no bitmaps): runtime displacement filter, static multi-language site built from yml + pug",
+  "description": "Apple-style Liquid Glass button in pure CSS (no bitmaps, no JS): frosted blur, hairline rim, hover sweep; static multi-language site built from yml + pug",
   "type": "module",
   "scripts": {
     "build": "bun run build.js",

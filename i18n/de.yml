@@ -1,7 +1,7 @@
 code: de
 lang_name: Deutsch
 title: Liquid-Glass-Button
-lead: Ein Liquid-Glass-Button, der mit der Beschriftung wächst — mit echter Kantenbrechung.
+lead: Ein Liquid-Glass-Button, der mit der Beschriftung wächst — mit weichem Kantenlicht.
 btn_download: Laden
 btn_appstore: App Store
 sec_width_h: Die Breite kommt vom Text
@@ -10,7 +10,6 @@ w_short: Laden
 w_appstore: App Store
 w_long: Für macOS laden
 sec_usage_h: Verwendung
-sec_usage_p: 'Ein Element ist das ganze Glas: Form, Rand und Tiefe sind Verläufe und Schatten; die Randbrechung kommt von einem in exakter Größe erzeugten Filter.'
 sec_spec_h: Spezifikation
 spec_font_h: Schrift
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; Überschriften 48px/1.08.
@@ -25,11 +24,6 @@ stage_hint: Einfach überfahren
 light_hint: Auf hellem Grund wirkt das Glas blass; die Tönung hält die Schrift lesbar.
 link_repo: GitHub-Repository
 link_hig: Apple HIG · Materialien
-sec_svg_h: So funktioniert das SVG
-sec_svg_p: 'Der flüssige Eindruck kommt vom Rand: eine Verschiebungskarte wird in exakter Größe erzeugt, drei Durchläufe erzeugen die Dispersion, eine Randmaske hält die Mitte scharf.'
-svg_p1: 'Verschiebungskarte: in exakter Button-Größe erzeugt — R hält den x-Versatz, G den y-Versatz, B die Randstärke (0 in der Mitte, 255 am Rand).'
-svg_p2: 'Dispersion: drei Durchläufe über dieselbe Karte mit leicht unterschiedlichen Skalen; die R/G/B-Kanäle werden getrennt und per screen überblendet — der Rand streut wie echtes Glas.'
-svg_p3: 'Randmaske: der B-Kanal maskiert das Ergebnis — nur der Rand bricht, die Mitte unter dem Label bleibt unberührt.'
 link_pack: Paket herunterladen (tar.xz)
 pack_h: Das Paket
-pack_p: 'Entpacken und öffnen: eine eigenständige Demo, die Styles, die Runtime und die Filtervorlage.'
+pack_p: 'Entpacken und öffnen: eigenständige Demo, Button-Styles und Icons.'

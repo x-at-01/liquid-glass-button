@@ -1,10 +1,10 @@
-/* ---------- 液态玻璃按钮 · 可复用组件 ----------
+/* ---------- 液态玻璃按钮 · 可复用组件（纯 CSS，无 JS） ----------
    用法：
-   1. 引入本文件；页面里放 <button class="btn btn--black">文字</button>（宽度由文字决定）；
-   2. 引入 app.js：它按按钮实际尺寸生成位移图，并 clone glass-filters.svg 的滤镜模板；
-   3. 页面里需要两个挂载点：<svg class="glass-defs">（内联滤镜模板）与 <style id="glass-styles">；
-   4. 两个色系：.btn--black（深色玻璃）、.btn--blue（azure 渐变）；自定义可用 --tint 与 --pill-h / --cap。
-   依赖：只有 app.js 与 glass-filters.svg；本文件不依赖页面样式。 ---------- */
+   1. 引入本文件，页面里放 <button class="btn btn--black">文字</button>（宽度由文字决定）；
+   2. 两个色系：.btn--black（深色玻璃）、.btn--blue（azure 渐变）；
+   3. 尺寸用 --pill-h（高度）与 --cap（左右内缩），自定义深色用 --tint；
+   4. 瓶身里的图标是普通 <img>/<svg> 子元素，尺寸由 .btn img 控制。
+   依赖：无。 ---------- */
 
 /* ---------- 按钮：形体、棱边与深度全部由 CSS 绘制，边缘折射交给按尺寸生成的 SVG 滤镜 ---------- */
 .btn{

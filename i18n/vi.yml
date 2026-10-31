@@ -1,7 +1,7 @@
 code: vi
 lang_name: Tiếng Việt
 title: Nút Liquid Glass
-lead: Nút kính lỏng co giãn theo chữ, viền khúc xạ thật.
+lead: Nút kính lỏng co giãn theo chữ, viền có ánh sáng mềm.
 btn_download: Tải về
 btn_appstore: App Store
 sec_width_h: Chiều rộng do chữ quyết định
@@ -10,7 +10,6 @@ w_short: Tải về
 w_appstore: App Store
 w_long: Tải cho macOS
 sec_usage_h: Cách dùng
-sec_usage_p: 'Một phần tử là cả khối thuỷ tinh: hình dạng, mép và độ sâu đều là gradient và bóng; khúc xạ ở mép do bộ lọc tạo theo đúng kích thước đảm nhiệm.'
 sec_spec_h: Thông số
 spec_font_h: Chữ
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; tiêu đề 48px/1.08.
@@ -25,11 +24,6 @@ stage_hint: Đưa chuột lên để xem
 light_hint: Trên nền sáng kính nhạt hơn; lớp màu giữ chữ dễ đọc.
 link_repo: Kho GitHub
 link_hig: Apple HIG · Vật liệu
-sec_svg_h: SVG hoạt động thế nào
-sec_svg_p: 'Cảm giác lỏng đến từ mép: bản đồ dịch chuyển được tạo đúng kích thước, ba lượt tạo tán sắc, và mặt nạ mép giữ phần giữa sắc nét.'
-svg_p1: 'Bản đồ dịch chuyển: tạo theo đúng kích thước nút — R giữ độ dịch x, G độ dịch y, B cường độ mép (0 ở giữa, 255 ở mép).'
-svg_p2: 'Tán sắc: ba lượt trên cùng bản đồ với tỉ lệ hơi khác nhau; các kênh R/G/B được tách ra rồi trộn bằng screen, mép tán sắc như thuỷ tinh thật.'
-svg_p3: 'Mặt nạ mép: kênh B làm mặt nạ — chỉ mép khúc xạ, phần giữa dưới nhãn hoàn toàn không bị ảnh hưởng.'
 link_pack: Tải gói (tar.xz)
 pack_h: Gói tài nguyên
-pack_p: 'Giải nén và mở: trang demo độc lập, kiểu dáng, runtime và mẫu bộ lọc.'
+pack_p: 'Giải nén và mở: trang demo độc lập, kiểu dáng nút và biểu tượng.'

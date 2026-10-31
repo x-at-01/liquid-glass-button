@@ -1,7 +1,7 @@
 code: pl
 lang_name: Polski
 title: Przycisk Liquid Glass
-lead: Przycisk z płynnego szkła, który rozciąga się z tekstem — z prawdziwym załamaniem krawędzi.
+lead: Przycisk z płynnego szkła, który rozciąga się z tekstem — z miękkim światłem na krawędzi.
 btn_download: Pobierz
 btn_appstore: App Store
 sec_width_h: Szerokość wynika z tekstu
@@ -10,7 +10,6 @@ w_short: Pobierz
 w_appstore: App Store
 w_long: Pobierz dla macOS
 sec_usage_h: Użycie
-sec_usage_p: 'Jeden element to całe szkło: kształt, krawędź i głębia to gradienty i cienie; załamanie krawędzi pochodzi z filtra generowanego w dokładnym rozmiarze.'
 sec_spec_h: Specyfikacja
 spec_font_h: Typografia
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; nagłówki 48px/1.08.
@@ -25,11 +24,6 @@ stage_hint: Najedź, aby zobaczyć
 light_hint: Na jasnym tle szkło jest blade; podkład utrzymuje czytelność napisu.
 link_repo: Repozytorium GitHub
 link_hig: Apple HIG · Materiały
-sec_svg_h: Jak działa SVG
-sec_svg_p: 'Efekt płynności bierze się z krawędzi: mapa przesunięć jest generowana w dokładnym rozmiarze, trzy przebiegi tworzą dyspersję, a maska krawędzi utrzymuje ostrość środka.'
-svg_p1: 'Mapa przesunięć: generowana w dokładnym rozmiarze przycisku — R przechowuje przesunięcie x, G przesunięcie y, B siłę krawędzi (0 w środku, 255 na krawędzi).'
-svg_p2: 'Dyspersja: trzy przebiegi na tej samej mapie z nieco różnymi skalami; kanały R/G/B są rozdzielane i łączone w trybie screen, dzięki czemu krawędź rozprasza światło jak prawdziwe szkło.'
-svg_p3: 'Maska krawędzi: kanał B maskuje wynik — załamuje tylko krawędź, środek pod etykietą pozostaje nietknięty.'
 link_pack: Pobierz paczkę (tar.xz)
 pack_h: Paczka
-pack_p: 'Rozpakuj i otwórz: samodzielna demonstracja, style, runtime i szablon filtra.'
+pack_p: 'Rozpakuj i otwórz: samodzielna demonstracja, style przycisku i ikony.'

@@ -16,8 +16,7 @@ const PAGE_TMPL = join(SRC_DIR, "index.pug");
 const DEMO_TMPL = join(SRC_DIR, "demo.pug");
 const BUTTON_CSS = join(SRC_DIR, "button.css");
 const PAGE_CSS = join(SRC_DIR, "page.css");
-const APP_FILE = join(SRC_DIR, "app.js");
-const FILTER_FILE = join(ASSETS_DIR, "glass-filters.svg");
+const SITE_FILE = join(SRC_DIR, "site.js");
 
 const T = 0, DICT = 1, IS_OWN = 2; // 多值返回的位置语义：[code, dict, isOwn]
 const RTL_CODE_LI = ["ar", "fa", "ur", "sd", "iw"];
@@ -25,14 +24,6 @@ const RTL = "rtl", LTR = "ltr";
 
 const textRead = (path) => readFileSync(path, "utf8");
 const ymlRead = (path) => load(textRead(path));
-
-// assets/glass-filters.svg 可独立预览；内联时去掉最外层 <svg> 包裹
-const filterSvg = textRead(FILTER_FILE)
-  .replace(/<!--[\s\S]*?-->/g, "") // 内联不带注释，文件里保留文档
-  .replace(/^[\s\S]*?<svg[^>]*>/, "")
-  .replace(/<\/svg\s*>\s*$/, "")
-  .replace(/>\s+</g, "><")
-  .trim();
 
 const langLi = ymlRead(LANG_FILE);
 
@@ -60,8 +51,7 @@ const pageBuild = (code, dict) => {
     glass,
     dir: RTL_CODE_LI.includes(code) ? RTL : LTR,
     css: textRead(BUTTON_CSS) + "\n" + textRead(PAGE_CSS),
-    appJs: textRead(APP_FILE),
-    filterSvg,
+    siteJs: textRead(SITE_FILE),
   });
   mkdirSync(pageDir(code), { recursive: true });
   writeFileSync(join(pageDir(code), "index.html"), html);
@@ -97,14 +87,10 @@ writeFileSync(
   join(PACK_DIR, "demo.html"),
   pug.renderFile(DEMO_TMPL, {
     css: textRead(BUTTON_CSS) + "\n" + textRead(PAGE_CSS),
-    appJs: textRead(APP_FILE),
-    filterSvg,
   })
 );
 cpSync(BUTTON_CSS, join(PACK_DIR, "button.css"));
 cpSync(PAGE_CSS, join(PACK_DIR, "page.css"));
-cpSync(APP_FILE, join(PACK_DIR, "app.js"));
-cpSync(FILTER_FILE, join(PACK_DIR, "glass-filters.svg"));
 cpSync(join(ASSETS_DIR, "icons"), join(PACK_DIR, "icons"), { recursive: true });
 {
   const run = Bun.spawnSync(["tar", "-cJf", PACK_FILE, "-C", OUT_DIR, PACK_NAME]);

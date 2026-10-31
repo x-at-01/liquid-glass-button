@@ -48,8 +48,6 @@ html(lang=code, dir=dir)
               li demo.html
               li button.css
               li page.css
-              li app.js
-              li glass-filters.svg
               li icons/
           a.btn.btn--blue(href="../liquid-glass-button.tar.xz", download)
             img.dl(src="../assets/icons/download.svg", alt="")
@@ -78,66 +76,31 @@ html(lang=code, dir=dir)
               span.w
           p.hint= t.light_hint
 
-    //- SVG 设计原理：位移图 → 三次位移（色散）→ 边缘遮罩 → 背景模糊链
-    section.section
-      .wrap
-        .section-head
-          h2= t.sec_svg_h
-          p.sub= t.sec_svg_p
-        .principles
-          .principle
-            span.n 01
-            p= t.svg_p1
-          .principle
-            span.n 02
-            p= t.svg_p2
-          .principle
-            span.n 03
-            p= t.svg_p3
-        pre
-          code.
-            /* 1) 按按钮实际尺寸生成位移图（app.js → canvas） */
-            R = 128 + x 位移 · G = 128 + y 位移 · B = 边缘强度（中心 0 → 贴边 255）
-
-            /* 2) 同一张图做三次位移，scale 略有差异，分离 R/G/B 后 screen 叠加 → 色散 */
-            feDisplacementMap  in2="map"  scale="s·1.00"  → feColorMatrix → R
-            feDisplacementMap  in2="map"  scale="s·0.92"  → feColorMatrix → G
-            feDisplacementMap  in2="map"  scale="s·0.84"  → feColorMatrix → B
-            feBlend mode="screen"
-
-            /* 3) 用位移图的 B 通道做遮罩：只有边缘参与折射，中心保持清晰 */
-            feComponentTransfer → edgeMask
-            feComposite in="edge" in2="center" operator="over"
-
-            /* 4) 背景模糊链（SVG 滤镜只负责折射，磨砂交给 blur） */
-            backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) saturate(170%)
-
     //- 用法：一个元素的完整配方
     section.section
       .wrap
         .section-head
           h2= t.sec_usage_h
-          p.sub= t.sec_usage_p
         pre
           code.
             .btn {
               display: inline-flex; align-items: center; gap: 9px;
-              height: 56px; padding: 0 28px;            /* 宽度由文字决定 */
+              height: 56px; padding: 0 28px;            /* width comes from the label */
               border: 0; border-radius: 980px;
-              background:                               /* 扁平：几乎平色，只有极轻的顶缘受光 */
+              background:                               /* near-flat tint + a very light top light */
                 radial-gradient(125% 112% at 50% -26%, #ffffff1f, #ffffff08 30%, transparent 55%),
                 linear-gradient(180deg, transparent 66%, #0000001a),
-                var(--tint);                          /* 黑：rgba(12,12,14,.82) */
-              box-shadow: inset 0 1px 1px #ffffff2e,  /* 发丝级棱边 */
+                var(--tint);                          /* black: rgba(12,12,14,.82) */
+              box-shadow: inset 0 1px 1px #ffffff2e,  /* hairline rim */
                           inset 0 -1px 1px #00000033,
                           inset 0 -10px 14px -12px #00000038;
             }
-            .btn--blue {                              /* 蓝：竖向明度差约 6%，白字对比约 4.4:1 */
+            .btn--blue {                              /* azure: ~6% vertical gradient, ~4.4:1 with white */
               background: linear-gradient(180deg, #125fd8 0%, #0746a4 100%);
-              backdrop-filter: url(#glass-1) blur(6px) contrast(1.15) saturate(170%);
+              backdrop-filter: blur(20px) saturate(180%);   /* frosted, pure CSS */
             }
-            /* 天光：::after 径向柔光 + mix-blend-mode:screen（负 z-index，压在底色上、文字下） */
-            /* 折射滤镜：./glass-filters.svg 是模板，app.js 按按钮尺寸 clone 出常态 / hover / active 三份 */
+            /* hover: faint inset ring + one specular band that sweeps across (clipped by the pill) */
+            /* pressed: deeper inset ring, slight scale-down, engraved label shadow */
 
     section.section.section--tint
       .wrap
@@ -160,9 +123,6 @@ html(lang=code, dir=dir)
           a(href="https://developer.apple.com/design/human-interface-guidelines/materials")= t.link_hig
         p= t.footer_2
 
-    //- SVG 滤镜（构建时从 assets/glass-filters.svg 内联；运行时按按钮尺寸 clone）
-    svg.glass-defs(width="0", height="0", aria-hidden="true")!= filterSvg
-    style#glass-styles
     script.
       window.__GLASS__ = !{glass};
-    script!= appJs
+    script!= siteJs

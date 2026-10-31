@@ -1,7 +1,7 @@
 code: sv
 lang_name: Svenska
 title: Liquid Glass-knapp
-lead: En Liquid Glass-knapp som töjs med texten, med äkta kantbrytning.
+lead: En Liquid Glass-knapp som töjs med texten, med en mjuk kantglans.
 btn_download: Hämta
 btn_appstore: App Store
 sec_width_h: Bredden kommer från texten
@@ -10,7 +10,6 @@ w_short: Hämta
 w_appstore: App Store
 w_long: Hämta för macOS
 sec_usage_h: Användning
-sec_usage_p: 'Ett element är hela glaset: form, kant och djup är gradienter och skuggor; kantbrytningen kommer från ett filter skapat i exakt storlek.'
 sec_spec_h: Specifikation
 spec_font_h: Typografi
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; rubriker 48px/1.08.
@@ -25,11 +24,6 @@ stage_hint: Håll muspekaren över
 light_hint: På ljus botten ser glaset blekt ut; tonen håller texten läsbar.
 link_repo: GitHub-repositoriet
 link_hig: Apple HIG · Material
-sec_svg_h: 'Så fungerar SVG:n'
-sec_svg_p: 'Den flytande känslan kommer från kanten: en förskjutningskarta skapas i exakt storlek, tre pass ger dispersion och en kantmask håller mitten skarp.'
-svg_p1: 'Förskjutningskarta: skapas i knappens exakta storlek — R håller x-förskjutning, G y-förskjutning, B kantstyrka (0 i mitten, 255 vid kanten).'
-svg_p2: 'Dispersion: tre pass över samma karta med något olika skalor; R/G/B-kanalerna delas upp och blandas med screen, så kanten bryts som riktigt glas.'
-svg_p3: 'Kantmask: B-kanalen maskar resultatet — bara kanten bryter, mitten under etiketten förblir orörd.'
 link_pack: Ladda ner paketet (tar.xz)
 pack_h: Paketet
-pack_p: 'Packa upp och öppna: en fristående demo, stilen, runtimem och filtermallen.'
+pack_p: 'Packa upp och öppna: fristående demo, knappstilar och ikoner.'

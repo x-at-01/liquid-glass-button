@@ -1,7 +1,7 @@
 code: zh-TW
 lang_name: 正體中文
 title: 液態玻璃按鈕
-lead: 可依文字拉伸的液態玻璃按鈕，邊緣有真實折射。
+lead: 可依文字拉伸的液態玻璃按鈕，邊緣有一層柔和的稜邊高光。
 btn_download: 下載
 btn_appstore: App Store
 sec_width_h: 寬度由文字決定
@@ -10,7 +10,6 @@ w_short: 下載
 w_appstore: App Store
 w_long: 立即下載 macOS 版本
 sec_usage_h: 用法
-sec_usage_p: 一個元素就是整顆玻璃：形體、稜邊與深度用漸層和陰影繪製，邊緣折射來自按尺寸生成的濾鏡。
 sec_spec_h: 設計規格
 spec_font_h: 字體
 spec_font_p: SF Pro Display / SF Pro Text；內文 17px/1.47；標題 48px/1.08。
@@ -25,11 +24,6 @@ stage_hint: 把滑鼠移到按鈕上試試
 light_hint: 淺色底上玻璃偏淡，用底色保持文字對比。
 link_repo: GitHub 儲存庫
 link_hig: Apple HIG · 材質
-sec_svg_h: SVG 設計原理
-sec_svg_p: 液態感來自邊緣折射：按尺寸生成位移圖，三次位移做出色散，再用邊緣遮罩保住中心的清晰。
-svg_p1: 位移圖：按按鈕的實際尺寸生成，R 存 x 位移、G 存 y 位移、B 存邊緣強度——中心 0，貼邊 255。
-svg_p2: 色散：同一張圖做三次位移，scale 略有差異，再分離 R/G/B 通道以 screen 疊加，邊緣就有真實玻璃的色散。
-svg_p3: 邊緣遮罩：用 B 通道當遮罩，只有邊緣參與折射與色散，文字所在的中心區域完全不受影響。
 link_pack: 下載素材包（tar.xz）
 pack_h: 素材包
-pack_p: 解壓就能用：獨立演示頁、樣式、執行時腳本和濾鏡範本。
+pack_p: 解壓即用：獨立演示頁、按鈕樣式與圖示。

@@ -1,7 +1,7 @@
 code: id
 lang_name: Indonesia
 title: Tombol Liquid Glass
-lead: Tombol kaca cair yang memanjang mengikuti teks, tepinya benar-benar membias.
+lead: Tombol kaca cair yang memanjang mengikuti teks, dengan sorot lembut di tepinya.
 btn_download: Unduh
 btn_appstore: App Store
 sec_width_h: Lebar ditentukan teks
@@ -10,7 +10,6 @@ w_short: Unduh
 w_appstore: App Store
 w_long: Unduh untuk macOS
 sec_usage_h: Penggunaan
-sec_usage_p: 'Satu elemen adalah seluruh kaca: bentuk, tepi, dan kedalaman berupa gradien dan bayangan; pembiasan tepi berasal dari filter yang dibuat sesuai ukuran persis.'
 sec_spec_h: Spesifikasi
 spec_font_h: Tipografi
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; judul 48px/1.08.
@@ -25,11 +24,6 @@ stage_hint: Arahkan kursor untuk melihat
 light_hint: Di latar terang kaca tampak pucat; lapisan warna menjaga keterbacaan.
 link_repo: Repositori GitHub
 link_hig: Apple HIG · Material
-sec_svg_h: Cara kerja SVG
-sec_svg_p: 'Rasa cair datang dari tepi: peta pergeseran dibuat sesuai ukuran persis, tiga lintasan menghasilkan dispersi, dan mask tepi menjaga bagian tengah tetap tajam.'
-svg_p1: 'Peta pergeseran: dibuat sesuai ukuran tombol — R menyimpan pergeseran x, G pergeseran y, B kekuatan tepi (0 di tengah, 255 di tepi).'
-svg_p2: 'Dispersi: tiga lintasan pada peta yang sama dengan skala sedikit berbeda; kanal R/G/B dipisah lalu digabung dengan screen, tepi menyebar seperti kaca sungguhan.'
-svg_p3: 'Mask tepi: kanal B memask hasilnya — hanya tepi yang membias, bagian tengah di bawah label tetap utuh.'
 link_pack: Unduh paket (tar.xz)
 pack_h: Paket
-pack_p: 'Ekstrak dan buka: demo mandiri, gaya, runtime, dan templat filter.'
+pack_p: 'Ekstrak dan buka: demo mandiri, gaya tombol, dan ikon.'

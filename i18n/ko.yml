@@ -1,7 +1,7 @@
 code: ko
 lang_name: 한국어
 title: 리퀴드 글래스 버튼
-lead: 글자에 맞춰 늘어나는 리퀴드 글래스 버튼, 가장자리는 실제로 굴절합니다.
+lead: 글자에 맞춰 늘어나는 리퀴드 글래스 버튼, 가장자리에는 부드러운 하이라이트가 있습니다.
 btn_download: 다운로드
 btn_appstore: App Store
 sec_width_h: 너비는 텍스트가 결정
@@ -10,7 +10,6 @@ w_short: 다운로드
 w_appstore: App Store
 w_long: macOS 버전 다운로드
 sec_usage_h: 사용법
-sec_usage_p: 하나의 요소가 곧 유리입니다. 형태와 가장자리, 깊이는 그라디언트와 그림자로 그리고 가장자리 굴절은 실제 크기로 생성한 필터가 담당합니다.
 sec_spec_h: 사양
 spec_font_h: 서체
 spec_font_p: SF Pro Display / SF Pro Text, 본문 17px/1.47, 제목 48px/1.08.
@@ -25,11 +24,6 @@ stage_hint: 마우스를 올려 보세요
 light_hint: 밝은 배경에서는 유리가 옅게 보이므로 하단 색으로 글자 대비를 지킵니다.
 link_repo: GitHub 저장소
 link_hig: Apple HIG · 머티리얼
-sec_svg_h: SVG 동작 원리
-sec_svg_p: 액체감은 가장자리 굴절에서 나옵니다. 실제 크기에 맞춰 변위 맵을 만들고, 세 번의 변위로 색분산을 만들며, 가장자리 마스크로 중앙의 선명도를 지킵니다.
-svg_p1: '변위 맵: 버튼의 실제 크기로 생성하며 R은 x 변위, G는 y 변위, B는 가장자리 강도(중앙 0 → 가장자리 255)를 담습니다.'
-svg_p2: '색분산: 같은 맵을 조금씩 다른 scale로 세 번 변위한 뒤 R/G/B 채널로 분리해 screen으로 겹치면 가장자리에 실제 유리 같은 분산이 생깁니다.'
-svg_p3: '가장자리 마스크: B 채널을 마스크로 써서 굴절과 분산은 가장자리에만 적용되고, 라벨이 있는 중앙은 전혀 영향받지 않습니다.'
 link_pack: 자료 묶음 내려받기 (tar.xz)
 pack_h: 자료 묶음
-pack_p: '압축을 풀면 바로 사용할 수 있습니다: 독립 데모 페이지, 스타일, 런타임, 필터 템플릿.'
+pack_p: '압축을 풀면 바로 사용할 수 있습니다: 독립 데모, 버튼 스타일, 아이콘.'

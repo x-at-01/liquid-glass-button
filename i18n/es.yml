@@ -1,7 +1,7 @@
 code: es
 lang_name: Español
 title: Botón Liquid Glass
-lead: Un botón de vidrio líquido que se estira con su texto, con refracción real en el borde.
+lead: Un botón de vidrio líquido que se estira con su texto, con un borde luminoso y suave.
 btn_download: Descargar
 btn_appstore: App Store
 sec_width_h: El ancho lo decide el texto
@@ -10,7 +10,6 @@ w_short: Descargar
 w_appstore: App Store
 w_long: Descargar para macOS
 sec_usage_h: Uso
-sec_usage_p: 'Un solo elemento es todo el vidrio: forma, borde y profundidad son degradados y sombras; la refracción del borde viene de un filtro generado al tamaño exacto.'
 sec_spec_h: Especificaciones
 spec_font_h: Tipografía
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; títulos 48px/1.08.
@@ -25,11 +24,6 @@ stage_hint: Pasa el cursor para verlo
 light_hint: Sobre fondo claro el vidrio se ve pálido; el tinte mantiene legible el texto.
 link_repo: Repositorio en GitHub
 link_hig: Apple HIG · Materiales
-sec_svg_h: Cómo funciona el SVG
-sec_svg_p: 'La sensación líquida viene del borde: se genera un mapa de desplazamiento a la medida exacta, tres pasadas crean la dispersión y una máscara de borde mantiene nítido el centro.'
-svg_p1: 'Mapa de desplazamiento: generado al tamaño exacto del botón; R guarda el desplazamiento x, G el y, B la intensidad del borde (0 en el centro, 255 en el borde).'
-svg_p2: 'Dispersión: tres pasadas sobre el mismo mapa con escalas ligeramente distintas; los canales R/G/B se separan y se mezclan en screen, y el borde dispersa como vidrio real.'
-svg_p3: 'Máscara de borde: el canal B enmascara el resultado; solo el borde refracta y el centro bajo la etiqueta queda intacto.'
 link_pack: Descargar el paquete (tar.xz)
 pack_h: El paquete
-pack_p: 'Descomprime y abre: una demo autónoma, los estilos, el runtime y la plantilla del filtro.'
+pack_p: 'Descomprime y abre: demo autónoma, estilos del botón e iconos.'
