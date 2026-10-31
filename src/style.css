@@ -75,7 +75,8 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 }
 .btn--black{border-image-source:url(../assets/glass/black-sheet.webp);--tint:rgba(10,10,12,.62)}
 .btn--blue{border-image-source:url(../assets/glass/blue-sheet.webp);--tint:rgba(8,38,140,.66)}
-.btn img{width:20px;height:20px;display:block;flex:none}
+.btn img{display:block;flex:none;height:1.2em;width:1.2em}
+.btn img.ap{height:1.02em;width:1.02em}
 .btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
 /* 按下：文字保持纯白并加粗（text-stroke，不动字重，宽度不会跳），按钮下沉、投影收紧 */
 .btn:active{color:#fff;text-shadow:.4px 0 0 currentColor, -.4px 0 0 currentColor;
