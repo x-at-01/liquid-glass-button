@@ -35,32 +35,6 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
   background:#fff;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease}
 .topbar a.ico-link:hover{background:#fff;transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
 .topbar a.ico-link img{width:18px;height:18px;display:block}
-.lang-btn{
-  width:34px;height:34px;display:grid;place-items:center;margin-inline-start:4px;
-  border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;
-  transition:transform .18s ease,box-shadow .18s ease}
-.lang-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
-.lang-btn:active{transform:scale(.94)}
-.lang-btn:focus-visible{outline:3px solid rgba(0,113,227,.5);outline-offset:2px}
-.lang-btn img{width:18px;height:18px;display:block}
-
-/* ---------- 语言弹窗 ---------- */
-dialog.lang{border:0;padding:0;border-radius:20px;width:min(420px,calc(100vw - 32px));color:var(--ink);
-  background:rgba(255,255,255,.86);box-shadow:0 24px 60px rgba(0,0,0,.28);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%)}
-dialog.lang::backdrop{background:rgba(0,0,0,.3);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-dialog.lang h2{font-size:15px;font-weight:600;margin:0;padding:18px 20px 10px;color:var(--muted)}
-.lang-list{list-style:none;margin:0;padding:0 8px 12px;max-height:60vh;overflow:auto}
-.lang-list button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:11px 12px;border:0;border-radius:12px;background:transparent;font:inherit;font-size:15px;
-  color:var(--ink);cursor:pointer;text-align:start}
-.lang-list button:hover{background:rgba(0,0,0,.05)}
-.lang-list button[aria-current="true"]{background:rgba(0,113,227,.1);color:var(--blue);font-weight:600}
-.lang-list .code{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font:400 12px/1 var(--mono)}
-.lang-list .fb{font-style:normal;font-size:10px;letter-spacing:.04em;padding:2px 5px;border-radius:5px;
-  background:rgba(0,0,0,.06);color:var(--muted)}
-.lang-list button[aria-current="true"] .code{color:inherit}
-
 /* ---------- Hero ---------- */
 .hero{padding:76px 0 0;text-align:center}
 .hero .head{max-width:1000px;margin:0 auto;padding:0 24px}
@@ -172,4 +146,68 @@ footer p{margin:0 0 10px}
   .btn{--pill-h:48px;--cap:24px;font-size:16px}
   .pieces{grid-template-columns:1fr}
   .topbar .wrap{height:52px}
+}
+
+/* ---------- 语言选择：复用 webc 的 I18n / BoxX 组件结构 ---------- */
+.Btn, .BtnC{border:none;outline:none;margin:0;position:relative;display:inline-flex;align-items:center;justify-content:center;
+  background-repeat:no-repeat;box-sizing:border-box;border-radius:22px;color:#444;cursor:pointer;font-family:inherit;
+  text-decoration:none;transition:all .3s cubic-bezier(.4,0,.2,1);user-select:none;white-space:nowrap}
+.Btn::before, .BtnC::before{content:"";position:absolute;inset:0;border-radius:inherit;box-sizing:border-box;
+  border:1px solid #0002;background:linear-gradient(135deg,#ffffff80,#ffffff30);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:all .3s cubic-bezier(.4,0,.2,1)}
+.Btn:hover, .BtnC:hover{color:#000}
+.Btn:hover::before, .BtnC:hover::before{border-color:#9999;box-shadow:inset 0 0 6px #00000047}
+.Btn:active, .BtnC:active{transform:scale(.97)}
+.Btn:active::before, .BtnC:active::before{background:linear-gradient(135deg,#ffffff14);box-shadow:inset 0 1px 0 #fff9, inset 0 0 2px #0006}
+.BtnC{height:44px;width:44px;padding:0}
+.BtnC .Ico{display:block;height:100%;width:100%;background-position:center;background-repeat:no-repeat;background-size:20px;
+  opacity:.8;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.BtnC:hover .Ico, .BtnC:active .Ico{transform:translateY(1px)}
+.BtnC.lang{margin:auto}
+.BtnC.lang .Ico{background-image:url(../assets/icons/i18n.svg)}
+.BtnC:focus-visible, .Btn:focus-visible{outline:none}
+.Btn.Main{color:#fff}
+.Btn.Main::before{-webkit-backdrop-filter:none;backdrop-filter:none;border-color:#0000002b;
+  background:linear-gradient(135deg,#0a84ff,#06c);box-shadow:inset 0 1px 2px #0003, inset 0 -1px 2px #0000001a}
+.Btn.Main:hover{color:#fff}
+.Btn.Main:hover::before{background:radial-gradient(ellipse at center,#0a84ff 0,#0056cc 60%,#002b80 100%);
+  box-shadow:inset 0 1px 2px #0003, inset 0 -1px 2px #0000001a, inset 0 0 6px #00104073}
+.Btn.Main:active{transform:scale(.96);transition:transform .1s ease}
+.Btn.Main:active::before{background:linear-gradient(180deg,#04a,#06c)}
+
+dialog.Box{position:fixed;inset:0;margin:auto;width:100%;max-width:min(calc(100vw - 32px),360px);background:transparent;
+  border:none;padding:0;outline:none;overflow:visible;z-index:2147483647}
+dialog.Box:has(>.I18n){max-width:640px}
+dialog.Box::backdrop{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);background-color:#00000020}
+dialog.Box.FFF>:not(a.X){display:flex;flex-direction:column;align-items:stretch;margin:0 auto;width:100%;min-width:280px;
+  max-height:80dvh;padding:24px 20px;box-sizing:border-box;border-radius:24px;background:#ffffffe6;
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  box-shadow:0 20px 40px #0000001a, 0 1px 3px #00000005;user-select:none}
+dialog.Box.X>a.X{position:absolute;bottom:-64px;left:50%;margin-left:-16px;width:32px;height:32px;display:flex;
+  align-items:center;justify-content:center;border-radius:50%;background:#ffffffd9;cursor:pointer;z-index:1;
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 8px 20px #0000000f, 0 0 0 1px #0000000a;
+  transition:transform .3s ease, background .3s ease, box-shadow .3s ease, opacity .3s ease}
+dialog.Box.X>a.X::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
+  background:url(../assets/icons/x.svg) center/18px no-repeat;transition:opacity .3s ease}
+dialog.Box.X>a.X:hover{background:#ffffffe0;transform:rotate(90deg);box-shadow:0 8px 20px #0000000f, 0 0 0 1px #0000000a, 0 0 3px inset #666}
+dialog.Box.X>a.X:hover::before{opacity:1}
+dialog.Box.X>a.X:active{background:#ffffffa6;box-shadow:0 2px 4px #0000000f, 0 0 0 1px #0000000a, inset 0 2px 4px #0002}
+dialog.Box.X>a.X:active::before{opacity:.7}
+@media (max-height:900px){dialog.Box.X{transform:translateY(-32px)}}
+
+.I18n{min-width:300px;overflow:hidden}
+.I18n>h6{color:#222;font-size:16px;font-weight:600;margin:0 0 12px;text-align:center}
+.I18n>c-vs{flex:1;height:0;min-height:0;max-height:80dvh;margin-top:8px;overflow:auto}
+.I18n>c-vs>b{display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center}
+.I18n .Btn{border-radius:6px;font-size:12px;font-weight:300;height:28px;min-height:28px;max-height:28px;padding:0 8px}
+.I18n .Btn>span{position:relative}
+.I18n .Btn.En{opacity:.5}
+
+@media (max-width:600px){
+  .I18n>c-vs>b{gap:4px 6px}
+  .I18n .Btn{box-shadow:none;color:#333;height:auto;min-height:0;max-height:none;padding:2px 4px;transform:none}
+  .I18n .Btn::before{display:none}
+  .I18n .Btn:hover, .I18n .Btn:active{box-shadow:none;color:#0071e3;transform:none}
+  .I18n .Btn.Main{border-bottom:1px solid currentColor;border-radius:0;color:#000}
+  .I18n .Btn.Main:hover, .I18n .Btn.Main:active{color:#0071e3}
 }

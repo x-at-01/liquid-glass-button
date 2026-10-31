@@ -46,15 +46,24 @@ const dictLi = langLi.map(({ code }) => [
 const pageDir = (code) => join(OUT_DIR, code);
 
 const pageBuild = (code, dict, own_li) => {
-  const html = pug.renderFile(PAGE_TMPL, {
+  const idx = langLi.findIndex((lang) => lang.code === code),
+    glass = JSON.stringify({
+      code,
+      idx,
+      lang_li: langLi.map((lang) => lang.code),
+      name_li: langLi.map((lang) => lang.name),
+      own_li,
+      choose: dict.lang_choose,
+      fallback: !own_li.includes(code),
+    }),
+    html = pug.renderFile(PAGE_TMPL, {
     t: dict,
     code,
+    glass,
     dir: RTL_CODE_LI.includes(code) ? RTL : LTR,
-    langs: langLi.map((lang, idx) => ({ ...lang, idx, own: ownLi.includes(lang.code) })),
     css: textRead(CSS_FILE),
     appJs: textRead(APP_FILE),
     filterSvg,
-    fallback: !own_li.includes(code),
   });
   mkdirSync(pageDir(code), { recursive: true });
   writeFileSync(join(pageDir(code), "index.html"), html);

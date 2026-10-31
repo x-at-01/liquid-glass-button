@@ -20,8 +20,9 @@ html(lang=code, dir=dir)
         nav
           a.ico-link(href="https://github.com/x-at-01/liquid-glass-button", aria-label="GitHub", title="GitHub")
             img(src="../assets/icons/github.svg", alt="", width="18", height="18")
-          button.lang-btn#langBtn(type="button", aria-label=t.lang_aria, aria-haspopup="dialog")
-            img(src="../assets/icons/globe.svg", alt="", width="18", height="18")
+          //- 语言按钮：结构取自 webc 的 I18n 组件（.BtnC.lang > .Ico）
+          button.BtnC.lang#langBtn(type="button", aria-label=t.lang_aria, aria-haspopup="dialog")
+            i.Ico
 
     header.hero
       .head
@@ -139,21 +140,9 @@ html(lang=code, dir=dir)
         p= t.footer_1
         p= t.footer_2
 
-    dialog.lang#langDialog
-      h2= t.lang_choose
-      ul.lang-list#langList
-        each l in langs
-          li
-            button(type="button", data-idx=l.idx, aria-current=(l.code === code ? "true" : "false"))
-              span= l.name
-              span.code
-                | #{l.code}
-                if !l.own
-                  i.fb en
-
     //- SVG 滤镜（构建时从 assets/glass-filters.svg 内联；运行时按按钮尺寸 clone）
     svg.glass-defs(width="0", height="0", aria-hidden="true")!= filterSvg
     style#glass-styles
     script.
-      window.__GLASS__ = !{JSON.stringify({ code: code, idx: langs.findIndex(function (l) { return l.code === code; }), lang_li: langs.map(function (l) { return l.code; }) })};
+      window.__GLASS__ = !{glass};
     script!= appJs

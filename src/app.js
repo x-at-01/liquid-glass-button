@@ -1,5 +1,6 @@
 // 液态玻璃按钮 · 运行时（浏览器端，无需 shebang）
-// 语言：与 webc src/js/i18n 相同机制 —— localStorage 存索引、BroadcastChannel 同步、语言表由构建注入
+// 语言：沿用 webc 的机制与组件结构 —— localStorage 存索引、BroadcastChannel 同步、
+//      弹层用 BoxX 的 dialog.Box.X.FFF + I18n 的 .I18n > c-vs > b > .Btn(.Main) + a.X
 // 玻璃：按按钮尺寸生成位移图，clone assets/glass-filters.svg 的滤镜模板，生成常态/hover/active 三份
 const LANG_KEY = "lang";
 const CH_LANG = "lang";
@@ -10,10 +11,14 @@ const DISP_SEL = ".g-disp";
 const STYLE_ID = "glass-styles";
 const DEFS_SEL = ".glass-defs";
 const MEASURE_SEL = ".measure";
-const DIALOG_ID = "langDialog";
 const BTN_ID = "langBtn";
 const TILE_ID = "tileStrip";
 const TMPL_ID = "glass-template";
+const BOX_CLASS = "Box X FFF";
+const BTN_PLAIN = "Btn";
+const BTN_MAIN = "Btn Main";
+const FALLBACK_CLS = "En";
+const FALLBACK_TITLE = "English";
 const MAP_X = 0, MAP_Y = 1, MAP_EDGE = 2; // 位移图通道语义
 const BAND_RATIO = 0.42; // 折射带宽度（相对高度）
 const SCALE_RATIO = 0.34;
@@ -25,21 +30,72 @@ const BLUR_HOVER = "blur(6px) contrast(1.18) brightness(1.14) saturate(190%)";
 const BLUR_ACTIVE = "blur(10px) contrast(1.08) brightness(.94) saturate(140%)";
 const RESIZE_DELAY = 200;
 
-const { code: CUR_CODE, idx: CUR_IDX, lang_li: LANG_LI } = window.__GLASS__;
+const { idx: CUR_IDX, lang_li: LANG_LI, name_li: NAME_LI, own_li: OWN_LI, choose: CHOOSE_TEXT } = window.__GLASS__;
 const { localStorage: STORE, BroadcastChannel: CH } = window;
-const dialog = document.getElementById(DIALOG_ID);
 const langBtn = document.getElementById(BTN_ID);
 const defs = document.querySelector(DEFS_SEL);
 const styles = document.getElementById(STYLE_ID);
 const tile = document.getElementById(TILE_ID);
 const rand = () => Math.random().toString(36).slice(2, 9);
 
+/* ---------------- 语言 ---------------- */
+
 const langGo = (idx) => {
   STORE[LANG_KEY] = idx;
-  if (idx === CUR_IDX) return dialog.close();
-  if (CH) new CH(CH_LANG).postMessage(idx);
   location.href = "../" + LANG_LI[idx] + "/index.html";
 };
+
+// 弹层结构 / 类名 / 交互沿用 webc 的 BoxX + I18n 组件
+const langOpen = () => {
+  const box = document.createElement("dialog"),
+    x = document.createElement("a"),
+    main = document.createElement("main"),
+    title = document.createElement("h6"),
+    con = document.createElement("c-vs"),
+    inner = document.createElement("b");
+  box.className = BOX_CLASS;
+  box.addEventListener("close", () => box.remove());
+  x.className = "X";
+  x.addEventListener("click", () => box.close());
+  main.className = "I18n";
+  title.textContent = CHOOSE_TEXT;
+  NAME_LI.forEach((name, idx) => {
+    const btn = document.createElement("button"),
+      own = OWN_LI.includes(LANG_LI[idx]);
+    const label = document.createElement("span"); // 文字要在 ::before 磨砂层之上
+    btn.type = "button";
+    label.textContent = name;
+    btn.setAttribute("aria-label", name);
+    btn.className = idx === CUR_IDX ? BTN_MAIN : BTN_PLAIN;
+    if (!own) {
+      btn.classList.add(FALLBACK_CLS);
+      btn.title = FALLBACK_TITLE;
+    }
+    btn.addEventListener("click", () => {
+      box.close();
+      langGo(idx);
+    });
+    btn.append(label);
+    inner.append(btn);
+  });
+  con.append(inner);
+  main.append(title, con);
+  box.append(x, main);
+  document.body.prepend(box);
+  box.showModal();
+};
+
+const langInit = () => {
+  STORE[LANG_KEY] = CUR_IDX;
+  langBtn.addEventListener("click", langOpen);
+  if (CH) {
+    new CH(CH_LANG).addEventListener("message", (e) => {
+      if (e.data !== CUR_IDX) langGo(e.data);
+    });
+  }
+};
+
+/* ---------------- Liquid Glass ---------------- */
 
 // 位移图：R = x 位移、G = y 位移、B = 边缘强度（0 中心 → 255 贴边）
 const dispMapDraw = (w, h) => {
@@ -126,21 +182,6 @@ const glassRebuild = () => {
     [...btn.classList].filter((cls) => cls.startsWith("glass-btn-")).forEach((cls) => btn.classList.remove(cls));
     glassBtnBuild(btn);
   });
-};
-
-const langInit = () => {
-  STORE[LANG_KEY] = CUR_IDX;
-  langBtn.addEventListener("click", () => dialog.showModal());
-  dialog.addEventListener("click", (e) => {
-    const item = e.target.closest("[data-idx]");
-    if (item) return langGo(+item.getAttribute("data-idx"));
-    if (e.target === dialog) return dialog.close();
-  });
-  if (CH) {
-    new CH(CH_LANG).addEventListener("message", (e) => {
-      if (e.data !== CUR_IDX) location.href = "../" + LANG_LI[e.data] + "/index.html";
-    });
-  }
 };
 
 let resizeTimer;

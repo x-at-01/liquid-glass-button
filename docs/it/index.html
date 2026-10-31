@@ -35,32 +35,6 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
   background:#fff;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease}
 .topbar a.ico-link:hover{background:#fff;transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
 .topbar a.ico-link img{width:18px;height:18px;display:block}
-.lang-btn{
-  width:34px;height:34px;display:grid;place-items:center;margin-inline-start:4px;
-  border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;
-  transition:transform .18s ease,box-shadow .18s ease}
-.lang-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
-.lang-btn:active{transform:scale(.94)}
-.lang-btn:focus-visible{outline:3px solid rgba(0,113,227,.5);outline-offset:2px}
-.lang-btn img{width:18px;height:18px;display:block}
-
-/* ---------- 语言弹窗 ---------- */
-dialog.lang{border:0;padding:0;border-radius:20px;width:min(420px,calc(100vw - 32px));color:var(--ink);
-  background:rgba(255,255,255,.86);box-shadow:0 24px 60px rgba(0,0,0,.28);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%)}
-dialog.lang::backdrop{background:rgba(0,0,0,.3);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-dialog.lang h2{font-size:15px;font-weight:600;margin:0;padding:18px 20px 10px;color:var(--muted)}
-.lang-list{list-style:none;margin:0;padding:0 8px 12px;max-height:60vh;overflow:auto}
-.lang-list button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:11px 12px;border:0;border-radius:12px;background:transparent;font:inherit;font-size:15px;
-  color:var(--ink);cursor:pointer;text-align:start}
-.lang-list button:hover{background:rgba(0,0,0,.05)}
-.lang-list button[aria-current="true"]{background:rgba(0,113,227,.1);color:var(--blue);font-weight:600}
-.lang-list .code{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font:400 12px/1 var(--mono)}
-.lang-list .fb{font-style:normal;font-size:10px;letter-spacing:.04em;padding:2px 5px;border-radius:5px;
-  background:rgba(0,0,0,.06);color:var(--muted)}
-.lang-list button[aria-current="true"] .code{color:inherit}
-
 /* ---------- Hero ---------- */
 .hero{padding:76px 0 0;text-align:center}
 .hero .head{max-width:1000px;margin:0 auto;padding:0 24px}
@@ -173,7 +147,71 @@ footer p{margin:0 0 10px}
   .pieces{grid-template-columns:1fr}
   .topbar .wrap{height:52px}
 }
-</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Bottone Liquid Glass</span><nav><a class="ico-link" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><img src="../assets/icons/github.svg" alt="" width="18" height="18"></a><button class="lang-btn" id="langBtn" type="button" aria-label="Cambia lingua" aria-haspopup="dialog"><img src="../assets/icons/globe.svg" alt="" width="18" height="18"></button></nav></div></header><header class="hero"><div class="head"><h1>Bottone Liquid Glass</h1><p class="lead">Un bottone in vetro liquido che si allunga col testo, con vera rifrazione sui bordi.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img src="../assets/icons/download.svg" alt="" width="20" height="20"><span>Scarica</span></button><button class="btn btn--black" type="button"><img src="../assets/icons/apple.svg" alt="" width="20" height="20"><span>App Store</span></button></div><p class="hint">Passa il mouse per vederlo.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>La larghezza la decide il testo</h2><p class="sub">Un solo set di asset: più lungo il testo, più largo il bottone; le estremità non cambiano.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Scarica</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img src="../assets/icons/apple.svg" alt="" width="20" height="20"><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img src="../assets/icons/download.svg" alt="" width="20" height="20"><span>Scarica per macOS</span></button><span class="w"></span></div></div><p class="hint">Su fondo chiaro il vetro è pallido; la tinta tiene leggibile il testo.</p></div></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Asset in tre parti (4×)</h2><p class="sub">Estremità da 112px, centro ripetibile, giunzioni identiche al pixel.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>intero</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>sinistra</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>centro</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>destra</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x — nessuna deformazione</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Uso</h2><p class="sub">Un elemento per l'allungamento a nove parti; hover e active cambiano il filtro.</p></div><pre><code>.btn {
+
+/* ---------- 语言选择：复用 webc 的 I18n / BoxX 组件结构 ---------- */
+.Btn, .BtnC{border:none;outline:none;margin:0;position:relative;display:inline-flex;align-items:center;justify-content:center;
+  background-repeat:no-repeat;box-sizing:border-box;border-radius:22px;color:#444;cursor:pointer;font-family:inherit;
+  text-decoration:none;transition:all .3s cubic-bezier(.4,0,.2,1);user-select:none;white-space:nowrap}
+.Btn::before, .BtnC::before{content:"";position:absolute;inset:0;border-radius:inherit;box-sizing:border-box;
+  border:1px solid #0002;background:linear-gradient(135deg,#ffffff80,#ffffff30);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:all .3s cubic-bezier(.4,0,.2,1)}
+.Btn:hover, .BtnC:hover{color:#000}
+.Btn:hover::before, .BtnC:hover::before{border-color:#9999;box-shadow:inset 0 0 6px #00000047}
+.Btn:active, .BtnC:active{transform:scale(.97)}
+.Btn:active::before, .BtnC:active::before{background:linear-gradient(135deg,#ffffff14);box-shadow:inset 0 1px 0 #fff9, inset 0 0 2px #0006}
+.BtnC{height:44px;width:44px;padding:0}
+.BtnC .Ico{display:block;height:100%;width:100%;background-position:center;background-repeat:no-repeat;background-size:20px;
+  opacity:.8;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.BtnC:hover .Ico, .BtnC:active .Ico{transform:translateY(1px)}
+.BtnC.lang{margin:auto}
+.BtnC.lang .Ico{background-image:url(../assets/icons/i18n.svg)}
+.BtnC:focus-visible, .Btn:focus-visible{outline:none}
+.Btn.Main{color:#fff}
+.Btn.Main::before{-webkit-backdrop-filter:none;backdrop-filter:none;border-color:#0000002b;
+  background:linear-gradient(135deg,#0a84ff,#06c);box-shadow:inset 0 1px 2px #0003, inset 0 -1px 2px #0000001a}
+.Btn.Main:hover{color:#fff}
+.Btn.Main:hover::before{background:radial-gradient(ellipse at center,#0a84ff 0,#0056cc 60%,#002b80 100%);
+  box-shadow:inset 0 1px 2px #0003, inset 0 -1px 2px #0000001a, inset 0 0 6px #00104073}
+.Btn.Main:active{transform:scale(.96);transition:transform .1s ease}
+.Btn.Main:active::before{background:linear-gradient(180deg,#04a,#06c)}
+
+dialog.Box{position:fixed;inset:0;margin:auto;width:100%;max-width:min(calc(100vw - 32px),360px);background:transparent;
+  border:none;padding:0;outline:none;overflow:visible;z-index:2147483647}
+dialog.Box:has(>.I18n){max-width:640px}
+dialog.Box::backdrop{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);background-color:#00000020}
+dialog.Box.FFF>:not(a.X){display:flex;flex-direction:column;align-items:stretch;margin:0 auto;width:100%;min-width:280px;
+  max-height:80dvh;padding:24px 20px;box-sizing:border-box;border-radius:24px;background:#ffffffe6;
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  box-shadow:0 20px 40px #0000001a, 0 1px 3px #00000005;user-select:none}
+dialog.Box.X>a.X{position:absolute;bottom:-64px;left:50%;margin-left:-16px;width:32px;height:32px;display:flex;
+  align-items:center;justify-content:center;border-radius:50%;background:#ffffffd9;cursor:pointer;z-index:1;
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 8px 20px #0000000f, 0 0 0 1px #0000000a;
+  transition:transform .3s ease, background .3s ease, box-shadow .3s ease, opacity .3s ease}
+dialog.Box.X>a.X::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
+  background:url(../assets/icons/x.svg) center/18px no-repeat;transition:opacity .3s ease}
+dialog.Box.X>a.X:hover{background:#ffffffe0;transform:rotate(90deg);box-shadow:0 8px 20px #0000000f, 0 0 0 1px #0000000a, 0 0 3px inset #666}
+dialog.Box.X>a.X:hover::before{opacity:1}
+dialog.Box.X>a.X:active{background:#ffffffa6;box-shadow:0 2px 4px #0000000f, 0 0 0 1px #0000000a, inset 0 2px 4px #0002}
+dialog.Box.X>a.X:active::before{opacity:.7}
+@media (max-height:900px){dialog.Box.X{transform:translateY(-32px)}}
+
+.I18n{min-width:300px;overflow:hidden}
+.I18n>h6{color:#222;font-size:16px;font-weight:600;margin:0 0 12px;text-align:center}
+.I18n>c-vs{flex:1;height:0;min-height:0;max-height:80dvh;margin-top:8px;overflow:auto}
+.I18n>c-vs>b{display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center}
+.I18n .Btn{border-radius:6px;font-size:12px;font-weight:300;height:28px;min-height:28px;max-height:28px;padding:0 8px}
+.I18n .Btn>span{position:relative}
+.I18n .Btn.En{opacity:.5}
+
+@media (max-width:600px){
+  .I18n>c-vs>b{gap:4px 6px}
+  .I18n .Btn{box-shadow:none;color:#333;height:auto;min-height:0;max-height:none;padding:2px 4px;transform:none}
+  .I18n .Btn::before{display:none}
+  .I18n .Btn:hover, .I18n .Btn:active{box-shadow:none;color:#0071e3;transform:none}
+  .I18n .Btn.Main{border-bottom:1px solid currentColor;border-radius:0;color:#000}
+  .I18n .Btn.Main:hover, .I18n .Btn.Main:active{color:#0071e3}
+}
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Bottone Liquid Glass</span><nav><a class="ico-link" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><img src="../assets/icons/github.svg" alt="" width="18" height="18"></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Cambia lingua" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Bottone Liquid Glass</h1><p class="lead">Un bottone in vetro liquido che si allunga col testo, con vera rifrazione sui bordi.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img src="../assets/icons/download.svg" alt="" width="20" height="20"><span>Scarica</span></button><button class="btn btn--black" type="button"><img src="../assets/icons/apple.svg" alt="" width="20" height="20"><span>App Store</span></button></div><p class="hint">Passa il mouse per vederlo.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>La larghezza la decide il testo</h2><p class="sub">Un solo set di asset: più lungo il testo, più largo il bottone; le estremità non cambiano.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Scarica</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img src="../assets/icons/apple.svg" alt="" width="20" height="20"><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img src="../assets/icons/download.svg" alt="" width="20" height="20"><span>Scarica per macOS</span></button><span class="w"></span></div></div><p class="hint">Su fondo chiaro il vetro è pallido; la tinta tiene leggibile il testo.</p></div></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Asset in tre parti (4×)</h2><p class="sub">Estremità da 112px, centro ripetibile, giunzioni identiche al pixel.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>intero</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>sinistra</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>centro</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>destra</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x — nessuna deformazione</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Uso</h2><p class="sub">Un elemento per l'allungamento a nove parti; hover e active cambiano il filtro.</p></div><pre><code>.btn {
   display: inline-flex; align-items: center; gap: 9px;
   height: 56px; width: auto;              /* width comes from the label */
   border: 0 solid transparent;
@@ -183,11 +221,12 @@ footer p{margin:0 0 10px}
   backdrop-filter: url(#glass-1) blur(6px) contrast(1.15) saturate(170%);
 }
 /* displacement map + filter template: ./assets/glass-filters.svg */
-</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>Specifiche</h2><div class="specs"><div class="spec"><h3>Tipografia</h3><p>SF Pro Display / SF Pro Text; 17px/1.47, crenatura -0.022em; titoli 48px/1.08.</p></div><div class="spec"><h3>Bottone</h3><p>56px di altezza (48px su mobile), 28px ai lati, raggio 980px.</p></div><div class="spec"><h3>Asset</h3><p>WebP 4× senza perdita (224px di altezza, mostrato a 56px), trasparenza intatta.</p></div><div class="spec"><h3>Icone</h3><p>Sorgenti SVG 24px, minificate con SVGO, mostrate a 20px.</p></div></div></div></section><footer><div class="wrap"><div class="foot-links"><a href="https://github.com/x-at-01/liquid-glass-button">Repository GitHub</a><a href="https://developer.apple.com/design/human-interface-guidelines/materials">Apple HIG · Materiali</a><a href="https://huggingface.co/Qwen/Qwen-Image-2.1">Materiale: Qwen-Image-2.1</a></div><p>Materiale generato con Qwen-Image-2.1 (alfa nativo); forma e luce ridisegnate in modo procedurale; rifrazione del bordo via SVG feDisplacementMap.</p><p>Il logo Apple è un marchio di Apple Inc., usato solo a scopo dimostrativo.</p></div></footer><dialog class="lang" id="langDialog"><h2>Scegli la lingua</h2><ul class="lang-list" id="langList"><li><button type="button" data-idx="0" aria-current="false"><span>English</span><span class="code">en</span></button></li><li><button type="button" data-idx="1" aria-current="false"><span>中文</span><span class="code">zh</span></button></li><li><button type="button" data-idx="2" aria-current="false"><span>Deutsch</span><span class="code">de</span></button></li><li><button type="button" data-idx="3" aria-current="false"><span>हिन्दी</span><span class="code">hi<i class="fb">en</i></span></button></li><li><button type="button" data-idx="4" aria-current="false"><span>日本語</span><span class="code">ja</span></button></li><li><button type="button" data-idx="5" aria-current="false"><span>Français</span><span class="code">fr</span></button></li><li><button type="button" data-idx="6" aria-current="true"><span>Italiano</span><span class="code">it</span></button></li><li><button type="button" data-idx="7" aria-current="false"><span>Русский</span><span class="code">ru</span></button></li><li><button type="button" data-idx="8" aria-current="false"><span>한국어</span><span class="code">ko</span></button></li><li><button type="button" data-idx="9" aria-current="false"><span>Español</span><span class="code">es</span></button></li><li><button type="button" data-idx="10" aria-current="false"><span>Indonesia</span><span class="code">id</span></button></li><li><button type="button" data-idx="11" aria-current="false"><span>Türkçe</span><span class="code">tr</span></button></li><li><button type="button" data-idx="12" aria-current="false"><span>العربية</span><span class="code">ar</span></button></li><li><button type="button" data-idx="13" aria-current="false"><span>Nederlands</span><span class="code">nl</span></button></li><li><button type="button" data-idx="14" aria-current="false"><span>Polski</span><span class="code">pl</span></button></li><li><button type="button" data-idx="15" aria-current="false"><span>正體中文</span><span class="code">zh-TW</span></button></li><li><button type="button" data-idx="16" aria-current="false"><span>Svenska</span><span class="code">sv</span></button></li><li><button type="button" data-idx="17" aria-current="false"><span>Norsk Bokmål</span><span class="code">no<i class="fb">en</i></span></button></li><li><button type="button" data-idx="18" aria-current="false"><span>ไทย</span><span class="code">th<i class="fb">en</i></span></button></li><li><button type="button" data-idx="19" aria-current="false"><span>Tiếng Việt</span><span class="code">vi</span></button></li><li><button type="button" data-idx="20" aria-current="false"><span>Binisaya</span><span class="code">ceb<i class="fb">en</i></span></button></li><li><button type="button" data-idx="21" aria-current="false"><span>বাংলা</span><span class="code">bn<i class="fb">en</i></span></button></li><li><button type="button" data-idx="22" aria-current="false"><span>فارسی</span><span class="code">fa<i class="fb">en</i></span></button></li><li><button type="button" data-idx="23" aria-current="false"><span>Bahasa Melayu</span><span class="code">ms<i class="fb">en</i></span></button></li><li><button type="button" data-idx="24" aria-current="false"><span>मराठी</span><span class="code">mr<i class="fb">en</i></span></button></li><li><button type="button" data-idx="25" aria-current="false"><span>Afrikaans</span><span class="code">af<i class="fb">en</i></span></button></li><li><button type="button" data-idx="26" aria-current="false"><span>Dansk</span><span class="code">da<i class="fb">en</i></span></button></li><li><button type="button" data-idx="27" aria-current="false"><span>Română</span><span class="code">ro<i class="fb">en</i></span></button></li><li><button type="button" data-idx="28" aria-current="false"><span>اردو</span><span class="code">ur<i class="fb">en</i></span></button></li><li><button type="button" data-idx="29" aria-current="false"><span>Čeština</span><span class="code">cs<i class="fb">en</i></span></button></li><li><button type="button" data-idx="30" aria-current="false"><span>தமிழ்</span><span class="code">ta<i class="fb">en</i></span></button></li><li><button type="button" data-idx="31" aria-current="false"><span>Suomi</span><span class="code">fi<i class="fb">en</i></span></button></li><li><button type="button" data-idx="32" aria-current="false"><span>Português</span><span class="code">pt</span></button></li><li><button type="button" data-idx="33" aria-current="false"><span>ಕನ್ನಡ</span><span class="code">kn<i class="fb">en</i></span></button></li><li><button type="button" data-idx="34" aria-current="false"><span>Català</span><span class="code">ca<i class="fb">en</i></span></button></li><li><button type="button" data-idx="35" aria-current="false"><span>ગુજરાતી</span><span class="code">gu<i class="fb">en</i></span></button></li><li><button type="button" data-idx="36" aria-current="false"><span>Қазақ Тілі</span><span class="code">kk<i class="fb">en</i></span></button></li><li><button type="button" data-idx="37" aria-current="false"><span>Ελληνικά</span><span class="code">el<i class="fb">en</i></span></button></li><li><button type="button" data-idx="38" aria-current="false"><span>Magyar</span><span class="code">hu<i class="fb">en</i></span></button></li><li><button type="button" data-idx="39" aria-current="false"><span>Українська</span><span class="code">uk<i class="fb">en</i></span></button></li><li><button type="button" data-idx="40" aria-current="false"><span>తెలుగు</span><span class="code">te<i class="fb">en</i></span></button></li><li><button type="button" data-idx="41" aria-current="false"><span>Slovenčina</span><span class="code">sk<i class="fb">en</i></span></button></li><li><button type="button" data-idx="42" aria-current="false"><span>Kiswahili</span><span class="code">sw<i class="fb">en</i></span></button></li><li><button type="button" data-idx="43" aria-current="false"><span>Български</span><span class="code">bg<i class="fb">en</i></span></button></li><li><button type="button" data-idx="44" aria-current="false"><span>Cymraeg</span><span class="code">cy<i class="fb">en</i></span></button></li><li><button type="button" data-idx="45" aria-current="false"><span>Euskara</span><span class="code">eu<i class="fb">en</i></span></button></li><li><button type="button" data-idx="46" aria-current="false"><span>Hrvatski</span><span class="code">hr<i class="fb">en</i></span></button></li><li><button type="button" data-idx="47" aria-current="false"><span>Lëtzebuergesch</span><span class="code">lb<i class="fb">en</i></span></button></li><li><button type="button" data-idx="48" aria-current="false"><span>සිංහල</span><span class="code">si<i class="fb">en</i></span></button></li><li><button type="button" data-idx="49" aria-current="false"><span>Azərbaycanca</span><span class="code">az<i class="fb">en</i></span></button></li><li><button type="button" data-idx="50" aria-current="false"><span>Lietuvių Kalba</span><span class="code">lt<i class="fb">en</i></span></button></li><li><button type="button" data-idx="51" aria-current="false"><span>ଓଡ଼ିଆ</span><span class="code">or<i class="fb">en</i></span></button></li><li><button type="button" data-idx="52" aria-current="false"><span>Српски Језик</span><span class="code">sr<i class="fb">en</i></span></button></li><li><button type="button" data-idx="53" aria-current="false"><span>Беларуская</span><span class="code">be<i class="fb">en</i></span></button></li><li><button type="button" data-idx="54" aria-current="false"><span>Galego</span><span class="code">gl<i class="fb">en</i></span></button></li><li><button type="button" data-idx="55" aria-current="false"><span>မြန်မာစာ</span><span class="code">my<i class="fb">en</i></span></button></li><li><button type="button" data-idx="56" aria-current="false"><span>سنڌي</span><span class="code">sd<i class="fb">en</i></span></button></li><li><button type="button" data-idx="57" aria-current="false"><span>Slovenščina</span><span class="code">sl<i class="fb">en</i></span></button></li><li><button type="button" data-idx="58" aria-current="false"><span>অসমীয়া</span><span class="code">as<i class="fb">en</i></span></button></li><li><button type="button" data-idx="59" aria-current="false"><span>Eesti</span><span class="code">et<i class="fb">en</i></span></button></li><li><button type="button" data-idx="60" aria-current="false"><span>Latviešu Valoda</span><span class="code">lv<i class="fb">en</i></span></button></li><li><button type="button" data-idx="61" aria-current="false"><span>ភាសាខ្មែរ</span><span class="code">km<i class="fb">en</i></span></button></li><li><button type="button" data-idx="62" aria-current="false"><span>नेपाली</span><span class="code">ne<i class="fb">en</i></span></button></li><li><button type="button" data-idx="63" aria-current="false"><span>Հայերեն</span><span class="code">hy<i class="fb">en</i></span></button></li><li><button type="button" data-idx="64" aria-current="false"><span>Bosanski</span><span class="code">bs<i class="fb">en</i></span></button></li><li><button type="button" data-idx="65" aria-current="false"><span>ქართული</span><span class="code">ka<i class="fb">en</i></span></button></li><li><button type="button" data-idx="66" aria-current="false"><span>Íslenska</span><span class="code">is<i class="fb">en</i></span></button></li><li><button type="button" data-idx="67" aria-current="false"><span>ພາສາລາວ</span><span class="code">lo<i class="fb">en</i></span></button></li><li><button type="button" data-idx="68" aria-current="false"><span>Македонски Јазик</span><span class="code">mk<i class="fb">en</i></span></button></li><li><button type="button" data-idx="69" aria-current="false"><span>Malti</span><span class="code">mt<i class="fb">en</i></span></button></li><li><button type="button" data-idx="70" aria-current="false"><span>Shqip</span><span class="code">sq<i class="fb">en</i></span></button></li><li><button type="button" data-idx="71" aria-current="false"><span>Wikang Filipino</span><span class="code">fil<i class="fb">en</i></span></button></li><li><button type="button" data-idx="72" aria-current="false"><span>עברית</span><span class="code">iw<i class="fb">en</i></span></button></li><li><button type="button" data-idx="73" aria-current="false"><span>Basa Jawa</span><span class="code">jv<i class="fb">en</i></span></button></li><li><button type="button" data-idx="74" aria-current="false"><span>O'zbek</span><span class="code">uz<i class="fb">en</i></span></button></li></ul></dialog><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs><!--Liquid Glass 滤镜模板。
+</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>Specifiche</h2><div class="specs"><div class="spec"><h3>Tipografia</h3><p>SF Pro Display / SF Pro Text; 17px/1.47, crenatura -0.022em; titoli 48px/1.08.</p></div><div class="spec"><h3>Bottone</h3><p>56px di altezza (48px su mobile), 28px ai lati, raggio 980px.</p></div><div class="spec"><h3>Asset</h3><p>WebP 4× senza perdita (224px di altezza, mostrato a 56px), trasparenza intatta.</p></div><div class="spec"><h3>Icone</h3><p>Sorgenti SVG 24px, minificate con SVGO, mostrate a 20px.</p></div></div></div></section><footer><div class="wrap"><div class="foot-links"><a href="https://github.com/x-at-01/liquid-glass-button">Repository GitHub</a><a href="https://developer.apple.com/design/human-interface-guidelines/materials">Apple HIG · Materiali</a><a href="https://huggingface.co/Qwen/Qwen-Image-2.1">Materiale: Qwen-Image-2.1</a></div><p>Materiale generato con Qwen-Image-2.1 (alfa nativo); forma e luce ridisegnate in modo procedurale; rifrazione del bordo via SVG feDisplacementMap.</p><p>Il logo Apple è un marchio di Apple Inc., usato solo a scopo dimostrativo.</p></div></footer><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs><!--Liquid Glass 滤镜模板。
       构建时整份内联进页面；运行时对每个按钮 clone 一份，改 id / 尺寸 /
       feImage 的位移图，以及三个 .g-disp 的 scale（常态 / hover / active）。
-      背景模糊只是磨砂；真正的“液态”来自 feDisplacementMap 的边缘折射。--><filter id="glass-template" width="200" height="56" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feImage width="200" height="56" x="0" y="0" class="g-map" result="map"/><!--用位移图的 B 通道（边缘强度）做边缘遮罩--><feColorMatrix in="map" result="edgeRGB" type="matrix" values="0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 0"/><feComponentTransfer in="edgeRGB" result="edgeMask"><feFuncA tableValues="0 1" type="table"/></feComponentTransfer><!--三个通道用略微不同的位移 → 边缘色散--><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dR" scale="12" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dR" result="Rc" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dG" scale="11" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dG" result="Gc" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dB" scale="10" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dB" result="Bc" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"/><feBlend in="Gc" in2="Bc" mode="screen" result="GB"/><feBlend in="Rc" in2="GB" mode="screen" result="RGB"/><feGaussianBlur in="RGB" result="RGBsoft" stdDeviation=".4"/><!--只有边缘参与折射/色散，中心保持清晰--><feComposite in="RGBsoft" in2="edgeMask" operator="in" result="edge"/><feComponentTransfer in="edgeMask" result="innerMask"><feFuncA tableValues="1 0" type="table"/></feComponentTransfer><feComposite in="SourceGraphic" in2="innerMask" operator="in" result="center"/><feComposite in="edge" in2="center" operator="over"/></filter></defs></svg><style id="glass-styles"></style><script>window.__GLASS__ = {"code":"it","idx":6,"lang_li":["en","zh","de","hi","ja","fr","it","ru","ko","es","id","tr","ar","nl","pl","zh-TW","sv","no","th","vi","ceb","bn","fa","ms","mr","af","da","ro","ur","cs","ta","fi","pt","kn","ca","gu","kk","el","hu","uk","te","sk","sw","bg","cy","eu","hr","lb","si","az","lt","or","sr","be","gl","my","sd","sl","as","et","lv","km","ne","hy","bs","ka","is","lo","mk","mt","sq","fil","iw","jv","uz"]};</script><script>// 液态玻璃按钮 · 运行时（浏览器端，无需 shebang）
-// 语言：与 webc src/js/i18n 相同机制 —— localStorage 存索引、BroadcastChannel 同步、语言表由构建注入
+      背景模糊只是磨砂；真正的“液态”来自 feDisplacementMap 的边缘折射。--><filter id="glass-template" width="200" height="56" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feImage width="200" height="56" x="0" y="0" class="g-map" result="map"/><!--用位移图的 B 通道（边缘强度）做边缘遮罩--><feColorMatrix in="map" result="edgeRGB" type="matrix" values="0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 0"/><feComponentTransfer in="edgeRGB" result="edgeMask"><feFuncA tableValues="0 1" type="table"/></feComponentTransfer><!--三个通道用略微不同的位移 → 边缘色散--><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dR" scale="12" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dR" result="Rc" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dG" scale="11" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dG" result="Gc" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dB" scale="10" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dB" result="Bc" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"/><feBlend in="Gc" in2="Bc" mode="screen" result="GB"/><feBlend in="Rc" in2="GB" mode="screen" result="RGB"/><feGaussianBlur in="RGB" result="RGBsoft" stdDeviation=".4"/><!--只有边缘参与折射/色散，中心保持清晰--><feComposite in="RGBsoft" in2="edgeMask" operator="in" result="edge"/><feComponentTransfer in="edgeMask" result="innerMask"><feFuncA tableValues="1 0" type="table"/></feComponentTransfer><feComposite in="SourceGraphic" in2="innerMask" operator="in" result="center"/><feComposite in="edge" in2="center" operator="over"/></filter></defs></svg><style id="glass-styles"></style><script>window.__GLASS__ = {"code":"it","idx":6,"lang_li":["en","zh","de","hi","ja","fr","it","ru","ko","es","id","tr","ar","nl","pl","zh-TW","sv","no","th","vi","ceb","bn","fa","ms","mr","af","da","ro","ur","cs","ta","fi","pt","kn","ca","gu","kk","el","hu","uk","te","sk","sw","bg","cy","eu","hr","lb","si","az","lt","or","sr","be","gl","my","sd","sl","as","et","lv","km","ne","hy","bs","ka","is","lo","mk","mt","sq","fil","iw","jv","uz"],"name_li":["English","中文","Deutsch","हिन्दी","日本語","Français","Italiano","Русский","한국어","Español","Indonesia","Türkçe","العربية","Nederlands","Polski","正體中文","Svenska","Norsk Bokmål","ไทย","Tiếng Việt","Binisaya","বাংলা","فارسی","Bahasa Melayu","मराठी","Afrikaans","Dansk","Română","اردو","Čeština","தமிழ்","Suomi","Português","ಕನ್ನಡ","Català","ગુજરાતી","Қазақ Тілі","Ελληνικά","Magyar","Українська","తెలుగు","Slovenčina","Kiswahili","Български","Cymraeg","Euskara","Hrvatski","Lëtzebuergesch","සිංහල","Azərbaycanca","Lietuvių Kalba","ଓଡ଼ିଆ","Српски Језик","Беларуская","Galego","မြန်မာစာ","سنڌي","Slovenščina","অসমীয়া","Eesti","Latviešu Valoda","ភាសាខ្មែរ","नेपाली","Հայերեն","Bosanski","ქართული","Íslenska","ພາສາລາວ","Македонски Јазик","Malti","Shqip","Wikang Filipino","עברית","Basa Jawa","O'zbek"],"own_li":["es","ko","id","pt","de","zh-TW","it","pl","sv","en","ja","ru","fr","ar","tr","vi","nl","zh"],"choose":"Scegli la lingua","fallback":false};</script><script>// 液态玻璃按钮 · 运行时（浏览器端，无需 shebang）
+// 语言：沿用 webc 的机制与组件结构 —— localStorage 存索引、BroadcastChannel 同步、
+//      弹层用 BoxX 的 dialog.Box.X.FFF + I18n 的 .I18n > c-vs > b > .Btn(.Main) + a.X
 // 玻璃：按按钮尺寸生成位移图，clone assets/glass-filters.svg 的滤镜模板，生成常态/hover/active 三份
 const LANG_KEY = "lang";
 const CH_LANG = "lang";
@@ -198,10 +237,14 @@ const DISP_SEL = ".g-disp";
 const STYLE_ID = "glass-styles";
 const DEFS_SEL = ".glass-defs";
 const MEASURE_SEL = ".measure";
-const DIALOG_ID = "langDialog";
 const BTN_ID = "langBtn";
 const TILE_ID = "tileStrip";
 const TMPL_ID = "glass-template";
+const BOX_CLASS = "Box X FFF";
+const BTN_PLAIN = "Btn";
+const BTN_MAIN = "Btn Main";
+const FALLBACK_CLS = "En";
+const FALLBACK_TITLE = "English";
 const MAP_X = 0, MAP_Y = 1, MAP_EDGE = 2; // 位移图通道语义
 const BAND_RATIO = 0.42; // 折射带宽度（相对高度）
 const SCALE_RATIO = 0.34;
@@ -213,21 +256,72 @@ const BLUR_HOVER = "blur(6px) contrast(1.18) brightness(1.14) saturate(190%)";
 const BLUR_ACTIVE = "blur(10px) contrast(1.08) brightness(.94) saturate(140%)";
 const RESIZE_DELAY = 200;
 
-const { code: CUR_CODE, idx: CUR_IDX, lang_li: LANG_LI } = window.__GLASS__;
+const { idx: CUR_IDX, lang_li: LANG_LI, name_li: NAME_LI, own_li: OWN_LI, choose: CHOOSE_TEXT } = window.__GLASS__;
 const { localStorage: STORE, BroadcastChannel: CH } = window;
-const dialog = document.getElementById(DIALOG_ID);
 const langBtn = document.getElementById(BTN_ID);
 const defs = document.querySelector(DEFS_SEL);
 const styles = document.getElementById(STYLE_ID);
 const tile = document.getElementById(TILE_ID);
 const rand = () => Math.random().toString(36).slice(2, 9);
 
+/* ---------------- 语言 ---------------- */
+
 const langGo = (idx) => {
   STORE[LANG_KEY] = idx;
-  if (idx === CUR_IDX) return dialog.close();
-  if (CH) new CH(CH_LANG).postMessage(idx);
   location.href = "../" + LANG_LI[idx] + "/index.html";
 };
+
+// 弹层结构 / 类名 / 交互沿用 webc 的 BoxX + I18n 组件
+const langOpen = () => {
+  const box = document.createElement("dialog"),
+    x = document.createElement("a"),
+    main = document.createElement("main"),
+    title = document.createElement("h6"),
+    con = document.createElement("c-vs"),
+    inner = document.createElement("b");
+  box.className = BOX_CLASS;
+  box.addEventListener("close", () => box.remove());
+  x.className = "X";
+  x.addEventListener("click", () => box.close());
+  main.className = "I18n";
+  title.textContent = CHOOSE_TEXT;
+  NAME_LI.forEach((name, idx) => {
+    const btn = document.createElement("button"),
+      own = OWN_LI.includes(LANG_LI[idx]);
+    const label = document.createElement("span"); // 文字要在 ::before 磨砂层之上
+    btn.type = "button";
+    label.textContent = name;
+    btn.setAttribute("aria-label", name);
+    btn.className = idx === CUR_IDX ? BTN_MAIN : BTN_PLAIN;
+    if (!own) {
+      btn.classList.add(FALLBACK_CLS);
+      btn.title = FALLBACK_TITLE;
+    }
+    btn.addEventListener("click", () => {
+      box.close();
+      langGo(idx);
+    });
+    btn.append(label);
+    inner.append(btn);
+  });
+  con.append(inner);
+  main.append(title, con);
+  box.append(x, main);
+  document.body.prepend(box);
+  box.showModal();
+};
+
+const langInit = () => {
+  STORE[LANG_KEY] = CUR_IDX;
+  langBtn.addEventListener("click", langOpen);
+  if (CH) {
+    new CH(CH_LANG).addEventListener("message", (e) => {
+      if (e.data !== CUR_IDX) langGo(e.data);
+    });
+  }
+};
+
+/* ---------------- Liquid Glass ---------------- */
 
 // 位移图：R = x 位移、G = y 位移、B = 边缘强度（0 中心 → 255 贴边）
 const dispMapDraw = (w, h) => {
@@ -314,21 +408,6 @@ const glassRebuild = () => {
     [...btn.classList].filter((cls) => cls.startsWith("glass-btn-")).forEach((cls) => btn.classList.remove(cls));
     glassBtnBuild(btn);
   });
-};
-
-const langInit = () => {
-  STORE[LANG_KEY] = CUR_IDX;
-  langBtn.addEventListener("click", () => dialog.showModal());
-  dialog.addEventListener("click", (e) => {
-    const item = e.target.closest("[data-idx]");
-    if (item) return langGo(+item.getAttribute("data-idx"));
-    if (e.target === dialog) return dialog.close();
-  });
-  if (CH) {
-    new CH(CH_LANG).addEventListener("message", (e) => {
-      if (e.data !== CUR_IDX) location.href = "../" + LANG_LI[e.data] + "/index.html";
-    });
-  }
 };
 
 let resizeTimer;
