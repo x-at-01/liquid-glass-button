@@ -198,7 +198,8 @@ hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6）。hover
 ```
 liquid-glass-button/
   demo.html          独立演示页（CSS、JS、滤镜全部内联）
-  style.css          按钮样式，可直接取用
+  button.css         按钮组件，可直接取用
+  page.css           演示页布局（只要按钮时不需要）
   app.js             位移图生成 + 滤镜构建
   glass-filters.svg  滤镜模板
   icons/             下载 / App Store 图标
