@@ -32,3 +32,8 @@ footer_1: Material generated with Qwen-Image-2.1 (native alpha); shape and light
 footer_2: Apple logo is a trademark of Apple Inc., used only to demonstrate the App Store button layout.
 lang_choose: Choose language
 lang_aria: Change language
+stage_hint: Hover a button — the rim refracts what is behind it.
+light_hint: On a light surface the glass reads lighter; the tint keeps the label legible.
+link_repo: GitHub repository
+link_hig: Apple HIG · Materials
+link_model: 'Material: Qwen-Image-2.1'

@@ -32,3 +32,8 @@ footer_1: 재질은 Qwen-Image-2.1(네이티브 알파)로 생성하고, 형태�
 footer_2: Apple 로고는 Apple Inc. 의 상표이며 App Store 버튼의 레이아웃과 아이콘 용법을 보여주기 위해서만 사용했습니다.
 lang_choose: 언어 선택
 lang_aria: 언어 변경
+stage_hint: 버튼에 마우스를 올리면 가장자리가 뒤 배경을 굴절시킵니다.
+light_hint: 밝은 배경에서는 유리가 옅게 보이므로 하단 색으로 글자 대비를 유지합니다.
+link_repo: GitHub 저장소
+link_hig: Apple HIG · 머티리얼
+link_model: '재질: Qwen-Image-2.1'

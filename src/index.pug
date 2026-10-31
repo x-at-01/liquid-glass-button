@@ -1,4 +1,4 @@
-//- 液态玻璃按钮 · 静态页面模板（语言由 i18n/<code>.yml 注入）
+//- 液态玻璃按钮 · 静态页面模板（语言文案来自 i18n/<code>.yml）
 doctype html
 html(lang=code, dir=dir)
   head
@@ -11,41 +11,52 @@ html(lang=code, dir=dir)
     meta(property="og:type", content="website")
     style!= css
   body
-    header.hero
-      button.lang-btn#langBtn(type="button", aria-label=t.lang_aria, aria-haspopup="dialog")
-        img(src="./assets/icons/globe.svg", alt="", width="20", height="20")
+    header.topbar
       .wrap
+        span.brand
+          i
+          | Liquid Glass Button
+        nav
+          a(href="https://github.com/x-at-01/liquid-glass-button") GitHub
+          button.lang-btn#langBtn(type="button", aria-label=t.lang_aria, aria-haspopup="dialog")
+            img(src="./assets/icons/globe.svg", alt="", width="18", height="18")
+
+    header.hero
+      .head
         p.eyebrow= t.eyebrow
         h1= t.title
         p.lead= t.lead
-      .showcase
-        .wrap.cta
+      section.stage
+        .cta
           button.btn.btn--blue(type="button")
             img(src="./assets/icons/download.svg", alt="", width="20", height="20")
             span= t.btn_download
           button.btn.btn--black(type="button")
             img(src="./assets/icons/apple.svg", alt="", width="20", height="20")
             span= t.btn_appstore
+        p.hint= t.stage_hint
 
     section.section
       .wrap
         .section-head
           h2= t.sec_width_h
           p.sub= t.sec_width_p
-        .measure-row
-          .measure
-            button.btn.btn--black(type="button")
-              span= t.w_short
-            span.w
-          .measure
-            button.btn.btn--black(type="button")
-              span= t.w_appstore
-            span.w
-          .measure
-            button.btn.btn--blue(type="button")
-              img(src="./assets/icons/download.svg", alt="", width="20", height="20")
-              span= t.w_long
-            span.w
+        .card
+          .measure-row
+            .measure
+              button.btn.btn--black(type="button")
+                span= t.w_short
+              span.w
+            .measure
+              button.btn.btn--black(type="button")
+                span= t.w_appstore
+              span.w
+            .measure
+              button.btn.btn--blue(type="button")
+                img(src="./assets/icons/download.svg", alt="", width="20", height="20")
+                span= t.w_long
+              span.w
+          p.hint= t.light_hint
 
     section.section.section--tint
       .wrap
@@ -54,17 +65,29 @@ html(lang=code, dir=dir)
           p.sub= t.sec_assets_p
         .pieces
           figure
-            img(src="./assets/glass/black-sheet.webp", alt="")
-            figcaption= t.cap_sheet + " · 352×224 · 4×"
+            .shot
+              img(src="./assets/glass/black-sheet.webp", alt="")
+            figcaption
+              b= t.cap_sheet
+              |  · 352×224 · 4×
           figure
-            img(src="./assets/glass/black-left.webp", alt="")
-            figcaption= t.cap_left + " · 112×224"
+            .shot
+              img(src="./assets/glass/black-left.webp", alt="")
+            figcaption
+              b= t.cap_left
+              |  · 112×224
           figure
-            img(src="./assets/glass/black-mid.webp", alt="")
-            figcaption= t.cap_mid + " · 128×224"
+            .shot
+              img(src="./assets/glass/black-mid.webp", alt="")
+            figcaption
+              b= t.cap_mid
+              |  · 128×224
           figure
-            img(src="./assets/glass/black-right.webp", alt="")
-            figcaption= t.cap_right + " · 112×224"
+            .shot
+              img(src="./assets/glass/black-right.webp", alt="")
+            figcaption
+              b= t.cap_right
+              |  · 112×224
         .tile-wrap
           .checker
             .tile-strip#tileStrip
@@ -79,14 +102,14 @@ html(lang=code, dir=dir)
           code.
             .btn {
               display: inline-flex; align-items: center; gap: 9px;
-              height: 56px; width: auto;              /* 宽度由文字决定 */
+              height: 56px; width: auto;              /* width comes from the label */
               border: 0 solid transparent;
               border-left-width: 28px; border-right-width: 28px;
               border-image: url(./assets/glass/black-sheet.webp) 0 112 0 112 fill stretch;
               border-radius: 980px; color: #fff;
               backdrop-filter: url(#glass-1) blur(6px) contrast(1.15) saturate(170%);
             }
-            /* 位移图 + 滤镜模板都在 ./assets/glass-filters.svg */
+            /* displacement map + filter template: ./assets/glass-filters.svg */
 
     section.section.section--tint
       .wrap
@@ -107,6 +130,10 @@ html(lang=code, dir=dir)
 
     footer
       .wrap
+        .foot-links
+          a(href="https://github.com/x-at-01/liquid-glass-button")= t.link_repo
+          a(href="https://developer.apple.com/design/human-interface-guidelines/materials")= t.link_hig
+          a(href="https://huggingface.co/Qwen/Qwen-Image-2.1")= t.link_model
         p= t.footer_1
         p= t.footer_2
 
@@ -119,7 +146,7 @@ html(lang=code, dir=dir)
               span= l.name
               span.code= l.code
 
-    //- SVG 滤镜（从 assets/glass-filters.svg 内联进来；运行时按按钮尺寸 clone）
+    //- SVG 滤镜（构建时从 assets/glass-filters.svg 内联；运行时按按钮尺寸 clone）
     svg.glass-defs(width="0", height="0", aria-hidden="true")!= filtersSvg
     style#glass-styles
     script.

@@ -32,3 +32,8 @@ footer_1: 材质由 Qwen-Image-2.1 生成（原生透明），形状与光影由
 footer_2: Apple 标志为 Apple Inc. 的商标，仅用于演示「应用商店安装」按钮的排版与图标用法。
 lang_choose: 选择语言
 lang_aria: 切换语言
+stage_hint: 把鼠标移到按钮上：边缘会把背后的画面折射进来。
+light_hint: 浅色表面上玻璃本身偏淡，靠底色保持文字对比度。
+link_repo: GitHub 仓库
+link_hig: Apple HIG · 材质
+link_model: 材质：Qwen-Image-2.1

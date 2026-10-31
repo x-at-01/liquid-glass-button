@@ -2,6 +2,8 @@
   --font: "SF Pro Display","SF Pro Text",-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans",sans-serif;
   --mono: "SF Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --ink:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --surface:#f5f5f7; --blue:#0071e3;
+  --radius:22px;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -10,58 +12,73 @@ body{
   font:400 17px/1.47059 var(--font);letter-spacing:-.022em;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
 }
-.wrap{max-width:980px;margin:0 auto;padding:0 22px}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
-h1{font-size:48px;line-height:1.0833;font-weight:600;letter-spacing:-.003em;margin:0 0 14px}
-h2{font-size:28px;line-height:1.14286;font-weight:600;letter-spacing:.007em;margin:0 0 10px}
-.lead{font-size:21px;line-height:1.381;letter-spacing:.011em;color:var(--muted);margin:0 auto;max-width:660px}
-.sub{font-size:17px;line-height:1.47059;color:var(--muted);margin:0 0 28px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+h1{font-size:52px;line-height:1.07;font-weight:600;letter-spacing:-.012em;margin:0 0 16px}
+h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:0 0 10px}
+.lead{font-size:21px;line-height:1.38;letter-spacing:.008em;color:var(--muted);margin:0 auto;max-width:680px;text-wrap:balance}
+.sub{font-size:17px;line-height:1.5;color:var(--muted);margin:0 0 26px;max-width:660px}
+.hint{font-size:13px;line-height:1.45;color:var(--muted);margin:18px 0 0}
+.stage .hint{color:rgba(255,255,255,.78)}
 
-/* 语言切换按钮（仿 webc 的圆形图标按钮） */
-.hero{position:relative}
+/* ---------- 顶栏 ---------- */
+.topbar{border-bottom:1px solid var(--line);background:rgba(255,255,255,.8);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  position:sticky;top:0;z-index:20}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;letter-spacing:-.01em}
+.brand i{width:9px;height:9px;border-radius:50%;background:linear-gradient(140deg,#6ea8ff,#b46bff 60%,#ff8ad4);
+  box-shadow:0 2px 6px rgba(110,168,255,.5)}
+.topbar nav{display:flex;align-items:center;gap:6px}
+.topbar a{color:var(--muted);text-decoration:none;font-size:13px;padding:7px 11px;border-radius:999px}
+.topbar a:hover{color:var(--ink);background:rgba(0,0,0,.05)}
 .lang-btn{
-  position:absolute;top:26px;inset-inline-end:22px;
-  width:40px;height:40px;display:grid;place-items:center;
-  border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.72);
-  color:var(--ink);cursor:pointer;
-  -webkit-backdrop-filter:blur(12px) saturate(160%);backdrop-filter:blur(12px) saturate(160%);
-  transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;
-}
-.lang-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+  width:34px;height:34px;display:grid;place-items:center;margin-inline-start:4px;
+  border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease}
+.lang-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
 .lang-btn:active{transform:scale(.94)}
 .lang-btn:focus-visible{outline:3px solid rgba(0,113,227,.5);outline-offset:2px}
-.lang-btn svg{width:20px;height:20px}
+.lang-btn img{width:18px;height:18px;display:block}
 
-dialog.lang{
-  border:0;padding:0;border-radius:20px;width:min(420px,calc(100vw - 32px));
-  box-shadow:0 24px 60px rgba(0,0,0,.28);color:var(--ink);background:rgba(255,255,255,.86);
-  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);
-}
-dialog.lang::backdrop{background:rgba(0,0,0,.28);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-dialog.lang h2{font-size:16px;font-weight:600;margin:0;padding:18px 20px 12px}
+/* ---------- 语言弹窗 ---------- */
+dialog.lang{border:0;padding:0;border-radius:20px;width:min(420px,calc(100vw - 32px));color:var(--ink);
+  background:rgba(255,255,255,.86);box-shadow:0 24px 60px rgba(0,0,0,.28);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%)}
+dialog.lang::backdrop{background:rgba(0,0,0,.3);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+dialog.lang h2{font-size:15px;font-weight:600;margin:0;padding:18px 20px 10px;color:var(--muted)}
 .lang-list{list-style:none;margin:0;padding:0 8px 12px;max-height:60vh;overflow:auto}
-.lang-list button{
-  width:100%;display:flex;align-items:center;justify-content:space-between;
-  gap:12px;padding:11px 12px;border:0;border-radius:12px;background:transparent;
-  font:inherit;font-size:15px;color:var(--ink);cursor:pointer;text-align:start;
-}
+.lang-list button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 12px;border:0;border-radius:12px;background:transparent;font:inherit;font-size:15px;
+  color:var(--ink);cursor:pointer;text-align:start}
 .lang-list button:hover{background:rgba(0,0,0,.05)}
-.lang-list button[aria-current="true"]{background:rgba(0,113,227,.10);color:var(--blue);font-weight:600}
+.lang-list button[aria-current="true"]{background:rgba(0,113,227,.1);color:var(--blue);font-weight:600}
 .lang-list .code{color:var(--muted);font:400 12px/1 var(--mono)}
 .lang-list button[aria-current="true"] .code{color:inherit}
 
-/* 展示区 */
-.hero{padding:88px 0 0;text-align:center}
-.hero .showcase{
-  margin-top:56px;padding:72px 0;
+/* ---------- Hero ---------- */
+.hero{padding:76px 0 0;text-align:center}
+.hero .head{max-width:1000px;margin:0 auto;padding:0 24px}
+.stage{
+  position:relative;margin:52px auto 0;max-width:1000px;border-radius:var(--radius);overflow:hidden;
+  padding:64px 32px 56px;
   background:
-    radial-gradient(60% 130% at 12% 20%, #6ea8ff 0%, transparent 62%),
-    radial-gradient(55% 120% at 88% 18%, #ff8ad4 0%, transparent 60%),
-    radial-gradient(70% 140% at 50% 118%, #ffd479 0%, transparent 62%),
-    linear-gradient(115deg, #16224a 0%, #3a1d5b 52%, #5b2a1d 100%);
+    radial-gradient(58% 130% at 14% 18%, rgba(110,168,255,.95) 0%, transparent 60%),
+    radial-gradient(52% 120% at 86% 22%, rgba(255,138,212,.9) 0%, transparent 58%),
+    radial-gradient(70% 150% at 52% 116%, rgba(255,212,121,.85) 0%, transparent 60%),
+    radial-gradient(40% 90% at 70% 85%, rgba(180,107,255,.75) 0%, transparent 60%),
+    linear-gradient(118deg, #16224a 0%, #2f1c52 48%, #4d2418 100%);
+  box-shadow:0 40px 80px -40px rgba(22,24,54,.55), 0 2px 6px rgba(22,24,54,.18);
 }
+/* 暗角 + 颗粒：让它像“场景”，而不是一条纯色渐变 */
+.stage::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 100% at 50% 45%, transparent 40%, rgba(10,10,24,.42) 100%)}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background-image:var(--grain);background-size:140px 140px}
+.stage>*{position:relative;z-index:1}
 .cta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center}
 
+/* ---------- 按钮 ---------- */
 .btn{
   -webkit-appearance:none;appearance:none;position:relative;
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
@@ -87,57 +104,80 @@ dialog.lang h2{font-size:16px;font-weight:600;margin:0;padding:18px 20px 12px}
 .btn:active::after{opacity:.16}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
 
-.section{padding:88px 0}
+/* ---------- 区块 ---------- */
+.section{padding:92px 0}
 .section--tint{background:var(--surface)}
-.section-head{max-width:660px;margin-bottom:8px}
-.measure-row{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:flex-end;margin-top:36px}
+.section-head{max-width:680px;margin-bottom:6px}
+
+/* 浅色卡片：展示玻璃在浅色表面上的样子 */
+.card{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:36px 32px 30px;box-shadow:0 18px 40px -30px rgba(16,24,40,.35)}
+.measure-row{display:flex;flex-wrap:wrap;gap:20px 32px;align-items:flex-end}
 .measure{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.measure .w{font:400 12px/1.33 var(--mono);color:#86868b}
+.measure .w{font:400 12px/1 var(--mono);color:#86868b}
+.card .hint{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
 
-.pieces{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-end;margin-top:36px}
-.pieces figure{margin:0;display:flex;flex-direction:column;gap:10px}
-.pieces img{display:block;height:var(--pill-h,56px);width:auto;outline:1px dashed rgba(255,63,110,.45);outline-offset:3px;border-radius:6px}
-.pieces figcaption,.cap{font:400 12px/1.33 var(--mono);color:#86868b}
-.tile-wrap{margin-top:36px}
-.checker{
-  border-radius:12px;padding:10px;background-color:#fff;background-size:20px 20px;
-  background-image:linear-gradient(45deg,#e9edf3 25%,transparent 25%),linear-gradient(-45deg,#e9edf3 25%,transparent 25%),
-                   linear-gradient(45deg,transparent 75%,#e9edf3 75%),linear-gradient(-45deg,transparent 75%,#e9edf3 75%);
-  background-position:0 0,0 10px,10px -10px,-10px 0;
-}
-.tile-strip{height:var(--pill-h,56px);width:100%;background-repeat:repeat-x;background-position:left center;background-size:auto 100%;outline:1px dashed var(--line);outline-offset:4px}
+/* 素材陈列 */
+.pieces{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:18px;margin-top:30px}
+.pieces figure{margin:0;display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);
+  border-radius:16px;padding:18px 16px 14px;box-shadow:0 12px 30px -26px rgba(16,24,40,.5)}
+.pieces .shot{display:grid;place-items:center;min-height:calc(var(--pill-h,56px) + 20px);border-radius:10px;
+  background-color:#fff;background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
+  background-image:linear-gradient(45deg,#eef1f6 25%,transparent 25%),linear-gradient(-45deg,#eef1f6 25%,transparent 25%),
+                   linear-gradient(45deg,transparent 75%,#eef1f6 75%),linear-gradient(-45deg,transparent 75%,#eef1f6 75%)}
+.pieces img{display:block;height:var(--pill-h,56px);width:auto;max-width:100%}
+.pieces figcaption{font:400 12px/1.3 var(--mono);color:var(--muted)}
+.pieces figcaption b{color:var(--ink);font-weight:600}
+.tile-wrap{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;
+  box-shadow:0 12px 30px -26px rgba(16,24,40,.5)}
+.checker{border-radius:10px;padding:10px;background-color:#fff;background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
+  background-image:linear-gradient(45deg,#eef1f6 25%,transparent 25%),linear-gradient(-45deg,#eef1f6 25%,transparent 25%),
+                   linear-gradient(45deg,transparent 75%,#eef1f6 75%),linear-gradient(-45deg,transparent 75%,#eef1f6 75%)}
+.tile-strip{height:var(--pill-h,56px);width:100%;background-repeat:repeat-x;background-position:left center;background-size:auto 100%}
+.cap{font:400 12px/1.3 var(--mono);color:var(--muted);margin:12px 0 0}
 
-pre{margin:24px 0 0;padding:18px 20px;background:var(--surface);border-radius:14px;overflow:auto;font:400 12px/1.6 var(--mono);color:var(--ink)}
-code{font-family:var(--mono)}
+pre{margin:26px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  overflow:auto;font:400 12.5px/1.65 var(--mono);color:var(--ink)}
 .section--tint pre{background:#fff}
-.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px 40px;margin-top:36px}
-.spec h3{font-size:17px;font-weight:600;margin:0 0 6px}
-.spec p{margin:0;color:var(--muted);font-size:14px;line-height:1.42859}
-footer{border-top:1px solid var(--line);padding:32px 0 56px;color:var(--muted);font-size:12px;line-height:1.6}
-footer p{margin:0 0 6px}
-footer a{color:var(--muted)}
+code{font-family:var(--mono)}
+
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 44px;margin-top:34px}
+.spec{border-top:1px solid var(--line);padding-top:16px}
+.spec h3{font-size:15px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.spec p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+
+footer{border-top:1px solid var(--line);padding:36px 0 64px;color:var(--muted);font-size:12.5px;line-height:1.7}
+footer p{margin:0 0 10px}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 14px}
+.foot-links a{color:var(--ink);text-decoration:none;font-size:13px;border-bottom:1px solid var(--line);padding-bottom:1px}
+.foot-links a:hover{border-color:var(--ink)}
 :where(a){color:var(--blue)}
 
-@media (max-width:734px){
-  .hero{padding:64px 0 0}
-  h1{font-size:32px;line-height:1.125}
-  .lead{font-size:19px;line-height:1.4211}
-  h2{font-size:24px;line-height:1.1667}
-  .section{padding:64px 0}
-  .btn{--pill-h:48px;font-size:16px}
-  .lang-btn{top:18px}
+@media (max-width:900px){
+  .pieces{grid-template-columns:1fr 1fr}
 }
-</style></head><body><header class="hero"><button class="lang-btn" id="langBtn" type="button" aria-label="Сменить язык" aria-haspopup="dialog"><img src="./assets/icons/globe.svg" alt="" width="20" height="20"></button><div class="wrap"><p class="eyebrow">Liquid Glass · ресурсы 4×</p><h1>Кнопка Liquid Glass</h1><p class="lead">По веб-типографике Apple: SF Pro, текст 17px, кнопка 56px. Ширина зависит от текста, ресурсы в 4×, середина бесконечно повторяется.</p></div><div class="showcase"><div class="wrap cta"><button class="btn btn--blue" type="button"><img src="./assets/icons/download.svg" alt="" width="20" height="20"><span>Скачать</span></button><button class="btn btn--black" type="button"><img src="./assets/icons/apple.svg" alt="" width="20" height="20"><span>App Store</span></button></div></div></header><section class="section"><div class="wrap"><div class="section-head"><h2>Ширину задаёт текст</h2><p class="sub">Без фиксированной ширины. Один набор из трёх частей: чем длиннее текст, тем шире кнопка, а скругления не меняются.</p></div><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Скачать</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img src="./assets/icons/download.svg" alt="" width="20" height="20"><span>Скачать для macOS</span></button><span class="w"></span></div></div></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Ресурсы из трёх частей (4×)</h2><p class="sub">Высота 224px (4×, показывается как 56px). Боковые части по 112px, средняя плитка 128px; стыки совпадают попиксельно.</p></div><div class="pieces"><figure><img src="./assets/glass/black-sheet.webp" alt=""><figcaption>целиком · 352×224 · 4×</figcaption></figure><figure><img src="./assets/glass/black-left.webp" alt=""><figcaption>слева · 112×224</figcaption></figure><figure><img src="./assets/glass/black-mid.webp" alt=""><figcaption>центр · 128×224</figcaption></figure><figure><img src="./assets/glass/black-right.webp" alt=""><figcaption>справа · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">средняя плитка · repeat-x · любая ширина без искажений</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Использование</h2><p class="sub">Один элемент делает растяжение по девяти частям; hover и active переключают SVG-фильтр.</p></div><pre><code>.btn {
+@media (max-width:734px){
+  h1{font-size:34px;line-height:1.12}
+  .lead{font-size:19px;line-height:1.42}
+  h2{font-size:24px}
+  .section{padding:64px 0}
+  .stage{padding:48px 18px 40px;border-radius:18px}
+  .card{padding:26px 20px 22px}
+  .btn{--pill-h:48px;--cap:24px;font-size:16px}
+  .pieces{grid-template-columns:1fr}
+  .topbar .wrap{height:52px}
+}
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Liquid Glass Button</span><nav><a href="https://github.com/x-at-01/liquid-glass-button">GitHub</a><button class="lang-btn" id="langBtn" type="button" aria-label="Сменить язык" aria-haspopup="dialog"><img src="./assets/icons/globe.svg" alt="" width="18" height="18"></button></nav></div></header><header class="hero"><div class="head"><p class="eyebrow">Liquid Glass · ресурсы 4×</p><h1>Кнопка Liquid Glass</h1><p class="lead">По веб-типографике Apple: SF Pro, текст 17px, кнопка 56px. Ширина зависит от текста, ресурсы в 4×, середина бесконечно повторяется.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img src="./assets/icons/download.svg" alt="" width="20" height="20"><span>Скачать</span></button><button class="btn btn--black" type="button"><img src="./assets/icons/apple.svg" alt="" width="20" height="20"><span>App Store</span></button></div><p class="hint">Наведите на кнопку: край преломляет то, что позади.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Ширину задаёт текст</h2><p class="sub">Без фиксированной ширины. Один набор из трёх частей: чем длиннее текст, тем шире кнопка, а скругления не меняются.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Скачать</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img src="./assets/icons/download.svg" alt="" width="20" height="20"><span>Скачать для macOS</span></button><span class="w"></span></div></div><p class="hint">На светлом фоне стекло светлее; подложка сохраняет читаемость текста.</p></div></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Ресурсы из трёх частей (4×)</h2><p class="sub">Высота 224px (4×, показывается как 56px). Боковые части по 112px, средняя плитка 128px; стыки совпадают попиксельно.</p></div><div class="pieces"><figure><div class="shot"><img src="./assets/glass/black-sheet.webp" alt=""></div><figcaption><b>целиком</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="./assets/glass/black-left.webp" alt=""></div><figcaption><b>слева</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="./assets/glass/black-mid.webp" alt=""></div><figcaption><b>центр</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="./assets/glass/black-right.webp" alt=""></div><figcaption><b>справа</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">средняя плитка · repeat-x · любая ширина без искажений</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Использование</h2><p class="sub">Один элемент делает растяжение по девяти частям; hover и active переключают SVG-фильтр.</p></div><pre><code>.btn {
   display: inline-flex; align-items: center; gap: 9px;
-  height: 56px; width: auto;              /* 宽度由文字决定 */
+  height: 56px; width: auto;              /* width comes from the label */
   border: 0 solid transparent;
   border-left-width: 28px; border-right-width: 28px;
   border-image: url(./assets/glass/black-sheet.webp) 0 112 0 112 fill stretch;
   border-radius: 980px; color: #fff;
   backdrop-filter: url(#glass-1) blur(6px) contrast(1.15) saturate(170%);
 }
-/* 位移图 + 滤镜模板都在 ./assets/glass-filters.svg */
-</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>Спецификация</h2><div class="specs"><div class="spec"><h3>Шрифт</h3><p>SF Pro Display / SF Pro Text; 17px/1.47, трекинг -0.022em; заголовки 48px/1.08.</p></div><div class="spec"><h3>Кнопка</h3><p>Высота 56px (48px на мобильных), 28px по бокам, радиус 980px, иконка 20px.</p></div><div class="spec"><h3>Ресурсы</h3><p>4×: высота 224px, боковины 112px, плитка 128px; WebP без потерь сохраняет прозрачность.</p></div><div class="spec"><h3>Иконки</h3><p>Исходники SVG 24px, сжаты SVGO, показываются в 20px.</p></div></div></div></section><footer><div class="wrap"><p>Материал создан в Qwen-Image-2.1 (нативная альфа); форма и свет перерисованы процедурным рендером жидкого стекла; преломление края через SVG feDisplacementMap.</p><p>Логотип Apple — товарный знак Apple Inc., используется только для демонстрации кнопки App Store.</p></div></footer><dialog class="lang" id="langDialog"><h2>Выбор языка</h2><ul class="lang-list" id="langList"><li><button type="button" data-lang="ar" aria-current="false"><span>العربية</span><span class="code">ar</span></button></li><li><button type="button" data-lang="de" aria-current="false"><span>Deutsch</span><span class="code">de</span></button></li><li><button type="button" data-lang="en" aria-current="false"><span>English</span><span class="code">en</span></button></li><li><button type="button" data-lang="es" aria-current="false"><span>Español</span><span class="code">es</span></button></li><li><button type="button" data-lang="fr" aria-current="false"><span>Français</span><span class="code">fr</span></button></li><li><button type="button" data-lang="ja" aria-current="false"><span>日本語</span><span class="code">ja</span></button></li><li><button type="button" data-lang="ko" aria-current="false"><span>한국어</span><span class="code">ko</span></button></li><li><button type="button" data-lang="ru" aria-current="true"><span>Русский</span><span class="code">ru</span></button></li><li><button type="button" data-lang="zh" aria-current="false"><span>中文</span><span class="code">zh</span></button></li></ul></dialog><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs>
+/* displacement map + filter template: ./assets/glass-filters.svg */
+</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>Спецификация</h2><div class="specs"><div class="spec"><h3>Шрифт</h3><p>SF Pro Display / SF Pro Text; 17px/1.47, трекинг -0.022em; заголовки 48px/1.08.</p></div><div class="spec"><h3>Кнопка</h3><p>Высота 56px (48px на мобильных), 28px по бокам, радиус 980px, иконка 20px.</p></div><div class="spec"><h3>Ресурсы</h3><p>4×: высота 224px, боковины 112px, плитка 128px; WebP без потерь сохраняет прозрачность.</p></div><div class="spec"><h3>Иконки</h3><p>Исходники SVG 24px, сжаты SVGO, показываются в 20px.</p></div></div></div></section><footer><div class="wrap"><div class="foot-links"><a href="https://github.com/x-at-01/liquid-glass-button">Репозиторий на GitHub</a><a href="https://developer.apple.com/design/human-interface-guidelines/materials">Apple HIG · Материалы</a><a href="https://huggingface.co/Qwen/Qwen-Image-2.1">Материал: Qwen-Image-2.1</a></div><p>Материал создан в Qwen-Image-2.1 (нативная альфа); форма и свет перерисованы процедурным рендером жидкого стекла; преломление края через SVG feDisplacementMap.</p><p>Логотип Apple — товарный знак Apple Inc., используется только для демонстрации кнопки App Store.</p></div></footer><dialog class="lang" id="langDialog"><h2>Выбор языка</h2><ul class="lang-list" id="langList"><li><button type="button" data-lang="ar" aria-current="false"><span>العربية</span><span class="code">ar</span></button></li><li><button type="button" data-lang="de" aria-current="false"><span>Deutsch</span><span class="code">de</span></button></li><li><button type="button" data-lang="en" aria-current="false"><span>English</span><span class="code">en</span></button></li><li><button type="button" data-lang="es" aria-current="false"><span>Español</span><span class="code">es</span></button></li><li><button type="button" data-lang="fr" aria-current="false"><span>Français</span><span class="code">fr</span></button></li><li><button type="button" data-lang="ja" aria-current="false"><span>日本語</span><span class="code">ja</span></button></li><li><button type="button" data-lang="ko" aria-current="false"><span>한국어</span><span class="code">ko</span></button></li><li><button type="button" data-lang="ru" aria-current="true"><span>Русский</span><span class="code">ru</span></button></li><li><button type="button" data-lang="zh" aria-current="false"><span>中文</span><span class="code">zh</span></button></li></ul></dialog><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs>
     <!--
       Liquid Glass 滤镜模板。
       构建时整份内联进页面；运行时对每个按钮 clone 一份，改 id / 尺寸 /

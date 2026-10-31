@@ -32,3 +32,8 @@ footer_1: マテリアルは Qwen-Image-2.1（ネイティブ alpha）で生成�
 footer_2: Apple ロゴは Apple Inc. の商標で、App Store ボタンのレイアウトとアイコンの用法を示す目的にのみ使用しています。
 lang_choose: 言語を選択
 lang_aria: 言語を切り替える
+stage_hint: ボタンにマウスを乗せると、縁が背後の映像を屈折させます。
+light_hint: 明るい面ではガラスは淡く見えるため、下地の色で文字のコントラストを保ちます。
+link_repo: GitHub リポジトリ
+link_hig: Apple HIG · マテリアル
+link_model: 'マテリアル: Qwen-Image-2.1'

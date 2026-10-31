@@ -32,3 +32,8 @@ footer_1: Material mit Qwen-Image-2.1 erzeugt (natives Alpha); Form und Licht du
 footer_2: Das Apple-Logo ist eine Marke von Apple Inc. und wird nur zur Demonstration des App-Store-Buttons verwendet.
 lang_choose: Sprache wählen
 lang_aria: Sprache ändern
+stage_hint: 'Button überfahren: der Rand bricht, was dahinter liegt.'
+light_hint: Auf hellem Grund wirkt das Glas heller; die Tönung hält die Beschriftung lesbar.
+link_repo: GitHub-Repository
+link_hig: Apple HIG · Materialien
+link_model: 'Material: Qwen-Image-2.1'

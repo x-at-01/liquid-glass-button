@@ -32,3 +32,8 @@ footer_1: Material generado con Qwen-Image-2.1 (alfa nativo); forma e iluminaci�
 footer_2: El logotipo de Apple es una marca de Apple Inc.; se usa solo para mostrar el diseño del botón de App Store.
 lang_choose: Elegir idioma
 lang_aria: Cambiar idioma
+stage_hint: 'Pasa el cursor por un botón: el borde refracta lo que hay detrás.'
+light_hint: Sobre fondo claro el vidrio se ve más claro; el tinte mantiene legible el texto.
+link_repo: Repositorio en GitHub
+link_hig: Apple HIG · Materiales
+link_model: 'Material: Qwen-Image-2.1'

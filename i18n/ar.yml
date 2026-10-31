@@ -32,3 +32,8 @@ footer_1: الخامة مولّدة بـ Qwen-Image-2.1 (شفافية أصلية
 footer_2: شعار Apple علامة تجارية لشركة Apple Inc.، ويُستخدم فقط لبيان تخطيط زر App Store.
 lang_choose: اختر اللغة
 lang_aria: تغيير اللغة
+stage_hint: 'مرّر المؤشر فوق الزر: تكسر الحافة ما خلفه.'
+light_hint: على خلفية فاتحة يبدو الزجاج أفتح؛ وتبقى الصبغة تحافظ على وضوح النص.
+link_repo: مستودع GitHub
+link_hig: Apple HIG · الخامات
+link_model: 'الخامة: Qwen-Image-2.1'
