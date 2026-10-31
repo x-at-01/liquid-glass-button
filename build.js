@@ -45,7 +45,7 @@ const dictLi = langLi.map(({ code }) => [
 
 const pageDir = (code) => join(OUT_DIR, code);
 
-const pageBuild = ({ code, name }, dict, isOwn) => {
+const pageBuild = (code, dict, own_li) => {
   const html = pug.renderFile(PAGE_TMPL, {
     t: dict,
     code,
@@ -54,7 +54,7 @@ const pageBuild = ({ code, name }, dict, isOwn) => {
     css: textRead(CSS_FILE),
     appJs: textRead(APP_FILE),
     filterSvg,
-    fallback: !isOwn,
+    fallback: !own_li.includes(code),
   });
   mkdirSync(pageDir(code), { recursive: true });
   writeFileSync(join(pageDir(code), "index.html"), html);
@@ -76,7 +76,7 @@ location.replace("./" + CODE[idx] + "/index.html");</script>
 `;
 
 rmSync(OUT_DIR, { recursive: true, force: true });
-dictLi.forEach(([code, dict, isOwn]) => pageBuild({ code }, dict, isOwn));
+dictLi.forEach(([code, dict]) => pageBuild(code, dict, ownLi));
 writeFileSync(join(OUT_DIR, "index.html"), rootPage);
 cpSync(ASSETS_DIR, join(OUT_DIR, "assets"), { recursive: true });
 

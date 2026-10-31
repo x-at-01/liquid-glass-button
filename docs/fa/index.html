@@ -343,7 +343,9 @@ const captionFit = () =>
   });
 
 const glassRebuild = () => {
-  defs.querySelectorAll("filter").forEach((filter) => filter.remove());
+  defs.querySelectorAll("filter").forEach((filter) => {
+    if (filter.id !== TMPL_ID) filter.remove(); // 只删生成的，保留模板
+  });
   styles.textContent = "";
   document.querySelectorAll(BTN_SEL).forEach((btn) => {
     [...btn.classList].filter((cls) => cls.startsWith("glass-btn-")).forEach((cls) => btn.classList.remove(cls));
