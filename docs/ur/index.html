@@ -77,26 +77,22 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .btn::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
   background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.17),transparent 58%);
   mix-blend-mode:screen;pointer-events:none}
-/* hover 提亮：多叠一层同形亮带，用 opacity 过渡（背景渐变本身不可插值） */
-.btn::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;
-  background:radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.16),transparent 55%);
-  transition:opacity .22s ease;pointer-events:none}
 .btn img{display:block;flex:none;height:1.2em;width:1.2em}
 .btn img.ap{height:1.02em;width:1.02em}
-.btn:hover{color:#fff;transform:translateY(-1px);
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.32),
-    inset 0 -16px 20px -16px rgba(0,0,0,.46),
-    inset 0 14px 18px -16px rgba(255,255,255,.16)}
-.btn:hover::before{opacity:1}
+.btn:hover{color:#fff;
+  /* hover = 向内压：环形内阴影 + 顶缘更深的一道，整体变暗 */
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.12),
+    inset 0 0 9px rgba(0,0,0,.34),
+    inset 0 4px 12px rgba(0,0,0,.28),
+    inset 0 18px 24px -16px rgba(0,0,0,.58)}
 /* 按下：文字像被压进玻璃里 —— 左上暗影（凹）+ 右下微亮棱边（凸），零模糊不改变字宽 */
 .btn:active{color:#fff;
   text-shadow:-1px -1px 0 rgba(0,0,0,.55), 1px 1px 0 rgba(255,255,255,.14),
               .3px 0 0 #fff, -.3px 0 0 #fff;
   transform:translateY(0) scale(.972);
-  box-shadow:inset 0 12px 18px -12px rgba(0,0,0,.55),
-    inset 0 -10px 14px -12px rgba(255,255,255,.10),
-    inset 0 1px 1px rgba(255,255,255,.16)}
-.btn:active::before{opacity:0}
+  box-shadow:inset 0 3px 10px rgba(0,0,0,.45),
+    inset 0 22px 30px -18px rgba(0,0,0,.70),
+    inset 0 -10px 14px -12px rgba(255,255,255,.08)}
 .btn:active::after{opacity:.6}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
 

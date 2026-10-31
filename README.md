@@ -40,11 +40,12 @@ The material itself is three CSS layers over a tint: a wide soft light band alon
 at the rim, fading inward, gone at the corners — no hard 1px line, which reads as plastic), a faint inner
 bounce at the bottom, and a diagonal `mix-blend-mode: screen` sheen from the upper left.
 
-Hover and active swap in pre-built filter variants (displacement ×1.45 / ×0.6) and change geometry
-(`transform`, shadow, a press overlay) plus the label colour (`.9` → `#fff` on hover; the pressed label
-gets an engraved `text-shadow` so it reads as pushed into the glass). `backdrop-filter` does not
-interpolate between `url()` values, so smoothness comes from the `transform` / `box-shadow` / `opacity`
-transitions. `outline` is reserved for `:focus-visible`, never for the pressed state.
+Hover and active swap in pre-built filter variants (displacement ×1.45 / ×0.6) and darken the surface with
+**inset** shadows only — hover adds a black inner ring plus a deeper top band, pressed deepens it and
+scales down slightly; there is no outer drop shadow in any state. The pressed label also gets an engraved
+`text-shadow` so it reads as pushed into the glass. `backdrop-filter` does not interpolate between `url()`
+values, so smoothness comes from the `box-shadow` / `transform` / `color` transitions. `outline` is
+reserved for `:focus-visible`, never for the pressed state.
 
 Caveat: SVG filters inside `backdrop-filter` are Chromium-only today. Safari and Firefox keep the blur,
 the tint and the rim light, and simply skip the refraction.
@@ -140,8 +141,9 @@ RGB 分通道后 screen 叠加做**边缘色散**，再用边缘遮罩让中心�
 材质本身是暗色 tint 上的三层 CSS：顶缘一条宽而柔的亮带（贴边最亮、往里 6–8px 渐隐、到转角消失——
 没有 1px 硬线，那会读成塑料），底部一道很弱的内侧回光，左上角一团 `mix-blend-mode: screen` 的斜向天光。
 
-hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6），并改变几何（transform、阴影）和文字状态：
-hover 转纯白，按下时加凹陷的 `text-shadow`，读起来像被压进玻璃里。
+hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6），明暗**只用内阴影**表达：hover 加一圈黑色内阴影
+和一道更深的顶缘暗带，按下再加深并轻微缩小，任何状态都没有外投影。hover 文字转纯白，按下时加凹陷的
+`text-shadow`，读起来像被压进玻璃里。
 `backdrop-filter` 在两组 `url()` 之间不会插值，所以顺滑感来自 transform / box-shadow / opacity 过渡；
 `outline` 只留给 `:focus-visible`，不用于按下态。
 
