@@ -15,8 +15,6 @@ const TMPL_ID = "glass-template";
 const BOX_CLASS = "Box X FFF";
 const BTN_PLAIN = "Btn";
 const BTN_MAIN = "Btn Main";
-const FALLBACK_CLS = "En";
-const FALLBACK_TITLE = "English";
 const MAP_X = 0, MAP_Y = 1, MAP_EDGE = 2; // 位移图通道语义
 const BAND_RATIO = 0.42; // 折射带宽度（相对高度）
 const SCALE_RATIO = 0.34;
@@ -28,8 +26,8 @@ const BLUR_HOVER = "blur(6px) contrast(1.18) brightness(1.14) saturate(190%)";
 const BLUR_ACTIVE = "blur(10px) contrast(1.08) brightness(.94) saturate(140%)";
 const RESIZE_DELAY = 200;
 
-const { idx: CUR_IDX, lang_li: LANG_LI, name_li: NAME_LI, own_li: OWN_LI, choose: CHOOSE_TEXT } =
-  window.__GLASS__ ?? { idx: 0, lang_li: [], name_li: [], own_li: [], choose: "" };
+const { idx: CUR_IDX, lang_li: LANG_LI, name_li: NAME_LI, choose: CHOOSE_TEXT } =
+  window.__GLASS__ ?? { idx: 0, lang_li: [], name_li: [], choose: "" };
 const { localStorage: STORE, BroadcastChannel: CH } = window;
 const langBtn = document.getElementById(BTN_ID); // 独立演示页没有语言按钮，后面会判空
 const defs = document.querySelector(DEFS_SEL);
@@ -58,17 +56,12 @@ const langOpen = () => {
   main.className = "I18n";
   title.textContent = CHOOSE_TEXT;
   NAME_LI.forEach((name, idx) => {
-    const btn = document.createElement("button"),
-      own = OWN_LI.includes(LANG_LI[idx]);
+    const btn = document.createElement("button");
     const label = document.createElement("span"); // 文字要在 ::before 磨砂层之上
     btn.type = "button";
     label.textContent = name;
     btn.setAttribute("aria-label", name);
     btn.className = idx === CUR_IDX ? BTN_MAIN : BTN_PLAIN;
-    if (!own) {
-      btn.classList.add(FALLBACK_CLS);
-      btn.title = FALLBACK_TITLE;
-    }
     btn.addEventListener("click", () => {
       box.close();
       langGo(idx);

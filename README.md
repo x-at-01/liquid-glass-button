@@ -20,7 +20,7 @@ press states, on a static multi-language site built from **YAML translations + P
 | `src/index.pug`, `src/style.css` | Template and styles (Apple-ish type scale: SF Pro, 17px body, 56px button) |
 | `src/demo.pug` | Standalone demo page, rendered into the downloadable bundle |
 | `i18n/langs.yml` | Language table — the same 75 codes and native names as webc (`src/js/i18n/CODE.js` + `NAME.js`), same order |
-| `i18n/*.yml` | UI strings, one file per translated language (18 today: en zh zh-TW ja ko fr de es it pt nl pl ru sv tr vi id ar) |
+| `i18n/*.yml` | UI strings — one file per language, all 75 translated |
 | `tran.yml` | Same shape as webc's: source `zh`, `to_li: "*"` — missing languages fall back to `en` and are tagged in the switcher |
 | `build.js` | YAML + Pug → `out/<lang>/index.html`, the `tar.xz` bundle, then syncs `docs/` for GitHub Pages |
 
@@ -82,12 +82,12 @@ bun run dev          # build + serve http://127.0.0.1:8765
   its base prefix → index 0, then redirects to `./<code>/`.
 - **Switcher**: the same round icon button → native `<dialog>` list of all 75 native names, current one
   highlighted; selection is broadcast to other tabs with `BroadcastChannel("lang")`.
-- **Translations**: one `i18n/<code>.yml` per language. Codes without a file render the English strings
-  and are marked with an `en` chip in the dialog, so nothing is silently wrong.
+- **Translations**: one `i18n/<code>.yml` per language — all 75 are translated. There is no fallback:
+  if a language file is missing the build fails with `missing translation: i18n/<code>.yml`.
 - **RTL**: `ar fa ur sd iw` get `dir="rtl"`.
 
-Add a language: copy `i18n/en.yml` to `i18n/<code>.yml`, translate, rebuild — the switcher chip disappears
-by itself.
+Add a language: add the code to `i18n/langs.yml`, create `i18n/<code>.yml`, rebuild — the switcher picks it
+up automatically.
 
 ### SVG assets & git hook
 
@@ -170,11 +170,11 @@ liquid-glass-button/
 - **识别**：首页按 `localStorage.lang` → `navigator.language`（先精确匹配，再取前缀）→ 索引 0 的顺序跳转；
 - **切换器**：右上角圆形按钮 → 原生 `<dialog>` 列出 75 种母语名，当前项高亮，选择结果用
   `BroadcastChannel("lang")` 同步到其它标签页；
-- **翻译**：每种语言一个 `i18n/<code>.yml`；没有对应文件的语言回退到英文并在弹窗里标 `en` 小标签；
+- **翻译**：每种语言一个 `i18n/<code>.yml`，75 种全部有译文，不做回退——缺文件构建直接报错
+  `missing translation: i18n/<code>.yml`；
 - **RTL**：`ar fa ur sd iw` 自动 `dir="rtl"`。
 
-目前 18 种已完成翻译（en zh zh-TW ja ko fr de es it pt nl pl ru sv tr vi id ar），其余 57 种为英文回退。
-新增语言：复制 `i18n/en.yml` 改成 `<code>.yml` 翻译后重新构建即可。
+新增语言：在 `i18n/langs.yml` 里加代码，再补一份 `i18n/<code>.yml`，重新构建即可。
 
 ### 结构
 

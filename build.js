@@ -1,7 +1,7 @@
 #!/usr/bin/env -S bun
 // 构建：tran.yml + i18n/*.yml + src/index.pug → out/<lang>/index.html（静态多语言站点）
 // 语言表、语言寻址（索引）、回退策略都与 webc 的 src/js/i18n 一致。
-import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { load } from "js-yaml";
 import pug from "pug";
@@ -21,7 +21,6 @@ const FILTER_FILE = join(ASSETS_DIR, "glass-filters.svg");
 
 const T = 0, DICT = 1, IS_OWN = 2; // 多值返回的位置语义：[code, dict, isOwn]
 const RTL_CODE_LI = ["ar", "fa", "ur", "sd", "iw"];
-const FALLBACK_CODE = "en";
 const RTL = "rtl", LTR = "ltr";
 
 const textRead = (path) => readFileSync(path, "utf8");
@@ -36,28 +35,24 @@ const filterSvg = textRead(FILTER_FILE)
   .trim();
 
 const langLi = ymlRead(LANG_FILE);
-const ownLi = readdirSync(I18N_DIR)
-  .filter((name) => name.endsWith(".yml") && name !== "langs.yml")
-  .map((name) => name.replace(/\.yml$/, ""));
 
-const dictLi = langLi.map(({ code }) => [
-  code,
-  ymlRead(join(I18N_DIR, (ownLi.includes(code) ? code : FALLBACK_CODE) + ".yml")),
-  ownLi.includes(code),
-]);
+// 每种语言都必须有 i18n/<code>.yml；缺一个就让构建失败（没有回退）
+const dictLi = langLi.map(({ code }) => {
+  const file = join(I18N_DIR, code + ".yml");
+  if (!existsSync(file)) throw new Error(`missing translation: i18n/${code}.yml`);
+  return [code, ymlRead(file)];
+});
 
 const pageDir = (code) => join(OUT_DIR, code);
 
-const pageBuild = (code, dict, own_li) => {
+const pageBuild = (code, dict) => {
   const idx = langLi.findIndex((lang) => lang.code === code),
     glass = JSON.stringify({
       code,
       idx,
       lang_li: langLi.map((lang) => lang.code),
       name_li: langLi.map((lang) => lang.name),
-      own_li,
       choose: dict.lang_choose,
-      fallback: !own_li.includes(code),
     }),
     html = pug.renderFile(PAGE_TMPL, {
     t: dict,
@@ -88,7 +83,7 @@ location.replace("./" + CODE[idx] + "/index.html");</script>
 `;
 
 rmSync(OUT_DIR, { recursive: true, force: true });
-dictLi.forEach(([code, dict]) => pageBuild(code, dict, ownLi));
+dictLi.forEach(([code, dict]) => pageBuild(code, dict));
 writeFileSync(join(OUT_DIR, "index.html"), rootPage);
 cpSync(ASSETS_DIR, join(OUT_DIR, "assets"), { recursive: true });
 
@@ -119,6 +114,4 @@ rmSync(PACK_DIR, { recursive: true, force: true });
 rmSync(DOCS_DIR, { recursive: true, force: true });
 cpSync(OUT_DIR, DOCS_DIR, { recursive: true });
 
-console.log(
-  `built ${langLi.length} languages (${ownLi.length} translated, ${langLi.length - ownLi.length} fallback to ${FALLBACK_CODE}) → out/ + docs/`
-);
+console.log(`built ${langLi.length} languages → out/ + docs/`);

@@ -217,11 +217,6 @@ dialog.Box.X>a.X:active::before{opacity:.7}
 .I18n>c-vs>b{display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center}
 .I18n .Btn{border-radius:6px;font-size:12px;font-weight:300;height:28px;min-height:28px;max-height:28px;padding:0 8px}
 .I18n .Btn>span{position:relative}
-.I18n .Btn.En{color:var(--muted)}
-.I18n .Btn.En:hover{color:var(--ink)}
-/* 当前语言永远白字：回退标记（.En）与选中态（.Main）可能同时存在，选中态优先 */
-.I18n .Btn.Main{color:#fff}
-.I18n .Btn.Main:hover{color:#fff}
 
 @media (max-width:600px){
   .I18n>c-vs>b{gap:4px 6px}
