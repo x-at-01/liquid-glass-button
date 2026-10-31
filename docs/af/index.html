@@ -75,36 +75,29 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 /* ---------- 纯 SVG/CSS 材质：不加载任何位图。瓶身、棱边高光和深度由渐变与阴影绘制，
    边缘折射复用同一个运行时 SVG 位移滤镜（.btn 的玻璃滤镜对 .btn.svg 一并生效）。 ---------- */
 .btn.svg{
-  /* 棱边 = 1px 半透明白描边 + 四边不对称的内发光：上缘最亮（约 2 倍于侧缘）。
-     四边等亮读起来是「描边」，不对称才是「rim」。亮线下面绝不能再压暗带——
-     那会变成亮线→黑弧两层脏边。 */
-  border:1px solid rgba(255,255,255,.18);border-radius:980px;padding:0 calc(var(--cap,28px) - 1px);
-  background:var(--tint,rgba(10,10,12,.62));
-  isolation:isolate; /* 让 ::after 的负 z-index 落在 tint 之上、文字之下 */
+  /* 不要描边、不要四边等亮的白线——那是塑料模压。玻璃的棱边只是一段反光：
+     顶上最亮、向两侧转角衰减到零，用一条宽而柔的径向亮带实现，没有 1px 细线。 */
+  border:0;border-radius:980px;padding:0 var(--cap,28px);
+  /* 顶缘只有一条宽而柔的亮带：贴边最亮、往里 6–8px 渐隐（素材版就是这样，没有细线） */
+  background:
+    radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.26),rgba(255,255,255,.08) 30%,rgba(255,255,255,.02) 48%,transparent 62%),
+    linear-gradient(180deg,transparent 62%,rgba(0,0,0,.18)),
+    var(--tint,rgba(10,10,12,.62));
+  isolation:isolate; /* ::after 的负 z-index 落在 tint 之上、文字之下 */
   box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.55),   /* 上缘：受光，最亮 */
-    inset 0 -1px 1px rgba(255,255,255,.30),  /* 下缘：地面反光 */
-    inset 1px 0 1px rgba(255,255,255,.20), inset -1px 0 1px rgba(255,255,255,.20),
-    inset 0 -12px 16px -12px rgba(255,255,255,.11), /* 下缘内侧回光 */
+    inset 0 -12px 16px -12px rgba(255,255,255,.10), /* 底缘内侧回光，很弱 */
     0 10px 22px -8px rgba(0,0,0,.32), 0 2px 6px rgba(0,0,0,.14);
 }
 /* SVG 版没有素材自身的浓度，瓶身 tint 相应加深 */
 .btn.svg.btn--black{--tint:rgba(12,12,14,.82)}
 .btn.svg.btn--blue{--tint:rgba(16,54,178,.82)}
-/* 天光：135° 斜向 sheen，mix-blend-mode:screen 压在 tint 上（负 z-index，不碰文字） */
-.btn.svg::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
-  background:linear-gradient(135deg,rgba(255,255,255,.40) 0%,rgba(255,255,255,.08) 30%,transparent 60%);
-  mix-blend-mode:screen;pointer-events:none}
-.btn.svg:hover{box-shadow:
-  inset 0 1px 1px rgba(255,255,255,.70), inset 0 -1px 1px rgba(255,255,255,.36),
-  inset 1px 0 1px rgba(255,255,255,.26), inset -1px 0 1px rgba(255,255,255,.26),
-  inset 0 -12px 16px -12px rgba(255,255,255,.15),
+.btn.svg:hover{background:radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.34),rgba(255,255,255,.11) 30%,rgba(255,255,255,.03) 48%,transparent 62%),linear-gradient(180deg,transparent 62%,rgba(0,0,0,.18)),var(--tint);box-shadow:
+  inset 0 -12px 16px -12px rgba(255,255,255,.14),
   0 14px 28px -10px rgba(0,0,0,.36), 0 2px 6px rgba(0,0,0,.12)}
-.btn.svg:hover::after{background:linear-gradient(135deg,rgba(255,255,255,.50) 0%,rgba(255,255,255,.10) 30%,transparent 60%)}
+.btn.svg:hover::after{background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.22),transparent 58%)}
 .btn.svg:active{box-shadow:
-  inset 0 1px 1px rgba(255,255,255,.35), inset 0 -1px 1px rgba(255,255,255,.20),
-  inset 1px 0 1px rgba(255,255,255,.16), inset -1px 0 1px rgba(255,255,255,.16),
   inset 0 10px 16px -10px rgba(0,0,0,.35),
+  inset 0 -8px 12px -10px rgba(255,255,255,.08),
   0 3px 8px rgba(0,0,0,.20), 0 1px 2px rgba(0,0,0,.10)}
 .btn.svg:active::after{opacity:.6}
 .btn img{display:block;flex:none;height:1.2em;width:1.2em}
@@ -250,17 +243,17 @@ dialog.Box.X>a.X:active::before{opacity:.7}
   .I18n .Btn.Main:hover, .I18n .Btn.Main:active{color:#0071e3}
 }
 </style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Liquid Glass Button</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Change language" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Liquid Glass Button</h1><p class="lead">A liquid-glass button that stretches with its label, with real edge refraction.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Download</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Hover to see it.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Width comes from the text</h2><p class="sub">One set of assets: the longer the label, the wider the button — the caps never change.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Download</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Download for macOS</span></button><span class="w"></span></div></div><p class="hint">On light surfaces the glass reads pale — the tint keeps the label legible.</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Pure SVG</h2><p class="sub">No bitmaps at all: body, rim light and depth are CSS gradients and shadows — edge refraction is still the SVG displacement filter.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn svg btn--black" type="button"><span>Download</span></button><span class="w"></span></div><div class="measure"><button class="btn svg btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn svg btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Download for macOS</span></button><span class="w"></span></div></div><p class="hint">On light surfaces the glass reads pale — the tint keeps the label legible.</p></div><pre><code>.btn.svg {
-  border: 1px solid #ffffff2e;         /* 半透明白描边 */
-  border-radius: 980px; padding: 0 27px;
-  background: var(--tint);
-  box-shadow: inset 0 1px 1px #ffffff8c,   /* 上缘最亮（≈2× 侧缘）才是 rim */
-              inset 0 -1px 1px #ffffff4d,
-              inset 1px 0 1px #ffffff33, inset -1px 0 1px #ffffff33,
-              inset 0 -12px 16px -12px #ffffff1c,  /* 底缘内侧回光 */
+  border: 0; border-radius: 980px; padding: 0 28px;
+  background:
+    /* 顶缘亮带：贴边最亮，往里 6–8px 渐隐，没有 1px 细线 */
+    radial-gradient(125% 112% at 50% -26%, #ffffff42, #ffffff14 30%, #ffffff05 48%, transparent 62%),
+    linear-gradient(180deg, transparent 62%, #0000002e),  /* 底部极轻的压暗 */
+    var(--tint);
+  box-shadow: inset 0 -12px 16px -12px #ffffff1a,   /* 底缘内侧回光 */
               0 10px 22px -8px #00000052, 0 2px 6px #00000024;
   backdrop-filter: url(#glass-1) blur(6px) saturate(170%); /* 同一个 SVG 折射滤镜 */
 }
-/* 天光：::after 135° 渐变 + mix-blend-mode:screen，负 z-index 压在 tint 上、文字之下 */
+/* 天光：::after 径向柔光 + mix-blend-mode:screen，负 z-index 压在 tint 上、文字之下 */
 </code></pre></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Three-slice assets (4×)</h2><p class="sub">112px caps, one tileable middle, pixel-identical seams.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>sheet</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>left</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>mid</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>right</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x — no distortion at any width</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Usage</h2><p class="sub">One element does the nine-patch stretch; hover and active swap the filter.</p></div><pre><code>.btn {
   display: inline-flex; align-items: center; gap: 9px;
   height: 56px; width: auto;              /* width comes from the label */

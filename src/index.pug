@@ -87,17 +87,17 @@ html(lang=code, dir=dir)
         pre
           code.
             .btn.svg {
-              border: 1px solid #ffffff2e;         /* 半透明白描边 */
-              border-radius: 980px; padding: 0 27px;
-              background: var(--tint);
-              box-shadow: inset 0 1px 1px #ffffff8c,   /* 上缘最亮（≈2× 侧缘）才是 rim */
-                          inset 0 -1px 1px #ffffff4d,
-                          inset 1px 0 1px #ffffff33, inset -1px 0 1px #ffffff33,
-                          inset 0 -12px 16px -12px #ffffff1c,  /* 底缘内侧回光 */
+              border: 0; border-radius: 980px; padding: 0 28px;
+              background:
+                /* 顶缘亮带：贴边最亮，往里 6–8px 渐隐，没有 1px 细线 */
+                radial-gradient(125% 112% at 50% -26%, #ffffff42, #ffffff14 30%, #ffffff05 48%, transparent 62%),
+                linear-gradient(180deg, transparent 62%, #0000002e),  /* 底部极轻的压暗 */
+                var(--tint);
+              box-shadow: inset 0 -12px 16px -12px #ffffff1a,   /* 底缘内侧回光 */
                           0 10px 22px -8px #00000052, 0 2px 6px #00000024;
               backdrop-filter: url(#glass-1) blur(6px) saturate(170%); /* 同一个 SVG 折射滤镜 */
             }
-            /* 天光：::after 135° 渐变 + mix-blend-mode:screen，负 z-index 压在 tint 上、文字之下 */
+            /* 天光：::after 径向柔光 + mix-blend-mode:screen，负 z-index 压在 tint 上、文字之下 */
 
     section.section.section--tint
       .wrap
