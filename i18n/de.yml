@@ -36,3 +36,5 @@ light_hint: Auf hellem Grund wirkt das Glas blass; die Tönung hält die Schrift
 link_repo: GitHub-Repository
 link_hig: Apple HIG · Materialien
 link_model: 'Material: Qwen-Image-2.1'
+sec_svg_h: Reines SVG
+sec_svg_p: 'Keine Bitmaps: Körper, Kantenlicht und Tiefe sind CSS-Verläufe und Schatten — die Kantenbrechung übernimmt weiterhin der SVG-Verschiebungsfilter.'

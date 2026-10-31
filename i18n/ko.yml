@@ -36,3 +36,5 @@ light_hint: 밝은 배경에서는 유리가 옅게 보이므로 하단 색으�
 link_repo: GitHub 저장소
 link_hig: Apple HIG · 머티리얼
 link_model: '재질: Qwen-Image-2.1'
+sec_svg_h: 순수 SVG
+sec_svg_p: '비트맵 없이: 몸체, 가장자리 하이라이트, 깊이는 모두 CSS 그라디언트와 그림자로 그리고, 가장자리 굴절은 SVG 변위 필터가 담당합니다.'

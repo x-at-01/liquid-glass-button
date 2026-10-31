@@ -36,3 +36,5 @@ light_hint: Di latar terang kaca tampak pucat; lapisan warna menjaga keterbacaan
 link_repo: Repositori GitHub
 link_hig: Apple HIG · Material
 link_model: 'Material: Qwen-Image-2.1'
+sec_svg_h: SVG murni
+sec_svg_p: 'Tanpa bitmap: badan, cahaya tepi, dan kedalaman berupa gradien dan bayangan CSS — pembiasan tepi tetap oleh filter pergeseran SVG.'

@@ -36,3 +36,5 @@ light_hint: On light surfaces the glass reads pale — the tint keeps the label 
 link_repo: GitHub repository
 link_hig: Apple HIG · Materials
 link_model: 'Material: Qwen-Image-2.1'
+sec_svg_h: Pure SVG
+sec_svg_p: 'No bitmaps at all: body, rim light and depth are CSS gradients and shadows — edge refraction is still the SVG displacement filter.'

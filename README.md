@@ -47,6 +47,15 @@ the contour, an inner shadow for thickness, and a flattened middle tile so the s
 pixel-identical seams. The generator script (`generate_pill.py`) lives in the model repo that produced
 these assets; the important part — assets, filter and page — is all in this repo.
 
+### Pure SVG mode
+
+`.btn.svg` renders the same pill with **zero bitmaps**: no WebP, no images. The body is a layered
+CSS gradient over a dark tint, the fresnel rim is a 1px gradient ring painted by `::after` with
+`mask-composite: exclude`, depth is inset shadows — and the edge refraction is still the *same*
+runtime SVG displacement filter (it attaches to every `.btn`, so both modes share it). The demo has
+a "Pure SVG" section with the pill in both black and blue; caveat: SVG filters inside
+`backdrop-filter` are Chromium-only today, other browsers keep the blur + rim and skip refraction.
+
 ## Build & run
 
 ```bash

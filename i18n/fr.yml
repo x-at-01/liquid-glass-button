@@ -36,3 +36,5 @@ light_hint: Sur fond clair le verre paraît pâle ; la teinte garde le texte lis
 link_repo: Dépôt GitHub
 link_hig: Apple HIG · Matériaux
 link_model: 'Matière : Qwen-Image-2.1'
+sec_svg_h: SVG pur
+sec_svg_p: 'Aucune image bitmap : le corps, la lumière de bord et la profondeur sont des dégradés et ombres CSS ; la réfraction des bords reste assurée par le filtre de déplacement SVG.'

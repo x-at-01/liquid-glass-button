@@ -36,3 +36,5 @@ light_hint: Su fondo chiaro il vetro è pallido; la tinta tiene leggibile il tes
 link_repo: Repository GitHub
 link_hig: Apple HIG · Materiali
 link_model: 'Materiale: Qwen-Image-2.1'
+sec_svg_h: SVG puro
+sec_svg_p: 'Nessuna bitmap: corpo, luce del bordo e profondità sono gradienti e ombre CSS; la rifrazione del bordo resta affidata al filtro di spostamento SVG.'

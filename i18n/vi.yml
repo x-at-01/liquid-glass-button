@@ -36,3 +36,5 @@ light_hint: Trên nền sáng kính nhạt hơn; lớp màu giữ chữ dễ đ�
 link_repo: Kho GitHub
 link_hig: Apple HIG · Vật liệu
 link_model: 'Chất liệu: Qwen-Image-2.1'
+sec_svg_h: SVG thuần
+sec_svg_p: 'Không bitmap: thân, ánh sáng viền và chiều sâu đều là gradient và bóng đổ CSS; khúc xạ viền vẫn do bộ lọc dịch chuyển SVG đảm nhiệm.'

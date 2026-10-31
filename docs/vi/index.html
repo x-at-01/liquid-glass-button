@@ -72,6 +72,31 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 }
 .btn--black{border-image-source:url(../assets/glass/black-sheet.webp);--tint:rgba(10,10,12,.62)}
 .btn--blue{border-image-source:url(../assets/glass/blue-sheet.webp);--tint:rgba(8,38,140,.66)}
+/* ---------- 纯 SVG/CSS 材质：不加载任何位图。瓶身、棱边高光和深度由渐变与阴影绘制，
+   边缘折射复用同一个运行时 SVG 位移滤镜（.btn 的玻璃滤镜对 .btn.svg 一并生效）。 ---------- */
+.btn.svg{
+  border:0;border-radius:980px;padding:0 var(--cap,28px);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04) 34%,rgba(255,255,255,.02) 60%,rgba(255,255,255,.09)),
+    radial-gradient(140% 220% at 50% -60%,rgba(255,255,255,.10),rgba(255,255,255,0) 55%),
+    var(--tint,rgba(10,10,12,.62));
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,.28), inset 0 -1px 1px rgba(255,255,255,.10),
+    0 4px 10px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.10);
+}
+/* SVG 版没有素材自身的浓度，瓶身 tint 相应加深 */
+.btn.svg.btn--black{--tint:rgba(10,10,12,.86)}
+.btn.svg.btn--blue{--tint:rgba(8,38,140,.86)}
+/* 菲涅尔棱边：1px 渐变环。mask-composite:exclude 只留下边框环本身，越贴边越亮 */
+.btn.svg::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
+  background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(255,255,255,.14) 32%,rgba(255,255,255,.06) 58%,rgba(255,255,255,.34));
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+  pointer-events:none}
+.btn.svg:hover{box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10),
+  inset 0 1px 1px rgba(255,255,255,.36), inset 0 0 12px rgba(255,255,255,.07)}
+.btn.svg:active{box-shadow:0 2px 6px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.10),
+  inset 0 1px 0 rgba(255,255,255,.24), inset 0 -1px 2px rgba(0,0,0,.24)}
+.btn.svg:active::after{opacity:.75}
 .btn img{display:block;flex:none;height:1.2em;width:1.2em}
 .btn img.ap{height:1.02em;width:1.02em}
 .btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
@@ -150,7 +175,7 @@ footer p{margin:0 0 10px}
 
 /* ---------- 语言选择：复用 webc 的 I18n / BoxX 组件结构 ---------- */
 .Btn, .BtnC{border:none;outline:none;margin:0;position:relative;display:inline-flex;align-items:center;justify-content:center;
-  background-repeat:no-repeat;box-sizing:border-box;border-radius:22px;color:#444;cursor:pointer;font-family:inherit;
+  background:transparent;background-repeat:no-repeat;box-sizing:border-box;border-radius:22px;color:#444;cursor:pointer;font-family:inherit;
   text-decoration:none;transition:all .3s cubic-bezier(.4,0,.2,1);user-select:none;white-space:nowrap}
 .Btn::before, .BtnC::before{content:"";position:absolute;inset:0;border-radius:inherit;box-sizing:border-box;
   border:1px solid #0002;background:linear-gradient(135deg,#ffffff80,#ffffff30);
@@ -166,7 +191,7 @@ footer p{margin:0 0 10px}
   opacity:.8;transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s ease}
 .BtnC .Ico.github{mask-image:url(../assets/icons/github.svg)}
 .BtnC:hover .Ico, .BtnC:active .Ico{transform:translateY(1px)}
-.BtnC.lang .Ico{mask-image:url(../assets/icons/i18n.svg)}
+.BtnC.lang .Ico{mask-image:url(../assets/icons/globe.svg)}
 .BtnC:focus-visible, .Btn:focus-visible{outline:none}
 .Btn.Main{color:#fff}
 .Btn.Main::before{backdrop-filter:none;border-color:#0000002b;
@@ -214,7 +239,16 @@ dialog.Box.X>a.X:active::before{opacity:.7}
   .I18n .Btn.Main{border-bottom:1px solid currentColor;border-radius:0;color:#000}
   .I18n .Btn.Main:hover, .I18n .Btn.Main:active{color:#0071e3}
 }
-</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Nút Liquid Glass</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Đổi ngôn ngữ" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Nút Liquid Glass</h1><p class="lead">Nút kính lỏng co giãn theo chữ, viền khúc xạ thật.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Tải về</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Đưa chuột lên để xem.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Chiều rộng do chữ quyết định</h2><p class="sub">Một bộ tài nguyên: chữ càng dài nút càng rộng, hai đầu không đổi.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Tải về</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Tải cho macOS</span></button><span class="w"></span></div></div><p class="hint">Trên nền sáng kính nhạt hơn; lớp màu giữ chữ dễ đọc.</p></div></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Tài nguyên ba phần (4×)</h2><p class="sub">Hai đầu 112px, giữa lặp vô hạn, mối nối trùng từng pixel.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>toàn bộ</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>trái</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>giữa</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>phải</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x — không biến dạng</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Cách dùng</h2><p class="sub">Một phần tử làm giãn chín phần; hover / active đổi bộ lọc.</p></div><pre><code>.btn {
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Nút Liquid Glass</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Đổi ngôn ngữ" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Nút Liquid Glass</h1><p class="lead">Nút kính lỏng co giãn theo chữ, viền khúc xạ thật.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Tải về</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Đưa chuột lên để xem.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Chiều rộng do chữ quyết định</h2><p class="sub">Một bộ tài nguyên: chữ càng dài nút càng rộng, hai đầu không đổi.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Tải về</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Tải cho macOS</span></button><span class="w"></span></div></div><p class="hint">Trên nền sáng kính nhạt hơn; lớp màu giữ chữ dễ đọc.</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>SVG thuần</h2><p class="sub">Không bitmap: thân, ánh sáng viền và chiều sâu đều là gradient và bóng đổ CSS; khúc xạ viền vẫn do bộ lọc dịch chuyển SVG đảm nhiệm.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn svg btn--black" type="button"><span>Tải về</span></button><span class="w"></span></div><div class="measure"><button class="btn svg btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn svg btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Tải cho macOS</span></button><span class="w"></span></div></div><p class="hint">Trên nền sáng kính nhạt hơn; lớp màu giữ chữ dễ đọc.</p></div><pre><code>.btn.svg {
+  border: 0; border-radius: 980px; padding: 0 28px;
+  background: linear-gradient(180deg, #ffffff29, #ffffff0d 34%, #ffffff05 60%, #ffffff1a),
+              var(--tint);
+  box-shadow: inset 0 1px 1px #ffffff4d, inset 0 -1px 1px #ffffff1a,
+              0 4px 10px #0000002e;
+  backdrop-filter: url(#glass-1) blur(6px) saturate(170%); /* 同一个 SVG 折射滤镜 */
+}
+/* 棱边菲涅尔高光：::after 画 1px 渐变环，mask-composite: exclude 只留环 */
+</code></pre></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Tài nguyên ba phần (4×)</h2><p class="sub">Hai đầu 112px, giữa lặp vô hạn, mối nối trùng từng pixel.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>toàn bộ</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>trái</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>giữa</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>phải</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x — không biến dạng</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Cách dùng</h2><p class="sub">Một phần tử làm giãn chín phần; hover / active đổi bộ lọc.</p></div><pre><code>.btn {
   display: inline-flex; align-items: center; gap: 9px;
   height: 56px; width: auto;              /* width comes from the label */
   border: 0 solid transparent;
@@ -426,5 +460,6 @@ tile.style.backgroundImage = TILE_IMG;
 langInit();
 glassRebuild();
 captionFit();
+window.addEventListener("load", captionFit); // 图标/字体就位后再校准一次宽度标签
 window.addEventListener("resize", onResize);
 </script></body></html>

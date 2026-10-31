@@ -36,3 +36,5 @@ light_hint: På ljus botten ser glaset blekt ut; tonen håller texten läsbar.
 link_repo: GitHub-repositoriet
 link_hig: Apple HIG · Material
 link_model: 'Material: Qwen-Image-2.1'
+sec_svg_h: Ren SVG
+sec_svg_p: 'Utan bitmappar: kropp, kantljus och djup är CSS-gradienter och skuggor — kantbrytningen sköts fortfarande av SVG-förskjutningsfiltret.'

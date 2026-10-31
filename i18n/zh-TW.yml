@@ -36,3 +36,5 @@ light_hint: 淺色底上玻璃偏淡，用底色保持文字對比。
 link_repo: GitHub 儲存庫
 link_hig: Apple HIG · 材質
 link_model: 材質：Qwen-Image-2.1
+sec_svg_h: 純 SVG
+sec_svg_p: '完全不使用點陣圖：瓶身、稜邊高光和深度都是 CSS 漸層與陰影，邊緣折射仍由 SVG 位移濾鏡完成。'

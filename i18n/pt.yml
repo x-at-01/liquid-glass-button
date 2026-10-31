@@ -36,3 +36,5 @@ light_hint: Em fundo claro o vidro fica pálido; o tom mantém o texto legível.
 link_repo: Repositório no GitHub
 link_hig: Apple HIG · Materiais
 link_model: 'Material: Qwen-Image-2.1'
+sec_svg_h: SVG puro
+sec_svg_p: 'Sem bitmap: corpo, brilho da borda e profundidade são gradientes e sombras CSS; a refração da borda continua a cargo do filtro de deslocamento SVG.'

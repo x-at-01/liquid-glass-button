@@ -36,3 +36,5 @@ light_hint: 明るい面ではガラスは淡く見えるため、下地で文�
 link_repo: GitHub リポジトリ
 link_hig: Apple HIG · マテリアル
 link_model: 'マテリアル: Qwen-Image-2.1'
+sec_svg_h: 純 SVG
+sec_svg_p: 'ビットマップ一切なし：本体・縁のハイライト・奥行きはすべて CSS のグラデーションとシャドウで描き、縁の屈折は SVG 変位フィルターが担います。'

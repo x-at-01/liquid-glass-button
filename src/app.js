@@ -197,4 +197,5 @@ tile.style.backgroundImage = TILE_IMG;
 langInit();
 glassRebuild();
 captionFit();
+window.addEventListener("load", captionFit); // 图标/字体就位后再校准一次宽度标签
 window.addEventListener("resize", onResize);

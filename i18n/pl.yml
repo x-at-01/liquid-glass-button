@@ -36,3 +36,5 @@ light_hint: Na jasnym tle szkło jest blade; podkład utrzymuje czytelność nap
 link_repo: Repozytorium GitHub
 link_hig: Apple HIG · Materiały
 link_model: 'Materiał: Qwen-Image-2.1'
+sec_svg_h: Czysty SVG
+sec_svg_p: 'Bez bitmap: korpus, światło krawędzi i głębia to gradienty i cienie CSS; załamaniem krawędzi nadal zajmuje się filtr przesunięcia SVG.'

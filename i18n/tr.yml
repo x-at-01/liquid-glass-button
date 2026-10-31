@@ -36,3 +36,5 @@ light_hint: Açık zeminde cam soluk görünür; ton yazıyı okunur tutar.
 link_repo: GitHub deposu
 link_hig: Apple HIG · Materyaller
 link_model: 'Materyal: Qwen-Image-2.1'
+sec_svg_h: Saf SVG
+sec_svg_p: 'Bit eşlem yok: gövde, kenar ışığı ve derinlik CSS gradyanları ve gölgeleri — kenar kırılması yine SVG yer değiştirme filtresiyle yapılıyor.'

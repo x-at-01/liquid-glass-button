@@ -36,3 +36,5 @@ light_hint: على خلفية فاتحة يبدو الزجاج باهتًا؛ و
 link_repo: مستودع GitHub
 link_hig: Apple HIG · الخامات
 link_model: 'الخامة: Qwen-Image-2.1'
+sec_svg_h: ‏SVG خالص
+sec_svg_p: 'بدون أي صور نقطية: الجسم وضوء الحافة والعمق كلها تدرجات وظلال CSS، وانكسار الحافة ما زال بفلتر إزاحة SVG.'

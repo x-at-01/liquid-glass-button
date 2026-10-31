@@ -36,3 +36,5 @@ light_hint: Op licht vlak oogt het glas bleek; de tint houdt de tekst leesbaar.
 link_repo: GitHub-repository
 link_hig: Apple HIG · Materialen
 link_model: 'Materiaal: Qwen-Image-2.1'
+sec_svg_h: Pure SVG
+sec_svg_p: 'Geen bitmaps: body, randlicht en diepte zijn CSS-verlopen en schaduwen — de randbreking blijft door het SVG-verplaatsingsfilter gedaan.'

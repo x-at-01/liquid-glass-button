@@ -36,3 +36,5 @@ light_hint: Sobre fondo claro el vidrio se ve pálido; el tinte mantiene legible
 link_repo: Repositorio en GitHub
 link_hig: Apple HIG · Materiales
 link_model: 'Material: Qwen-Image-2.1'
+sec_svg_h: SVG puro
+sec_svg_p: 'Sin mapas de bits: cuerpo, luz del borde y profundidad son degradados y sombras CSS; la refracción del borde sigue a cargo del filtro de desplazamiento SVG.'
