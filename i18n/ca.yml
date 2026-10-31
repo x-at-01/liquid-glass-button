@@ -21,7 +21,7 @@ spec_icon_p: 'Fonts SVG de 24px, minificades amb SVGO, mostrades a 20px.'
 footer_2: 'El logotip d''Apple és una marca d''Apple Inc., usat només per mostrar un botó de l''App Store.'
 lang_choose: 'Trieu l''idioma'
 lang_aria: 'Canvia d''idioma'
-stage_hint: 'Mou el punter sobre el botó.'
+stage_hint: Mou el punter sobre el botó
 light_hint: 'El vidre és tènue sobre superfícies clares; el tint manté el text llegible.'
 link_repo: 'Dipòsit de GitHub'
 link_hig: 'Apple HIG · Materials'

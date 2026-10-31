@@ -21,7 +21,7 @@ spec_icon_p: 'Sumber SVG 24px, diminimumkan dengan SVGO, dipaparkan pada 20px.'
 footer_2: 'Logo Apple ialah tanda dagangan Apple Inc., digunakan hanya untuk menunjukkan butang App Store.'
 lang_choose: 'Pilih bahasa'
 lang_aria: 'Tukar bahasa'
-stage_hint: 'Gerakkan penuding ke atas butang.'
+stage_hint: Gerakkan penuding ke atas butang
 light_hint: 'Kaca kelihatan pudar pada permukaan cerah; warna asas mengekalkan keterbacaan teks.'
 link_repo: 'Repositori GitHub'
 link_hig: 'Apple HIG · Bahan'

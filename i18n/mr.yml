@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG स्रोत, SVGO ने संकुचित, 20px 
 footer_2: 'Apple लोगो Apple Inc. चा ट्रेडमार्क आहे, फक्त App Store बटण दाखवण्यासाठी वापरला.'
 lang_choose: 'भाषा निवडा'
 lang_aria: 'भाषा बदला'
-stage_hint: 'पॉइंटर बटणावर न्या.'
+stage_hint: पॉइंटर बटणावर न्या
 light_hint: 'उजळ पृष्ठभागावर काच फिकट दिसते; टिंट मजकूर वाचनीय ठेवतो.'
 link_repo: 'GitHub रेपॉझिटरी'
 link_hig: 'Apple HIG · साहित्य'

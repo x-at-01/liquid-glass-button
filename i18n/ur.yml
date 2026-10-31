@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG ماخذ، SVGO سے فشردہ، 20px پر دکھائے 
 footer_2: 'Apple لوگو Apple Inc. کا ٹریڈ مارک ہے، صرف App Store بٹن کے مظاہرے کے لیے استعمال ہوا۔'
 lang_choose: 'زبان منتخب کریں'
 lang_aria: 'زبان تبدیل کریں'
-stage_hint: 'پوائنٹر کو بٹن پر لے جائیں۔'
+stage_hint: پوائنٹر کو بٹن پر لے جائیں۔
 light_hint: 'ہلکی سطح پر شیشہ ہلکا نظر آتا ہے؛ ٹنٹ متن کو پڑھنے کے قابل رکھتا ہے۔'
 link_repo: 'GitHub ریپوزٹری'
 link_hig: 'Apple HIG · مواد'

@@ -21,7 +21,7 @@ spec_icon_p: Nguồn SVG 24px, nén bằng SVGO, hiển thị 20px.
 footer_2: Logo Apple là thương hiệu của Apple Inc., chỉ dùng để minh hoạ.
 lang_choose: Chọn ngôn ngữ
 lang_aria: Đổi ngôn ngữ
-stage_hint: Đưa chuột lên để xem.
+stage_hint: Đưa chuột lên để xem
 light_hint: Trên nền sáng kính nhạt hơn; lớp màu giữ chữ dễ đọc.
 link_repo: Kho GitHub
 link_hig: Apple HIG · Vật liệu

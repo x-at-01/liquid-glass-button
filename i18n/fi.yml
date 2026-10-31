@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG-lähteet, SVGO-minifioitu, näytetään 20px:nä.'
 footer_2: 'Apple-logo on Apple Inc:n tavaramerkki, käytetään vain App Store -painikkeen esittelyyn.'
 lang_choose: 'Valitse kieli'
 lang_aria: 'Vaihda kieltä'
-stage_hint: 'Vie osoitin painikkeen päälle.'
+stage_hint: Vie osoitin painikkeen päälle
 light_hint: 'Lasi on vaalea vaalealla pinnalla; sävy pitää tekstin luettavana.'
 link_repo: 'GitHub-varasto'
 link_hig: 'Apple HIG · Materiaalit'

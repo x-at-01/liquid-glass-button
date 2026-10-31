@@ -3,6 +3,8 @@
   --mono: "SF Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --ink:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --surface:#f5f5f7; --blue:#0071e3;
   --radius:22px; --w:1000px; --pad:24px;
+  --sp:52px;   /* 区块之间的留白 */
+  --gap:26px;  /* 区块内部元素间距 */
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box}
@@ -17,7 +19,10 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
 .lead{font-size:21px;line-height:1.38;color:var(--muted);margin:0 auto;max-width:680px;text-wrap:balance}
 .sub{font-size:17px;line-height:1.5;color:var(--muted);margin:0 0 26px;max-width:660px}
 .hint{font-size:13px;line-height:1.45;color:var(--muted);margin:18px 0 0}
-.stage .hint{color:rgba(255,255,255,.78)}
+.stage .hint{display:inline-flex;align-items:center;margin:calc(var(--gap) + 2px) 0 0;
+  padding:7px 15px;border-radius:999px;font-size:14px;font-weight:500;line-height:1.35;
+  color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(10px)}
 
 /* ---------- 顶栏 ---------- */
 .topbar{border-bottom:1px solid var(--line);background:rgba(255,255,255,.8);
@@ -30,9 +35,9 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
 .topbar a:not(.BtnC){color:var(--muted);text-decoration:none;font-size:13px;padding:7px 11px;border-radius:999px}
 .topbar a:not(.BtnC):hover{color:var(--ink);background:rgba(0,0,0,.05)}
 /* ---------- Hero ---------- */
-.hero{padding:76px 0 0;text-align:center}
+.hero{padding:var(--sp) 0 0;text-align:center}
 .stage{
-  position:relative;margin:52px 0 0;border-radius:var(--radius);overflow:hidden;
+  position:relative;margin:calc(var(--sp) - 20px) 0 0;border-radius:var(--radius);overflow:hidden;
   padding:64px 32px 56px;
   background:
     radial-gradient(58% 130% at 14% 18%, rgba(110,168,255,.95) 0%, transparent 60%),
@@ -105,30 +110,30 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
 
 /* ---------- 区块 ---------- */
-.section{padding:92px 0}
+.section{padding:var(--sp) 0}
 .section--tint{background:var(--surface)}
-.section-head{max-width:680px;margin-bottom:6px}
+.section-head{max-width:680px;margin-bottom:0}
 
 /* 浅色卡片：展示玻璃在浅色表面上的样子 */
-.card{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+.card{margin-top:var(--gap);background:#fff;border:1px solid var(--line);border-radius:var(--radius);
   padding:36px 32px 30px;box-shadow:0 18px 40px -30px rgba(16,24,40,.35)}
 .measure-row{display:flex;flex-wrap:wrap;gap:20px 32px;align-items:flex-end}
 .measure{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .measure .w{font:400 12px/1 var(--mono);color:#86868b}
 .card .hint{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
 
-pre{margin:26px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
+pre{margin:var(--gap) 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
   overflow:auto;font:400 13px/1.65 var(--mono);color:var(--ink)}
 code{font-family:var(--mono)}
 
-.principles{display:grid;gap:16px;margin:30px 0 0}
+.principles{display:grid;gap:16px;margin:var(--gap) 0 0}
 .principle{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
   border-top:1px solid var(--line);padding-top:14px}
 .principle .n{font:400 12px/1 var(--mono);color:var(--muted)}
 .principle p{margin:0;font-size:15px;line-height:1.6;color:var(--ink)}
 
 /* ---------- 素材包下载（开头独立区块） ---------- */
-.pack-sec{padding:60px 0 0}
+.pack-sec{padding:var(--sp) 0 0}
 .pack{display:flex;align-items:center;justify-content:space-between;gap:32px;
   padding:30px 32px;border:1px solid var(--line);border-radius:var(--radius);
   background:linear-gradient(180deg,#fbfbfd,#f4f4f7);
@@ -141,7 +146,7 @@ code{font-family:var(--mono)}
   border:1px solid var(--line);border-radius:999px;padding:5px 9px}
 .pack .btn{flex:none}
 
-.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 44px;margin-top:34px}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 44px;margin-top:var(--gap)}
 .spec{border-top:1px solid var(--line);padding-top:16px}
 .spec h3{font-size:15px;font-weight:600;margin:0 0 6px;}
 .spec p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
@@ -154,10 +159,10 @@ footer p{margin:0 0 10px}
 :where(a){color:var(--blue)}
 
 @media (max-width:734px){
+  :root{--sp:40px;--gap:20px}
   h1{font-size:34px;line-height:1.12}
   .lead{font-size:19px;line-height:1.42}
   h2{font-size:24px}
-  .section{padding:64px 0}
   .stage{padding:48px 18px 40px;border-radius:18px}
   .card{padding:26px 20px 22px}
   .btn{--pill-h:48px;--cap:24px;font-size:16px}
@@ -232,7 +237,7 @@ dialog.Box.X>a.X:active::before{opacity:.7}
   .I18n .Btn.Main{border-bottom:1px solid currentColor;border-radius:0;color:#000}
   .I18n .Btn.Main:hover, .I18n .Btn.Main:active{color:#0071e3}
 }
-</style></head><body><header class="topbar"><div class="wrap"><span class="brand">Кнопка Liquid Glass</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Сменить язык" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="wrap"><h1>Кнопка Liquid Glass</h1><p class="lead">Кнопка из жидкого стекла, растягивающаяся по тексту, с настоящим преломлением на кромке.</p><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Скачать</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Наведите, чтобы увидеть.</p></section></div></header><section class="pack-sec"><div class="wrap"><div class="pack"><div class="pack-head"><h2>Набор</h2><p>Распакуйте и откройте: автономная демонстрация, стили, рантайм и шаблон фильтра.</p><ul class="pack-files"><li>demo.html</li><li>style.css</li><li>app.js</li><li>glass-filters.svg</li><li>icons/</li></ul></div><a class="btn btn--blue" href="../liquid-glass-button.tar.xz" download><img class="dl" src="../assets/icons/download.svg" alt=""><span>Скачать набор (tar.xz)</span></a></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Ширину задаёт текст</h2><p class="sub">Чем длиннее текст, тем шире кнопка — скругление на концах не меняется.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Скачать</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Скачать для macOS</span></button><span class="w"></span></div></div><p class="hint">На светлом фоне стекло бледное; подложка сохраняет читаемость текста.</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Как работает SVG</h2><p class="sub">Ощущение жидкости даёт кромка: карта смещений строится под точный размер, три прохода создают дисперсию, а маска кромки сохраняет центр чётким.</p></div><div class="principles"><div class="principle"><span class="n">01</span><p>Карта смещений: строится под точный размер кнопки — R хранит смещение по x, G по y, B силу кромки (0 в центре, 255 у края).</p></div><div class="principle"><span class="n">02</span><p>Дисперсия: три прохода по одной карте с немного разными scale; каналы R/G/B разделяются и складываются в режиме screen — кромка рассеивает свет как настоящее стекло.</p></div><div class="principle"><span class="n">03</span><p>Маска кромки: канал B маскирует результат — преломляется только кромка, центр под текстом остаётся нетронутым.</p></div></div><pre><code>/* 1) 按按钮实际尺寸生成位移图（app.js → canvas） */
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand">Кнопка Liquid Glass</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Сменить язык" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="wrap"><h1>Кнопка Liquid Glass</h1><p class="lead">Кнопка из жидкого стекла, растягивающаяся по тексту, с настоящим преломлением на кромке.</p><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Скачать</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Наведите, чтобы увидеть</p></section></div></header><section class="pack-sec"><div class="wrap"><div class="pack"><div class="pack-head"><h2>Набор</h2><p>Распакуйте и откройте: автономная демонстрация, стили, рантайм и шаблон фильтра.</p><ul class="pack-files"><li>demo.html</li><li>style.css</li><li>app.js</li><li>glass-filters.svg</li><li>icons/</li></ul></div><a class="btn btn--blue" href="../liquid-glass-button.tar.xz" download><img class="dl" src="../assets/icons/download.svg" alt=""><span>Скачать набор (tar.xz)</span></a></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Ширину задаёт текст</h2><p class="sub">Чем длиннее текст, тем шире кнопка — скругление на концах не меняется.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Скачать</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Скачать для macOS</span></button><span class="w"></span></div></div><p class="hint">На светлом фоне стекло бледное; подложка сохраняет читаемость текста.</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Как работает SVG</h2><p class="sub">Ощущение жидкости даёт кромка: карта смещений строится под точный размер, три прохода создают дисперсию, а маска кромки сохраняет центр чётким.</p></div><div class="principles"><div class="principle"><span class="n">01</span><p>Карта смещений: строится под точный размер кнопки — R хранит смещение по x, G по y, B силу кромки (0 в центре, 255 у края).</p></div><div class="principle"><span class="n">02</span><p>Дисперсия: три прохода по одной карте с немного разными scale; каналы R/G/B разделяются и складываются в режиме screen — кромка рассеивает свет как настоящее стекло.</p></div><div class="principle"><span class="n">03</span><p>Маска кромки: канал B маскирует результат — преломляется только кромка, центр под текстом остаётся нетронутым.</p></div></div><pre><code>/* 1) 按按钮实际尺寸生成位移图（app.js → canvas） */
 R = 128 + x 位移 · G = 128 + y 位移 · B = 边缘强度（中心 0 → 贴边 255）
 
 /* 2) 同一张图做三次位移，scale 略有差异，分离 R/G/B 后 screen 叠加 → 色散 */

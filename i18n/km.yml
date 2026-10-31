@@ -21,7 +21,7 @@ spec_icon_p: 'SVG 24px, បង្រួមដោយ SVGO, បង្ហាញន�
 footer_2: 'ឡូហ្គោ Apple គឺជាពាណិជ្ជសញ្ញារបស់ Apple Inc. ប្រើតែដើម្បីបង្ហាញប៊ូតុង App Store។'
 lang_choose: 'ជ្រើសរើសភាសា'
 lang_aria: 'ប្តូរភាសា'
-stage_hint: 'ផ្លាស់ទី pointer លើប៊ូតុង។'
+stage_hint: ផ្លាស់ទី pointer លើប៊ូតុង។
 light_hint: 'លើផ្ទៃភ្លឺ កញ្ចក់ស្រាល; ពណ៌ជួយឱ្យអត្ថបទអានបាន។'
 link_repo: 'GitHub repository'
 link_hig: 'Apple HIG · សម្ភារៈ'

@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG avoti, minimizēti ar SVGO, attēloti 20px.'
 footer_2: 'Apple logotips ir Apple Inc. preču zīme, izmantots tikai App Store pogas demonstrēšanai.'
 lang_choose: 'Izvēlieties valodu'
 lang_aria: 'Mainīt valodu'
-stage_hint: 'Novietojiet kursoru uz pogas.'
+stage_hint: Novietojiet kursoru uz pogas
 light_hint: 'Gaišā virsmā stikls ir blāvs; tonis saglabā teksta lasāmību.'
 link_repo: 'GitHub repozitorijs'
 link_hig: 'Apple HIG · Materiāli'

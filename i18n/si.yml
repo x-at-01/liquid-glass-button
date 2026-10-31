@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG මූලාශ්‍ර, SVGO සමඟ කුඩා ක
 footer_2: 'Apple ලාංඡනය Apple Inc. හි වෙළඳ ලකුණකි, භාවිතා වන්නේ App Store බොත්තම ප්‍රදර්ශනයට පමණි.'
 lang_choose: 'භාෂාව තෝරන්න'
 lang_aria: 'භාෂාව මාරු කරන්න'
-stage_hint: 'දර්ශකය බොත්තම මතට ගෙන යන්න.'
+stage_hint: දර්ශකය බොත්තම මතට ගෙන යන්න
 light_hint: 'දීප්ත පෘෂ්ඨයක වීදුරුව ලා වේ; වර්ණය ලේබලය කියවිය හැකිව තබයි.'
 link_repo: 'GitHub ගබඩාව'
 link_hig: 'Apple HIG · ද්‍රව්‍ය'

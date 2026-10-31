@@ -21,7 +21,7 @@ spec_icon_p: 'Surse SVG de 24px, minificate cu SVGO, afișate la 20px.'
 footer_2: 'Sigla Apple este o marcă a Apple Inc., folosită doar pentru a demonstra un buton App Store.'
 lang_choose: 'Alege limba'
 lang_aria: 'Schimbă limba'
-stage_hint: 'Mută cursorul peste buton.'
+stage_hint: Mută cursorul peste buton
 light_hint: 'Sticla este palidă pe suprafețe deschise; tentă ține textul lizibil.'
 link_repo: 'Repository GitHub'
 link_hig: 'Apple HIG · Materiale'

@@ -21,7 +21,7 @@ spec_icon_p: 'SVG 24px, ຫຍໍ້ດ້ວຍ SVGO, ສະແດງທີ່ 
 footer_2: 'ໂລໂກ້ Apple ເປັນເຄື່ອງໝາຍການຄ້າຂອງ Apple Inc., ໃຊ້ພຽງເພື່ອສະແດງປຸ່ມ App Store.'
 lang_choose: 'ເລືອກພາສາ'
 lang_aria: 'ປ່ຽນພາສາ'
-stage_hint: 'ເລື່ອນ pointer ໄປເທິງປຸ່ມ.'
+stage_hint: ເລື່ອນ pointer ໄປເທິງປຸ່ມ
 light_hint: 'ເທິງພື້ນຜິວແຈ້ງ ແກ້ວຈະຈາງ; ສີຊ່ວຍໃຫ້ຂໍ້ຄວາມອ່ານໄດ້.'
 link_repo: 'GitHub repository'
 link_hig: 'Apple HIG · ວັດສະດຸ'

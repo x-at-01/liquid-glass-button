@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG iturburuak, SVGO-rekin txikiagotuak, 20px-tan erakutsita.
 footer_2: 'Apple logotipoa Apple Inc.-ren marka da, App Store botoia erakusteko bakarrik erabilia.'
 lang_choose: 'Aukeratu hizkuntza'
 lang_aria: 'Aldatu hizkuntza'
-stage_hint: 'Eraman erakuslea botoiaren gainera.'
+stage_hint: Eraman erakuslea botoiaren gainera
 light_hint: 'Beira argi gainazalean ahula da; tonuak testua irakurgarri mantentzen du.'
 link_repo: 'GitHub biltegia'
 link_hig: 'Apple HIG · Materialak'

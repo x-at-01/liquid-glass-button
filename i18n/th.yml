@@ -21,7 +21,7 @@ spec_icon_p: 'ต้นฉบับ SVG 24px ย่อด้วย SVGO แส�
 footer_2: 'โลโก้ Apple เป็นเครื่องหมายการค้าของ Apple Inc. ใช้เพียงเพื่อสาธิตปุ่ม App Store'
 lang_choose: 'เลือกภาษา'
 lang_aria: 'เปลี่ยนภาษา'
-stage_hint: 'เลื่อนเมาส์ไปที่ปุ่ม'
+stage_hint: เลื่อนเมาส์ไปที่ปุ่ม
 light_hint: 'บนพื้นสว่างกระจกจะจาง สีพื้นช่วยให้ข้อความอ่านออก'
 link_repo: 'ที่เก็บ GitHub'
 link_hig: 'Apple HIG · วัสดุ'

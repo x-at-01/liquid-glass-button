@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG nga gigikanan, gikunhoran sa SVGO, gipakita sa 20px.'
 footer_2: 'Ang logo sa Apple kay trademark sa Apple Inc., gigamit lamang sa pagpakita sa App Store nga buton.'
 lang_choose: 'Pilia ang pinulongan'
 lang_aria: 'Ilisdi ang pinulongan'
-stage_hint: 'Ibalhin ang pointer ngadto sa buton.'
+stage_hint: Ibalhin ang pointer ngadto sa buton
 light_hint: 'Ang bildo maputla sa hayag nga nawong; ang tint nagpabiling mabasa ang teksto.'
 link_repo: 'GitHub repository'
 link_hig: 'Apple HIG · Mga materyales'

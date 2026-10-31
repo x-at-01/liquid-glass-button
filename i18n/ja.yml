@@ -21,7 +21,7 @@ spec_icon_p: 24px の SVG を SVGO で圧縮し、20px で表示。
 footer_2: Apple ロゴは Apple Inc. の商標で、デモ目的のみに使用しています。
 lang_choose: 言語を選択
 lang_aria: 言語を切り替える
-stage_hint: マウスを乗せてみてください。
+stage_hint: マウスを乗せてみてください
 light_hint: 明るい面ではガラスは淡く見えるため、下地で文字のコントラストを保ちます。
 link_repo: GitHub リポジトリ
 link_hig: Apple HIG · マテリアル

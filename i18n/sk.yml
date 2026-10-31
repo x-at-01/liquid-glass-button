@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG zdroje, minifikované SVGO, zobrazené v 20px.'
 footer_2: 'Logo Apple je ochranná známka Apple Inc., použitá len na ukážku tlačidla App Store.'
 lang_choose: 'Vyberte jazyk'
 lang_aria: 'Zmeniť jazyk'
-stage_hint: 'Presuňte ukazovateľ na tlačidlo.'
+stage_hint: Presuňte ukazovateľ na tlačidlo
 light_hint: 'Sklo je na svetlom podklade bledé; tón drží text čitateľný.'
 link_repo: 'Repozitár GitHub'
 link_hig: 'Apple HIG · Materiály'

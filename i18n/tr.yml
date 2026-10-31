@@ -21,7 +21,7 @@ spec_icon_p: 24px SVG kaynakları SVGO ile küçültüldü, 20px gösterilir.
 footer_2: Apple logosu Apple Inc. ticari markasıdır, yalnızca gösterim için kullanılmıştır.
 lang_choose: Dil seçin
 lang_aria: Dili değiştir
-stage_hint: Üzerine gelin.
+stage_hint: Üzerine gelin
 light_hint: Açık zeminde cam soluk görünür; ton yazıyı okunur tutar.
 link_repo: GitHub deposu
 link_hig: Apple HIG · Materyaller

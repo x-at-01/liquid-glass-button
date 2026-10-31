@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG स्रोत, SVGO से संपीड़ित, 20
 footer_2: 'Apple लोगो Apple Inc. का ट्रेडमार्क है, केवल App Store बटन के प्रदर्शन के लिए उपयोग किया गया।'
 lang_choose: 'भाषा चुनें'
 lang_aria: 'भाषा बदलें'
-stage_hint: 'पॉइंटर को बटन पर ले जाएँ।'
+stage_hint: पॉइंटर को बटन पर ले जाएँ
 light_hint: 'हल्की सतह पर ग्लास फीका दिखता है; टिंट टेक्स्ट को पठनीय रखता है।'
 link_repo: 'GitHub रिपॉज़िटरी'
 link_hig: 'Apple HIG · सामग्री'

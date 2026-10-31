@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG-kilder, minimeret med SVGO, vist i 20px.'
 footer_2: 'Apple-logoet er et varemærke tilhørende Apple Inc. og bruges kun til at vise en App Store-knap.'
 lang_choose: 'Vælg sprog'
 lang_aria: 'Skift sprog'
-stage_hint: 'Flyt markøren hen over knappen.'
+stage_hint: Flyt markøren hen over knappen
 light_hint: 'Glasset er svagt på lyse flader; tonen holder teksten læsbar.'
 link_repo: 'GitHub-repository'
 link_hig: 'Apple HIG · Materialer'

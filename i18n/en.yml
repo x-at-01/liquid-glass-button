@@ -21,7 +21,7 @@ spec_icon_p: 24px SVG sources, minified with SVGO, rendered at 20px.
 footer_2: Apple logo is a trademark of Apple Inc., used for demonstration only.
 lang_choose: Choose language
 lang_aria: Change language
-stage_hint: Hover to see it.
+stage_hint: Hover to see it
 light_hint: On light surfaces the glass reads pale — the tint keeps the label legible.
 link_repo: GitHub repository
 link_hig: Apple HIG · Materials

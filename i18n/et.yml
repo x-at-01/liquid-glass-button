@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG allikad, SVGO-ga minimeeritud, kuvatakse 20px juures.'
 footer_2: 'Apple''i logo on Apple Inc. kaubamärk, kasutatud ainult App Store''i nupu demonstreerimiseks.'
 lang_choose: 'Vali keel'
 lang_aria: 'Vaheta keelt'
-stage_hint: 'Liiguta kursor nupule.'
+stage_hint: Liiguta kursor nupule
 light_hint: 'Heledal pinnal on klaas kahvatu; toon hoiab teksti loetavana.'
 link_repo: 'GitHubi hoidla'
 link_hig: 'Apple HIG · Materjalid'

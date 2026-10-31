@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG-bronne, met SVGO verklein, teen 20px vertoon.'
 footer_2: 'Die Apple-logo is ''n handelsmerk van Apple Inc., slegs gebruik om ''n App Store-knoppie te wys.'
 lang_choose: 'Kies taal'
 lang_aria: 'Verander taal'
-stage_hint: 'Skuif die wyser oor die knoppie.'
+stage_hint: Skuif die wyser oor die knoppie
 light_hint: 'Glas is dof op ''n ligte oppervlak; die tint hou die teks leesbaar.'
 link_repo: 'GitHub-bewaarplek'
 link_hig: 'Apple HIG · Materiale'

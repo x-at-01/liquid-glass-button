@@ -21,7 +21,7 @@ spec_icon_p: 'Burime SVG 24px, minimizuar me SVGO, të shfaqura në 20px.'
 footer_2: 'Logoja e Apple është markë tregtare e Apple Inc., përdoret vetëm për të demonstruar një buton App Store.'
 lang_choose: 'Zgjidh gjuhën'
 lang_aria: 'Ndrysho gjuhën'
-stage_hint: 'Kaloni kursorin mbi buton.'
+stage_hint: Kaloni kursorin mbi buton
 light_hint: 'Xhami është i zbehtë mbi sipërfaqe të ndritshme; ngjyra mban tekstin të lexueshëm.'
 link_repo: 'Repo GitHub'
 link_hig: 'Apple HIG · Materialet'

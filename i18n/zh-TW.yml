@@ -21,7 +21,7 @@ spec_icon_p: SVG 24px 來源，SVGO 壓縮；按鈕內以 20px 呈現。
 footer_2: Apple 標誌為 Apple Inc. 商標，僅作示範。
 lang_choose: 選擇語言
 lang_aria: 切換語言
-stage_hint: 把滑鼠移到按鈕上試試。
+stage_hint: 把滑鼠移到按鈕上試試
 light_hint: 淺色底上玻璃偏淡，用底色保持文字對比。
 link_repo: GitHub 儲存庫
 link_hig: Apple HIG · 材質

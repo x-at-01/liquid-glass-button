@@ -21,7 +21,7 @@ spec_icon_p: 'מקורות SVG בגודל 24px, מכווצים עם SVGO, מוצ
 footer_2: 'הלוגו של Apple הוא סימן מסחר של Apple Inc., משמש רק להדגמת כפתור App Store.'
 lang_choose: 'בחרו שפה'
 lang_aria: 'החלף שפה'
-stage_hint: 'העבירו את הסמן מעל הכפתור.'
+stage_hint: העבירו את הסמן מעל הכפתור
 light_hint: 'על משטח בהיר הזכוכית חיוורת; הגוון שומר על קריאות הטקסט.'
 link_repo: 'מאגר GitHub'
 link_hig: 'Apple HIG · חומרים'

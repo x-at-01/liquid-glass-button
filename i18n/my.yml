@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG ရင်းမြစ်များ၊ SVGO ဖြင့
 footer_2: 'Apple လိုဂိုသည် Apple Inc. ၏ ကုန်အမှတ်တံဆိပ် ဖြစ်ပြီး App Store ခလုတ် ပြသရန်သာ အသုံးပြုသည်။'
 lang_choose: 'ဘာသာစကား ရွေးပါ'
 lang_aria: 'ဘာသာစကား ပြောင်းပါ'
-stage_hint: 'pointer ကို ခလုတ်ပေါ်သို့ ရွှေ့ပါ။'
+stage_hint: pointer ကို ခလုတ်ပေါ်သို့ ရွှေ့ပါ။
 light_hint: 'အလင်းရောင် မျက်နှာပြင်တွင် ဖန်ခွက်သည် ဖျော့ဖျော့ မြင်ရသည်။ အရောင်က စာသားကို ဖတ်နိုင်အောင် ထားသည်။'
 link_repo: 'GitHub repository'
 link_hig: 'Apple HIG · ပစ္စည်းများ'

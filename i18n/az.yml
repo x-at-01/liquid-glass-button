@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG mənbələr, SVGO ilə kiçildilib, 20px-də göstərilir
 footer_2: 'Apple loqosu Apple Inc.-in ticarət nişanıdır, yalnız App Store düyməsini nümayiş etdirmək üçün istifadə olunur.'
 lang_choose: 'Dil seçin'
 lang_aria: 'Dili dəyiş'
-stage_hint: 'Kursoru düymənin üstünə aparın.'
+stage_hint: Kursoru düymənin üstünə aparın
 light_hint: 'İşıqlı səthdə şüşə solğun görünür; ton mətni oxunaqlı saxlayır.'
 link_repo: 'GitHub repozitoriyası'
 link_hig: 'Apple HIG · Materiallar'

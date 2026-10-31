@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG-grunnar, minnkaðar með SVGO, birtar í 20px.'
 footer_2: 'Apple-merkið er vörumerki Apple Inc., notað eingöngu til að sýna App Store-hnapp.'
 lang_choose: 'Veldu tungumál'
 lang_aria: 'Skipta um tungumál'
-stage_hint: 'Færðu bendilinn yfir hnappinn.'
+stage_hint: Færðu bendilinn yfir hnappinn
 light_hint: 'Glerið er dauflegt á ljósum fleti; liturinn heldur textanum læsilegum.'
 link_repo: 'GitHub-geymsla'
 link_hig: 'Apple HIG · Efni'

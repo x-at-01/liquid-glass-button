@@ -21,7 +21,7 @@ spec_icon_p: 'Fontes SVG de 24px, minificadas con SVGO, mostradas a 20px.'
 footer_2: 'O logotipo de Apple é unha marca de Apple Inc., usado só para mostrar un botón da App Store.'
 lang_choose: 'Escolle idioma'
 lang_aria: 'Cambiar idioma'
-stage_hint: 'Move o punteiro sobre o botón.'
+stage_hint: Move o punteiro sobre o botón
 light_hint: 'O vidro é tenue sobre superficies claras; o ton mantén o texto lexible.'
 link_repo: 'Repositorio de GitHub'
 link_hig: 'Apple HIG · Materiais'

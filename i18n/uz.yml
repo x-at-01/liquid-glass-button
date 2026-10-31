@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG manbalar, SVGO bilan kichraytirilgan, 20px da ko''rsatila
 footer_2: 'Apple logotipi Apple Inc. savdo belgisi bo''lib, faqat App Store tugmasini namoyish qilish uchun ishlatilgan.'
 lang_choose: 'Tilni tanlang'
 lang_aria: 'Tilni o''zgartirish'
-stage_hint: 'Kursorni tugma ustiga olib boring.'
+stage_hint: Kursorni tugma ustiga olib boring
 light_hint: 'Yorug'' yuzada shisha xira ko''rinadi; rang matnni o''qilishi saqlaydi.'
 link_repo: 'GitHub repozitoriyasi'
 link_hig: 'Apple HIG · Materiallar'

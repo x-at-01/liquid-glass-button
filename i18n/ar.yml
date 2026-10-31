@@ -21,7 +21,7 @@ spec_icon_p: ملفات SVG بمقاس 24px مضغوطة بـ SVGO وتُعرض 
 footer_2: شعار Apple علامة تجارية لشركة Apple Inc.، وللعرض التوضيحي فقط.
 lang_choose: اختر اللغة
 lang_aria: تغيير اللغة
-stage_hint: مرّر المؤشر لترى.
+stage_hint: مرّر المؤشر لترى
 light_hint: على خلفية فاتحة يبدو الزجاج باهتًا؛ والصبغة تحفظ وضوح النص.
 link_repo: مستودع GitHub
 link_hig: Apple HIG · الخامات

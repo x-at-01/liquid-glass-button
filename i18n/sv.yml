@@ -21,7 +21,7 @@ spec_icon_p: SVG-källor 24px, minifierade med SVGO, visas i 20px.
 footer_2: Apple-logotypen är ett varumärke för Apple Inc. och används endast som demonstration.
 lang_choose: Välj språk
 lang_aria: Byt språk
-stage_hint: Håll muspekaren över.
+stage_hint: Håll muspekaren över
 light_hint: På ljus botten ser glaset blekt ut; tonen håller texten läsbar.
 link_repo: GitHub-repositoriet
 link_hig: Apple HIG · Material

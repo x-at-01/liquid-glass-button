@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG šaltiniai, sumažinti su SVGO, rodomi 20px.'
 footer_2: '„Apple“ logotipas yra „Apple Inc.“ prekės ženklas, naudojamas tik demonstruojant „App Store“ mygtuką.'
 lang_choose: 'Pasirinkite kalbą'
 lang_aria: 'Keisti kalbą'
-stage_hint: 'Užveskite žymeklį ant mygtuko.'
+stage_hint: Užveskite žymeklį ant mygtuko
 light_hint: 'Šviesiame fone stiklas blyškus; atspalvis palaiko teksto įskaitomumą.'
 link_repo: '„GitHub“ saugykla'
 link_hig: 'Apple HIG · Medžiagos'

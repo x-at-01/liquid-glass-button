@@ -21,7 +21,7 @@ spec_icon_p: 24px SVG 원본을 SVGO 로 압축해 20px 로 표시.
 footer_2: Apple 로고는 Apple Inc. 상표이며 데모 목적으로만 사용했습니다.
 lang_choose: 언어 선택
 lang_aria: 언어 변경
-stage_hint: 마우스를 올려 보세요.
+stage_hint: 마우스를 올려 보세요
 light_hint: 밝은 배경에서는 유리가 옅게 보이므로 하단 색으로 글자 대비를 지킵니다.
 link_repo: GitHub 저장소
 link_hig: Apple HIG · 머티리얼

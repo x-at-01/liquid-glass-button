@@ -21,7 +21,7 @@ spec_icon_p: 'Vyanzo vya SVG 24px, vilivyopunguzwa kwa SVGO, vinaonyeshwa kwa 20
 footer_2: 'Nembo ya Apple ni alama ya biashara ya Apple Inc., inatumika tu kuonyesha kitufe cha App Store.'
 lang_choose: 'Chagua lugha'
 lang_aria: 'Badilisha lugha'
-stage_hint: 'Sogeza kielekezi juu ya kitufe.'
+stage_hint: Sogeza kielekezi juu ya kitufe
 light_hint: 'Glasi huonekana hafifu kwenye uso mwepesi; rangi ya msingi huweka maandishi yasomeke.'
 link_repo: 'Hifadhi ya GitHub'
 link_hig: 'Apple HIG · Nyenzo'

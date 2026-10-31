@@ -21,7 +21,7 @@ spec_icon_p: 'Sorsi SVG ta'' 24px, minimizzati b''SVGO, murija f''20px.'
 footer_2: 'Il-logo Apple hija trade mark ta'' Apple Inc., użata biss biex turi buttuna tal-App Store.'
 lang_choose: 'Agħżel il-lingwa'
 lang_aria: 'Ibdel il-lingwa'
-stage_hint: 'Mexxi l-pointer fuq il-buttuna.'
+stage_hint: Mexxi l-pointer fuq il-buttuna
 light_hint: 'Il-ħġieġ huwa ċar fuq wiċċ ċar; it-tint iżomm it-test jinqara.'
 link_repo: 'Repożitorju GitHub'
 link_hig: 'Apple HIG · Materjali'

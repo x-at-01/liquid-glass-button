@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG-Quellen, mat SVGO miniméiert, op 20px ugewisen.'
 footer_2: 'D''Apple-Logo ass eng Handelsmark vun Apple Inc., just benotzt fir en App-Store-Knäppchen ze weisen.'
 lang_choose: 'Sprooch auswielen'
 lang_aria: 'Sprooch wiesselen'
-stage_hint: 'Beweeg de Pointer iwwer de Knäppchen.'
+stage_hint: Beweeg de Pointer iwwer de Knäppchen
 light_hint: 'Glas ass blatzeg op enger heller Uewerfläch; den Tint hält den Text liesbar.'
 link_repo: 'GitHub-Repository'
 link_hig: 'Apple HIG · Materialien'

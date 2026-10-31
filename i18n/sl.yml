@@ -21,7 +21,7 @@ spec_icon_p: '24px viri SVG, minimizirani s SVGO, prikazani pri 20px.'
 footer_2: 'Logotip Apple je blagovna znamka Apple Inc., uporabljen samo za prikaz gumba App Store.'
 lang_choose: 'Izberite jezik'
 lang_aria: 'Spremeni jezik'
-stage_hint: 'Premaknite kazalec na gumb.'
+stage_hint: Premaknite kazalec na gumb
 light_hint: 'Steklo je na svetli podlagi bledo; odtenek ohranja berljivost besedila.'
 link_repo: 'Repozitorij GitHub'
 link_hig: 'Apple HIG · Materiali'

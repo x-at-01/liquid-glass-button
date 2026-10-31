@@ -21,7 +21,7 @@ spec_icon_p: 'Ffynonellau SVG 24px, wedi''u lleihau gyda SVGO, yn cael eu dangos
 footer_2: 'Mae logo Apple yn nod masnach Apple Inc., wedi''i ddefnyddio dim ond i ddangos botwm App Store.'
 lang_choose: 'Dewiswch iaith'
 lang_aria: 'Newid iaith'
-stage_hint: 'Symudwch y cyfeiriwr dros y botwm.'
+stage_hint: Symudwch y cyfeiriwr dros y botwm
 light_hint: 'Mae''r gwydr yn wan ar wyneb golau; mae''r arlliw yn cadw''r testun yn ddarllenadwy.'
 link_repo: 'Ystorfa GitHub'
 link_hig: 'Apple HIG · Deunyddiau'

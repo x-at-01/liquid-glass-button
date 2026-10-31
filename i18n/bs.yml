@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG izvori, minificirani sa SVGO, prikazani na 20px.'
 footer_2: 'Apple logotip je zaštitni znak Apple Inc., korišten samo za prikaz App Store dugmeta.'
 lang_choose: 'Odaberite jezik'
 lang_aria: 'Promijeni jezik'
-stage_hint: 'Pomjerite pokazivač na dugme.'
+stage_hint: Pomjerite pokazivač na dugme
 light_hint: 'Staklo je na svijetloj podlozi blijedo; ton drži tekst čitljivim.'
 link_repo: 'GitHub repozitorij'
 link_hig: 'Apple HIG · Materijali'

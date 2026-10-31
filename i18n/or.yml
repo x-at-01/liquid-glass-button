@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG ଉତ୍ସ, SVGO ରେ ସଂକୁଚିତ, 20px ର
 footer_2: 'Apple ଲୋଗୋ Apple Inc. ର ଟ୍ରେଡମାର୍କ, କେବଳ App Store ବଟନ୍ ଦେଖାଇବା ପାଇଁ ବ୍ୟବହୃତ।'
 lang_choose: 'ଭାଷା ବାଛନ୍ତୁ'
 lang_aria: 'ଭାଷା ବଦଳାନ୍ତୁ'
-stage_hint: 'ପଏଣ୍ଟରକୁ ବଟନ୍ ଉପରେ ନିଅନ୍ତୁ।'
+stage_hint: ପଏଣ୍ଟରକୁ ବଟନ୍ ଉପରେ ନିଅନ୍ତୁ
 light_hint: 'ଉଜ୍ଜ୍ୱଳ ପୃଷ୍ଠରେ ଗ୍ଲାସ୍ ଫିକା; ଟିଣ୍ଟ ଲେଖାକୁ ପଠନୀୟ ରଖେ।'
 link_repo: 'GitHub ରିପୋଜିଟୋରୀ'
 link_hig: 'Apple HIG · ସାମଗ୍ରୀ'

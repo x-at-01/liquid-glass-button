@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG források, SVGO-val minimalizálva, 20px-en megjelenítve
 footer_2: 'Az Apple logó az Apple Inc. védjegye, csak App Store gomb bemutatására használjuk.'
 lang_choose: 'Nyelv választása'
 lang_aria: 'Nyelv váltása'
-stage_hint: 'Vigye a kurzort a gomb fölé.'
+stage_hint: Vigye a kurzort a gomb fölé
 light_hint: 'Világos felületen az üveg halvány; a színezet olvashatóvá teszi a szöveget.'
 link_repo: 'GitHub tároló'
 link_hig: 'Apple HIG · Anyagok'

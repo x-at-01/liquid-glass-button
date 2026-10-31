@@ -21,7 +21,7 @@ spec_icon_p: 'Sumber SVG 24px, dicilikake nganggo SVGO, ditampilake ing 20px.'
 footer_2: 'Logo Apple iku merek dagang Apple Inc., mung dienggo nuduhake tombol App Store.'
 lang_choose: 'Pilih basa'
 lang_aria: 'Ganti basa'
-stage_hint: 'Pindhahake penunjuk menyang tombol.'
+stage_hint: Pindhahake penunjuk menyang tombol
 light_hint: 'Ing lumah padhang kaca katon pucet; tint njaga teks tetep bisa diwaca.'
 link_repo: 'Repositori GitHub'
 link_hig: 'Apple HIG · Bahan'

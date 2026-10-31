@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG উৎস, SVGO দিয়ে সংকুচিত, 20
 footer_2: 'Apple লোগো Apple Inc.-এর ট্রেডমার্ক, শুধু App Store বোতাম দেখাতে ব্যবহৃত।'
 lang_choose: 'ভাষা বাছুন'
 lang_aria: 'ভাষা বদলান'
-stage_hint: 'পয়েন্টার বোতামের ওপর নিন।'
+stage_hint: পয়েন্টার বোতামের ওপর নিন
 light_hint: 'উজ্জ্বল পৃষ্ঠে কাচ ফ্যাকাশে; টিন্ট লেখা পাঠযোগ্য রাখে।'
 link_repo: 'GitHub রিপোজিটরি'
 link_hig: 'Apple HIG · উপকরণ'

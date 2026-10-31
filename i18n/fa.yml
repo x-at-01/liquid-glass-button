@@ -21,7 +21,7 @@ spec_icon_p: 'منابع SVG 24px، فشرده‌شده با SVGO، نمایش �
 footer_2: 'لوگوی Apple علامت تجاری Apple Inc. است و فقط برای نمایش دکمه App Store استفاده شده.'
 lang_choose: 'انتخاب زبان'
 lang_aria: 'تغییر زبان'
-stage_hint: 'نشانگر را روی دکمه ببرید.'
+stage_hint: نشانگر را روی دکمه ببرید
 light_hint: 'شیشه روی سطح روشن کم‌رنگ است؛ رنگ زمینه متن را خوانا نگه می‌دارد.'
 link_repo: 'مخزن GitHub'
 link_hig: 'Apple HIG · مواد'

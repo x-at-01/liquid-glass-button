@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG-kilder, minifisert med SVGO, vist i 20px.'
 footer_2: 'Apple-logoen er et varemerke for Apple Inc., brukt kun for å vise en App Store-knapp.'
 lang_choose: 'Velg språk'
 lang_aria: 'Bytt språk'
-stage_hint: 'Flytt pekeren over knappen.'
+stage_hint: Flytt pekeren over knappen
 light_hint: 'Glasset er svakt på lyse flater; tonen holder teksten lesbar.'
 link_repo: 'GitHub-repositorium'
 link_hig: 'Apple HIG · Materialer'

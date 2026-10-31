@@ -21,7 +21,7 @@ spec_icon_p: '24px SVG উৎস, SVGO ৰে সৰু কৰা, 20px ত দ�
 footer_2: 'Apple ল''গ'' Apple Inc. ৰ ট্ৰেডমাৰ্ক, কেৱল App Store বুটাম দেখুৱাবলৈ ব্যৱহাৰ কৰা হৈছে।'
 lang_choose: 'ভাষা বাছনি কৰক'
 lang_aria: 'ভাষা সলনি কৰক'
-stage_hint: 'পইণ্টাৰ বুটামৰ ওপৰত লৈ যাওক।'
+stage_hint: পইণ্টাৰ বুটামৰ ওপৰত লৈ যাওক
 light_hint: 'পোহৰীয়া পৃষ্ঠত গ্লাছ ম্লান; টিণ্টে লিখন পঢ়িব পৰা কৰি ৰাখে।'
 link_repo: 'GitHub ৰিপ''জিটৰি'
 link_hig: 'Apple HIG · সামগ্ৰী'

@@ -21,7 +21,7 @@ spec_icon_p: Fuentes SVG de 24px, minificadas con SVGO, mostradas a 20px.
 footer_2: El logotipo de Apple es una marca de Apple Inc., usado solo como demostración.
 lang_choose: Elegir idioma
 lang_aria: Cambiar idioma
-stage_hint: Pasa el cursor para verlo.
+stage_hint: Pasa el cursor para verlo
 light_hint: Sobre fondo claro el vidrio se ve pálido; el tinte mantiene legible el texto.
 link_repo: Repositorio en GitHub
 link_hig: Apple HIG · Materiales

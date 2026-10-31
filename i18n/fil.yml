@@ -21,7 +21,7 @@ spec_icon_p: '24px na SVG source, pinapaliit ng SVGO, ipinapakita sa 20px.'
 footer_2: 'Ang logo ng Apple ay trademark ng Apple Inc., ginagamit lamang upang ipakita ang App Store na button.'
 lang_choose: 'Pumili ng wika'
 lang_aria: 'Palitan ang wika'
-stage_hint: 'Ilipat ang pointer sa button.'
+stage_hint: Ilipat ang pointer sa button
 light_hint: 'Ang salamin ay maputla sa maliwanag na ibabaw; pinapanatili ng tint na madaling basahin ang teksto.'
 link_repo: 'GitHub repository'
 link_hig: 'Apple HIG · Mga materyal'

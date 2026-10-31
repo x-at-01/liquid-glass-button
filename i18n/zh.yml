@@ -21,7 +21,7 @@ spec_icon_p: SVG 24px 源，SVGO 压缩；按钮内以 20px 呈现。
 footer_2: Apple 标志为 Apple Inc. 商标，仅作演示。
 lang_choose: 选择语言
 lang_aria: 切换语言
-stage_hint: 把鼠标移到按钮上试试。
+stage_hint: 把鼠标移到按钮上试试
 light_hint: 浅色底上玻璃偏淡，用底色保持文字对比。
 link_repo: GitHub 仓库
 link_hig: Apple HIG · 材质
