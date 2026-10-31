@@ -115,7 +115,6 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 
 pre{margin:26px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
   overflow:auto;font:400 12.5px/1.65 var(--mono);color:var(--ink)}
-.section--tint pre{background:#fff}
 code{font-family:var(--mono)}
 
 .principles{display:grid;gap:16px;margin:30px 0 0;max-width:760px}
@@ -123,6 +122,20 @@ code{font-family:var(--mono)}
   border-top:1px solid var(--line);padding-top:14px}
 .principle .n{font:400 12px/1 var(--mono);color:var(--muted)}
 .principle p{margin:0;font-size:15px;line-height:1.6;color:var(--ink)}
+
+/* ---------- 素材包下载（开头独立区块） ---------- */
+.pack-sec{padding:60px 0 0}
+.pack{display:flex;align-items:center;justify-content:space-between;gap:32px;
+  padding:30px 32px;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(180deg,#fbfbfd,#f4f4f7);
+  box-shadow:0 20px 44px -38px rgba(16,24,40,.45)}
+.pack-head{min-width:0}
+.pack-head h2{font-size:22px;margin:0 0 6px}
+.pack-head p{margin:0;max-width:520px;color:var(--muted);font-size:14.5px;line-height:1.55}
+.pack-files{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:0;list-style:none}
+.pack-files li{font:400 12px/1 var(--mono);color:var(--muted);background:#fff;
+  border:1px solid var(--line);border-radius:999px;padding:5px 9px}
+.pack .btn{flex:none}
 
 .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 44px;margin-top:34px}
 .spec{border-top:1px solid var(--line);padding-top:16px}
@@ -144,6 +157,8 @@ footer p{margin:0 0 10px}
   .stage{padding:48px 18px 40px;border-radius:18px}
   .card{padding:26px 20px 22px}
   .btn{--pill-h:48px;--cap:24px;font-size:16px}
+  .pack{flex-direction:column;align-items:stretch;gap:20px;padding:24px 20px}
+  .pack .btn{justify-content:center}
   .topbar .wrap{height:52px}
 }
 

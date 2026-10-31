@@ -31,3 +31,5 @@ svg_p1: 'Verplaatsingskaart: op exacte knopgrootte gemaakt — R bevat de x-verp
 svg_p2: 'Dispersie: drie passes over dezelfde kaart met iets verschillende schalen; de R/G/B-kanalen worden gesplitst en met screen samengevoegd, waardoor de rand als echt glas uiteenvalt.'
 svg_p3: 'Randmasker: het B-kanaal maskeert het resultaat — alleen de rand breekt, het midden onder het label blijft onaangetast.'
 link_pack: Pakket downloaden (tar.xz)
+pack_h: Het pakket
+pack_p: 'Uitpakken en openen: een zelfstandige demo, de styles, de runtime en de filtersjabloon.'

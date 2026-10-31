@@ -31,3 +31,5 @@ svg_p1: 'Mappa di spostamento: generata alla dimensione esatta del pulsante; R c
 svg_p2: 'Dispersione: tre passaggi sulla stessa mappa con scale leggermente diverse; i canali R/G/B vengono separati e uniti in screen, e il bordo si disperde come vetro vero.'
 svg_p3: 'Maschera di bordo: il canale B maschera il risultato; solo il bordo rifrange, il centro sotto l''etichetta resta intatto.'
 link_pack: Scarica il pacchetto (tar.xz)
+pack_h: Il pacchetto
+pack_p: 'Estrai e apri: una demo autonoma, gli stili, il runtime e il modello del filtro.'

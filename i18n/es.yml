@@ -31,3 +31,5 @@ svg_p1: 'Mapa de desplazamiento: generado al tamaño exacto del botón; R guarda
 svg_p2: 'Dispersión: tres pasadas sobre el mismo mapa con escalas ligeramente distintas; los canales R/G/B se separan y se mezclan en screen, y el borde dispersa como vidrio real.'
 svg_p3: 'Máscara de borde: el canal B enmascara el resultado; solo el borde refracta y el centro bajo la etiqueta queda intacto.'
 link_pack: Descargar el paquete (tar.xz)
+pack_h: El paquete
+pack_p: 'Descomprime y abre: una demo autónoma, los estilos, el runtime y la plantilla del filtro.'

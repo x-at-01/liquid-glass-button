@@ -31,3 +31,5 @@ svg_p1: 'Displacement map: generated for the button''s exact size — R holds th
 svg_p2: 'Dispersion: three passes over the same map with slightly different scales; the R/G/B channels are split and screen-blended, so the rim disperses like real glass.'
 svg_p3: 'Edge mask: the B channel masks the result — only the rim refracts, the centre under the label stays untouched.'
 link_pack: Download the bundle (tar.xz)
+pack_h: The bundle
+pack_p: 'Unzip and open: a standalone demo, the styles, the runtime and the filter template.'

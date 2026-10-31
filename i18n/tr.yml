@@ -31,3 +31,5 @@ svg_p1: 'Yer değiştirme haritası: düğmenin tam boyutunda üretilir — R x 
 svg_p2: 'Dağılma: aynı harita üzerinde biraz farklı ölçeklerle üç geçiş; R/G/B kanalları ayrılıp screen ile birleştirilir, kenar gerçek cam gibi dağılır.'
 svg_p3: 'Kenar maskesi: B kanalı sonucu maskeler — yalnızca kenar kırılır, etiketin altındaki merkez hiç etkilenmez.'
 link_pack: Paketi indir (tar.xz)
+pack_h: Paket
+pack_p: 'Açıp kullanın: bağımsız bir demo, stiller, çalışma zamanı ve filtre şablonu.'

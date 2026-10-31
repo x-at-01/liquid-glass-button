@@ -31,3 +31,5 @@ svg_p1: 'Peta pergeseran: dibuat sesuai ukuran tombol — R menyimpan pergeseran
 svg_p2: 'Dispersi: tiga lintasan pada peta yang sama dengan skala sedikit berbeda; kanal R/G/B dipisah lalu digabung dengan screen, tepi menyebar seperti kaca sungguhan.'
 svg_p3: 'Mask tepi: kanal B memask hasilnya — hanya tepi yang membias, bagian tengah di bawah label tetap utuh.'
 link_pack: Unduh paket (tar.xz)
+pack_h: Paket
+pack_p: 'Ekstrak dan buka: demo mandiri, gaya, runtime, dan templat filter.'

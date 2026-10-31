@@ -39,6 +39,23 @@ html(lang=code, dir=dir)
             span= t.btn_appstore
         p.hint= t.stage_hint
 
+    //- 素材包：开头独立区块，按钮本身就是示范
+    section.pack-sec
+      .wrap
+        .pack
+          .pack-head
+            h2= t.pack_h
+            p= t.pack_p
+            ul.pack-files
+              li demo.html
+              li style.css
+              li app.js
+              li glass-filters.svg
+              li icons/
+          a.btn.btn--blue(href="../liquid-glass-button.tar.xz", download)
+            img.dl(src="../assets/icons/download.svg", alt="")
+            span= t.link_pack
+
     section.section
       .wrap
         .section-head
@@ -138,7 +155,6 @@ html(lang=code, dir=dir)
         .foot-links
           a(href="https://github.com/x-at-01/liquid-glass-button")= t.link_repo
           a(href="https://developer.apple.com/design/human-interface-guidelines/materials")= t.link_hig
-          a(href="../liquid-glass-button.tar.xz", download)= t.link_pack
         p= t.footer_2
 
     //- SVG 滤镜（构建时从 assets/glass-filters.svg 内联；运行时按按钮尺寸 clone）

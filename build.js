@@ -29,8 +29,10 @@ const ymlRead = (path) => load(textRead(path));
 
 // assets/glass-filters.svg 可独立预览；内联时去掉最外层 <svg> 包裹
 const filterSvg = textRead(FILTER_FILE)
+  .replace(/<!--[\s\S]*?-->/g, "") // 内联不带注释，文件里保留文档
   .replace(/^[\s\S]*?<svg[^>]*>/, "")
   .replace(/<\/svg\s*>\s*$/, "")
+  .replace(/>\s+</g, "><")
   .trim();
 
 const langLi = ymlRead(LANG_FILE);

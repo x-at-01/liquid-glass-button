@@ -31,3 +31,5 @@ svg_p1: 'Mapa przesunięć: generowana w dokładnym rozmiarze przycisku — R pr
 svg_p2: 'Dyspersja: trzy przebiegi na tej samej mapie z nieco różnymi skalami; kanały R/G/B są rozdzielane i łączone w trybie screen, dzięki czemu krawędź rozprasza światło jak prawdziwe szkło.'
 svg_p3: 'Maska krawędzi: kanał B maskuje wynik — załamuje tylko krawędź, środek pod etykietą pozostaje nietknięty.'
 link_pack: Pobierz paczkę (tar.xz)
+pack_h: Paczka
+pack_p: 'Rozpakuj i otwórz: samodzielna demonstracja, style, runtime i szablon filtra.'

@@ -31,3 +31,5 @@ svg_p1: 'Verschiebungskarte: in exakter Button-Größe erzeugt — R hält den x
 svg_p2: 'Dispersion: drei Durchläufe über dieselbe Karte mit leicht unterschiedlichen Skalen; die R/G/B-Kanäle werden getrennt und per screen überblendet — der Rand streut wie echtes Glas.'
 svg_p3: 'Randmaske: der B-Kanal maskiert das Ergebnis — nur der Rand bricht, die Mitte unter dem Label bleibt unberührt.'
 link_pack: Paket herunterladen (tar.xz)
+pack_h: Das Paket
+pack_p: 'Entpacken und öffnen: eine eigenständige Demo, die Styles, die Runtime und die Filtervorlage.'

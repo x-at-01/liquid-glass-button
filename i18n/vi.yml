@@ -31,3 +31,5 @@ svg_p1: 'Bản đồ dịch chuyển: tạo theo đúng kích thước nút — 
 svg_p2: 'Tán sắc: ba lượt trên cùng bản đồ với tỉ lệ hơi khác nhau; các kênh R/G/B được tách ra rồi trộn bằng screen, mép tán sắc như thuỷ tinh thật.'
 svg_p3: 'Mặt nạ mép: kênh B làm mặt nạ — chỉ mép khúc xạ, phần giữa dưới nhãn hoàn toàn không bị ảnh hưởng.'
 link_pack: Tải gói (tar.xz)
+pack_h: Gói tài nguyên
+pack_p: 'Giải nén và mở: trang demo độc lập, kiểu dáng, runtime và mẫu bộ lọc.'

@@ -31,3 +31,5 @@ svg_p1: 'Förskjutningskarta: skapas i knappens exakta storlek — R håller x-f
 svg_p2: 'Dispersion: tre pass över samma karta med något olika skalor; R/G/B-kanalerna delas upp och blandas med screen, så kanten bryts som riktigt glas.'
 svg_p3: 'Kantmask: B-kanalen maskar resultatet — bara kanten bryter, mitten under etiketten förblir orörd.'
 link_pack: Ladda ner paketet (tar.xz)
+pack_h: Paketet
+pack_p: 'Packa upp och öppna: en fristående demo, stilen, runtimem och filtermallen.'

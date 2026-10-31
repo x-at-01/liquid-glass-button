@@ -31,3 +31,5 @@ svg_p1: 'Carte de déplacement : générée à la taille exacte du bouton — R 
 svg_p2: 'Dispersion : trois passes sur la même carte avec des échelles légèrement différentes ; les canaux R/G/B sont séparés puis fusionnés en screen, le bord se disperse comme du vrai verre.'
 svg_p3: 'Masque de bord : le canal B masque le résultat — seul le bord réfracte, le centre sous le libellé reste intact.'
 link_pack: Télécharger le pack (tar.xz)
+pack_h: Le pack
+pack_p: 'Dézippez et ouvrez : une démo autonome, les styles, le runtime et le modèle de filtre.'
