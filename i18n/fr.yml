@@ -5,29 +5,19 @@ lead: Un bouton en verre liquide qui s'étire avec son libellé, avec une vraie 
 btn_download: Télécharger
 btn_appstore: App Store
 sec_width_h: La largeur vient du texte
-sec_width_p: 'Un seul jeu d''images : plus le libellé est long, plus le bouton s''élargit, les extrémités ne bougent pas.'
+sec_width_p: 'Plus le libellé est long, plus le bouton s''élargit — la courbure des extrémités ne change pas.'
 w_short: Télécharger
 w_appstore: App Store
 w_long: Télécharger pour macOS
-sec_assets_h: Ressources en trois parties (4×)
-sec_assets_p: Extrémités de 112px, centre répétable, jointures identiques au pixel.
-cap_sheet: ensemble
-cap_left: gauche
-cap_mid: centre
-cap_right: droite
-cap_tile: repeat-x — aucune déformation
 sec_usage_h: Utilisation
-sec_usage_p: Un seul élément pour l'étirement en neuf tranches ; hover et active changent le filtre.
+sec_usage_p: 'Un seul élément suffit : forme, bord et profondeur sont des dégradés et des ombres ; la réfraction du bord vient d''un filtre généré à la taille exacte.'
 sec_spec_h: Spécifications
 spec_font_h: Typographie
 spec_font_p: SF Pro Display / SF Pro Text ; corps 17px/1.47, interlettrage -0.022em ; titres 48px/1.08.
 spec_btn_h: Bouton
 spec_btn_p: 56px de haut (48px sur mobile), 28px sur les côtés, rayon 980px.
-spec_asset_h: Ressources
-spec_asset_p: WebP 4× sans perte (224px de haut, affiché à 56px), transparence conservée.
 spec_icon_h: Icônes
 spec_icon_p: Sources SVG 24px, minifiées avec SVGO, rendues à 20px.
-footer_1: Matière générée par Qwen-Image-2.1 (alpha natif) ; forme et lumière redessinées en procédural ; réfraction des bords via SVG feDisplacementMap.
 footer_2: Le logo Apple est une marque d'Apple Inc., utilisé à titre de démonstration.
 lang_choose: Choisir la langue
 lang_aria: Changer de langue
@@ -35,6 +25,9 @@ stage_hint: Survolez pour voir.
 light_hint: Sur fond clair le verre paraît pâle ; la teinte garde le texte lisible.
 link_repo: Dépôt GitHub
 link_hig: Apple HIG · Matériaux
-link_model: 'Matière : Qwen-Image-2.1'
-sec_svg_h: SVG pur
-sec_svg_p: 'Aucune image bitmap : le corps, la lumière de bord et la profondeur sont des dégradés et ombres CSS ; la réfraction des bords reste assurée par le filtre de déplacement SVG.'
+sec_svg_h: Comment fonctionne le SVG
+sec_svg_p: 'L''effet liquide vient du bord : une carte de déplacement est générée à la taille exacte, trois passes créent la dispersion, et un masque de bord garde le centre net.'
+svg_p1: 'Carte de déplacement : générée à la taille exacte du bouton — R contient le décalage x, G le décalage y, B l''intensité du bord (0 au centre, 255 au bord).'
+svg_p2: 'Dispersion : trois passes sur la même carte avec des échelles légèrement différentes ; les canaux R/G/B sont séparés puis fusionnés en screen, le bord se disperse comme du vrai verre.'
+svg_p3: 'Masque de bord : le canal B masque le résultat — seul le bord réfracte, le centre sous le libellé reste intact.'
+link_pack: Télécharger le pack (tar.xz)

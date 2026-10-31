@@ -14,6 +14,7 @@ const DOCS_DIR = join(ROOT, "docs");
 const ASSETS_DIR = join(ROOT, "assets");
 const LANG_FILE = join(I18N_DIR, "langs.yml");
 const PAGE_TMPL = join(SRC_DIR, "index.pug");
+const DEMO_TMPL = join(SRC_DIR, "demo.pug");
 const CSS_FILE = join(SRC_DIR, "style.css");
 const APP_FILE = join(SRC_DIR, "app.js");
 const FILTER_FILE = join(ASSETS_DIR, "glass-filters.svg");
@@ -88,6 +89,30 @@ rmSync(OUT_DIR, { recursive: true, force: true });
 dictLi.forEach(([code, dict]) => pageBuild(code, dict, ownLi));
 writeFileSync(join(OUT_DIR, "index.html"), rootPage);
 cpSync(ASSETS_DIR, join(OUT_DIR, "assets"), { recursive: true });
+
+// 素材包：独立演示页 + CSS + 运行时 JS + 滤镜模板 + 图标 → tar.xz
+const PACK_NAME = "liquid-glass-button",
+  PACK_DIR = join(OUT_DIR, PACK_NAME),
+  PACK_FILE = join(OUT_DIR, PACK_NAME + ".tar.xz");
+
+mkdirSync(join(PACK_DIR, "icons"), { recursive: true });
+writeFileSync(
+  join(PACK_DIR, "demo.html"),
+  pug.renderFile(DEMO_TMPL, {
+    css: textRead(CSS_FILE),
+    appJs: textRead(APP_FILE),
+    filterSvg,
+  })
+);
+cpSync(CSS_FILE, join(PACK_DIR, "style.css"));
+cpSync(APP_FILE, join(PACK_DIR, "app.js"));
+cpSync(FILTER_FILE, join(PACK_DIR, "glass-filters.svg"));
+cpSync(join(ASSETS_DIR, "icons"), join(PACK_DIR, "icons"), { recursive: true });
+{
+  const run = Bun.spawnSync(["tar", "-cJf", PACK_FILE, "-C", OUT_DIR, PACK_NAME]);
+  if (run.exitCode !== 0) throw new Error("tar failed: " + run.stderr.toString());
+}
+rmSync(PACK_DIR, { recursive: true, force: true });
 
 rmSync(DOCS_DIR, { recursive: true, force: true });
 cpSync(OUT_DIR, DOCS_DIR, { recursive: true });

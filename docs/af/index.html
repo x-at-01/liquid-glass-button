@@ -53,63 +53,51 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .stage>*{position:relative;z-index:1}
 .cta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center}
 
-/* ---------- 按钮 ---------- */
+/* ---------- 按钮：形体、棱边与深度全部由 CSS 绘制，边缘折射交给按尺寸生成的 SVG 滤镜 ---------- */
 .btn{
   appearance:none;position:relative;
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  height:var(--pill-h,56px);width:auto;padding:0;margin:0;
-  border:0 solid transparent;border-left-width:var(--cap,28px);border-right-width:var(--cap,28px);
-  border-image-source:url(../assets/glass/black-sheet.webp);
-  border-image-slice:0 112 0 112 fill;
-  border-image-width:0 var(--cap,28px) 0 var(--cap,28px);
-  border-image-repeat:stretch;
-  border-radius:980px;background:var(--tint,rgba(10,10,12,.62));color:rgba(255,255,255,.90);
-  font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
-  white-space:nowrap;cursor:pointer;text-decoration:none;
-  box-shadow:0 4px 10px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.16);
-  backdrop-filter:blur(20px) saturate(180%);
-  transition:box-shadow .18s ease,transform .18s ease,background-color .18s ease,color .18s ease,text-shadow .12s ease;
-}
-.btn--black{border-image-source:url(../assets/glass/black-sheet.webp);--tint:rgba(10,10,12,.62)}
-.btn--blue{border-image-source:url(../assets/glass/blue-sheet.webp);--tint:rgba(8,38,140,.66)}
-/* ---------- 纯 SVG/CSS 材质：不加载任何位图。瓶身、棱边高光和深度由渐变与阴影绘制，
-   边缘折射复用同一个运行时 SVG 位移滤镜（.btn 的玻璃滤镜对 .btn.svg 一并生效）。 ---------- */
-.btn.svg{
-  /* 不要描边、不要四边等亮的白线——那是塑料模压。玻璃的棱边只是一段反光：
-     顶上最亮、向两侧转角衰减到零，用一条宽而柔的径向亮带实现，没有 1px 细线。 */
-  border:0;border-radius:980px;padding:0 var(--cap,28px);
-  /* 顶缘只有一条宽而柔的亮带：贴边最亮、往里 6–8px 渐隐（素材版就是这样，没有细线） */
+  height:var(--pill-h,56px);width:auto;padding:0 var(--cap,28px);margin:0;
+  border:0;border-radius:980px;
+  /* 顶缘一条宽而柔的亮带：贴边最亮、往里 6–8px 渐隐；底部极轻的压暗 */
   background:
     radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.26),rgba(255,255,255,.08) 30%,rgba(255,255,255,.02) 48%,transparent 62%),
     linear-gradient(180deg,transparent 62%,rgba(0,0,0,.18)),
-    var(--tint,rgba(10,10,12,.62));
-  isolation:isolate; /* ::after 的负 z-index 落在 tint 之上、文字之下 */
-  box-shadow:
-    inset 0 -12px 16px -12px rgba(255,255,255,.10), /* 底缘内侧回光，很弱 */
+    var(--tint,rgba(12,12,14,.82));
+  color:rgba(255,255,255,.90);
+  font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
+  white-space:nowrap;cursor:pointer;text-decoration:none;
+  isolation:isolate; /* 两个伪元素的负 z-index 落在底色之上、文字之下 */
+  box-shadow:inset 0 -12px 16px -12px rgba(255,255,255,.10),
     0 10px 22px -8px rgba(0,0,0,.32), 0 2px 6px rgba(0,0,0,.14);
+  backdrop-filter:blur(20px) saturate(180%);
+  transition:box-shadow .18s ease,transform .18s ease,color .18s ease,text-shadow .12s ease;
 }
-/* SVG 版没有素材自身的浓度，瓶身 tint 相应加深 */
-.btn.svg.btn--black{--tint:rgba(12,12,14,.82)}
-.btn.svg.btn--blue{--tint:rgba(16,54,178,.82)}
-.btn.svg:hover{background:radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.34),rgba(255,255,255,.11) 30%,rgba(255,255,255,.03) 48%,transparent 62%),linear-gradient(180deg,transparent 62%,rgba(0,0,0,.18)),var(--tint);box-shadow:
-  inset 0 -12px 16px -12px rgba(255,255,255,.14),
-  0 14px 28px -10px rgba(0,0,0,.36), 0 2px 6px rgba(0,0,0,.12)}
-.btn.svg:hover::after{background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.22),transparent 58%)}
-.btn.svg:active{box-shadow:
-  inset 0 10px 16px -10px rgba(0,0,0,.35),
-  inset 0 -8px 12px -10px rgba(255,255,255,.08),
-  0 3px 8px rgba(0,0,0,.20), 0 1px 2px rgba(0,0,0,.10)}
-.btn.svg:active::after{opacity:.6}
+.btn--black{--tint:rgba(12,12,14,.82)}
+.btn--blue{--tint:rgba(16,54,178,.82)}
+/* 天光：左上角一团柔光，screen 混合 */
+.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
+  background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.17),transparent 58%);
+  mix-blend-mode:screen;pointer-events:none}
+/* hover 提亮：多叠一层同形亮带，用 opacity 过渡（背景渐变本身不可插值） */
+.btn::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;
+  background:radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.16),transparent 55%);
+  transition:opacity .22s ease;pointer-events:none}
 .btn img{display:block;flex:none;height:1.2em;width:1.2em}
 .btn img.ap{height:1.02em;width:1.02em}
-.btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
-/* 按下：文字保持纯白并加粗（text-stroke，不动字重，宽度不会跳），按钮下沉、投影收紧 */
+.btn:hover{color:#fff;transform:translateY(-1px);
+  box-shadow:inset 0 -12px 16px -12px rgba(255,255,255,.14),
+    0 14px 28px -10px rgba(0,0,0,.36), 0 2px 6px rgba(0,0,0,.12)}
+.btn:hover::before{opacity:1}
 /* 按下：文字像被压进玻璃里 —— 左上暗影（凹）+ 右下微亮棱边（凸），零模糊不改变字宽 */
 .btn:active{color:#fff;
   text-shadow:-1px -1px 0 rgba(0,0,0,.55), 1px 1px 0 rgba(255,255,255,.14),
               .3px 0 0 #fff, -.3px 0 0 #fff;
   transform:translateY(0) scale(.972);
-  box-shadow:0 2px 6px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.20)}
+  box-shadow:inset 0 10px 16px -10px rgba(0,0,0,.35), inset 0 -8px 12px -10px rgba(255,255,255,.08),
+    0 3px 8px rgba(0,0,0,.20), 0 1px 2px rgba(0,0,0,.10)}
+.btn:active::before{opacity:0}
+.btn:active::after{opacity:.6}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
 
 /* ---------- 区块 ---------- */
@@ -125,29 +113,16 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .measure .w{font:400 12px/1 var(--mono);color:#86868b}
 .card .hint{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
 
-/* 素材陈列 */
-.pieces{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:18px;margin-top:30px}
-.pieces figure{margin:0;display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);
-  border-radius:16px;padding:18px 16px 14px;box-shadow:0 12px 30px -26px rgba(16,24,40,.5)}
-.pieces .shot{display:grid;place-items:center;min-height:calc(var(--pill-h,56px) + 20px);border-radius:10px;
-  background-color:#fff;background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
-  background-image:linear-gradient(45deg,#eef1f6 25%,transparent 25%),linear-gradient(-45deg,#eef1f6 25%,transparent 25%),
-                   linear-gradient(45deg,transparent 75%,#eef1f6 75%),linear-gradient(-45deg,transparent 75%,#eef1f6 75%)}
-.pieces img{display:block;height:var(--pill-h,56px);width:auto;max-width:100%}
-.pieces figcaption{font:400 12px/1.3 var(--mono);color:var(--muted)}
-.pieces figcaption b{color:var(--ink);font-weight:600}
-.tile-wrap{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;
-  box-shadow:0 12px 30px -26px rgba(16,24,40,.5)}
-.checker{border-radius:10px;padding:10px;background-color:#fff;background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
-  background-image:linear-gradient(45deg,#eef1f6 25%,transparent 25%),linear-gradient(-45deg,#eef1f6 25%,transparent 25%),
-                   linear-gradient(45deg,transparent 75%,#eef1f6 75%),linear-gradient(-45deg,transparent 75%,#eef1f6 75%)}
-.tile-strip{height:var(--pill-h,56px);width:100%;background-repeat:repeat-x;background-position:left center;background-size:auto 100%}
-.cap{font:400 12px/1.3 var(--mono);color:var(--muted);margin:12px 0 0}
-
 pre{margin:26px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
   overflow:auto;font:400 12.5px/1.65 var(--mono);color:var(--ink)}
 .section--tint pre{background:#fff}
 code{font-family:var(--mono)}
+
+.principles{display:grid;gap:16px;margin:30px 0 0;max-width:760px}
+.principle{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
+  border-top:1px solid var(--line);padding-top:14px}
+.principle .n{font:400 12px/1 var(--mono);color:var(--muted)}
+.principle p{margin:0;font-size:15px;line-height:1.6;color:var(--ink)}
 
 .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 44px;margin-top:34px}
 .spec{border-top:1px solid var(--line);padding-top:16px}
@@ -161,9 +136,6 @@ footer p{margin:0 0 10px}
 .foot-links a:hover{border-color:var(--ink)}
 :where(a){color:var(--blue)}
 
-@media (max-width:900px){
-  .pieces{grid-template-columns:1fr 1fr}
-}
 @media (max-width:734px){
   h1{font-size:34px;line-height:1.12}
   .lead{font-size:19px;line-height:1.42}
@@ -172,7 +144,6 @@ footer p{margin:0 0 10px}
   .stage{padding:48px 18px 40px;border-radius:18px}
   .card{padding:26px 20px 22px}
   .btn{--pill-h:48px;--cap:24px;font-size:16px}
-  .pieces{grid-template-columns:1fr}
   .topbar .wrap{height:52px}
 }
 
@@ -242,29 +213,36 @@ dialog.Box.X>a.X:active::before{opacity:.7}
   .I18n .Btn.Main{border-bottom:1px solid currentColor;border-radius:0;color:#000}
   .I18n .Btn.Main:hover, .I18n .Btn.Main:active{color:#0071e3}
 }
-</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Liquid Glass Button</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Change language" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Liquid Glass Button</h1><p class="lead">A liquid-glass button that stretches with its label, with real edge refraction.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Download</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Hover to see it.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Width comes from the text</h2><p class="sub">One set of assets: the longer the label, the wider the button — the caps never change.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Download</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Download for macOS</span></button><span class="w"></span></div></div><p class="hint">On light surfaces the glass reads pale — the tint keeps the label legible.</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Pure SVG</h2><p class="sub">No bitmaps at all: body, rim light and depth are CSS gradients and shadows — edge refraction is still the SVG displacement filter.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn svg btn--black" type="button"><span>Download</span></button><span class="w"></span></div><div class="measure"><button class="btn svg btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn svg btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Download for macOS</span></button><span class="w"></span></div></div><p class="hint">On light surfaces the glass reads pale — the tint keeps the label legible.</p></div><pre><code>.btn.svg {
-  border: 0; border-radius: 980px; padding: 0 28px;
-  background:
-    /* 顶缘亮带：贴边最亮，往里 6–8px 渐隐，没有 1px 细线 */
-    radial-gradient(125% 112% at 50% -26%, #ffffff42, #ffffff14 30%, #ffffff05 48%, transparent 62%),
-    linear-gradient(180deg, transparent 62%, #0000002e),  /* 底部极轻的压暗 */
-    var(--tint);
-  box-shadow: inset 0 -12px 16px -12px #ffffff1a,   /* 底缘内侧回光 */
-              0 10px 22px -8px #00000052, 0 2px 6px #00000024;
-  backdrop-filter: url(#glass-1) blur(6px) saturate(170%); /* 同一个 SVG 折射滤镜 */
-}
-/* 天光：::after 径向柔光 + mix-blend-mode:screen，负 z-index 压在 tint 上、文字之下 */
-</code></pre></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Three-slice assets (4×)</h2><p class="sub">112px caps, one tileable middle, pixel-identical seams.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>sheet</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>left</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>mid</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>right</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x — no distortion at any width</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Usage</h2><p class="sub">One element does the nine-patch stretch; hover and active swap the filter.</p></div><pre><code>.btn {
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Liquid Glass Button</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Change language" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Liquid Glass Button</h1><p class="lead">A liquid-glass button that stretches with its label, with real edge refraction.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Download</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Hover to see it.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Width comes from the text</h2><p class="sub">The longer the label, the wider the button — the cap curvature never changes.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Download</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Download for macOS</span></button><span class="w"></span></div></div><p class="hint">On light surfaces the glass reads pale — the tint keeps the label legible.</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>How the SVG works</h2><p class="sub">The liquid feel comes from the rim: a displacement map is generated for the exact size, three passes create the dispersion, and an edge mask keeps the centre sharp.</p></div><div class="principles"><div class="principle"><span class="n">01</span><p>Displacement map: generated for the button's exact size — R holds the x offset, G the y offset, B the edge strength (0 in the centre, 255 at the rim).</p></div><div class="principle"><span class="n">02</span><p>Dispersion: three passes over the same map with slightly different scales; the R/G/B channels are split and screen-blended, so the rim disperses like real glass.</p></div><div class="principle"><span class="n">03</span><p>Edge mask: the B channel masks the result — only the rim refracts, the centre under the label stays untouched.</p></div></div><pre><code>/* 1) 按按钮实际尺寸生成位移图（app.js → canvas） */
+R = 128 + x 位移 · G = 128 + y 位移 · B = 边缘强度（中心 0 → 贴边 255）
+
+/* 2) 同一张图做三次位移，scale 略有差异，分离 R/G/B 后 screen 叠加 → 色散 */
+feDisplacementMap  in2="map"  scale="s·1.00"  → feColorMatrix → R
+feDisplacementMap  in2="map"  scale="s·0.92"  → feColorMatrix → G
+feDisplacementMap  in2="map"  scale="s·0.84"  → feColorMatrix → B
+feBlend mode="screen"
+
+/* 3) 用位移图的 B 通道做遮罩：只有边缘参与折射，中心保持清晰 */
+feComponentTransfer → edgeMask
+feComposite in="edge" in2="center" operator="over"
+
+/* 4) 背景模糊链（SVG 滤镜只负责折射，磨砂交给 blur） */
+backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) saturate(170%)
+</code></pre></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Usage</h2><p class="sub">One element is the whole glass: shape, rim and depth are gradients and shadows; the edge refraction comes from a filter generated for the exact size.</p></div><pre><code>.btn {
   display: inline-flex; align-items: center; gap: 9px;
-  height: 56px; width: auto;              /* width comes from the label */
-  border: 0 solid transparent;
-  border-left-width: 28px; border-right-width: 28px;
-  border-image: url(./assets/glass/black-sheet.webp) 0 112 0 112 fill stretch;
-  border-radius: 980px; color: #fff;
+  height: 56px; padding: 0 28px;            /* 宽度由文字决定 */
+  border: 0; border-radius: 980px;
+  background:
+    radial-gradient(125% 112% at 50% -26%, #ffffff42, #ffffff14 30%, transparent 62%),
+    linear-gradient(180deg, transparent 62%, #0000002e),
+    var(--tint);                          /* 黑 rgba(12,12,14,.82) / 蓝 rgba(16,54,178,.82) */
+  box-shadow: inset 0 -12px 16px -12px #ffffff1a,
+              0 10px 22px -8px #00000052, 0 2px 6px #00000024;
   backdrop-filter: url(#glass-1) blur(6px) contrast(1.15) saturate(170%);
 }
-/* displacement map + filter template: ./assets/glass-filters.svg */
-</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>Specs</h2><div class="specs"><div class="spec"><h3>Type</h3><p>SF Pro Display / SF Pro Text; 17px/1.47 body, letter-spacing -0.022em; 48px/1.08 headings.</p></div><div class="spec"><h3>Button</h3><p>56px tall (48px on mobile), 28px insets, 980px radius.</p></div><div class="spec"><h3>Assets</h3><p>4× lossless WebP (224px tall, shown at 56px), transparency kept.</p></div><div class="spec"><h3>Icons</h3><p>24px SVG sources, minified with SVGO, rendered at 20px.</p></div></div></div></section><footer><div class="wrap"><div class="foot-links"><a href="https://github.com/x-at-01/liquid-glass-button">GitHub repository</a><a href="https://developer.apple.com/design/human-interface-guidelines/materials">Apple HIG · Materials</a><a href="https://huggingface.co/Qwen/Qwen-Image-2.1">Material: Qwen-Image-2.1</a></div><p>Material from Qwen-Image-2.1 (native alpha); shape and light redrawn procedurally; edge refraction via SVG feDisplacementMap.</p><p>Apple logo is a trademark of Apple Inc., used for demonstration only.</p></div></footer><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs><!--Liquid Glass 滤镜模板。
+/* 天光：::after 径向柔光 + mix-blend-mode:screen（负 z-index，压在底色上、文字下） */
+/* 折射滤镜：./glass-filters.svg 是模板，app.js 按按钮尺寸 clone 出常态 / hover / active 三份 */
+</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>Specs</h2><div class="specs"><div class="spec"><h3>Type</h3><p>SF Pro Display / SF Pro Text; 17px/1.47 body, letter-spacing -0.022em; 48px/1.08 headings.</p></div><div class="spec"><h3>Button</h3><p>56px tall (48px on mobile), 28px insets, 980px radius.</p></div><div class="spec"><h3>Icons</h3><p>24px SVG sources, minified with SVGO, rendered at 20px.</p></div></div></div></section><footer><div class="wrap"><div class="foot-links"><a href="https://github.com/x-at-01/liquid-glass-button">GitHub repository</a><a href="https://developer.apple.com/design/human-interface-guidelines/materials">Apple HIG · Materials</a><a href="../liquid-glass-button.tar.xz" download>Download the bundle (tar.xz)</a></div><p>Apple logo is a trademark of Apple Inc., used for demonstration only.</p></div></footer><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs><!--Liquid Glass 滤镜模板。
       构建时整份内联进页面；运行时对每个按钮 clone 一份，改 id / 尺寸 /
       feImage 的位移图，以及三个 .g-disp 的 scale（常态 / hover / active）。
       背景模糊只是磨砂；真正的“液态”来自 feDisplacementMap 的边缘折射。--><filter id="glass-template" width="200" height="56" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feImage width="200" height="56" x="0" y="0" class="g-map" result="map"/><!--用位移图的 B 通道（边缘强度）做边缘遮罩--><feColorMatrix in="map" result="edgeRGB" type="matrix" values="0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 0"/><feComponentTransfer in="edgeRGB" result="edgeMask"><feFuncA tableValues="0 1" type="table"/></feComponentTransfer><!--三个通道用略微不同的位移 → 边缘色散--><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dR" scale="12" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dR" result="Rc" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dG" scale="11" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dG" result="Gc" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dB" scale="10" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dB" result="Bc" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"/><feBlend in="Gc" in2="Bc" mode="screen" result="GB"/><feBlend in="Rc" in2="GB" mode="screen" result="RGB"/><feGaussianBlur in="RGB" result="RGBsoft" stdDeviation=".4"/><!--只有边缘参与折射/色散，中心保持清晰--><feComposite in="RGBsoft" in2="edgeMask" operator="in" result="edge"/><feComponentTransfer in="edgeMask" result="innerMask"><feFuncA tableValues="1 0" type="table"/></feComponentTransfer><feComposite in="SourceGraphic" in2="innerMask" operator="in" result="center"/><feComposite in="edge" in2="center" operator="over"/></filter></defs></svg><style id="glass-styles"></style><script>window.__GLASS__ = {"code":"af","idx":25,"lang_li":["en","zh","de","hi","ja","fr","it","ru","ko","es","id","tr","ar","nl","pl","zh-TW","sv","no","th","vi","ceb","bn","fa","ms","mr","af","da","ro","ur","cs","ta","fi","pt","kn","ca","gu","kk","el","hu","uk","te","sk","sw","bg","cy","eu","hr","lb","si","az","lt","or","sr","be","gl","my","sd","sl","as","et","lv","km","ne","hy","bs","ka","is","lo","mk","mt","sq","fil","iw","jv","uz"],"name_li":["English","中文","Deutsch","हिन्दी","日本語","Français","Italiano","Русский","한국어","Español","Indonesia","Türkçe","العربية","Nederlands","Polski","正體中文","Svenska","Norsk Bokmål","ไทย","Tiếng Việt","Binisaya","বাংলা","فارسی","Bahasa Melayu","मराठी","Afrikaans","Dansk","Română","اردو","Čeština","தமிழ்","Suomi","Português","ಕನ್ನಡ","Català","ગુજરાતી","Қазақ Тілі","Ελληνικά","Magyar","Українська","తెలుగు","Slovenčina","Kiswahili","Български","Cymraeg","Euskara","Hrvatski","Lëtzebuergesch","සිංහල","Azərbaycanca","Lietuvių Kalba","ଓଡ଼ିଆ","Српски Језик","Беларуская","Galego","မြန်မာစာ","سنڌي","Slovenščina","অসমীয়া","Eesti","Latviešu Valoda","ភាសាខ្មែរ","नेपाली","Հայերեն","Bosanski","ქართული","Íslenska","ພາສາລາວ","Македонски Јазик","Malti","Shqip","Wikang Filipino","עברית","Basa Jawa","O'zbek"],"own_li":["es","ko","id","pt","de","zh-TW","it","pl","sv","en","ja","ru","fr","ar","tr","vi","nl","zh"],"choose":"Choose language","fallback":true};</script><script>// 液态玻璃按钮 · 运行时（浏览器端，无需 shebang）
@@ -273,7 +251,6 @@ dialog.Box.X>a.X:active::before{opacity:.7}
 // 玻璃：按按钮尺寸生成位移图，clone assets/glass-filters.svg 的滤镜模板，生成常态/hover/active 三份
 const LANG_KEY = "lang";
 const CH_LANG = "lang";
-const TILE_IMG = "url(../assets/glass/black-mid.webp)";
 const BTN_SEL = ".btn";
 const MAP_SEL = ".g-map";
 const DISP_SEL = ".g-disp";
@@ -281,7 +258,6 @@ const STYLE_ID = "glass-styles";
 const DEFS_SEL = ".glass-defs";
 const MEASURE_SEL = ".measure";
 const BTN_ID = "langBtn";
-const TILE_ID = "tileStrip";
 const TMPL_ID = "glass-template";
 const BOX_CLASS = "Box X FFF";
 const BTN_PLAIN = "Btn";
@@ -299,12 +275,12 @@ const BLUR_HOVER = "blur(6px) contrast(1.18) brightness(1.14) saturate(190%)";
 const BLUR_ACTIVE = "blur(10px) contrast(1.08) brightness(.94) saturate(140%)";
 const RESIZE_DELAY = 200;
 
-const { idx: CUR_IDX, lang_li: LANG_LI, name_li: NAME_LI, own_li: OWN_LI, choose: CHOOSE_TEXT } = window.__GLASS__;
+const { idx: CUR_IDX, lang_li: LANG_LI, name_li: NAME_LI, own_li: OWN_LI, choose: CHOOSE_TEXT } =
+  window.__GLASS__ ?? { idx: 0, lang_li: [], name_li: [], own_li: [], choose: "" };
 const { localStorage: STORE, BroadcastChannel: CH } = window;
-const langBtn = document.getElementById(BTN_ID);
+const langBtn = document.getElementById(BTN_ID); // 独立演示页没有语言按钮，后面会判空
 const defs = document.querySelector(DEFS_SEL);
 const styles = document.getElementById(STYLE_ID);
-const tile = document.getElementById(TILE_ID);
 const rand = () => Math.random().toString(36).slice(2, 9);
 
 /* ---------------- 语言 ---------------- */
@@ -355,6 +331,7 @@ const langOpen = () => {
 };
 
 const langInit = () => {
+  if (!langBtn) return; // 独立演示页：无语言切换
   STORE[LANG_KEY] = CUR_IDX;
   langBtn.addEventListener("click", langOpen);
   if (CH) {
@@ -462,7 +439,6 @@ const onResize = () => {
   }, RESIZE_DELAY);
 };
 
-tile.style.backgroundImage = TILE_IMG;
 langInit();
 glassRebuild();
 captionFit();

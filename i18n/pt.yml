@@ -5,29 +5,19 @@ lead: Um botão de vidro líquido que estica com o texto, com refração real na
 btn_download: Baixar
 btn_appstore: App Store
 sec_width_h: A largura vem do texto
-sec_width_p: 'Um só conjunto de recursos: quanto maior o texto, mais largo o botão; as pontas não mudam.'
+sec_width_p: Quanto mais longo o texto, mais largo o botão; a curvatura das pontas não muda.
 w_short: Baixar
 w_appstore: App Store
 w_long: Baixar para macOS
-sec_assets_h: Recursos em três partes (4×)
-sec_assets_p: Pontas de 112px, centro repetível, emendas idênticas ao pixel.
-cap_sheet: inteiro
-cap_left: esquerda
-cap_mid: centro
-cap_right: direita
-cap_tile: repeat-x — sem distorção
 sec_usage_h: Uso
-sec_usage_p: Um elemento faz o alongamento em nove partes; hover e active trocam o filtro.
+sec_usage_p: 'Um único elemento é todo o vidro: forma, borda e profundidade são gradientes e sombras; a refração da borda vem de um filtro gerado no tamanho exato.'
 sec_spec_h: Especificações
 spec_font_h: Tipografia
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, espaçamento -0.022em; títulos 48px/1.08.
 spec_btn_h: Botão
 spec_btn_p: 56px de altura (48px no celular), 28px nas laterais, raio 980px.
-spec_asset_h: Recursos
-spec_asset_p: WebP 4× sem perda (224px de altura, exibido a 56px), transparência preservada.
 spec_icon_h: Ícones
 spec_icon_p: SVG de 24px, minificados com SVGO, exibidos a 20px.
-footer_1: Material gerado com Qwen-Image-2.1 (alfa nativo); forma e luz redesenhadas de forma procedural; refração da borda via SVG feDisplacementMap.
 footer_2: O logotipo Apple é marca da Apple Inc., usado apenas para demonstração.
 lang_choose: Escolher idioma
 lang_aria: Mudar idioma
@@ -35,6 +25,9 @@ stage_hint: Passe o mouse para ver.
 light_hint: Em fundo claro o vidro fica pálido; o tom mantém o texto legível.
 link_repo: Repositório no GitHub
 link_hig: Apple HIG · Materiais
-link_model: 'Material: Qwen-Image-2.1'
-sec_svg_h: SVG puro
-sec_svg_p: 'Sem bitmap: corpo, brilho da borda e profundidade são gradientes e sombras CSS; a refração da borda continua a cargo do filtro de deslocamento SVG.'
+sec_svg_h: Como o SVG funciona
+sec_svg_p: 'A sensação líquida vem da borda: um mapa de deslocamento é gerado no tamanho exato, três passagens criam a dispersão e uma máscara de borda mantém o centro nítido.'
+svg_p1: 'Mapa de deslocamento: gerado no tamanho exato do botão; R guarda o deslocamento x, G o y, B a intensidade da borda (0 no centro, 255 na borda).'
+svg_p2: 'Dispersão: três passagens sobre o mesmo mapa com escalas ligeiramente diferentes; os canais R/G/B são separados e misturados em screen, e a borda dispersa como vidro real.'
+svg_p3: 'Máscara de borda: o canal B mascara o resultado; só a borda refrata e o centro sob o rótulo fica intacto.'
+link_pack: Baixar o pacote (tar.xz)

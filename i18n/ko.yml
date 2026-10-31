@@ -5,29 +5,19 @@ lead: 글자에 맞춰 늘어나는 리퀴드 글래스 버튼, 가장자리는 
 btn_download: 다운로드
 btn_appstore: App Store
 sec_width_h: 너비는 텍스트가 결정
-sec_width_p: 같은 에셋으로 문구가 길수록 넓어지고 양 끝은 그대로입니다.
+sec_width_p: 문구가 길수록 버튼이 넓어지고, 양 끝의 곡률은 그대로입니다.
 w_short: 다운로드
 w_appstore: App Store
 w_long: macOS 버전 다운로드
-sec_assets_h: 3분할 에셋 (4×)
-sec_assets_p: 양 끝 112px, 가운데는 무한 타일링, 이음매는 픽셀 단위로 일치.
-cap_sheet: 전체
-cap_left: 왼쪽
-cap_mid: 가운데
-cap_right: 오른쪽
-cap_tile: repeat-x · 어떤 너비도 왜곡 없음
 sec_usage_h: 사용법
-sec_usage_p: 하나의 요소로 9분할 늘리기, hover / active 로 필터 전환.
+sec_usage_p: 하나의 요소가 곧 유리입니다. 형태와 가장자리, 깊이는 그라디언트와 그림자로 그리고 가장자리 굴절은 실제 크기로 생성한 필터가 담당합니다.
 sec_spec_h: 사양
 spec_font_h: 서체
 spec_font_p: SF Pro Display / SF Pro Text, 본문 17px/1.47, 자간 -0.022em, 제목 48px/1.08.
 spec_btn_h: 버튼
 spec_btn_p: 높이 56px(모바일 48px), 좌우 28px, 반경 980px.
-spec_asset_h: 에셋
-spec_asset_p: 4× 무손실 WebP(높이 224px, 표시 56px)로 투명도 유지.
 spec_icon_h: 아이콘
 spec_icon_p: 24px SVG 원본을 SVGO 로 압축해 20px 로 표시.
-footer_1: 재질은 Qwen-Image-2.1(네이티브 알파)로 생성하고 형태와 조명은 절차적으로 다시 그렸으며, 가장자리 굴절은 SVG feDisplacementMap.
 footer_2: Apple 로고는 Apple Inc. 상표이며 데모 목적으로만 사용했습니다.
 lang_choose: 언어 선택
 lang_aria: 언어 변경
@@ -35,6 +25,9 @@ stage_hint: 마우스를 올려 보세요.
 light_hint: 밝은 배경에서는 유리가 옅게 보이므로 하단 색으로 글자 대비를 지킵니다.
 link_repo: GitHub 저장소
 link_hig: Apple HIG · 머티리얼
-link_model: '재질: Qwen-Image-2.1'
-sec_svg_h: 순수 SVG
-sec_svg_p: '비트맵 없이: 몸체, 가장자리 하이라이트, 깊이는 모두 CSS 그라디언트와 그림자로 그리고, 가장자리 굴절은 SVG 변위 필터가 담당합니다.'
+sec_svg_h: SVG 동작 원리
+sec_svg_p: 액체감은 가장자리 굴절에서 나옵니다. 실제 크기에 맞춰 변위 맵을 만들고, 세 번의 변위로 색분산을 만들며, 가장자리 마스크로 중앙의 선명도를 지킵니다.
+svg_p1: '변위 맵: 버튼의 실제 크기로 생성하며 R은 x 변위, G는 y 변위, B는 가장자리 강도(중앙 0 → 가장자리 255)를 담습니다.'
+svg_p2: '색분산: 같은 맵을 조금씩 다른 scale로 세 번 변위한 뒤 R/G/B 채널로 분리해 screen으로 겹치면 가장자리에 실제 유리 같은 분산이 생깁니다.'
+svg_p3: '가장자리 마스크: B 채널을 마스크로 써서 굴절과 분산은 가장자리에만 적용되고, 라벨이 있는 중앙은 전혀 영향받지 않습니다.'
+link_pack: 자료 묶음 내려받기 (tar.xz)

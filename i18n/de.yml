@@ -5,29 +5,19 @@ lead: Ein Liquid-Glass-Button, der mit der Beschriftung wächst — mit echter K
 btn_download: Laden
 btn_appstore: App Store
 sec_width_h: Die Breite kommt vom Text
-sec_width_p: 'Ein Satz Assets: je länger die Beschriftung, desto breiter der Button; die Kappen bleiben gleich.'
+sec_width_p: Je länger das Label, desto breiter der Button — die Rundung an den Enden bleibt gleich.
 w_short: Laden
 w_appstore: App Store
 w_long: Für macOS laden
-sec_assets_h: Drei-Teile-Assets (4×)
-sec_assets_p: Kappen 112px, Mitte endlos kachelbar, Nähte pixelgleich.
-cap_sheet: Gesamt
-cap_left: links
-cap_mid: Mitte
-cap_right: rechts
-cap_tile: repeat-x — keine Verzerrung
 sec_usage_h: Verwendung
-sec_usage_p: Ein Element für die Neun-Scheiben-Dehnung; hover und active wechseln den Filter.
+sec_usage_p: 'Ein Element ist das ganze Glas: Form, Rand und Tiefe sind Verläufe und Schatten; die Randbrechung kommt von einem in exakter Größe erzeugten Filter.'
 sec_spec_h: Spezifikation
 spec_font_h: Schrift
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, Laufweite -0.022em; Überschriften 48px/1.08.
 spec_btn_h: Button
 spec_btn_p: 56px hoch (48px mobil), 28px seitlich, Radius 980px.
-spec_asset_h: Assets
-spec_asset_p: Verlustfreies WebP in 4× (224px hoch, 56px dargestellt), Transparenz bleibt.
 spec_icon_h: Icons
 spec_icon_p: 24px SVG-Quellen, mit SVGO minifiziert, mit 20px dargestellt.
-footer_1: Material aus Qwen-Image-2.1 (natives Alpha); Form und Licht prozedural neu gezeichnet; Kantenbrechung per SVG feDisplacementMap.
 footer_2: Das Apple-Logo ist eine Marke von Apple Inc. und dient nur der Demonstration.
 lang_choose: Sprache wählen
 lang_aria: Sprache ändern
@@ -35,6 +25,9 @@ stage_hint: Einfach überfahren.
 light_hint: Auf hellem Grund wirkt das Glas blass; die Tönung hält die Schrift lesbar.
 link_repo: GitHub-Repository
 link_hig: Apple HIG · Materialien
-link_model: 'Material: Qwen-Image-2.1'
-sec_svg_h: Reines SVG
-sec_svg_p: 'Keine Bitmaps: Körper, Kantenlicht und Tiefe sind CSS-Verläufe und Schatten — die Kantenbrechung übernimmt weiterhin der SVG-Verschiebungsfilter.'
+sec_svg_h: So funktioniert das SVG
+sec_svg_p: 'Der flüssige Eindruck kommt vom Rand: eine Verschiebungskarte wird in exakter Größe erzeugt, drei Durchläufe erzeugen die Dispersion, eine Randmaske hält die Mitte scharf.'
+svg_p1: 'Verschiebungskarte: in exakter Button-Größe erzeugt — R hält den x-Versatz, G den y-Versatz, B die Randstärke (0 in der Mitte, 255 am Rand).'
+svg_p2: 'Dispersion: drei Durchläufe über dieselbe Karte mit leicht unterschiedlichen Skalen; die R/G/B-Kanäle werden getrennt und per screen überblendet — der Rand streut wie echtes Glas.'
+svg_p3: 'Randmaske: der B-Kanal maskiert das Ergebnis — nur der Rand bricht, die Mitte unter dem Label bleibt unberührt.'
+link_pack: Paket herunterladen (tar.xz)

@@ -5,29 +5,19 @@ lead: Tombol kaca cair yang memanjang mengikuti teks, tepinya benar-benar membia
 btn_download: Unduh
 btn_appstore: App Store
 sec_width_h: Lebar ditentukan teks
-sec_width_p: 'Satu set aset: makin panjang teks makin lebar tombol, ujungnya tetap.'
+sec_width_p: Semakin panjang label, semakin lebar tombol — lengkung ujungnya tidak berubah.
 w_short: Unduh
 w_appstore: App Store
 w_long: Unduh untuk macOS
-sec_assets_h: Aset tiga bagian (4×)
-sec_assets_p: Ujung 112px, tengah bisa diulang tanpa batas, sambungan identik per piksel.
-cap_sheet: keseluruhan
-cap_left: kiri
-cap_mid: tengah
-cap_right: kanan
-cap_tile: repeat-x — tanpa distorsi
 sec_usage_h: Penggunaan
-sec_usage_p: Satu elemen untuk peregangan sembilan bagian; hover dan active ganti filter.
+sec_usage_p: 'Satu elemen adalah seluruh kaca: bentuk, tepi, dan kedalaman berupa gradien dan bayangan; pembiasan tepi berasal dari filter yang dibuat sesuai ukuran persis.'
 sec_spec_h: Spesifikasi
 spec_font_h: Tipografi
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, jarak huruf -0.022em; judul 48px/1.08.
 spec_btn_h: Tombol
 spec_btn_p: Tinggi 56px (48px di ponsel), 28px di sisi, radius 980px.
-spec_asset_h: Aset
-spec_asset_p: WebP 4× tanpa rugi (tinggi 224px, ditampilkan 56px), transparansi tetap.
 spec_icon_h: Ikon
 spec_icon_p: Sumber SVG 24px, dikompresi dengan SVGO, ditampilkan 20px.
-footer_1: Material dari Qwen-Image-2.1 (alfa asli); bentuk dan cahaya digambar ulang secara prosedural; refraksi tepi lewat SVG feDisplacementMap.
 footer_2: Logo Apple adalah merek dagang Apple Inc., hanya untuk demonstrasi.
 lang_choose: Pilih bahasa
 lang_aria: Ganti bahasa
@@ -35,6 +25,9 @@ stage_hint: Arahkan kursor untuk melihat.
 light_hint: Di latar terang kaca tampak pucat; lapisan warna menjaga keterbacaan.
 link_repo: Repositori GitHub
 link_hig: Apple HIG · Material
-link_model: 'Material: Qwen-Image-2.1'
-sec_svg_h: SVG murni
-sec_svg_p: 'Tanpa bitmap: badan, cahaya tepi, dan kedalaman berupa gradien dan bayangan CSS — pembiasan tepi tetap oleh filter pergeseran SVG.'
+sec_svg_h: Cara kerja SVG
+sec_svg_p: 'Rasa cair datang dari tepi: peta pergeseran dibuat sesuai ukuran persis, tiga lintasan menghasilkan dispersi, dan mask tepi menjaga bagian tengah tetap tajam.'
+svg_p1: 'Peta pergeseran: dibuat sesuai ukuran tombol — R menyimpan pergeseran x, G pergeseran y, B kekuatan tepi (0 di tengah, 255 di tepi).'
+svg_p2: 'Dispersi: tiga lintasan pada peta yang sama dengan skala sedikit berbeda; kanal R/G/B dipisah lalu digabung dengan screen, tepi menyebar seperti kaca sungguhan.'
+svg_p3: 'Mask tepi: kanal B memask hasilnya — hanya tepi yang membias, bagian tengah di bawah label tetap utuh.'
+link_pack: Unduh paket (tar.xz)

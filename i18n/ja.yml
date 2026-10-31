@@ -5,29 +5,19 @@ lead: 文字に合わせて伸びるリキッドグラスボタン。縁は本�
 btn_download: ダウンロード
 btn_appstore: App Store
 sec_width_h: 幅は文字で決まる
-sec_width_p: 同じ素材で、文字が長いほど幅が広がり、端は変わりません。
+sec_width_p: ラベルが長いほどボタンは広がり、両端の丸みは変わりません。
 w_short: ダウンロード
 w_appstore: App Store
 w_long: macOS 版をダウンロード
-sec_assets_h: 3分割アセット（4×）
-sec_assets_p: 端は 112px、中央は無限にタイル可能、継ぎ目はピクセル単位で一致。
-cap_sheet: 全体
-cap_left: 左端
-cap_mid: 中央
-cap_right: 右端
-cap_tile: repeat-x・どんな幅でも歪みません
 sec_usage_h: 使い方
-sec_usage_p: 1つの要素で九宮格の伸縮。hover / active でフィルタを切り替えます。
+sec_usage_p: 1 つの要素がガラスそのもの。形・縁・奥行きはグラデーションと影で描き、縁の屈折は実寸で生成したフィルターが担います。
 sec_spec_h: 仕様
 spec_font_h: 書体
 spec_font_p: SF Pro Display / SF Pro Text。本文 17px/1.47、字間 -0.022em、見出し 48px/1.08。
 spec_btn_h: ボタン
 spec_btn_p: 高さ 56px（モバイル 48px）、左右 28px、角丸 980px。
-spec_asset_h: 素材
-spec_asset_p: 4× 可逆 WebP（高さ 224px、表示 56px）で透過を保持。
 spec_icon_h: アイコン
 spec_icon_p: 24px の SVG を SVGO で圧縮し、20px で表示。
-footer_1: マテリアルは Qwen-Image-2.1（ネイティブ alpha）で生成。形状と光はプロシージャルに再描画し、縁の屈折は SVG feDisplacementMap。
 footer_2: Apple ロゴは Apple Inc. の商標で、デモ目的のみに使用しています。
 lang_choose: 言語を選択
 lang_aria: 言語を切り替える
@@ -35,6 +25,9 @@ stage_hint: マウスを乗せてみてください。
 light_hint: 明るい面ではガラスは淡く見えるため、下地で文字のコントラストを保ちます。
 link_repo: GitHub リポジトリ
 link_hig: Apple HIG · マテリアル
-link_model: 'マテリアル: Qwen-Image-2.1'
-sec_svg_h: 純 SVG
-sec_svg_p: 'ビットマップ一切なし：本体・縁のハイライト・奥行きはすべて CSS のグラデーションとシャドウで描き、縁の屈折は SVG 変位フィルターが担います。'
+sec_svg_h: SVG の仕組み
+sec_svg_p: 液状感は縁の屈折から。実寸に合わせて変位マップを生成し、3 回の変位で色分散を出し、縁マスクで中心の鮮明さを保ちます。
+svg_p1: 変位マップ：ボタンの実寸で生成。R に x 変位、G に y 変位、B に縁の強さ（中心 0 → 縁 255）を格納します。
+svg_p2: 色分散：同じマップをわずかに異なる scale で 3 回変位させ、R/G/B に分離して screen で重ねると、縁に本物のガラスのような分散が出ます。
+svg_p3: 縁マスク：B チャンネルをマスクに使い、屈折と分散は縁だけ。ラベルのある中心は一切変わりません。
+link_pack: 素材パックをダウンロード（tar.xz）

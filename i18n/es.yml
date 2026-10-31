@@ -5,29 +5,19 @@ lead: Un botón de vidrio líquido que se estira con su texto, con refracción r
 btn_download: Descargar
 btn_appstore: App Store
 sec_width_h: El ancho lo decide el texto
-sec_width_p: 'Un solo juego de recursos: cuanto más largo el texto, más ancho el botón; los extremos no cambian.'
+sec_width_p: Cuanto más largo el texto, más ancho el botón; la curvatura de los extremos no cambia.
 w_short: Descargar
 w_appstore: App Store
 w_long: Descargar para macOS
-sec_assets_h: Recursos en tres partes (4×)
-sec_assets_p: Extremos de 112px, centro repetible, uniones idénticas al píxel.
-cap_sheet: completo
-cap_left: izquierda
-cap_mid: centro
-cap_right: derecha
-cap_tile: repeat-x — sin deformación
 sec_usage_h: Uso
-sec_usage_p: Un elemento hace el estirado en nueve partes; hover y active cambian el filtro.
+sec_usage_p: 'Un solo elemento es todo el vidrio: forma, borde y profundidad son degradados y sombras; la refracción del borde viene de un filtro generado al tamaño exacto.'
 sec_spec_h: Especificaciones
 spec_font_h: Tipografía
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, interletrado -0.022em; títulos 48px/1.08.
 spec_btn_h: Botón
 spec_btn_p: 56px de alto (48px en móvil), 28px a los lados, radio 980px.
-spec_asset_h: Recursos
-spec_asset_p: WebP 4× sin pérdida (224px de alto, mostrado a 56px), transparencia intacta.
 spec_icon_h: Iconos
 spec_icon_p: Fuentes SVG de 24px, minificadas con SVGO, mostradas a 20px.
-footer_1: Material generado con Qwen-Image-2.1 (alfa nativo); forma y luz redibujadas de forma procedural; refracción del borde con SVG feDisplacementMap.
 footer_2: El logotipo de Apple es una marca de Apple Inc., usado solo como demostración.
 lang_choose: Elegir idioma
 lang_aria: Cambiar idioma
@@ -35,6 +25,9 @@ stage_hint: Pasa el cursor para verlo.
 light_hint: Sobre fondo claro el vidrio se ve pálido; el tinte mantiene legible el texto.
 link_repo: Repositorio en GitHub
 link_hig: Apple HIG · Materiales
-link_model: 'Material: Qwen-Image-2.1'
-sec_svg_h: SVG puro
-sec_svg_p: 'Sin mapas de bits: cuerpo, luz del borde y profundidad son degradados y sombras CSS; la refracción del borde sigue a cargo del filtro de desplazamiento SVG.'
+sec_svg_h: Cómo funciona el SVG
+sec_svg_p: 'La sensación líquida viene del borde: se genera un mapa de desplazamiento a la medida exacta, tres pasadas crean la dispersión y una máscara de borde mantiene nítido el centro.'
+svg_p1: 'Mapa de desplazamiento: generado al tamaño exacto del botón; R guarda el desplazamiento x, G el y, B la intensidad del borde (0 en el centro, 255 en el borde).'
+svg_p2: 'Dispersión: tres pasadas sobre el mismo mapa con escalas ligeramente distintas; los canales R/G/B se separan y se mezclan en screen, y el borde dispersa como vidrio real.'
+svg_p3: 'Máscara de borde: el canal B enmascara el resultado; solo el borde refracta y el centro bajo la etiqueta queda intacto.'
+link_pack: Descargar el paquete (tar.xz)

@@ -53,63 +53,51 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .stage>*{position:relative;z-index:1}
 .cta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center}
 
-/* ---------- 按钮 ---------- */
+/* ---------- 按钮：形体、棱边与深度全部由 CSS 绘制，边缘折射交给按尺寸生成的 SVG 滤镜 ---------- */
 .btn{
   appearance:none;position:relative;
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  height:var(--pill-h,56px);width:auto;padding:0;margin:0;
-  border:0 solid transparent;border-left-width:var(--cap,28px);border-right-width:var(--cap,28px);
-  border-image-source:url(../assets/glass/black-sheet.webp);
-  border-image-slice:0 112 0 112 fill;
-  border-image-width:0 var(--cap,28px) 0 var(--cap,28px);
-  border-image-repeat:stretch;
-  border-radius:980px;background:var(--tint,rgba(10,10,12,.62));color:rgba(255,255,255,.90);
-  font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
-  white-space:nowrap;cursor:pointer;text-decoration:none;
-  box-shadow:0 4px 10px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.16);
-  backdrop-filter:blur(20px) saturate(180%);
-  transition:box-shadow .18s ease,transform .18s ease,background-color .18s ease,color .18s ease,text-shadow .12s ease;
-}
-.btn--black{border-image-source:url(../assets/glass/black-sheet.webp);--tint:rgba(10,10,12,.62)}
-.btn--blue{border-image-source:url(../assets/glass/blue-sheet.webp);--tint:rgba(8,38,140,.66)}
-/* ---------- 纯 SVG/CSS 材质：不加载任何位图。瓶身、棱边高光和深度由渐变与阴影绘制，
-   边缘折射复用同一个运行时 SVG 位移滤镜（.btn 的玻璃滤镜对 .btn.svg 一并生效）。 ---------- */
-.btn.svg{
-  /* 不要描边、不要四边等亮的白线——那是塑料模压。玻璃的棱边只是一段反光：
-     顶上最亮、向两侧转角衰减到零，用一条宽而柔的径向亮带实现，没有 1px 细线。 */
-  border:0;border-radius:980px;padding:0 var(--cap,28px);
-  /* 顶缘只有一条宽而柔的亮带：贴边最亮、往里 6–8px 渐隐（素材版就是这样，没有细线） */
+  height:var(--pill-h,56px);width:auto;padding:0 var(--cap,28px);margin:0;
+  border:0;border-radius:980px;
+  /* 顶缘一条宽而柔的亮带：贴边最亮、往里 6–8px 渐隐；底部极轻的压暗 */
   background:
     radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.26),rgba(255,255,255,.08) 30%,rgba(255,255,255,.02) 48%,transparent 62%),
     linear-gradient(180deg,transparent 62%,rgba(0,0,0,.18)),
-    var(--tint,rgba(10,10,12,.62));
-  isolation:isolate; /* ::after 的负 z-index 落在 tint 之上、文字之下 */
-  box-shadow:
-    inset 0 -12px 16px -12px rgba(255,255,255,.10), /* 底缘内侧回光，很弱 */
+    var(--tint,rgba(12,12,14,.82));
+  color:rgba(255,255,255,.90);
+  font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
+  white-space:nowrap;cursor:pointer;text-decoration:none;
+  isolation:isolate; /* 两个伪元素的负 z-index 落在底色之上、文字之下 */
+  box-shadow:inset 0 -12px 16px -12px rgba(255,255,255,.10),
     0 10px 22px -8px rgba(0,0,0,.32), 0 2px 6px rgba(0,0,0,.14);
+  backdrop-filter:blur(20px) saturate(180%);
+  transition:box-shadow .18s ease,transform .18s ease,color .18s ease,text-shadow .12s ease;
 }
-/* SVG 版没有素材自身的浓度，瓶身 tint 相应加深 */
-.btn.svg.btn--black{--tint:rgba(12,12,14,.82)}
-.btn.svg.btn--blue{--tint:rgba(16,54,178,.82)}
-.btn.svg:hover{background:radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.34),rgba(255,255,255,.11) 30%,rgba(255,255,255,.03) 48%,transparent 62%),linear-gradient(180deg,transparent 62%,rgba(0,0,0,.18)),var(--tint);box-shadow:
-  inset 0 -12px 16px -12px rgba(255,255,255,.14),
-  0 14px 28px -10px rgba(0,0,0,.36), 0 2px 6px rgba(0,0,0,.12)}
-.btn.svg:hover::after{background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.22),transparent 58%)}
-.btn.svg:active{box-shadow:
-  inset 0 10px 16px -10px rgba(0,0,0,.35),
-  inset 0 -8px 12px -10px rgba(255,255,255,.08),
-  0 3px 8px rgba(0,0,0,.20), 0 1px 2px rgba(0,0,0,.10)}
-.btn.svg:active::after{opacity:.6}
+.btn--black{--tint:rgba(12,12,14,.82)}
+.btn--blue{--tint:rgba(16,54,178,.82)}
+/* 天光：左上角一团柔光，screen 混合 */
+.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
+  background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.17),transparent 58%);
+  mix-blend-mode:screen;pointer-events:none}
+/* hover 提亮：多叠一层同形亮带，用 opacity 过渡（背景渐变本身不可插值） */
+.btn::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;
+  background:radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.16),transparent 55%);
+  transition:opacity .22s ease;pointer-events:none}
 .btn img{display:block;flex:none;height:1.2em;width:1.2em}
 .btn img.ap{height:1.02em;width:1.02em}
-.btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
-/* 按下：文字保持纯白并加粗（text-stroke，不动字重，宽度不会跳），按钮下沉、投影收紧 */
+.btn:hover{color:#fff;transform:translateY(-1px);
+  box-shadow:inset 0 -12px 16px -12px rgba(255,255,255,.14),
+    0 14px 28px -10px rgba(0,0,0,.36), 0 2px 6px rgba(0,0,0,.12)}
+.btn:hover::before{opacity:1}
 /* 按下：文字像被压进玻璃里 —— 左上暗影（凹）+ 右下微亮棱边（凸），零模糊不改变字宽 */
 .btn:active{color:#fff;
   text-shadow:-1px -1px 0 rgba(0,0,0,.55), 1px 1px 0 rgba(255,255,255,.14),
               .3px 0 0 #fff, -.3px 0 0 #fff;
   transform:translateY(0) scale(.972);
-  box-shadow:0 2px 6px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.20)}
+  box-shadow:inset 0 10px 16px -10px rgba(0,0,0,.35), inset 0 -8px 12px -10px rgba(255,255,255,.08),
+    0 3px 8px rgba(0,0,0,.20), 0 1px 2px rgba(0,0,0,.10)}
+.btn:active::before{opacity:0}
+.btn:active::after{opacity:.6}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
 
 /* ---------- 区块 ---------- */
@@ -125,29 +113,16 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .measure .w{font:400 12px/1 var(--mono);color:#86868b}
 .card .hint{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
 
-/* 素材陈列 */
-.pieces{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:18px;margin-top:30px}
-.pieces figure{margin:0;display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);
-  border-radius:16px;padding:18px 16px 14px;box-shadow:0 12px 30px -26px rgba(16,24,40,.5)}
-.pieces .shot{display:grid;place-items:center;min-height:calc(var(--pill-h,56px) + 20px);border-radius:10px;
-  background-color:#fff;background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
-  background-image:linear-gradient(45deg,#eef1f6 25%,transparent 25%),linear-gradient(-45deg,#eef1f6 25%,transparent 25%),
-                   linear-gradient(45deg,transparent 75%,#eef1f6 75%),linear-gradient(-45deg,transparent 75%,#eef1f6 75%)}
-.pieces img{display:block;height:var(--pill-h,56px);width:auto;max-width:100%}
-.pieces figcaption{font:400 12px/1.3 var(--mono);color:var(--muted)}
-.pieces figcaption b{color:var(--ink);font-weight:600}
-.tile-wrap{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;
-  box-shadow:0 12px 30px -26px rgba(16,24,40,.5)}
-.checker{border-radius:10px;padding:10px;background-color:#fff;background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
-  background-image:linear-gradient(45deg,#eef1f6 25%,transparent 25%),linear-gradient(-45deg,#eef1f6 25%,transparent 25%),
-                   linear-gradient(45deg,transparent 75%,#eef1f6 75%),linear-gradient(-45deg,transparent 75%,#eef1f6 75%)}
-.tile-strip{height:var(--pill-h,56px);width:100%;background-repeat:repeat-x;background-position:left center;background-size:auto 100%}
-.cap{font:400 12px/1.3 var(--mono);color:var(--muted);margin:12px 0 0}
-
 pre{margin:26px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
   overflow:auto;font:400 12.5px/1.65 var(--mono);color:var(--ink)}
 .section--tint pre{background:#fff}
 code{font-family:var(--mono)}
+
+.principles{display:grid;gap:16px;margin:30px 0 0;max-width:760px}
+.principle{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
+  border-top:1px solid var(--line);padding-top:14px}
+.principle .n{font:400 12px/1 var(--mono);color:var(--muted)}
+.principle p{margin:0;font-size:15px;line-height:1.6;color:var(--ink)}
 
 .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 44px;margin-top:34px}
 .spec{border-top:1px solid var(--line);padding-top:16px}
@@ -161,9 +136,6 @@ footer p{margin:0 0 10px}
 .foot-links a:hover{border-color:var(--ink)}
 :where(a){color:var(--blue)}
 
-@media (max-width:900px){
-  .pieces{grid-template-columns:1fr 1fr}
-}
 @media (max-width:734px){
   h1{font-size:34px;line-height:1.12}
   .lead{font-size:19px;line-height:1.42}
@@ -172,7 +144,6 @@ footer p{margin:0 0 10px}
   .stage{padding:48px 18px 40px;border-radius:18px}
   .card{padding:26px 20px 22px}
   .btn{--pill-h:48px;--cap:24px;font-size:16px}
-  .pieces{grid-template-columns:1fr}
   .topbar .wrap{height:52px}
 }
 

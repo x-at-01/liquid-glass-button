@@ -1,0 +1,46 @@
+//- 独立演示页（打包进 tar.xz）：内联同一份 CSS / JS / 滤镜模板，解压后可直接双击打开
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Liquid Glass Button — standalone demo
+    style!= css
+  body
+    header.hero
+      .head
+        h1 Liquid Glass Button
+        p.lead A liquid-glass button whose width follows its label. One element — the rim refracts through an SVG displacement filter.
+      section.stage
+        .cta
+          button.btn.btn--blue(type="button")
+            img.dl(src="./icons/download.svg", alt="")
+            span Download
+          button.btn.btn--black(type="button")
+            img.ap(src="./icons/apple.svg", alt="")
+            span App Store
+    section.section
+      .wrap
+        .card
+          .measure-row
+            .measure
+              button.btn.btn--black(type="button")
+                span Download
+              span.w
+            .measure
+              button.btn.btn--black(type="button")
+                img.ap(src="./icons/apple.svg", alt="")
+                span App Store
+              span.w
+            .measure
+              button.btn.btn--blue(type="button")
+                img.dl(src="./icons/download.svg", alt="")
+                span Download for macOS
+              span.w
+    footer
+      .wrap
+        p Files: demo.html · style.css · app.js · glass-filters.svg · icons/
+    //- 滤镜模板（与站点同一份），运行时按按钮尺寸 clone
+    svg.glass-defs(width="0", height="0", aria-hidden="true")!= filterSvg
+    style#glass-styles
+    script!= appJs

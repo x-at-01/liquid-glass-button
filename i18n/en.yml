@@ -5,29 +5,19 @@ lead: A liquid-glass button that stretches with its label, with real edge refrac
 btn_download: Download
 btn_appstore: App Store
 sec_width_h: Width comes from the text
-sec_width_p: 'One set of assets: the longer the label, the wider the button — the caps never change.'
+sec_width_p: The longer the label, the wider the button — the cap curvature never changes.
 w_short: Download
 w_appstore: App Store
 w_long: Download for macOS
-sec_assets_h: Three-slice assets (4×)
-sec_assets_p: 112px caps, one tileable middle, pixel-identical seams.
-cap_sheet: sheet
-cap_left: left
-cap_mid: mid
-cap_right: right
-cap_tile: repeat-x — no distortion at any width
 sec_usage_h: Usage
-sec_usage_p: One element does the nine-patch stretch; hover and active swap the filter.
+sec_usage_p: 'One element is the whole glass: shape, rim and depth are gradients and shadows; the edge refraction comes from a filter generated for the exact size.'
 sec_spec_h: Specs
 spec_font_h: Type
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47 body, letter-spacing -0.022em; 48px/1.08 headings.
 spec_btn_h: Button
 spec_btn_p: 56px tall (48px on mobile), 28px insets, 980px radius.
-spec_asset_h: Assets
-spec_asset_p: 4× lossless WebP (224px tall, shown at 56px), transparency kept.
 spec_icon_h: Icons
 spec_icon_p: 24px SVG sources, minified with SVGO, rendered at 20px.
-footer_1: Material from Qwen-Image-2.1 (native alpha); shape and light redrawn procedurally; edge refraction via SVG feDisplacementMap.
 footer_2: Apple logo is a trademark of Apple Inc., used for demonstration only.
 lang_choose: Choose language
 lang_aria: Change language
@@ -35,6 +25,9 @@ stage_hint: Hover to see it.
 light_hint: On light surfaces the glass reads pale — the tint keeps the label legible.
 link_repo: GitHub repository
 link_hig: Apple HIG · Materials
-link_model: 'Material: Qwen-Image-2.1'
-sec_svg_h: Pure SVG
-sec_svg_p: 'No bitmaps at all: body, rim light and depth are CSS gradients and shadows — edge refraction is still the SVG displacement filter.'
+sec_svg_h: How the SVG works
+sec_svg_p: 'The liquid feel comes from the rim: a displacement map is generated for the exact size, three passes create the dispersion, and an edge mask keeps the centre sharp.'
+svg_p1: 'Displacement map: generated for the button''s exact size — R holds the x offset, G the y offset, B the edge strength (0 in the centre, 255 at the rim).'
+svg_p2: 'Dispersion: three passes over the same map with slightly different scales; the R/G/B channels are split and screen-blended, so the rim disperses like real glass.'
+svg_p3: 'Edge mask: the B channel masks the result — only the rim refracts, the centre under the label stays untouched.'
+link_pack: Download the bundle (tar.xz)

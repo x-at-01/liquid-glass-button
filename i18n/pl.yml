@@ -5,29 +5,19 @@ lead: Przycisk z płynnego szkła, który rozciąga się z tekstem — z prawdzi
 btn_download: Pobierz
 btn_appstore: App Store
 sec_width_h: Szerokość wynika z tekstu
-sec_width_p: 'Jeden zestaw zasobów: dłuższy napis, szerszy przycisk, końcówki bez zmian.'
+sec_width_p: Im dłuższy tekst, tym szerszy przycisk — krzywizna końców się nie zmienia.
 w_short: Pobierz
 w_appstore: App Store
 w_long: Pobierz dla macOS
-sec_assets_h: Zasoby w trzech częściach (4×)
-sec_assets_p: Końcówki 112px, środek nieskończenie kafelkowy, łączenia co do piksela.
-cap_sheet: całość
-cap_left: lewo
-cap_mid: środek
-cap_right: prawo
-cap_tile: repeat-x — bez zniekształceń
 sec_usage_h: Użycie
-sec_usage_p: Jeden element rozciąga układ dziewięciu części; hover i active zmieniają filtr.
+sec_usage_p: 'Jeden element to całe szkło: kształt, krawędź i głębia to gradienty i cienie; załamanie krawędzi pochodzi z filtra generowanego w dokładnym rozmiarze.'
 sec_spec_h: Specyfikacja
 spec_font_h: Typografia
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, odstępy -0.022em; nagłówki 48px/1.08.
 spec_btn_h: Przycisk
 spec_btn_p: Wysokość 56px (48px mobilnie), 28px z boków, promień 980px.
-spec_asset_h: Zasoby
-spec_asset_p: Bezstratny WebP 4× (224px wysokości, wyświetlany 56px), przezroczystość zachowana.
 spec_icon_h: Ikony
 spec_icon_p: Źródła SVG 24px, kompresja SVGO, wyświetlane w 20px.
-footer_1: Materiał z Qwen-Image-2.1 (natywna alfa); kształt i światło przerysowane proceduralnie; załamanie krawędzi przez SVG feDisplacementMap.
 footer_2: Logo Apple to znak towarowy Apple Inc., użyty wyłącznie demonstracyjnie.
 lang_choose: Wybierz język
 lang_aria: Zmień język
@@ -35,6 +25,9 @@ stage_hint: Najedź, aby zobaczyć.
 light_hint: Na jasnym tle szkło jest blade; podkład utrzymuje czytelność napisu.
 link_repo: Repozytorium GitHub
 link_hig: Apple HIG · Materiały
-link_model: 'Materiał: Qwen-Image-2.1'
-sec_svg_h: Czysty SVG
-sec_svg_p: 'Bez bitmap: korpus, światło krawędzi i głębia to gradienty i cienie CSS; załamaniem krawędzi nadal zajmuje się filtr przesunięcia SVG.'
+sec_svg_h: Jak działa SVG
+sec_svg_p: 'Efekt płynności bierze się z krawędzi: mapa przesunięć jest generowana w dokładnym rozmiarze, trzy przebiegi tworzą dyspersję, a maska krawędzi utrzymuje ostrość środka.'
+svg_p1: 'Mapa przesunięć: generowana w dokładnym rozmiarze przycisku — R przechowuje przesunięcie x, G przesunięcie y, B siłę krawędzi (0 w środku, 255 na krawędzi).'
+svg_p2: 'Dyspersja: trzy przebiegi na tej samej mapie z nieco różnymi skalami; kanały R/G/B są rozdzielane i łączone w trybie screen, dzięki czemu krawędź rozprasza światło jak prawdziwe szkło.'
+svg_p3: 'Maska krawędzi: kanał B maskuje wynik — załamuje tylko krawędź, środek pod etykietą pozostaje nietknięty.'
+link_pack: Pobierz paczkę (tar.xz)

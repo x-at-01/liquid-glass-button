@@ -5,29 +5,19 @@ lead: Etiketiyle uzayan, kenarı gerçekten kıran bir Liquid Glass düğmesi.
 btn_download: İndir
 btn_appstore: App Store
 sec_width_h: Genişliği metin belirler
-sec_width_p: 'Tek set: metin uzadıkça düğme genişler, uçlar değişmez.'
+sec_width_p: Metin uzadıkça düğme genişler; uçların kavisi değişmez.
 w_short: İndir
 w_appstore: App Store
 w_long: macOS için indir
-sec_assets_h: Üç parçalı varlıklar (4×)
-sec_assets_p: Uçlar 112px, orta sonsuz karo, ek yerleri piksel piksel aynı.
-cap_sheet: tümü
-cap_left: sol
-cap_mid: orta
-cap_right: sağ
-cap_tile: repeat-x — bozulma yok
 sec_usage_h: Kullanım
-sec_usage_p: Tek öğe dokuz parçalı esnemeyi yapar; hover ve active filtreyi değiştirir.
+sec_usage_p: 'Tek bir öğe camın tamamı: biçim, kenar ve derinlik gradyanlar ve gölgeler; kenar kırılması tam boyuta göre üretilen filtreden gelir.'
 sec_spec_h: Özellikler
 spec_font_h: Tipografi
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, harf aralığı -0.022em; başlıklar 48px/1.08.
 spec_btn_h: Düğme
 spec_btn_p: 56px yüksek (mobilde 48px), yanlarda 28px, yarıçap 980px.
-spec_asset_h: Varlıklar
-spec_asset_p: 4× kayıpsız WebP (224px yüksek, 56px gösterilir), saydamlık korunur.
 spec_icon_h: Simgeler
 spec_icon_p: 24px SVG kaynakları SVGO ile küçültüldü, 20px gösterilir.
-footer_1: Materyal Qwen-Image-2.1 (yerel alfa) ile üretildi; biçim ve ışık prosedürel yeniden çizildi; kenar kırılması SVG feDisplacementMap ile.
 footer_2: Apple logosu Apple Inc. ticari markasıdır, yalnızca gösterim için kullanılmıştır.
 lang_choose: Dil seçin
 lang_aria: Dili değiştir
@@ -35,6 +25,9 @@ stage_hint: Üzerine gelin.
 light_hint: Açık zeminde cam soluk görünür; ton yazıyı okunur tutar.
 link_repo: GitHub deposu
 link_hig: Apple HIG · Materyaller
-link_model: 'Materyal: Qwen-Image-2.1'
-sec_svg_h: Saf SVG
-sec_svg_p: 'Bit eşlem yok: gövde, kenar ışığı ve derinlik CSS gradyanları ve gölgeleri — kenar kırılması yine SVG yer değiştirme filtresiyle yapılıyor.'
+sec_svg_h: SVG nasıl çalışır
+sec_svg_p: 'Sıvı hissi kenardan gelir: tam boyuta göre bir yer değiştirme haritası üretilir, üç geçiş dağılmayı oluşturur ve kenar maskesi merkezi net tutar.'
+svg_p1: 'Yer değiştirme haritası: düğmenin tam boyutunda üretilir — R x kaymasını, G y kaymasını, B kenar gücünü tutar (merkezde 0, kenarda 255).'
+svg_p2: 'Dağılma: aynı harita üzerinde biraz farklı ölçeklerle üç geçiş; R/G/B kanalları ayrılıp screen ile birleştirilir, kenar gerçek cam gibi dağılır.'
+svg_p3: 'Kenar maskesi: B kanalı sonucu maskeler — yalnızca kenar kırılır, etiketin altındaki merkez hiç etkilenmez.'
+link_pack: Paketi indir (tar.xz)

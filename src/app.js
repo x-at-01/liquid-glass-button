@@ -4,7 +4,6 @@
 // 玻璃：按按钮尺寸生成位移图，clone assets/glass-filters.svg 的滤镜模板，生成常态/hover/active 三份
 const LANG_KEY = "lang";
 const CH_LANG = "lang";
-const TILE_IMG = "url(../assets/glass/black-mid.webp)";
 const BTN_SEL = ".btn";
 const MAP_SEL = ".g-map";
 const DISP_SEL = ".g-disp";
@@ -12,7 +11,6 @@ const STYLE_ID = "glass-styles";
 const DEFS_SEL = ".glass-defs";
 const MEASURE_SEL = ".measure";
 const BTN_ID = "langBtn";
-const TILE_ID = "tileStrip";
 const TMPL_ID = "glass-template";
 const BOX_CLASS = "Box X FFF";
 const BTN_PLAIN = "Btn";
@@ -30,12 +28,12 @@ const BLUR_HOVER = "blur(6px) contrast(1.18) brightness(1.14) saturate(190%)";
 const BLUR_ACTIVE = "blur(10px) contrast(1.08) brightness(.94) saturate(140%)";
 const RESIZE_DELAY = 200;
 
-const { idx: CUR_IDX, lang_li: LANG_LI, name_li: NAME_LI, own_li: OWN_LI, choose: CHOOSE_TEXT } = window.__GLASS__;
+const { idx: CUR_IDX, lang_li: LANG_LI, name_li: NAME_LI, own_li: OWN_LI, choose: CHOOSE_TEXT } =
+  window.__GLASS__ ?? { idx: 0, lang_li: [], name_li: [], own_li: [], choose: "" };
 const { localStorage: STORE, BroadcastChannel: CH } = window;
-const langBtn = document.getElementById(BTN_ID);
+const langBtn = document.getElementById(BTN_ID); // 独立演示页没有语言按钮，后面会判空
 const defs = document.querySelector(DEFS_SEL);
 const styles = document.getElementById(STYLE_ID);
-const tile = document.getElementById(TILE_ID);
 const rand = () => Math.random().toString(36).slice(2, 9);
 
 /* ---------------- 语言 ---------------- */
@@ -86,6 +84,7 @@ const langOpen = () => {
 };
 
 const langInit = () => {
+  if (!langBtn) return; // 独立演示页：无语言切换
   STORE[LANG_KEY] = CUR_IDX;
   langBtn.addEventListener("click", langOpen);
   if (CH) {
@@ -193,7 +192,6 @@ const onResize = () => {
   }, RESIZE_DELAY);
 };
 
-tile.style.backgroundImage = TILE_IMG;
 langInit();
 glassRebuild();
 captionFit();

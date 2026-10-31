@@ -1,12 +1,12 @@
 # Liquid Glass Button
 
-Apple-style **Liquid Glass** button for the web: three-slice 4× assets, real edge refraction via an
-SVG `feDisplacementMap` filter, hover / active states, and a static multi-language demo built from
-**YAML translations + Pug**.
+Apple-style **Liquid Glass** button for the web, drawn with **CSS and SVG only — no bitmaps**. Real edge
+refraction comes from an SVG `feDisplacementMap` filter generated for each button's size, with hover /
+press states, on a static multi-language site built from **YAML translations + Pug**.
 
 **[Live demo →](https://x-at-01.github.io/liquid-glass-button/)** · [中文说明](#中文说明)
 
-![button](https://img.shields.io/badge/assets-4%C3%97%20lossless%20WebP-2f6fe0) ![i18n](https://img.shields.io/badge/i18n-75%20languages-0a84ff) ![license](https://img.shields.io/badge/license-MIT-black)
+![no bitmaps](https://img.shields.io/badge/assets-zero%20bitmaps-2f6fe0) ![i18n](https://img.shields.io/badge/i18n-75%20languages-0a84ff) ![license](https://img.shields.io/badge/license-MIT-black)
 
 ---
 
@@ -14,14 +14,15 @@ SVG `feDisplacementMap` filter, hover / active states, and a static multi-langua
 
 | Piece | What it does |
 |---|---|
-| `assets/glass/*.webp` | The button skin: left cap · middle tile · right cap · combined sheet, all 4× (224px tall, shown at 56px), lossless WebP with alpha |
-| `assets/glass-filters.svg` | **The SVG filter** (edge refraction + chromatic aberration), as a standalone file — inlined at build time, cloned per button at runtime |
-| `src/app.js` | Language switcher + displacement-map generator + per-button filter variants (normal / hover / active) |
+| `assets/glass-filters.svg` | **The SVG filter** (edge refraction + chromatic aberration) as a standalone file — inlined at build time, cloned per button at runtime |
+| `assets/icons/*.svg` | Icons (download / App Store mark / GitHub / globe), one line style, `currentColor`, SVGO-minified |
+| `src/app.js` | Displacement-map generator + per-button filter variants (normal / hover / active) + the webc-style language switcher |
 | `src/index.pug`, `src/style.css` | Template and styles (Apple-ish type scale: SF Pro, 17px body, 56px button) |
+| `src/demo.pug` | Standalone demo page, rendered into the downloadable bundle |
 | `i18n/langs.yml` | Language table — the same 75 codes and native names as webc (`src/js/i18n/CODE.js` + `NAME.js`), same order |
 | `i18n/*.yml` | UI strings, one file per translated language (18 today: en zh zh-TW ja ko fr de es it pt nl pl ru sv tr vi id ar) |
 | `tran.yml` | Same shape as webc's: source `zh`, `to_li: "*"` — missing languages fall back to `en` and are tagged in the switcher |
-| `build.js` | YAML + Pug → `out/<lang>/index.html`, then syncs `docs/` for GitHub Pages |
+| `build.js` | YAML + Pug → `out/<lang>/index.html`, the `tar.xz` bundle, then syncs `docs/` for GitHub Pages |
 
 ## How the glass works
 
@@ -35,32 +36,40 @@ Background blur alone gives you *frosted* glass, not liquid glass. The “liquid
 3. an edge mask (from the map's `B` channel) keeps the centre crisp and un-displaced;
 4. `backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) brightness(1.04) saturate(170%)`.
 
+The material itself is three CSS layers over a tint: a wide soft light band along the top edge (brightest
+at the rim, fading inward, gone at the corners — no hard 1px line, which reads as plastic), a faint inner
+bounce at the bottom, and a diagonal `mix-blend-mode: screen` sheen from the upper left.
+
 Hover and active swap in pre-built filter variants (displacement ×1.45 / ×0.6) and change geometry
-(`transform`, shadow, a press overlay) plus the label colour (`.9` → `#fff` on hover, dimmed while
-pressed) — `backdrop-filter` does not interpolate between `url()` values, so smoothness comes from the
-`transform`/`box-shadow`/`color` transitions. `outline` is reserved for
-`:focus-visible`, never for the pressed state.
+(`transform`, shadow, a press overlay) plus the label colour (`.9` → `#fff` on hover; the pressed label
+gets an engraved `text-shadow` so it reads as pushed into the glass). `backdrop-filter` does not
+interpolate between `url()` values, so smoothness comes from the `transform` / `box-shadow` / `opacity`
+transitions. `outline` is reserved for `:focus-visible`, never for the pressed state.
 
-The material comes from a **Qwen-Image-2.1** render (native alpha channel), then the shape and lighting
-are redrawn by a procedural liquid-glass renderer: an SDF capsule, a normal-based specular that follows
-the contour, an inner shadow for thickness, and a flattened middle tile so the slice repeats with
-pixel-identical seams. The generator script (`generate_pill.py`) lives in the model repo that produced
-these assets; the important part — assets, filter and page — is all in this repo.
+Caveat: SVG filters inside `backdrop-filter` are Chromium-only today. Safari and Firefox keep the blur,
+the tint and the rim light, and simply skip the refraction.
 
-### Pure SVG mode
+## Download
 
-`.btn.svg` renders the same pill with **zero bitmaps**: no WebP, no images. The body is a layered
-CSS gradient over a dark tint, the fresnel rim is a 1px gradient ring painted by `::after` with
-`mask-composite: exclude`, depth is inset shadows — and the edge refraction is still the *same*
-runtime SVG displacement filter (it attaches to every `.btn`, so both modes share it). The demo has
-a "Pure SVG" section with the pill in both black and blue; caveat: SVG filters inside
-`backdrop-filter` are Chromium-only today, other browsers keep the blur + rim and skip refraction.
+The site footer links **`liquid-glass-button.tar.xz`** (also at the repo root of `out/`). It contains a
+standalone demo plus everything it needs:
+
+```
+liquid-glass-button/
+  demo.html          self-contained page (CSS, JS and the filter inlined)
+  style.css          button styles, drop-in
+  app.js             displacement-map generator + filter builder
+  glass-filters.svg  the filter template
+  icons/             download / App Store SVGs
+```
+
+Extract and open `demo.html` — no build step, no dependencies.
 
 ## Build & run
 
 ```bash
 bun install          # pug + js-yaml
-bun run build        # i18n/*.yml + src/index.pug → out/<lang>/  (and docs/ for Pages)
+bun run build        # i18n/*.yml + src/index.pug → out/<lang>/ + the tar.xz (and docs/ for Pages)
 bun run dev          # build + serve http://127.0.0.1:8765
 ```
 
@@ -85,8 +94,7 @@ by itself.
 - `assets/icons/*.svg` — icons (download / App Store mark / GitHub / globe), all SVGO-minified.
   One style for every icon: 24-unit grid, stroke 2, `currentColor`, used through CSS `mask-image` +
   `background-color: currentColor`, so the icon follows the button's `color` on hover / active and
-  no icon can out-weigh another (mixing the solid GitHub mark with a line globe is what made the
-  topbar look mismatched). The topbar GitHub link and the language switcher are the same `webc`
+  no icon can out-weigh another. The topbar GitHub link and the language switcher are the same `webc`
   `.BtnC` component — only the mask differs (`.Ico.github` vs `.BtnC.lang .Ico`), so they stay
   pixel-identical by construction.
 - `assets/glass-filters.svg` — the filter template as a standalone SVG. It is referenced from CSS at
@@ -109,8 +117,7 @@ by itself.
 - [shuding/liquid-glass](https://github.com/shuding/liquid-glass) — `feImage` + `feDisplacementMap` edge lensing
 - [rdev/liquid-glass-react](https://github.com/rdev/liquid-glass-react) — RGB-split chromatic aberration at the edges
 - [Apple Human Interface Guidelines — Materials](https://developer.apple.com/design/human-interface-guidelines/materials)
-- Material generated with [Qwen-Image-2.1](https://huggingface.co/Qwen/Qwen-Image-2.1) (text-to-image, native alpha channel)
-- Icons: SVGO-minified SVG. The Apple logo is a trademark of Apple Inc., used only to demonstrate an App Store button.
+- The Apple logo is a trademark of Apple Inc., used only to demonstrate an App Store button.
 
 MIT licensed.
 
@@ -118,52 +125,10 @@ MIT licensed.
 
 ## 中文说明
 
-Apple 风格的**液态玻璃按钮**：三段式 4× 素材 + SVG `feDisplacementMap` 做真实边缘折射，
-带 hover / active 状态；演示页是 **YAML 翻译 + Pug** 生成的静态多语言站点。
+Apple 风格的**液态玻璃按钮**：只用 **CSS + SVG 绘制，不含任何位图**；边缘折射由按按钮尺寸生成的
+SVG `feDisplacementMap` 滤镜完成，带 hover / 按下状态。演示页是 **YAML 翻译 + Pug** 生成的静态多语言站点。
 
 **[在线演示 →](https://x-at-01.github.io/liquid-glass-button/)**
-
-### 多语言（对标 webc）
-
-- **语言表**：`i18n/langs.yml` 与 webc 的 `CODE.js` / `NAME.js` 完全一致（75 种、同顺序、同母语名）；
-- **寻址**：语言用**索引**表示，`localStorage.lang` 存索引，与 webc 的 `store.js` 相同；
-- **识别**：首页按 `localStorage.lang` → `navigator.language`（先精确匹配，再取前缀）→ 索引 0 的顺序跳转；
-- **切换器**：右上角圆形按钮 → 原生 `<dialog>` 列出 75 种母语名，当前项高亮，选择结果用
-  `BroadcastChannel("lang")` 同步到其它标签页；
-- **翻译**：每种语言一个 `i18n/<code>.yml`；没有对应文件的语言回退到英文并在弹窗里标 `en` 小标签，
-  不会出现“标着日语其实是英文”的情况；
-- **RTL**：`ar fa ur sd iw` 自动 `dir="rtl"`。
-
-目前 18 种已完成翻译（en zh zh-TW ja ko fr de es it pt nl pl ru sv tr vi id ar），其余 57 种为英文回退。
-新增语言：复制 `i18n/en.yml` 改成 `<code>.yml` 翻译后重新构建即可。
-
-### 素材与 git hook
-
-- `assets/icons/*.svg`：图标（下载 / App Store / GitHub / 地球），全部 SVGO 压缩过；所有图标
-  一套画法——24 网格、描边 2、`currentColor` 上色，CSS 侧走 `mask-image` +
-  `background-color: currentColor`，颜色跟随按钮的 `color`（hover / active 会一起变），线宽也
-  不会一个重一个轻（之前 GitHub 实心徽标配细线地球，顶栏才会看着不搭）。顶栏的 GitHub 链接和
-  语言按钮就是同一个 webc `.BtnC` 组件，只有 mask 不同（`.Ico.github` / `.BtnC.lang .Ico`），
-  规格天然一致；
-- `assets/glass-filters.svg`：滤镜模板，独立成文件，运行时被 CSS 引用；因此 `svgo.config.mjs` 里
-  **关掉了** `removeUselessDefs`、`removeHiddenElems`、`cleanupIds`、`removeUnknownsAndDefaults`——
-  默认预设会把整份 `<defs>` 当“无用”删掉，或者把 `#glass-template` / `.g-map` / `.g-disp` 改名，
-  运行时定位会失效；
-- **pre-commit hook**（`.githooks/pre-commit`，bun + zx）：提交时如果暂存区里有 `.svg` 改动，
-  就跑一遍 SVGO 并重新 `git add`；构建产物目录（`docs/`、`out/`）跳过不处理。
-  `bun install` 会通过 `prepare` 脚本自动配置（`git config core.hooksPath .githooks`），
-  手动执行用 `bun run svgo`。
-
-### 结构
-
-| 路径 | 说明 |
-|---|---|
-| `assets/glass/*.webp` | 按钮皮肤：左端 / 中间平铺块 / 右端 / 整图，全部 4×（224px 高，显示 56px），无损透明 WebP |
-| `assets/glass-filters.svg` | **拆成独立文件的 SVG 滤镜**（边缘折射 + 色散）；构建时内联，运行时按按钮尺寸 clone |
-| `src/app.js` | 语言切换 + 位移图生成 + 每按钮三份滤镜（常态 / hover / active） |
-| `src/index.pug`、`src/style.css` | 模板与样式（SF Pro、17px 正文、56px 按钮） |
-| `i18n/*.yml` | 9 种语言的文案 |
-| `build.js` | YAML + Pug → `out/<lang>/index.html`，并同步 `docs/` 给 GitHub Pages |
 
 ### 玻璃是怎么做出来的
 
@@ -172,30 +137,69 @@ Apple 风格的**液态玻璃按钮**：三段式 4× 素材 + SVG `feDisplaceme
 RGB 分通道后 screen 叠加做**边缘色散**，再用边缘遮罩让中心保持清晰，最后
 `backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) brightness(1.04) saturate(170%)`。
 
-hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6），并改变几何（transform、阴影、按压覆盖层）
-和文字颜色（常态 90% 白 → hover 纯白 → 按下略暗）。
-`backdrop-filter` 在两组 `url()` 之间不会插值，所以顺滑感来自 transform/box-shadow 过渡；
+材质本身是暗色 tint 上的三层 CSS：顶缘一条宽而柔的亮带（贴边最亮、往里 6–8px 渐隐、到转角消失——
+没有 1px 硬线，那会读成塑料），底部一道很弱的内侧回光，左上角一团 `mix-blend-mode: screen` 的斜向天光。
+
+hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6），并改变几何（transform、阴影）和文字状态：
+hover 转纯白，按下时加凹陷的 `text-shadow`，读起来像被压进玻璃里。
+`backdrop-filter` 在两组 `url()` 之间不会插值，所以顺滑感来自 transform / box-shadow / opacity 过渡；
 `outline` 只留给 `:focus-visible`，不用于按下态。
 
-材质由 **Qwen-Image-2.1** 生成（原生透明），形状与光影由程序化液态玻璃渲染重绘：
-SDF 胶囊 + 基于法线的高光（自动顺着轮廓绕过端帽）+ 内阴影厚度感 + 平铺块按行压平（接缝逐像素一致）。
+注意：`backdrop-filter` 里的 SVG 滤镜目前只有 Chromium 支持。Safari 与 Firefox 会保留模糊、底色和棱边高光，
+只是不做折射。
+
+### 下载
+
+页脚有 **`liquid-glass-button.tar.xz`** 的下载链接（构建产物在 `out/`）。包内容：
+
+```
+liquid-glass-button/
+  demo.html          独立演示页（CSS、JS、滤镜全部内联）
+  style.css          按钮样式，可直接取用
+  app.js             位移图生成 + 滤镜构建
+  glass-filters.svg  滤镜模板
+  icons/             下载 / App Store 图标
+```
+
+解压后直接双击 `demo.html` 即可，无需构建、无依赖。
+
+### 多语言（对标 webc）
+
+- **语言表**：`i18n/langs.yml` 与 webc 的 `CODE.js` / `NAME.js` 完全一致（75 种、同顺序、同母语名）；
+- **寻址**：语言用**索引**表示，`localStorage.lang` 存索引，与 webc 的 `store.js` 相同；
+- **识别**：首页按 `localStorage.lang` → `navigator.language`（先精确匹配，再取前缀）→ 索引 0 的顺序跳转；
+- **切换器**：右上角圆形按钮 → 原生 `<dialog>` 列出 75 种母语名，当前项高亮，选择结果用
+  `BroadcastChannel("lang")` 同步到其它标签页；
+- **翻译**：每种语言一个 `i18n/<code>.yml`；没有对应文件的语言回退到英文并在弹窗里标 `en` 小标签；
+- **RTL**：`ar fa ur sd iw` 自动 `dir="rtl"`。
+
+目前 18 种已完成翻译（en zh zh-TW ja ko fr de es it pt nl pl ru sv tr vi id ar），其余 57 种为英文回退。
+新增语言：复制 `i18n/en.yml` 改成 `<code>.yml` 翻译后重新构建即可。
+
+### 结构
+
+| 路径 | 说明 |
+|---|---|
+| `assets/glass-filters.svg` | **拆成独立文件的 SVG 滤镜**（边缘折射 + 色散）；构建时内联，运行时按按钮尺寸 clone |
+| `assets/icons/*.svg` | 图标：一套画法——24 网格、描边 2、`currentColor`，CSS 侧走 `mask-image` 跟随按钮颜色 |
+| `src/app.js` | 位移图生成 + 每按钮三份滤镜（常态 / hover / active）+ 语言切换 |
+| `src/index.pug`、`src/style.css` | 模板与样式（SF Pro、17px 正文、56px 按钮） |
+| `src/demo.pug` | 独立演示页，构建时渲染进 tar.xz 素材包 |
+| `build.js` | YAML + Pug → `out/<lang>/index.html` + 素材包，并同步 `docs/` 给 GitHub Pages |
 
 ### 构建
 
 ```bash
 bun install
-bun run build   # → out/<lang>/（并同步 docs/）
+bun run build   # → out/<lang>/ + liquid-glass-button.tar.xz（并同步 docs/）
 bun run dev     # 构建 + 本地预览 http://127.0.0.1:8765
 ```
-
-新增语言：复制一份 `i18n/en.yml` 改成 `<code>.yml` 再构建即可，语言切换按钮会自动带上。
 
 ### 参考
 
 - [shuding/liquid-glass](https://github.com/shuding/liquid-glass)（边缘折射）
 - [rdev/liquid-glass-react](https://github.com/rdev/liquid-glass-react)（RGB 分通道色散）
 - [Apple HIG · Materials](https://developer.apple.com/design/human-interface-guidelines/materials)
-- 材质：[Qwen-Image-2.1](https://huggingface.co/Qwen/Qwen-Image-2.1)（原生 alpha）
 - 代码规范：`skill/js.md`（bun shebang / 只用箭头函数 / 无 try-catch / snake_case 数据 + camelCase 函数 +
   UPPER_SNAKE 常量 / 参数扁平 / 多值返回数组 / 禁止 class）
 - Apple 标志为 Apple Inc. 商标，仅用于演示 App Store 按钮。

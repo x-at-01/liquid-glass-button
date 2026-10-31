@@ -62,78 +62,41 @@ html(lang=code, dir=dir)
               span.w
           p.hint= t.light_hint
 
+    //- SVG 设计原理：位移图 → 三次位移（色散）→ 边缘遮罩 → 背景模糊链
     section.section
       .wrap
         .section-head
           h2= t.sec_svg_h
           p.sub= t.sec_svg_p
-        .card
-          .measure-row
-            .measure
-              button.btn.svg.btn--black(type="button")
-                span= t.w_short
-              span.w
-            .measure
-              button.btn.svg.btn--black(type="button")
-                img.ap(src="../assets/icons/apple.svg", alt="")
-                span= t.w_appstore
-              span.w
-            .measure
-              button.btn.svg.btn--blue(type="button")
-                img.dl(src="../assets/icons/download.svg", alt="")
-                span= t.w_long
-              span.w
-          p.hint= t.light_hint
+        .principles
+          .principle
+            span.n 01
+            p= t.svg_p1
+          .principle
+            span.n 02
+            p= t.svg_p2
+          .principle
+            span.n 03
+            p= t.svg_p3
         pre
           code.
-            .btn.svg {
-              border: 0; border-radius: 980px; padding: 0 28px;
-              background:
-                /* 顶缘亮带：贴边最亮，往里 6–8px 渐隐，没有 1px 细线 */
-                radial-gradient(125% 112% at 50% -26%, #ffffff42, #ffffff14 30%, #ffffff05 48%, transparent 62%),
-                linear-gradient(180deg, transparent 62%, #0000002e),  /* 底部极轻的压暗 */
-                var(--tint);
-              box-shadow: inset 0 -12px 16px -12px #ffffff1a,   /* 底缘内侧回光 */
-                          0 10px 22px -8px #00000052, 0 2px 6px #00000024;
-              backdrop-filter: url(#glass-1) blur(6px) saturate(170%); /* 同一个 SVG 折射滤镜 */
-            }
-            /* 天光：::after 径向柔光 + mix-blend-mode:screen，负 z-index 压在 tint 上、文字之下 */
+            /* 1) 按按钮实际尺寸生成位移图（app.js → canvas） */
+            R = 128 + x 位移 · G = 128 + y 位移 · B = 边缘强度（中心 0 → 贴边 255）
 
-    section.section.section--tint
-      .wrap
-        .section-head
-          h2= t.sec_assets_h
-          p.sub= t.sec_assets_p
-        .pieces
-          figure
-            .shot
-              img(src="../assets/glass/black-sheet.webp", alt="")
-            figcaption
-              b= t.cap_sheet
-              |  · 352×224 · 4×
-          figure
-            .shot
-              img(src="../assets/glass/black-left.webp", alt="")
-            figcaption
-              b= t.cap_left
-              |  · 112×224
-          figure
-            .shot
-              img(src="../assets/glass/black-mid.webp", alt="")
-            figcaption
-              b= t.cap_mid
-              |  · 128×224
-          figure
-            .shot
-              img(src="../assets/glass/black-right.webp", alt="")
-            figcaption
-              b= t.cap_right
-              |  · 112×224
-        .tile-wrap
-          .checker
-            .tile-strip#tileStrip
-          p.cap= t.cap_tile
+            /* 2) 同一张图做三次位移，scale 略有差异，分离 R/G/B 后 screen 叠加 → 色散 */
+            feDisplacementMap  in2="map"  scale="s·1.00"  → feColorMatrix → R
+            feDisplacementMap  in2="map"  scale="s·0.92"  → feColorMatrix → G
+            feDisplacementMap  in2="map"  scale="s·0.84"  → feColorMatrix → B
+            feBlend mode="screen"
 
+            /* 3) 用位移图的 B 通道做遮罩：只有边缘参与折射，中心保持清晰 */
+            feComponentTransfer → edgeMask
+            feComposite in="edge" in2="center" operator="over"
+
+            /* 4) 背景模糊链（SVG 滤镜只负责折射，磨砂交给 blur） */
+            backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) saturate(170%)
+
+    //- 用法：一个元素的完整配方
     section.section
       .wrap
         .section-head
@@ -143,14 +106,18 @@ html(lang=code, dir=dir)
           code.
             .btn {
               display: inline-flex; align-items: center; gap: 9px;
-              height: 56px; width: auto;              /* width comes from the label */
-              border: 0 solid transparent;
-              border-left-width: 28px; border-right-width: 28px;
-              border-image: url(./assets/glass/black-sheet.webp) 0 112 0 112 fill stretch;
-              border-radius: 980px; color: #fff;
+              height: 56px; padding: 0 28px;            /* 宽度由文字决定 */
+              border: 0; border-radius: 980px;
+              background:
+                radial-gradient(125% 112% at 50% -26%, #ffffff42, #ffffff14 30%, transparent 62%),
+                linear-gradient(180deg, transparent 62%, #0000002e),
+                var(--tint);                          /* 黑 rgba(12,12,14,.82) / 蓝 rgba(16,54,178,.82) */
+              box-shadow: inset 0 -12px 16px -12px #ffffff1a,
+                          0 10px 22px -8px #00000052, 0 2px 6px #00000024;
               backdrop-filter: url(#glass-1) blur(6px) contrast(1.15) saturate(170%);
             }
-            /* displacement map + filter template: ./assets/glass-filters.svg */
+            /* 天光：::after 径向柔光 + mix-blend-mode:screen（负 z-index，压在底色上、文字下） */
+            /* 折射滤镜：./glass-filters.svg 是模板，app.js 按按钮尺寸 clone 出常态 / hover / active 三份 */
 
     section.section.section--tint
       .wrap
@@ -163,9 +130,6 @@ html(lang=code, dir=dir)
             h3= t.spec_btn_h
             p= t.spec_btn_p
           .spec
-            h3= t.spec_asset_h
-            p= t.spec_asset_p
-          .spec
             h3= t.spec_icon_h
             p= t.spec_icon_p
 
@@ -174,8 +138,7 @@ html(lang=code, dir=dir)
         .foot-links
           a(href="https://github.com/x-at-01/liquid-glass-button")= t.link_repo
           a(href="https://developer.apple.com/design/human-interface-guidelines/materials")= t.link_hig
-          a(href="https://huggingface.co/Qwen/Qwen-Image-2.1")= t.link_model
-        p= t.footer_1
+          a(href="../liquid-glass-button.tar.xz", download)= t.link_pack
         p= t.footer_2
 
     //- SVG 滤镜（构建时从 assets/glass-filters.svg 内联；运行时按按钮尺寸 clone）

@@ -5,29 +5,19 @@ lead: 可依文字拉伸的液態玻璃按鈕，邊緣有真實折射。
 btn_download: 下載
 btn_appstore: App Store
 sec_width_h: 寬度由文字決定
-sec_width_p: 同一套素材：文案越長按鈕越寬，端帽不變。
+sec_width_p: 文案越長按鈕越寬，兩端的弧度不變。
 w_short: 下載
 w_appstore: App Store
 w_long: 立即下載 macOS 版本
-sec_assets_h: 三段式素材（4×）
-sec_assets_p: 端帽 112px，中間塊可無限平鋪，接縫逐像素一致。
-cap_sheet: 整張
-cap_left: 左端
-cap_mid: 中間
-cap_right: 右端
-cap_tile: repeat-x，任意寬度不變形
 sec_usage_h: 用法
-sec_usage_p: 一個元素完成九宮格拉伸，hover / active 換濾鏡。
+sec_usage_p: 一個元素就是整顆玻璃：形體、稜邊與深度用漸層和陰影繪製，邊緣折射來自按尺寸生成的濾鏡。
 sec_spec_h: 設計規格
 spec_font_h: 字體
 spec_font_p: SF Pro Display / SF Pro Text；內文 17px/1.47，字距 -0.022em；標題 48px/1.08。
 spec_btn_h: 按鈕
 spec_btn_p: 高 56px（行動裝置 48px），左右內縮 28px，圓角 980px。
-spec_asset_h: 素材
-spec_asset_p: 4× 無損 WebP（224px 高，顯示 56px），保留透明。
 spec_icon_h: 圖示
 spec_icon_p: SVG 24px 來源，SVGO 壓縮；按鈕內以 20px 呈現。
-footer_1: 材質由 Qwen-Image-2.1 生成（原生透明），形狀與光影為程序化重繪；邊緣折射用 SVG feDisplacementMap。
 footer_2: Apple 標誌為 Apple Inc. 商標，僅作示範。
 lang_choose: 選擇語言
 lang_aria: 切換語言
@@ -35,6 +25,9 @@ stage_hint: 把滑鼠移到按鈕上試試。
 light_hint: 淺色底上玻璃偏淡，用底色保持文字對比。
 link_repo: GitHub 儲存庫
 link_hig: Apple HIG · 材質
-link_model: 材質：Qwen-Image-2.1
-sec_svg_h: 純 SVG
-sec_svg_p: '完全不使用點陣圖：瓶身、稜邊高光和深度都是 CSS 漸層與陰影，邊緣折射仍由 SVG 位移濾鏡完成。'
+sec_svg_h: SVG 設計原理
+sec_svg_p: 液態感來自邊緣折射：按尺寸生成位移圖，三次位移做出色散，再用邊緣遮罩保住中心的清晰。
+svg_p1: 位移圖：按按鈕的實際尺寸生成，R 存 x 位移、G 存 y 位移、B 存邊緣強度——中心 0，貼邊 255。
+svg_p2: 色散：同一張圖做三次位移，scale 略有差異，再分離 R/G/B 通道以 screen 疊加，邊緣就有真實玻璃的色散。
+svg_p3: 邊緣遮罩：用 B 通道當遮罩，只有邊緣參與折射與色散，文字所在的中心區域完全不受影響。
+link_pack: 下載素材包（tar.xz）
