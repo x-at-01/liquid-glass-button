@@ -13,7 +13,7 @@ sec_usage_h: Kullanım
 sec_usage_p: 'Tek bir öğe camın tamamı: biçim, kenar ve derinlik gradyanlar ve gölgeler; kenar kırılması tam boyuta göre üretilen filtreden gelir.'
 sec_spec_h: Özellikler
 spec_font_h: Tipografi
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, harf aralığı -0.374px; başlıklar 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; başlıklar 48px/1.08.
 spec_btn_h: Düğme
 spec_btn_p: 56px yüksek (mobilde 48px), yanlarda 28px, yarıçap 980px.
 spec_icon_h: Simgeler

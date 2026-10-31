@@ -13,7 +13,7 @@ sec_usage_h: Użycie
 sec_usage_p: 'Jeden element to całe szkło: kształt, krawędź i głębia to gradienty i cienie; załamanie krawędzi pochodzi z filtra generowanego w dokładnym rozmiarze.'
 sec_spec_h: Specyfikacja
 spec_font_h: Typografia
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, odstępy -0.374px; nagłówki 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; nagłówki 48px/1.08.
 spec_btn_h: Przycisk
 spec_btn_p: Wysokość 56px (48px mobilnie), 28px z boków, promień 980px.
 spec_icon_h: Ikony

@@ -13,7 +13,7 @@ sec_usage_h: Uso
 sec_usage_p: 'Un solo elemento es todo el vidrio: forma, borde y profundidad son degradados y sombras; la refracción del borde viene de un filtro generado al tamaño exacto.'
 sec_spec_h: Especificaciones
 spec_font_h: Tipografía
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, interletrado -0.374px; títulos 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; títulos 48px/1.08.
 spec_btn_h: Botón
 spec_btn_p: 56px de alto (48px en móvil), 28px a los lados, radio 980px.
 spec_icon_h: Iconos

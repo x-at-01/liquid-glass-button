@@ -13,7 +13,7 @@ sec_usage_h: 使い方
 sec_usage_p: 1 つの要素がガラスそのもの。形・縁・奥行きはグラデーションと影で描き、縁の屈折は実寸で生成したフィルターが担います。
 sec_spec_h: 仕様
 spec_font_h: 書体
-spec_font_p: SF Pro Display / SF Pro Text。本文 17px/1.47、字間 -0.374px、見出し 48px/1.08。
+spec_font_p: SF Pro Display / SF Pro Text。本文 17px/1.47、見出し 48px/1.08。
 spec_btn_h: ボタン
 spec_btn_p: 高さ 56px（モバイル 48px）、左右 28px、角丸 980px。
 spec_icon_h: アイコン

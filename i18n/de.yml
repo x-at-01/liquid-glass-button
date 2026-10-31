@@ -13,7 +13,7 @@ sec_usage_h: Verwendung
 sec_usage_p: 'Ein Element ist das ganze Glas: Form, Rand und Tiefe sind Verläufe und Schatten; die Randbrechung kommt von einem in exakter Größe erzeugten Filter.'
 sec_spec_h: Spezifikation
 spec_font_h: Schrift
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, Laufweite -0.374px; Überschriften 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; Überschriften 48px/1.08.
 spec_btn_h: Button
 spec_btn_p: 56px hoch (48px mobil), 28px seitlich, Radius 980px.
 spec_icon_h: Icons

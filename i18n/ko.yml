@@ -13,7 +13,7 @@ sec_usage_h: 사용법
 sec_usage_p: 하나의 요소가 곧 유리입니다. 형태와 가장자리, 깊이는 그라디언트와 그림자로 그리고 가장자리 굴절은 실제 크기로 생성한 필터가 담당합니다.
 sec_spec_h: 사양
 spec_font_h: 서체
-spec_font_p: SF Pro Display / SF Pro Text, 본문 17px/1.47, 자간 -0.374px, 제목 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text, 본문 17px/1.47, 제목 48px/1.08.
 spec_btn_h: 버튼
 spec_btn_p: 높이 56px(모바일 48px), 좌우 28px, 반경 980px.
 spec_icon_h: 아이콘

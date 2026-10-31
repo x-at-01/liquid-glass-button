@@ -13,7 +13,7 @@ sec_usage_h: Cách dùng
 sec_usage_p: 'Một phần tử là cả khối thuỷ tinh: hình dạng, mép và độ sâu đều là gradient và bóng; khúc xạ ở mép do bộ lọc tạo theo đúng kích thước đảm nhiệm.'
 sec_spec_h: Thông số
 spec_font_h: Chữ
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, giãn chữ -0.374px; tiêu đề 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; tiêu đề 48px/1.08.
 spec_btn_h: Nút
 spec_btn_p: Cao 56px (48px trên di động), hai bên 28px, bán kính 980px.
 spec_icon_h: Biểu tượng

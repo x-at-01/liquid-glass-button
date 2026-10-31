@@ -13,7 +13,7 @@ sec_usage_h: Gebruik
 sec_usage_p: 'Eén element is het hele glas: vorm, rand en diepte zijn verlopen en schaduwen; de randbreking komt van een filter dat op exacte grootte is gemaakt.'
 sec_spec_h: Specificaties
 spec_font_h: Typografie
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, letterspatiëring -0.374px; koppen 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; koppen 48px/1.08.
 spec_btn_h: Knop
 spec_btn_p: 56px hoog (48px mobiel), 28px zijdelings, radius 980px.
 spec_icon_h: Pictogrammen

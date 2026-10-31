@@ -13,7 +13,7 @@ sec_usage_h: Penggunaan
 sec_usage_p: 'Satu elemen adalah seluruh kaca: bentuk, tepi, dan kedalaman berupa gradien dan bayangan; pembiasan tepi berasal dari filter yang dibuat sesuai ukuran persis.'
 sec_spec_h: Spesifikasi
 spec_font_h: Tipografi
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, jarak huruf -0.374px; judul 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47; judul 48px/1.08.
 spec_btn_h: Tombol
 spec_btn_p: Tinggi 56px (48px di ponsel), 28px di sisi, radius 980px.
 spec_icon_h: Ikon
