@@ -1,39 +1,38 @@
 code: id
 lang_name: Indonesia
 title: Tombol Liquid Glass
-eyebrow: Liquid Glass · aset 4×
-lead: 'Sesuai tipografi web Apple: SF Pro, teks 17px, tombol 56px. Lebar mengikuti teks, aset 4× dan bagian tengah diulang tanpa batas.'
+lead: Tombol kaca cair yang memanjang mengikuti teks, tepinya benar-benar membias.
 btn_download: Unduh
 btn_appstore: App Store
 sec_width_h: Lebar ditentukan teks
-sec_width_p: 'Tanpa lebar tetap. Satu set tiga bagian: makin panjang teks makin lebar tombol, ujungnya tetap sama.'
+sec_width_p: 'Satu set aset: makin panjang teks makin lebar tombol, ujungnya tetap.'
 w_short: Unduh
 w_appstore: App Store
 w_long: Unduh untuk macOS
 sec_assets_h: Aset tiga bagian (4×)
-sec_assets_p: Tinggi 224px (4×, ditampilkan 56px). Ujung 112px, ubin tengah 128px; sambungan identik per piksel.
+sec_assets_p: Ujung 112px, tengah bisa diulang tanpa batas, sambungan identik per piksel.
 cap_sheet: keseluruhan
 cap_left: kiri
 cap_mid: tengah
 cap_right: kanan
-cap_tile: ubin tengah · repeat-x · lebar apa pun tanpa distorsi
+cap_tile: repeat-x — tanpa distorsi
 sec_usage_h: Penggunaan
-sec_usage_p: Satu elemen melakukan peregangan sembilan bagian; hover dan active mengganti filter SVG.
+sec_usage_p: Satu elemen untuk peregangan sembilan bagian; hover dan active ganti filter.
 sec_spec_h: Spesifikasi
 spec_font_h: Tipografi
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, jarak huruf -0.022em; judul 48px/1.08.
 spec_btn_h: Tombol
-spec_btn_p: Tinggi 56px (48px di ponsel), 28px di sisi, radius 980px, ikon 20px.
+spec_btn_p: Tinggi 56px (48px di ponsel), 28px di sisi, radius 980px.
 spec_asset_h: Aset
-spec_asset_p: '4×: tinggi 224px, ujung 112px, ubin 128px; WebP tanpa rugi menjaga transparansi.'
+spec_asset_p: WebP 4× tanpa rugi (tinggi 224px, ditampilkan 56px), transparansi tetap.
 spec_icon_h: Ikon
 spec_icon_p: Sumber SVG 24px, dikompresi dengan SVGO, ditampilkan 20px.
-footer_1: Material dibuat dengan Qwen-Image-2.1 (alfa asli); bentuk dan cahaya digambar ulang oleh perender liquid glass prosedural; refraksi tepi lewat SVG feDisplacementMap.
-footer_2: Logo Apple adalah merek dagang Apple Inc., hanya dipakai untuk menunjukkan tata letak tombol App Store.
+footer_1: Material dari Qwen-Image-2.1 (alfa asli); bentuk dan cahaya digambar ulang secara prosedural; refraksi tepi lewat SVG feDisplacementMap.
+footer_2: Logo Apple adalah merek dagang Apple Inc., hanya untuk demonstrasi.
 lang_choose: Pilih bahasa
 lang_aria: Ganti bahasa
-stage_hint: 'Arahkan kursor ke tombol: tepinya membiaskan apa yang ada di belakang.'
-light_hint: Di latar terang kaca tampak lebih pucat; lapisan warna menjaga keterbacaan teks.
+stage_hint: Arahkan kursor untuk melihat.
+light_hint: Di latar terang kaca tampak pucat; lapisan warna menjaga keterbacaan.
 link_repo: Repositori GitHub
 link_hig: Apple HIG · Material
 link_model: 'Material: Qwen-Image-2.1'

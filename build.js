@@ -3,7 +3,7 @@
 // 语言表、语言寻址（索引）、回退策略都与 webc 的 src/js/i18n 一致。
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import yaml from "js-yaml";
+import { load } from "js-yaml";
 import pug from "pug";
 
 const ROOT = import.meta.dirname;
@@ -24,7 +24,7 @@ const FALLBACK_CODE = "en";
 const RTL = "rtl", LTR = "ltr";
 
 const textRead = (path) => readFileSync(path, "utf8");
-const ymlRead = (path) => yaml.load(textRead(path));
+const ymlRead = (path) => load(textRead(path));
 
 // assets/glass-filters.svg 可独立预览；内联时去掉最外层 <svg> 包裹
 const filterSvg = textRead(FILTER_FILE)

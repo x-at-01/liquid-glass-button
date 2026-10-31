@@ -11,8 +11,8 @@
     "svgo": "bunx svgo --config svgo.config.mjs"
   },
   "devDependencies": {
-    "js-yaml": "^4.1.0",
-    "pug": "^3.0.3",
+    "js-yaml": "^5.5.0",
+    "pug": "^3.0.4",
     "svgo": "^4.1.0",
     "zx": "^8.8.5"
   }

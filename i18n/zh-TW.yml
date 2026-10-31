@@ -1,39 +1,38 @@
 code: zh-TW
 lang_name: 正體中文
 title: 液態玻璃按鈕
-eyebrow: 液態玻璃 · 4× 素材
-lead: 依 Apple 官網的排版標準設計：SF Pro、17px 內文、56px 按鈕。寬度由文字決定，素材為 4× 高解析，中間段可無限平鋪。
+lead: 可依文字拉伸的液態玻璃按鈕，邊緣有真實折射。
 btn_download: 下載
 btn_appstore: App Store
 sec_width_h: 寬度由文字決定
-sec_width_p: 沒有 width。同一套三段式素材，文案越長按鈕越寬，端帽尺寸保持不變。
+sec_width_p: 同一套素材：文案越長按鈕越寬，端帽不變。
 w_short: 下載
 w_appstore: App Store
 w_long: 立即下載 macOS 版本
 sec_assets_h: 三段式素材（4×）
-sec_assets_p: 素材高 224px（4×，顯示 56px）。左右端帽各 112px，中間平鋪塊 128px；接縫處逐像素一致。
+sec_assets_p: 端帽 112px，中間塊可無限平鋪，接縫逐像素一致。
 cap_sheet: 整張
 cap_left: 左端
 cap_mid: 中間
 cap_right: 右端
-cap_tile: 中間塊 · repeat-x · 任意寬度不變形
+cap_tile: repeat-x，任意寬度不變形
 sec_usage_h: 用法
-sec_usage_p: 一個元素完成九宮格拉伸；hover 與 active 切換 SVG 濾鏡。
+sec_usage_p: 一個元素完成九宮格拉伸，hover / active 換濾鏡。
 sec_spec_h: 設計規格
 spec_font_h: 字體
 spec_font_p: SF Pro Display / SF Pro Text；內文 17px/1.47，字距 -0.022em；標題 48px/1.08。
 spec_btn_h: 按鈕
-spec_btn_p: 高 56px（行動裝置 48px），左右內縮 28px，圓角 980px，圖示 20px。
+spec_btn_p: 高 56px（行動裝置 48px），左右內縮 28px，圓角 980px。
 spec_asset_h: 素材
-spec_asset_p: 4×：高 224px，端帽 112px，平鋪塊 128px；WebP 無損保留透明。
+spec_asset_p: 4× 無損 WebP（224px 高，顯示 56px），保留透明。
 spec_icon_h: 圖示
 spec_icon_p: SVG 24px 來源，SVGO 壓縮；按鈕內以 20px 呈現。
-footer_1: 材質由 Qwen-Image-2.1 生成（原生透明），形狀與光影由程序化液態玻璃渲染重繪；邊緣折射以 SVG feDisplacementMap 實現。
-footer_2: Apple 標誌為 Apple Inc. 的商標，僅用於示範「App Store」按鈕的版面與圖示用法。
+footer_1: 材質由 Qwen-Image-2.1 生成（原生透明），形狀與光影為程序化重繪；邊緣折射用 SVG feDisplacementMap。
+footer_2: Apple 標誌為 Apple Inc. 商標，僅作示範。
 lang_choose: 選擇語言
 lang_aria: 切換語言
-stage_hint: 把滑鼠移到按鈕上：邊緣會把後方的畫面折射進來。
-light_hint: 淺色表面上玻璃本身偏淡，靠底色保持文字對比度。
+stage_hint: 把滑鼠移到按鈕上試試。
+light_hint: 淺色底上玻璃偏淡，用底色保持文字對比。
 link_repo: GitHub 儲存庫
 link_hig: Apple HIG · 材質
 link_model: 材質：Qwen-Image-2.1

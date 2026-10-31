@@ -1,39 +1,38 @@
 code: ar
 lang_name: العربية
 title: زر الزجاج السائل
-eyebrow: Liquid Glass · أصول 4×
-lead: 'وفق معايير الطباعة على ويب من آبل: خط SF Pro، نص 17px، زر 56px. العرض يتبع النص، والأصول بدقة 4× ، والوسط قابل للتكرار بلا نهاية.'
+lead: زر زجاج سائل يتمدد مع النص، وانكسار حقيقي عند الحافة.
 btn_download: تنزيل
 btn_appstore: App Store
 sec_width_h: العرض يتبع النص
-sec_width_p: 'بلا عرض ثابت. مجموعة واحدة من ثلاث قطع: كلما طال النص اتسع الزر، مع بقاء الأطراف كما هي.'
+sec_width_p: 'مجموعة واحدة: كلما طال النص اتسع الزر، والأطراف ثابتة.'
 w_short: تنزيل
 w_appstore: App Store
 w_long: تنزيل إصدار macOS
 sec_assets_h: أصول من ثلاث قطع (4×)
-sec_assets_p: الارتفاع 224px (4×، يُعرض 56px). الطرفان 112px والقطعة الوسطى 128px؛ الوصلات متطابقة بالبكسل.
+sec_assets_p: الأطراف 112px، الوسط قابل للتكرار بلا نهاية، والوصلات متطابقة بالبكسل.
 cap_sheet: الكل
 cap_left: يسار
 cap_mid: الوسط
 cap_right: يمين
-cap_tile: القطعة الوسطى · repeat-x · أي عرض دون تشوه
+cap_tile: repeat-x — بلا تشوه
 sec_usage_h: الاستخدام
-sec_usage_p: عنصر واحد يقوم بتمديد التسع قطع؛ ويبدّل hover و active مرشّح SVG.
+sec_usage_p: عنصر واحد يمدّ التسع قطع؛ وhover / active يبدّلان المرشّح.
 sec_spec_h: المواصفات
 spec_font_h: الخط
 spec_font_p: SF Pro Display / SF Pro Text؛ 17px/1.47، تباعد -0.022em؛ العناوين 48px/1.08.
 spec_btn_h: الزر
-spec_btn_p: ارتفاع 56px (48px على الجوال)، 28px على الجانبين، نصف قطر 980px، أيقونة 20px.
+spec_btn_p: ارتفاع 56px (48px على الجوال)، 28px على الجانبين، نصف قطر 980px.
 spec_asset_h: الأصول
-spec_asset_p: '4×: ارتفاع 224px، الأطراف 112px، القطعة 128px؛ WebP بلا فقدان يحفظ الشفافية.'
+spec_asset_p: WebP بلا فقدان بدقة 4× (ارتفاع 224px، يُعرض 56px) مع حفظ الشفافية.
 spec_icon_h: الأيقونات
 spec_icon_p: ملفات SVG بمقاس 24px مضغوطة بـ SVGO وتُعرض بـ 20px.
-footer_1: الخامة مولّدة بـ Qwen-Image-2.1 (شفافية أصلية)، وأُعيد رسم الشكل والإضاءة بمحرّك زجاج سائل إجرائي؛ وانكسار الحافة عبر SVG feDisplacementMap.
-footer_2: شعار Apple علامة تجارية لشركة Apple Inc.، ويُستخدم فقط لبيان تخطيط زر App Store.
+footer_1: الخامة من Qwen-Image-2.1 (شفافية أصلية)؛ وأُعيد رسم الشكل والإضاءة إجرائيًا؛ وانكسار الحافة عبر SVG feDisplacementMap.
+footer_2: شعار Apple علامة تجارية لشركة Apple Inc.، وللعرض التوضيحي فقط.
 lang_choose: اختر اللغة
 lang_aria: تغيير اللغة
-stage_hint: 'مرّر المؤشر فوق الزر: تكسر الحافة ما خلفه.'
-light_hint: على خلفية فاتحة يبدو الزجاج أفتح؛ وتبقى الصبغة تحافظ على وضوح النص.
+stage_hint: مرّر المؤشر لترى.
+light_hint: على خلفية فاتحة يبدو الزجاج باهتًا؛ والصبغة تحفظ وضوح النص.
 link_repo: مستودع GitHub
 link_hig: Apple HIG · الخامات
 link_model: 'الخامة: Qwen-Image-2.1'

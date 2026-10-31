@@ -1,39 +1,38 @@
 code: pl
 lang_name: Polski
 title: Przycisk Liquid Glass
-eyebrow: Liquid Glass · zasoby 4×
-lead: 'Zgodnie z typografią webową Apple: SF Pro, tekst 17px, przycisk 56px. Szerokość zależy od tekstu, zasoby są 4×, a środek powtarza się w nieskończoność.'
+lead: Przycisk z płynnego szkła, który rozciąga się z tekstem — z prawdziwym załamaniem krawędzi.
 btn_download: Pobierz
 btn_appstore: App Store
 sec_width_h: Szerokość wynika z tekstu
-sec_width_p: 'Bez stałej szerokości. Jeden zestaw trzech części: im dłuższy napis, tym szerszy przycisk, a zaokrąglenia się nie zmieniają.'
+sec_width_p: 'Jeden zestaw zasobów: dłuższy napis, szerszy przycisk, końcówki bez zmian.'
 w_short: Pobierz
 w_appstore: App Store
 w_long: Pobierz dla macOS
 sec_assets_h: Zasoby w trzech częściach (4×)
-sec_assets_p: Wysokość 224px (4×, pokazywane jako 56px). Końcówki po 112px, środkowy kafel 128px; łączenia są identyczne co do piksela.
+sec_assets_p: Końcówki 112px, środek nieskończenie kafelkowy, łączenia co do piksela.
 cap_sheet: całość
 cap_left: lewo
 cap_mid: środek
 cap_right: prawo
-cap_tile: środkowy kafel · repeat-x · dowolna szerokość bez zniekształceń
+cap_tile: repeat-x — bez zniekształceń
 sec_usage_h: Użycie
-sec_usage_p: Jeden element rozciąga układ dziewięciu części; hover i active podmieniają filtr SVG.
+sec_usage_p: Jeden element rozciąga układ dziewięciu części; hover i active zmieniają filtr.
 sec_spec_h: Specyfikacja
 spec_font_h: Typografia
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, odstępy -0.022em; nagłówki 48px/1.08.
 spec_btn_h: Przycisk
-spec_btn_p: Wysokość 56px (48px na telefonie), 28px z boków, promień 980px, ikona 20px.
+spec_btn_p: Wysokość 56px (48px mobilnie), 28px z boków, promień 980px.
 spec_asset_h: Zasoby
-spec_asset_p: '4×: wysokość 224px, końcówki 112px, kafel 128px; bezstratny WebP zachowuje przezroczystość.'
+spec_asset_p: Bezstratny WebP 4× (224px wysokości, wyświetlany 56px), przezroczystość zachowana.
 spec_icon_h: Ikony
 spec_icon_p: Źródła SVG 24px, kompresja SVGO, wyświetlane w 20px.
-footer_1: Materiał wygenerowany w Qwen-Image-2.1 (natywna alfa); kształt i światło przerysowane przez proceduralny renderer płynnego szkła; załamanie krawędzi przez SVG feDisplacementMap.
-footer_2: Logo Apple jest znakiem towarowym Apple Inc. i służy tylko do pokazania układu przycisku App Store.
+footer_1: Materiał z Qwen-Image-2.1 (natywna alfa); kształt i światło przerysowane proceduralnie; załamanie krawędzi przez SVG feDisplacementMap.
+footer_2: Logo Apple to znak towarowy Apple Inc., użyty wyłącznie demonstracyjnie.
 lang_choose: Wybierz język
 lang_aria: Zmień język
-stage_hint: 'Najedź na przycisk: krawędź załamuje to, co jest z tyłu.'
-light_hint: Na jasnym tle szkło jest jaśniejsze; podkład utrzymuje czytelność napisu.
+stage_hint: Najedź, aby zobaczyć.
+light_hint: Na jasnym tle szkło jest blade; podkład utrzymuje czytelność napisu.
 link_repo: Repozytorium GitHub
 link_hig: Apple HIG · Materiały
 link_model: 'Materiał: Qwen-Image-2.1'

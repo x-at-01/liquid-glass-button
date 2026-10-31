@@ -1,39 +1,38 @@
 code: vi
 lang_name: Tiếng Việt
 title: Nút Liquid Glass
-eyebrow: Liquid Glass · tài nguyên 4×
-lead: 'Theo chuẩn chữ trên web của Apple: SF Pro, chữ 17px, nút 56px. Chiều rộng theo chữ, tài nguyên 4× và phần giữa lặp vô hạn.'
+lead: Nút kính lỏng co giãn theo chữ, viền khúc xạ thật.
 btn_download: Tải về
 btn_appstore: App Store
 sec_width_h: Chiều rộng do chữ quyết định
-sec_width_p: 'Không đặt width cố định. Một bộ ba phần: chữ càng dài nút càng rộng, hai đầu giữ nguyên.'
+sec_width_p: 'Một bộ tài nguyên: chữ càng dài nút càng rộng, hai đầu không đổi.'
 w_short: Tải về
 w_appstore: App Store
 w_long: Tải cho macOS
 sec_assets_h: Tài nguyên ba phần (4×)
-sec_assets_p: Cao 224px (4×, hiển thị 56px). Hai đầu 112px, ô giữa 128px; mối nối trùng khớp từng pixel.
+sec_assets_p: Hai đầu 112px, giữa lặp vô hạn, mối nối trùng từng pixel.
 cap_sheet: toàn bộ
 cap_left: trái
 cap_mid: giữa
 cap_right: phải
-cap_tile: ô giữa · repeat-x · mọi chiều rộng không biến dạng
+cap_tile: repeat-x — không biến dạng
 sec_usage_h: Cách dùng
-sec_usage_p: Một phần tử làm việc kéo giãn chín phần; hover và active đổi bộ lọc SVG.
+sec_usage_p: Một phần tử làm giãn chín phần; hover / active đổi bộ lọc.
 sec_spec_h: Thông số
 spec_font_h: Chữ
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, giãn chữ -0.022em; tiêu đề 48px/1.08.
 spec_btn_h: Nút
-spec_btn_p: Cao 56px (48px trên di động), hai bên 28px, bán kính 980px, biểu tượng 20px.
+spec_btn_p: Cao 56px (48px trên di động), hai bên 28px, bán kính 980px.
 spec_asset_h: Tài nguyên
-spec_asset_p: '4×: cao 224px, đầu 112px, ô 128px; WebP không mất dữ liệu giữ độ trong suốt.'
+spec_asset_p: WebP 4× không mất dữ liệu (cao 224px, hiển thị 56px), giữ độ trong suốt.
 spec_icon_h: Biểu tượng
 spec_icon_p: Nguồn SVG 24px, nén bằng SVGO, hiển thị 20px.
-footer_1: Chất liệu tạo bằng Qwen-Image-2.1 (alpha gốc); hình dạng và ánh sáng được vẽ lại bằng bộ dựng liquid glass thủ tục; khúc xạ viền bằng SVG feDisplacementMap.
-footer_2: Logo Apple là thương hiệu của Apple Inc., chỉ dùng để minh hoạ bố cục nút App Store.
+footer_1: Chất liệu tạo bằng Qwen-Image-2.1 (alpha gốc); hình dạng và ánh sáng vẽ lại thủ tục; khúc xạ viền bằng SVG feDisplacementMap.
+footer_2: Logo Apple là thương hiệu của Apple Inc., chỉ dùng để minh hoạ.
 lang_choose: Chọn ngôn ngữ
 lang_aria: Đổi ngôn ngữ
-stage_hint: 'Đưa chuột lên nút: viền sẽ khúc xạ những gì phía sau.'
-light_hint: Trên nền sáng, kính trông nhạt hơn; lớp màu giữ chữ dễ đọc.
+stage_hint: Đưa chuột lên để xem.
+light_hint: Trên nền sáng kính nhạt hơn; lớp màu giữ chữ dễ đọc.
 link_repo: Kho GitHub
 link_hig: Apple HIG · Vật liệu
 link_model: 'Chất liệu: Qwen-Image-2.1'

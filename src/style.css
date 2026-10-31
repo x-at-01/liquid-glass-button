@@ -13,7 +13,6 @@ body{
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
 }
 .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
 h1{font-size:52px;line-height:1.07;font-weight:600;letter-spacing:-.012em;margin:0 0 16px}
 h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:0 0 10px}
 .lead{font-size:21px;line-height:1.38;letter-spacing:.008em;color:var(--muted);margin:0 auto;max-width:680px;text-wrap:balance}

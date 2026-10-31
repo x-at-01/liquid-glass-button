@@ -1,39 +1,38 @@
 code: tr
 lang_name: Türkçe
 title: Liquid Glass Düğmesi
-eyebrow: Liquid Glass · 4× varlıklar
-lead: 'Apple''ın web tipografisine göre: SF Pro, 17px metin, 56px düğme. Genişlik metne göre, varlıklar 4× ve orta kısım sonsuz tekrarlanır.'
+lead: Etiketiyle uzayan, kenarı gerçekten kıran bir Liquid Glass düğmesi.
 btn_download: İndir
 btn_appstore: App Store
 sec_width_h: Genişliği metin belirler
-sec_width_p: 'Sabit genişlik yok. Tek bir üç parçalı set: metin uzadıkça düğme genişler, uçlar aynı kalır.'
+sec_width_p: 'Tek set: metin uzadıkça düğme genişler, uçlar değişmez.'
 w_short: İndir
 w_appstore: App Store
 w_long: macOS için indir
 sec_assets_h: Üç parçalı varlıklar (4×)
-sec_assets_p: 224px yüksek (4×, 56px olarak gösterilir). Uçlar 112px, orta karo 128px; ek yerleri piksel piksel aynı.
+sec_assets_p: Uçlar 112px, orta sonsuz karo, ek yerleri piksel piksel aynı.
 cap_sheet: tümü
 cap_left: sol
 cap_mid: orta
 cap_right: sağ
-cap_tile: orta karo · repeat-x · her genişlikte bozulma yok
+cap_tile: repeat-x — bozulma yok
 sec_usage_h: Kullanım
-sec_usage_p: Tek bir öğe dokuz parçalı esnemeyi yapar; hover ve active SVG filtresini değiştirir.
+sec_usage_p: Tek öğe dokuz parçalı esnemeyi yapar; hover ve active filtreyi değiştirir.
 sec_spec_h: Özellikler
 spec_font_h: Tipografi
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, harf aralığı -0.022em; başlıklar 48px/1.08.
 spec_btn_h: Düğme
-spec_btn_p: 56px yüksek (mobilde 48px), yanlarda 28px, yarıçap 980px, simge 20px.
+spec_btn_p: 56px yüksek (mobilde 48px), yanlarda 28px, yarıçap 980px.
 spec_asset_h: Varlıklar
-spec_asset_p: '4×: 224px yüksek, uçlar 112px, karo 128px; kayıpsız WebP saydamlığı korur.'
+spec_asset_p: 4× kayıpsız WebP (224px yüksek, 56px gösterilir), saydamlık korunur.
 spec_icon_h: Simgeler
 spec_icon_p: 24px SVG kaynakları SVGO ile küçültüldü, 20px gösterilir.
-footer_1: Materyal Qwen-Image-2.1 (yerel alfa) ile üretildi; biçim ve ışık prosedürel liquid glass render ile yeniden çizildi; kenar kırılması SVG feDisplacementMap ile.
-footer_2: Apple logosu Apple Inc. ticari markasıdır; yalnızca App Store düğmesinin düzenini göstermek için kullanılmıştır.
+footer_1: Materyal Qwen-Image-2.1 (yerel alfa) ile üretildi; biçim ve ışık prosedürel yeniden çizildi; kenar kırılması SVG feDisplacementMap ile.
+footer_2: Apple logosu Apple Inc. ticari markasıdır, yalnızca gösterim için kullanılmıştır.
 lang_choose: Dil seçin
 lang_aria: Dili değiştir
-stage_hint: 'Bir düğmenin üzerine gelin: kenar arkadakini kırar.'
-light_hint: Açık zeminde cam daha açık görünür; ton, yazının okunurluğunu korur.
+stage_hint: Üzerine gelin.
+light_hint: Açık zeminde cam soluk görünür; ton yazıyı okunur tutar.
 link_repo: GitHub deposu
 link_hig: Apple HIG · Materyaller
 link_model: 'Materyal: Qwen-Image-2.1'

@@ -1,39 +1,38 @@
 code: ja
 lang_name: 日本語
 title: リキッドグラスボタン
-eyebrow: Liquid Glass · 4× アセット
-lead: Apple の Web タイポグラフィ基準（SF Pro、本文 17px、ボタン 56px）。幅は文字に追従し、素材は 4× 、中央は無限にタイル可能。
+lead: 文字に合わせて伸びるリキッドグラスボタン。縁は本物のように屈折します。
 btn_download: ダウンロード
 btn_appstore: App Store
 sec_width_h: 幅は文字で決まる
-sec_width_p: width は指定しません。同じ3分割アセットで、文字が長いほどボタンが広がり、端の丸みは変わりません。
+sec_width_p: 同じ素材で、文字が長いほど幅が広がり、端は変わりません。
 w_short: ダウンロード
 w_appstore: App Store
 w_long: macOS 版をダウンロード
 sec_assets_h: 3分割アセット（4×）
-sec_assets_p: 素材は高さ 224px（4×、表示は 56px）。端は各 112px、中央タイルは 128px、継ぎ目はピクセル単位で一致。
+sec_assets_p: 端は 112px、中央は無限にタイル可能、継ぎ目はピクセル単位で一致。
 cap_sheet: 全体
 cap_left: 左端
 cap_mid: 中央
 cap_right: 右端
-cap_tile: 中央タイル · repeat-x · どんな幅でも歪まない
+cap_tile: repeat-x・どんな幅でも歪みません
 sec_usage_h: 使い方
-sec_usage_p: 1つの要素で九宮格の伸縮を実現。hover / active で SVG フィルタを切り替えます。
+sec_usage_p: 1つの要素で九宮格の伸縮。hover / active でフィルタを切り替えます。
 sec_spec_h: 仕様
 spec_font_h: 書体
 spec_font_p: SF Pro Display / SF Pro Text。本文 17px/1.47、字間 -0.022em、見出し 48px/1.08。
 spec_btn_h: ボタン
-spec_btn_p: 高さ 56px（モバイル 48px）、左右 28px、角丸 980px、アイコン 20px。
+spec_btn_p: 高さ 56px（モバイル 48px）、左右 28px、角丸 980px。
 spec_asset_h: 素材
-spec_asset_p: 4×：高さ 224px、端 112px、タイル 128px。可逆 WebP で透過を保持。
+spec_asset_p: 4× 可逆 WebP（高さ 224px、表示 56px）で透過を保持。
 spec_icon_h: アイコン
 spec_icon_p: 24px の SVG を SVGO で圧縮し、20px で表示。
-footer_1: マテリアルは Qwen-Image-2.1（ネイティブ alpha）で生成し、形状と光はプロシージャルなリキッドグラス描画で再構成。エッジの屈折は SVG feDisplacementMap。
-footer_2: Apple ロゴは Apple Inc. の商標で、App Store ボタンのレイアウトとアイコンの用法を示す目的にのみ使用しています。
+footer_1: マテリアルは Qwen-Image-2.1（ネイティブ alpha）で生成。形状と光はプロシージャルに再描画し、縁の屈折は SVG feDisplacementMap。
+footer_2: Apple ロゴは Apple Inc. の商標で、デモ目的のみに使用しています。
 lang_choose: 言語を選択
 lang_aria: 言語を切り替える
-stage_hint: ボタンにマウスを乗せると、縁が背後の映像を屈折させます。
-light_hint: 明るい面ではガラスは淡く見えるため、下地の色で文字のコントラストを保ちます。
+stage_hint: マウスを乗せてみてください。
+light_hint: 明るい面ではガラスは淡く見えるため、下地で文字のコントラストを保ちます。
 link_repo: GitHub リポジトリ
 link_hig: Apple HIG · マテリアル
 link_model: 'マテリアル: Qwen-Image-2.1'

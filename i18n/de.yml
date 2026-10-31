@@ -1,39 +1,38 @@
 code: de
 lang_name: Deutsch
 title: Liquid-Glass-Button
-eyebrow: Liquid Glass · 4×-Assets
-lead: 'Nach Apples Web-Typografie: SF Pro, 17px Text, 56px Button. Die Breite folgt dem Text, Assets in 4×, die Mitte ist endlos kachelbar.'
+lead: Ein Liquid-Glass-Button, der mit der Beschriftung wächst — mit echter Kantenbrechung.
 btn_download: Laden
 btn_appstore: App Store
 sec_width_h: Die Breite kommt vom Text
-sec_width_p: 'Keine feste Breite. Ein Satz Drei-Teile-Assets: je länger die Beschriftung, desto breiter der Button, die Kappen bleiben gleich.'
+sec_width_p: 'Ein Satz Assets: je länger die Beschriftung, desto breiter der Button; die Kappen bleiben gleich.'
 w_short: Laden
 w_appstore: App Store
 w_long: Für macOS laden
 sec_assets_h: Drei-Teile-Assets (4×)
-sec_assets_p: 224px hoch (4×, angezeigt mit 56px). Kappen je 112px, Mittelkachel 128px; die Stoßkanten sind pixelgleich.
+sec_assets_p: Kappen 112px, Mitte endlos kachelbar, Nähte pixelgleich.
 cap_sheet: Gesamt
 cap_left: links
 cap_mid: Mitte
 cap_right: rechts
-cap_tile: Mittelkachel · repeat-x · jede Breite ohne Verzerrung
+cap_tile: repeat-x — keine Verzerrung
 sec_usage_h: Verwendung
-sec_usage_p: Ein Element übernimmt die Neun-Scheiben-Dehnung; hover und active wechseln den SVG-Filter.
+sec_usage_p: Ein Element für die Neun-Scheiben-Dehnung; hover und active wechseln den Filter.
 sec_spec_h: Spezifikation
 spec_font_h: Schrift
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, Laufweite -0.022em; Überschriften 48px/1.08.
 spec_btn_h: Button
-spec_btn_p: 56px hoch (48px mobil), 28px seitlich, Radius 980px, Icon 20px.
+spec_btn_p: 56px hoch (48px mobil), 28px seitlich, Radius 980px.
 spec_asset_h: Assets
-spec_asset_p: '4×: 224px hoch, Kappen 112px, Kachel 128px; verlustfreies WebP erhält Transparenz.'
+spec_asset_p: Verlustfreies WebP in 4× (224px hoch, 56px dargestellt), Transparenz bleibt.
 spec_icon_h: Icons
 spec_icon_p: 24px SVG-Quellen, mit SVGO minifiziert, mit 20px dargestellt.
-footer_1: Material mit Qwen-Image-2.1 erzeugt (natives Alpha); Form und Licht durch einen prozeduralen Liquid-Glass-Renderer neu gezeichnet; Kantenbrechung per SVG feDisplacementMap.
-footer_2: Das Apple-Logo ist eine Marke von Apple Inc. und wird nur zur Demonstration des App-Store-Buttons verwendet.
+footer_1: Material aus Qwen-Image-2.1 (natives Alpha); Form und Licht prozedural neu gezeichnet; Kantenbrechung per SVG feDisplacementMap.
+footer_2: Das Apple-Logo ist eine Marke von Apple Inc. und dient nur der Demonstration.
 lang_choose: Sprache wählen
 lang_aria: Sprache ändern
-stage_hint: 'Button überfahren: der Rand bricht, was dahinter liegt.'
-light_hint: Auf hellem Grund wirkt das Glas heller; die Tönung hält die Beschriftung lesbar.
+stage_hint: Einfach überfahren.
+light_hint: Auf hellem Grund wirkt das Glas blass; die Tönung hält die Schrift lesbar.
 link_repo: GitHub-Repository
 link_hig: Apple HIG · Materialien
 link_model: 'Material: Qwen-Image-2.1'

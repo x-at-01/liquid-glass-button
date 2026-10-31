@@ -1,39 +1,38 @@
 code: nl
 lang_name: Nederlands
 title: Liquid Glass-knop
-eyebrow: Liquid Glass · 4×-assets
-lead: 'Volgens Apple''s webtypografie: SF Pro, tekst 17px, knop 56px. De breedte volgt de tekst, assets zijn 4× en het midden herhaalt eindeloos.'
+lead: Een Liquid Glass-knop die met het label meegroeit, met echte randbreking.
 btn_download: Downloaden
 btn_appstore: App Store
 sec_width_h: De breedte komt van de tekst
-sec_width_p: 'Geen vaste breedte. Eén set van drie delen: hoe langer het label, hoe breder de knop, terwijl de uiteinden gelijk blijven.'
+sec_width_p: 'Eén set assets: hoe langer het label, hoe breder de knop; de uiteinden blijven gelijk.'
 w_short: Downloaden
 w_appstore: App Store
 w_long: Downloaden voor macOS
 sec_assets_h: Assets in drie delen (4×)
-sec_assets_p: 224px hoog (4×, getoond op 56px). Uiteinden van 112px, middelste tegel 128px; de naden zijn pixelgelijk.
+sec_assets_p: Uiteinden van 112px, midden oneindig tegelbaar, naden pixelgelijk.
 cap_sheet: geheel
 cap_left: links
 cap_mid: midden
 cap_right: rechts
-cap_tile: middelste tegel · repeat-x · elke breedte zonder vervorming
+cap_tile: repeat-x — geen vervorming
 sec_usage_h: Gebruik
-sec_usage_p: Eén element doet de negen-delen-uitrekking; hover en active wisselen het SVG-filter.
+sec_usage_p: Eén element doet de negen-delen-rek; hover en active wisselen het filter.
 sec_spec_h: Specificaties
 spec_font_h: Typografie
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, letterspatiëring -0.022em; koppen 48px/1.08.
 spec_btn_h: Knop
-spec_btn_p: 56px hoog (48px mobiel), 28px aan de zijkanten, radius 980px, pictogram 20px.
+spec_btn_p: 56px hoog (48px mobiel), 28px zijdelings, radius 980px.
 spec_asset_h: Assets
-spec_asset_p: '4×: 224px hoog, uiteinden 112px, tegel 128px; lossless WebP behoudt transparantie.'
+spec_asset_p: Verliesvrij WebP in 4× (224px hoog, getoond op 56px), transparantie behouden.
 spec_icon_h: Pictogrammen
 spec_icon_p: SVG-bronnen van 24px, verkleind met SVGO, getoond op 20px.
-footer_1: Materiaal gemaakt met Qwen-Image-2.1 (native alfa); vorm en licht opnieuw getekend door een procedurele liquid-glass-renderer; randbreking via SVG feDisplacementMap.
-footer_2: Het Apple-logo is een merk van Apple Inc. en wordt alleen gebruikt om de App Store-knop te tonen.
+footer_1: Materiaal uit Qwen-Image-2.1 (native alfa); vorm en licht procedureel hertekend; randbreking via SVG feDisplacementMap.
+footer_2: Het Apple-logo is een merk van Apple Inc. en dient alleen als demonstratie.
 lang_choose: Kies een taal
 lang_aria: Taal wijzigen
-stage_hint: 'Beweeg over een knop: de rand breekt wat erachter zit.'
-light_hint: Op een lichte ondergrond oogt het glas lichter; de tint houdt het label leesbaar.
+stage_hint: Beweeg eroverheen.
+light_hint: Op licht vlak oogt het glas bleek; de tint houdt de tekst leesbaar.
 link_repo: GitHub-repository
 link_hig: Apple HIG · Materialen
 link_model: 'Materiaal: Qwen-Image-2.1'

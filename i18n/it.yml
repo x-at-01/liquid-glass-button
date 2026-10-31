@@ -1,39 +1,38 @@
 code: it
 lang_name: Italiano
 title: Bottone Liquid Glass
-eyebrow: Liquid Glass · asset 4×
-lead: 'Secondo la tipografia web di Apple: SF Pro, testo 17px, bottone 56px. La larghezza segue il testo, gli asset sono 4× e il centro si ripete all''infinito.'
+lead: Un bottone in vetro liquido che si allunga col testo, con vera rifrazione sui bordi.
 btn_download: Scarica
 btn_appstore: App Store
 sec_width_h: La larghezza la decide il testo
-sec_width_p: 'Nessuna larghezza fissa. Un solo set di asset in tre parti: più lungo il testo, più largo il bottone, mentre le estremità restano uguali.'
+sec_width_p: 'Un solo set di asset: più lungo il testo, più largo il bottone; le estremità non cambiano.'
 w_short: Scarica
 w_appstore: App Store
 w_long: Scarica per macOS
 sec_assets_h: Asset in tre parti (4×)
-sec_assets_p: Altezza 224px (4×, mostrati a 56px). Estremità da 112px, mattonella centrale da 128px; le giunzioni coincidono al pixel.
+sec_assets_p: Estremità da 112px, centro ripetibile, giunzioni identiche al pixel.
 cap_sheet: intero
 cap_left: sinistra
 cap_mid: centro
 cap_right: destra
-cap_tile: mattonella centrale · repeat-x · nessuna deformazione
+cap_tile: repeat-x — nessuna deformazione
 sec_usage_h: Uso
-sec_usage_p: Un solo elemento per l'allungamento a nove parti; hover e active cambiano il filtro SVG.
+sec_usage_p: Un elemento per l'allungamento a nove parti; hover e active cambiano il filtro.
 sec_spec_h: Specifiche
 spec_font_h: Tipografia
 spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, crenatura -0.022em; titoli 48px/1.08.
 spec_btn_h: Bottone
-spec_btn_p: 56px di altezza (48px su mobile), 28px ai lati, raggio 980px, icona 20px.
+spec_btn_p: 56px di altezza (48px su mobile), 28px ai lati, raggio 980px.
 spec_asset_h: Asset
-spec_asset_p: '4×: 224px di altezza, estremità 112px, mattonella 128px; WebP senza perdita mantiene la trasparenza.'
+spec_asset_p: WebP 4× senza perdita (224px di altezza, mostrato a 56px), trasparenza intatta.
 spec_icon_h: Icone
 spec_icon_p: Sorgenti SVG 24px, minificate con SVGO, mostrate a 20px.
-footer_1: Materiale generato con Qwen-Image-2.1 (alfa nativo); forma e luce ridisegnate da un render procedurale di vetro liquido; rifrazione del bordo via SVG feDisplacementMap.
-footer_2: Il logo Apple è un marchio di Apple Inc., usato solo per mostrare il layout del bottone App Store.
+footer_1: Materiale generato con Qwen-Image-2.1 (alfa nativo); forma e luce ridisegnate in modo procedurale; rifrazione del bordo via SVG feDisplacementMap.
+footer_2: Il logo Apple è un marchio di Apple Inc., usato solo a scopo dimostrativo.
 lang_choose: Scegli la lingua
 lang_aria: Cambia lingua
-stage_hint: 'Passa il mouse su un bottone: il bordo rifrange ciò che sta dietro.'
-light_hint: Su fondo chiaro il vetro appare più chiaro; la tinta mantiene leggibile il testo.
+stage_hint: Passa il mouse per vederlo.
+light_hint: Su fondo chiaro il vetro è pallido; la tinta tiene leggibile il testo.
 link_repo: Repository GitHub
 link_hig: Apple HIG · Materiali
 link_model: 'Materiale: Qwen-Image-2.1'
