@@ -28,12 +28,9 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .brand i{width:9px;height:9px;border-radius:50%;background:linear-gradient(140deg,#6ea8ff,#b46bff 60%,#ff8ad4);
   box-shadow:0 2px 6px rgba(110,168,255,.5)}
 .topbar nav{display:flex;align-items:center;gap:6px}
-.topbar a{color:var(--muted);text-decoration:none;font-size:13px;padding:7px 11px;border-radius:999px}
-.topbar a:hover{color:var(--ink);background:rgba(0,0,0,.05)}
-.topbar a.ico-link{width:34px;height:34px;padding:0;display:grid;place-items:center;border:1px solid var(--line);
-  background:#fff;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease}
-.topbar a.ico-link:hover{background:#fff;transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
-.topbar a.ico-link img{width:18px;height:18px;display:block}
+/* 顶栏按钮统一走 webc 的 .BtnC；这里只兜住纯文字链接 */
+.topbar a:not(.BtnC){color:var(--muted);text-decoration:none;font-size:13px;padding:7px 11px;border-radius:999px}
+.topbar a:not(.BtnC):hover{color:var(--ink);background:rgba(0,0,0,.05)}
 /* ---------- Hero ---------- */
 .hero{padding:76px 0 0;text-align:center}
 .hero .head{max-width:1000px;margin:0 auto;padding:0 24px}
@@ -163,11 +160,14 @@ footer p{margin:0 0 10px}
 .Btn:active, .BtnC:active{transform:scale(.97)}
 .Btn:active::before, .BtnC:active::before{background:linear-gradient(135deg,#ffffff14);box-shadow:inset 0 1px 0 #fff9, inset 0 0 2px #0006}
 .BtnC{height:44px;width:44px;padding:0}
-.BtnC .Ico{display:block;height:100%;width:100%;background-position:center;background-repeat:no-repeat;background-size:20px;
-  opacity:.8;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.topbar .BtnC{width:34px;height:34px;flex:none}
+.BtnC .Ico{display:block;height:100%;width:100%;background-color:currentColor;
+  mask-position:center;mask-repeat:no-repeat;mask-size:20px;
+  opacity:.8;transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .3s ease}
+.BtnC .Ico.github{mask-image:url(../assets/icons/github.svg)}
 .BtnC:hover .Ico, .BtnC:active .Ico{transform:translateY(1px)}
 .BtnC.lang{margin:auto}
-.BtnC.lang .Ico{background-image:url(../assets/icons/i18n.svg)}
+.BtnC.lang .Ico{mask-image:url(../assets/icons/i18n.svg)}
 .BtnC:focus-visible, .Btn:focus-visible{outline:none}
 .Btn.Main{color:#fff}
 .Btn.Main::before{backdrop-filter:none;border-color:#0000002b;
@@ -204,7 +204,8 @@ dialog.Box.X>a.X:active::before{opacity:.7}
 .I18n>c-vs>b{display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center}
 .I18n .Btn{border-radius:6px;font-size:12px;font-weight:300;height:28px;min-height:28px;max-height:28px;padding:0 8px}
 .I18n .Btn>span{position:relative}
-.I18n .Btn.En{opacity:.5}
+.I18n .Btn.En{color:var(--muted)}
+.I18n .Btn.En:hover{color:var(--ink)}
 
 @media (max-width:600px){
   .I18n>c-vs>b{gap:4px 6px}
@@ -214,7 +215,7 @@ dialog.Box.X>a.X:active::before{opacity:.7}
   .I18n .Btn.Main{border-bottom:1px solid currentColor;border-radius:0;color:#000}
   .I18n .Btn.Main:hover, .I18n .Btn.Main:active{color:#0071e3}
 }
-</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Tombol Liquid Glass</span><nav><a class="ico-link" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><img src="../assets/icons/github.svg" alt="" width="18" height="18"></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Ganti bahasa" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Tombol Liquid Glass</h1><p class="lead">Tombol kaca cair yang memanjang mengikuti teks, tepinya benar-benar membias.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Unduh</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Arahkan kursor untuk melihat.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Lebar ditentukan teks</h2><p class="sub">Satu set aset: makin panjang teks makin lebar tombol, ujungnya tetap.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Unduh</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Unduh untuk macOS</span></button><span class="w"></span></div></div><p class="hint">Di latar terang kaca tampak pucat; lapisan warna menjaga keterbacaan.</p></div></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Aset tiga bagian (4×)</h2><p class="sub">Ujung 112px, tengah bisa diulang tanpa batas, sambungan identik per piksel.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>keseluruhan</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>kiri</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>tengah</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>kanan</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x — tanpa distorsi</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Penggunaan</h2><p class="sub">Satu elemen untuk peregangan sembilan bagian; hover dan active ganti filter.</p></div><pre><code>.btn {
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Tombol Liquid Glass</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Ganti bahasa" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Tombol Liquid Glass</h1><p class="lead">Tombol kaca cair yang memanjang mengikuti teks, tepinya benar-benar membias.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Unduh</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Arahkan kursor untuk melihat.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Lebar ditentukan teks</h2><p class="sub">Satu set aset: makin panjang teks makin lebar tombol, ujungnya tetap.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Unduh</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>Unduh untuk macOS</span></button><span class="w"></span></div></div><p class="hint">Di latar terang kaca tampak pucat; lapisan warna menjaga keterbacaan.</p></div></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Aset tiga bagian (4×)</h2><p class="sub">Ujung 112px, tengah bisa diulang tanpa batas, sambungan identik per piksel.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>keseluruhan</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>kiri</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>tengah</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>kanan</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x — tanpa distorsi</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Penggunaan</h2><p class="sub">Satu elemen untuk peregangan sembilan bagian; hover dan active ganti filter.</p></div><pre><code>.btn {
   display: inline-flex; align-items: center; gap: 9px;
   height: 56px; width: auto;              /* width comes from the label */
   border: 0 solid transparent;

@@ -18,8 +18,9 @@ html(lang=code, dir=dir)
           i
           = t.title
         nav
-          a.ico-link(href="https://github.com/x-at-01/liquid-glass-button", aria-label="GitHub", title="GitHub")
-            img(src="../assets/icons/github.svg", alt="", width="18", height="18")
+          //- 顶栏两个按钮共用 webc 的 .BtnC；只有图标不同（Ico / Ico.github）
+          a.BtnC(href="https://github.com/x-at-01/liquid-glass-button", aria-label="GitHub", title="GitHub")
+            i.Ico.github
           //- 语言按钮：结构取自 webc 的 I18n 组件（.BtnC.lang > .Ico）
           button.BtnC.lang#langBtn(type="button", aria-label=t.lang_aria, aria-haspopup="dialog")
             i.Ico
