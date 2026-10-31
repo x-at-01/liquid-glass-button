@@ -17,7 +17,9 @@ press states, on a static multi-language site built from **YAML translations + P
 | `assets/glass-filters.svg` | **The SVG filter** (edge refraction + chromatic aberration) as a standalone file — inlined at build time, cloned per button at runtime |
 | `assets/icons/*.svg` | Icons (download / App Store mark / GitHub / globe), one line style, `currentColor`, SVGO-minified |
 | `src/app.js` | Displacement-map generator + per-button filter variants (normal / hover / active) + the webc-style language switcher |
-| `src/index.pug`, `src/style.css` | Template and styles (Apple-ish type scale: SF Pro, 17px body, 56px button) |
+| `src/button.css` | **The reusable button component** — the `.btn` pill, both colour variants, hover sweep, press state |
+| `src/page.css` | Styles for this demo site only (layout, topbar, sections, language dialog) |
+| `src/index.pug` | Template (Apple-ish type scale: SF Pro, 17px body, 56px button) |
 | `src/demo.pug` | Standalone demo page, rendered into the downloadable bundle |
 | `i18n/langs.yml` | Language table — the same 75 codes and native names as webc (`src/js/i18n/CODE.js` + `NAME.js`), same order |
 | `i18n/*.yml` | UI strings — one file per language, all 75 translated |
@@ -62,13 +64,42 @@ standalone demo plus everything it needs:
 ```
 liquid-glass-button/
   demo.html          self-contained page (CSS, JS and the filter inlined)
-  style.css          button styles, drop-in
+  button.css         the button component, drop-in
+  page.css           demo page layout (not needed when you only want the button)
   app.js             displacement-map generator + filter builder
   glass-filters.svg  the filter template
   icons/             download / App Store SVGs
 ```
 
 Extract and open `demo.html` — no build step, no dependencies.
+
+## Reusing the button
+
+Three files are all the component needs — `button.css`, `app.js` and `glass-filters.svg`:
+
+```html
+<link rel="stylesheet" href="button.css">
+<script src="app.js" defer></script>
+
+<!-- app.js mounts the per-size filters here and writes their CSS here -->
+<svg class="glass-defs" width="0" height="0" aria-hidden="true">
+  <!-- paste the inner content of glass-filters.svg -->
+</svg>
+<style id="glass-styles"></style>
+
+<button class="btn btn--blue">Download</button>
+<button class="btn btn--black">App Store</button>
+```
+
+Rules of thumb:
+
+- width comes from the label — never set `width`; use `--pill-h` (height) and `--cap` (horizontal inset) if
+  you need a different size: `.btn{ --pill-h:64px; --cap:32px }`;
+- colour comes from the variant (`--tint` for a custom dark tint, or override `background` like
+  `.btn--blue` does);
+- `app.js` rebuilds the filters on resize; the site's language switching is optional (it exits early when
+  there is no `#langBtn`);
+- `page.css` is the demo's own layout — copying it is not required.
 
 ## Build & run
 
@@ -195,9 +226,37 @@ liquid-glass-button/
 | `assets/glass-filters.svg` | **拆成独立文件的 SVG 滤镜**（边缘折射 + 色散）；构建时内联，运行时按按钮尺寸 clone |
 | `assets/icons/*.svg` | 图标：一套画法——24 网格、描边 2、`currentColor`，CSS 侧走 `mask-image` 跟随按钮颜色 |
 | `src/app.js` | 位移图生成 + 每按钮三份滤镜（常态 / hover / active）+ 语言切换 |
-| `src/index.pug`、`src/style.css` | 模板与样式（SF Pro、17px 正文、56px 按钮） |
+| `src/button.css` | **可复用的按钮组件**：`.btn` 药丸、两种色系、hover 扫光、按下态 |
+| `src/page.css` | 仅演示站使用（布局、顶栏、区块、语言弹层） |
+| `src/index.pug` | 模板（SF Pro、17px 正文、56px 按钮） |
 | `src/demo.pug` | 独立演示页，构建时渲染进 tar.xz 素材包 |
 | `build.js` | YAML + Pug → `out/<lang>/index.html` + 素材包，并同步 `docs/` 给 GitHub Pages |
+
+### 复用按钮
+
+组件只需要三个文件：`button.css`、`app.js`、`glass-filters.svg`。
+
+```html
+<link rel="stylesheet" href="button.css">
+<script src="app.js" defer></script>
+
+<!-- app.js 会在这里挂每颗按钮的滤镜，并把对应 CSS 写进 #glass-styles -->
+<svg class="glass-defs" width="0" height="0" aria-hidden="true">
+  <!-- 粘贴 glass-filters.svg 的内部内容 -->
+</svg>
+<style id="glass-styles"></style>
+
+<button class="btn btn--blue">下载</button>
+<button class="btn btn--black">应用商店安装</button>
+```
+
+要点：
+
+- 宽度由文字决定，不要写 `width`；需要别的尺寸改 `--pill-h`（高度）和 `--cap`（左右内缩），
+  例如 `.btn{ --pill-h:64px; --cap:32px }`；
+- 颜色来自色系类（自定义深色用 `--tint`，或像 `.btn--blue` 那样直接覆盖 `background`）；
+- `app.js` 会在窗口尺寸变化时重建滤镜；站点里的语言切换是可选的（没有 `#langBtn` 时会自动跳过）；
+- `page.css` 是演示站自己的布局，复用按钮时不需要。
 
 ### 构建
 

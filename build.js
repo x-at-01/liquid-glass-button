@@ -14,7 +14,8 @@ const ASSETS_DIR = join(ROOT, "assets");
 const LANG_FILE = join(I18N_DIR, "langs.yml");
 const PAGE_TMPL = join(SRC_DIR, "index.pug");
 const DEMO_TMPL = join(SRC_DIR, "demo.pug");
-const CSS_FILE = join(SRC_DIR, "style.css");
+const BUTTON_CSS = join(SRC_DIR, "button.css");
+const PAGE_CSS = join(SRC_DIR, "page.css");
 const APP_FILE = join(SRC_DIR, "app.js");
 const FILTER_FILE = join(ASSETS_DIR, "glass-filters.svg");
 
@@ -58,7 +59,7 @@ const pageBuild = (code, dict) => {
     code,
     glass,
     dir: RTL_CODE_LI.includes(code) ? RTL : LTR,
-    css: textRead(CSS_FILE),
+    css: textRead(BUTTON_CSS) + "\n" + textRead(PAGE_CSS),
     appJs: textRead(APP_FILE),
     filterSvg,
   });
@@ -95,12 +96,13 @@ mkdirSync(join(PACK_DIR, "icons"), { recursive: true });
 writeFileSync(
   join(PACK_DIR, "demo.html"),
   pug.renderFile(DEMO_TMPL, {
-    css: textRead(CSS_FILE),
+    css: textRead(BUTTON_CSS) + "\n" + textRead(PAGE_CSS),
     appJs: textRead(APP_FILE),
     filterSvg,
   })
 );
-cpSync(CSS_FILE, join(PACK_DIR, "style.css"));
+cpSync(BUTTON_CSS, join(PACK_DIR, "button.css"));
+cpSync(PAGE_CSS, join(PACK_DIR, "page.css"));
 cpSync(APP_FILE, join(PACK_DIR, "app.js"));
 cpSync(FILTER_FILE, join(PACK_DIR, "glass-filters.svg"));
 cpSync(join(ASSETS_DIR, "icons"), join(PACK_DIR, "icons"), { recursive: true });
