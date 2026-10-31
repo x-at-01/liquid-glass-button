@@ -6,11 +6,10 @@
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{text-size-adjust:100%}
 body{
   margin:0;background:#fff;color:var(--ink);
   font:400 17px/1.47059 var(--font);letter-spacing:-.022em;
-  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
 }
 .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
 h1{font-size:52px;line-height:1.07;font-weight:600;letter-spacing:-.012em;margin:0 0 16px}
@@ -22,7 +21,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 
 /* ---------- 顶栏 ---------- */
 .topbar{border-bottom:1px solid var(--line);background:rgba(255,255,255,.8);
-  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  backdrop-filter:saturate(180%) blur(20px);
   position:sticky;top:0;z-index:20}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
 .brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;letter-spacing:-.01em}
@@ -59,7 +58,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 
 /* ---------- 按钮 ---------- */
 .btn{
-  -webkit-appearance:none;appearance:none;position:relative;
+  appearance:none;position:relative;
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
   height:var(--pill-h,56px);width:auto;padding:0;margin:0;
   border:0 solid transparent;border-left-width:var(--cap,28px);border-right-width:var(--cap,28px);
@@ -71,7 +70,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
   font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
   white-space:nowrap;cursor:pointer;text-decoration:none;
   box-shadow:0 4px 10px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.16);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);
+  backdrop-filter:blur(20px) saturate(180%);
   transition:box-shadow .18s ease,transform .18s ease,background-color .18s ease,color .18s ease;
 }
 .btn--black{border-image-source:url(../assets/glass/black-sheet.webp);--tint:rgba(10,10,12,.62)}
@@ -79,7 +78,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .btn img{width:20px;height:20px;display:block;flex:none}
 .btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
 /* 按下：文字保持纯白并加粗（text-stroke，不动字重，宽度不会跳），按钮下沉、投影收紧 */
-.btn:active{color:#fff;-webkit-text-stroke:.5px #fff;
+.btn:active{color:#fff;text-shadow:.4px 0 0 currentColor, -.4px 0 0 currentColor;
   transform:translateY(0) scale(.972);
   box-shadow:0 2px 6px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.20)}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
@@ -154,7 +153,7 @@ footer p{margin:0 0 10px}
   text-decoration:none;transition:all .3s cubic-bezier(.4,0,.2,1);user-select:none;white-space:nowrap}
 .Btn::before, .BtnC::before{content:"";position:absolute;inset:0;border-radius:inherit;box-sizing:border-box;
   border:1px solid #0002;background:linear-gradient(135deg,#ffffff80,#ffffff30);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:all .3s cubic-bezier(.4,0,.2,1)}
+  backdrop-filter:blur(6px);transition:all .3s cubic-bezier(.4,0,.2,1)}
 .Btn:hover, .BtnC:hover{color:#000}
 .Btn:hover::before, .BtnC:hover::before{border-color:#9999;box-shadow:inset 0 0 6px #00000047}
 .Btn:active, .BtnC:active{transform:scale(.97)}
@@ -167,7 +166,7 @@ footer p{margin:0 0 10px}
 .BtnC.lang .Ico{background-image:url(../assets/icons/i18n.svg)}
 .BtnC:focus-visible, .Btn:focus-visible{outline:none}
 .Btn.Main{color:#fff}
-.Btn.Main::before{-webkit-backdrop-filter:none;backdrop-filter:none;border-color:#0000002b;
+.Btn.Main::before{backdrop-filter:none;border-color:#0000002b;
   background:linear-gradient(135deg,#0a84ff,#06c);box-shadow:inset 0 1px 2px #0003, inset 0 -1px 2px #0000001a}
 .Btn.Main:hover{color:#fff}
 .Btn.Main:hover::before{background:radial-gradient(ellipse at center,#0a84ff 0,#0056cc 60%,#002b80 100%);
@@ -178,14 +177,14 @@ footer p{margin:0 0 10px}
 dialog.Box{position:fixed;inset:0;margin:auto;width:100%;max-width:min(calc(100vw - 32px),360px);background:transparent;
   border:none;padding:0;outline:none;overflow:visible;z-index:2147483647}
 dialog.Box:has(>.I18n){max-width:640px}
-dialog.Box::backdrop{-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);background-color:#00000020}
+dialog.Box::backdrop{backdrop-filter:blur(4px);background-color:#00000020}
 dialog.Box.FFF>:not(a.X){display:flex;flex-direction:column;align-items:stretch;margin:0 auto;width:100%;min-width:280px;
   max-height:80dvh;padding:24px 20px;box-sizing:border-box;border-radius:24px;background:#ffffffe6;
-  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  backdrop-filter:blur(16px);
   box-shadow:0 20px 40px #0000001a, 0 1px 3px #00000005;user-select:none}
 dialog.Box.X>a.X{position:absolute;bottom:-64px;left:50%;margin-left:-16px;width:32px;height:32px;display:flex;
   align-items:center;justify-content:center;border-radius:50%;background:#ffffffd9;cursor:pointer;z-index:1;
-  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 8px 20px #0000000f, 0 0 0 1px #0000000a;
+  backdrop-filter:blur(16px);box-shadow:0 8px 20px #0000000f, 0 0 0 1px #0000000a;
   transition:transform .3s ease, background .3s ease, box-shadow .3s ease, opacity .3s ease}
 dialog.Box.X>a.X::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.6;
   background:url(../assets/icons/x.svg) center/18px no-repeat;transition:opacity .3s ease}

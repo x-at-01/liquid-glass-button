@@ -146,7 +146,7 @@ const filterBuild = (id, w, h, mapUrl, scale) => {
 };
 
 const glassRule = (cls, sel, id, blur) =>
-  `.${cls}${sel}{backdrop-filter:url(#${id}) ${blur};-webkit-backdrop-filter:url(#${id}) ${blur}}`;
+  `.${cls}${sel}{backdrop-filter:url(#${id}) ${blur}}`;
 
 const glassBtnBuild = (btn) => {
   const rect = btn.getBoundingClientRect(),
