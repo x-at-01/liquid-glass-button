@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "build": "bun run build.js",
-    "publish": "bun run publish.js",
     "dev": "bun run build.js && python3 -m http.server -d out 8765",
     "prepare": "git config core.hooksPath .githooks",
     "svgo": "bunx svgo --config svgo.config.mjs"

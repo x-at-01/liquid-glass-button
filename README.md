@@ -23,7 +23,7 @@ press states, on a static multi-language site built from **YAML translations + P
 | `i18n/*.yml` | UI strings — one file per language, all 75 translated |
 | `tran.yml` | Same shape as webc's: source `zh`, `to_li: "*"` — missing languages fall back to `en` and are tagged in the switcher |
 | `build.js` | YAML + Pug → `out/<lang>/index.html` + the `tar.xz` bundle (generated output is git-ignored) |
-| `publish.js` | One command release: build, then force-push `out/` to the `gh-pages` branch (Pages source) |
+| `.github/workflows/pages.yml` | CI release: on every push to `main` it builds and deploys `out/` to Pages (no generated files in git) |
 
 ## How the glass works
 
@@ -76,12 +76,11 @@ Extract and open `demo.html` — no build step, no dependencies.
 bun install          # pug + js-yaml
 bun run build        # i18n/*.yml + src/index.pug → out/<lang>/ + the tar.xz
 bun run dev          # build + serve http://127.0.0.1:8765
-bun run publish      # build + pack, then push out/ to the gh-pages branch
 ```
 
-Nothing generated is committed: `out/`, `docs/` and `*.tar.xz` are git-ignored. GitHub Pages serves the
-`gh-pages` branch, which `publish.js` builds from scratch on every release (75 pages, assets and the
-`tar.xz` bundle).
+Nothing generated is committed: `out/`, `docs/` and `*.tar.xz` are git-ignored. Publishing is done by
+GitHub Actions (`.github/workflows/pages.yml`): a push to `main` builds the 75 pages, packs the `tar.xz`
+and deploys `out/` to Pages with the workflow token — no local deploy step.
 
 ### Languages (webc-aligned)
 
@@ -206,11 +205,11 @@ liquid-glass-button/
 bun install
 bun run build     # → out/<lang>/ + liquid-glass-button.tar.xz
 bun run dev       # 构建 + 本地预览 http://127.0.0.1:8765
-bun run publish   # 一键发布：构建 + 打包，强推 out/ 到 gh-pages 分支
 ```
 
-生成物一律不进代码库：`out/`、`docs/`、`*.tar.xz` 都在 `.gitignore` 里。GitHub Pages 从 `gh-pages`
-分支提供站点与素材包，`publish.js` 每次发布都从头构建（75 个页面、素材与 tar.xz）。
+生成物一律不进代码库：`out/`、`docs/`、`*.tar.xz` 都在 `.gitignore` 里。发布由 GitHub Actions 完成
+（`.github/workflows/pages.yml`）：push 到 `main` 后自动构建 75 个页面、打包 tar.xz，并用工作流令牌部署
+到 Pages——本地不需要执行发布。
 
 ### 参考
 
