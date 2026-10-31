@@ -32,6 +32,10 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .topbar nav{display:flex;align-items:center;gap:6px}
 .topbar a{color:var(--muted);text-decoration:none;font-size:13px;padding:7px 11px;border-radius:999px}
 .topbar a:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+.topbar a.ico-link{width:34px;height:34px;padding:0;display:grid;place-items:center;border:1px solid var(--line);
+  background:#fff;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease}
+.topbar a.ico-link:hover{background:#fff;transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
+.topbar a.ico-link img{width:18px;height:18px;display:block}
 .lang-btn{
   width:34px;height:34px;display:grid;place-items:center;margin-inline-start:4px;
   border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;

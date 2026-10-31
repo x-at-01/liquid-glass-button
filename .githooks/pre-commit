@@ -1,0 +1,16 @@
+#!/usr/bin/env -S bun
+// 提交前：若本次有 svg 改动，用 SVGO 压缩后重新加入暂存区
+import { $ } from "zx";
+import { existsSync } from "node:fs";
+
+const SVGO_CFG = "svgo.config.mjs";
+const svg_li = (await $`git diff --cached --name-only --diff-filter=ACM`.text())
+  .split("\n")
+  .map((path) => path.trim())
+  .filter((path) => path.endsWith(".svg") && existsSync(path));
+
+if (!svg_li.length) process.exit(0);
+
+console.log("[pre-commit] svgo " + svg_li.join(" "));
+await $`bunx svgo --config ${SVGO_CFG} ${svg_li}`;
+await $`git add ${svg_li}`;
