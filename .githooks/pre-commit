@@ -4,10 +4,11 @@ import { $ } from "zx";
 import { existsSync } from "node:fs";
 
 const SVGO_CFG = "svgo.config.mjs";
+const GEN_DIR_LI = ["docs/", "out/", "node_modules/"]; // 构建产物不压缩（它们来自 assets/ 的源文件）
 const svg_li = (await $`git diff --cached --name-only --diff-filter=ACM`.text())
   .split("\n")
   .map((path) => path.trim())
-  .filter((path) => path.endsWith(".svg") && existsSync(path));
+  .filter((path) => path.endsWith(".svg") && existsSync(path) && !GEN_DIR_LI.some((dir) => path.startsWith(dir)));
 
 if (!svg_li.length) process.exit(0);
 

@@ -71,6 +71,18 @@ bun run dev          # build + serve http://127.0.0.1:8765
 Add a language: copy `i18n/en.yml` to `i18n/<code>.yml`, translate, rebuild — the switcher chip disappears
 by itself.
 
+### SVG assets & git hook
+
+- `assets/icons/*.svg` — icons (download / App Store mark / GitHub / globe), all SVGO-minified.
+- `assets/glass-filters.svg` — the filter template as a standalone SVG. It is referenced from CSS at
+  runtime, so `svgo.config.mjs` **disables** `removeUselessDefs`, `removeHiddenElems`, `cleanupIds` and
+  `removeUnknownsAndDefaults`; otherwise SVGO would delete the whole `<defs>` or rename
+  `#glass-template` / `.g-map` / `.g-disp` and break the runtime.
+- **pre-commit hook** (`.githooks/pre-commit`, bun + zx): if the staged changes contain `.svg` files,
+  it runs SVGO on them and re-stages the result. Generated dirs (`docs/`, `out/`) are skipped.
+  `bun install` wires it up through the `prepare` script (`git config core.hooksPath .githooks`);
+  manually: `bun run svgo`.
+
 ### Code style
 
 `build.js` and `src/app.js` follow the house JS rules in [`skill/js.md`](skill/js.md) (bun shebang,
@@ -109,6 +121,18 @@ Apple 风格的**液态玻璃按钮**：三段式 4× 素材 + SVG `feDisplaceme
 
 目前 18 种已完成翻译（en zh zh-TW ja ko fr de es it pt nl pl ru sv tr vi id ar），其余 57 种为英文回退。
 新增语言：复制 `i18n/en.yml` 改成 `<code>.yml` 翻译后重新构建即可。
+
+### 素材与 git hook
+
+- `assets/icons/*.svg`：图标（下载 / App Store / GitHub / 地球），全部 SVGO 压缩过；
+- `assets/glass-filters.svg`：滤镜模板，独立成文件，运行时被 CSS 引用；因此 `svgo.config.mjs` 里
+  **关掉了** `removeUselessDefs`、`removeHiddenElems`、`cleanupIds`、`removeUnknownsAndDefaults`——
+  默认预设会把整份 `<defs>` 当“无用”删掉，或者把 `#glass-template` / `.g-map` / `.g-disp` 改名，
+  运行时定位会失效；
+- **pre-commit hook**（`.githooks/pre-commit`，bun + zx）：提交时如果暂存区里有 `.svg` 改动，
+  就跑一遍 SVGO 并重新 `git add`；构建产物目录（`docs/`、`out/`）跳过不处理。
+  `bun install` 会通过 `prepare` 脚本自动配置（`git config core.hooksPath .githooks`），
+  手动执行用 `bun run svgo`。
 
 ### 结构
 
