@@ -10,7 +10,6 @@ const ROOT = import.meta.dirname;
 const I18N_DIR = join(ROOT, "i18n");
 const SRC_DIR = join(ROOT, "src");
 const OUT_DIR = join(ROOT, "out");
-const DOCS_DIR = join(ROOT, "docs");
 const ASSETS_DIR = join(ROOT, "assets");
 const LANG_FILE = join(I18N_DIR, "langs.yml");
 const PAGE_TMPL = join(SRC_DIR, "index.pug");
@@ -111,7 +110,6 @@ cpSync(join(ASSETS_DIR, "icons"), join(PACK_DIR, "icons"), { recursive: true });
 }
 rmSync(PACK_DIR, { recursive: true, force: true });
 
-rmSync(DOCS_DIR, { recursive: true, force: true });
-cpSync(OUT_DIR, DOCS_DIR, { recursive: true });
+writeFileSync(join(OUT_DIR, ".nojekyll"), ""); // Pages 不做 Jekyll 处理
 
-console.log(`built ${langLi.length} languages → out/ + docs/`);
+console.log(`built ${langLi.length} languages → out/`);

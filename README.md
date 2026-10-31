@@ -22,7 +22,8 @@ press states, on a static multi-language site built from **YAML translations + P
 | `i18n/langs.yml` | Language table — the same 75 codes and native names as webc (`src/js/i18n/CODE.js` + `NAME.js`), same order |
 | `i18n/*.yml` | UI strings — one file per language, all 75 translated |
 | `tran.yml` | Same shape as webc's: source `zh`, `to_li: "*"` — missing languages fall back to `en` and are tagged in the switcher |
-| `build.js` | YAML + Pug → `out/<lang>/index.html`, the `tar.xz` bundle, then syncs `docs/` for GitHub Pages |
+| `build.js` | YAML + Pug → `out/<lang>/index.html` + the `tar.xz` bundle (generated output is git-ignored) |
+| `publish.js` | One command release: build, then force-push `out/` to the `gh-pages` branch (Pages source) |
 
 ## How the glass works
 
@@ -73,9 +74,14 @@ Extract and open `demo.html` — no build step, no dependencies.
 
 ```bash
 bun install          # pug + js-yaml
-bun run build        # i18n/*.yml + src/index.pug → out/<lang>/ + the tar.xz (and docs/ for Pages)
+bun run build        # i18n/*.yml + src/index.pug → out/<lang>/ + the tar.xz
 bun run dev          # build + serve http://127.0.0.1:8765
+bun run publish      # build + pack, then push out/ to the gh-pages branch
 ```
+
+Nothing generated is committed: `out/`, `docs/` and `*.tar.xz` are git-ignored. GitHub Pages serves the
+`gh-pages` branch, which `publish.js` builds from scratch on every release (75 pages, assets and the
+`tar.xz` bundle).
 
 ### Languages (webc-aligned)
 
@@ -198,9 +204,13 @@ liquid-glass-button/
 
 ```bash
 bun install
-bun run build   # → out/<lang>/ + liquid-glass-button.tar.xz（并同步 docs/）
-bun run dev     # 构建 + 本地预览 http://127.0.0.1:8765
+bun run build     # → out/<lang>/ + liquid-glass-button.tar.xz
+bun run dev       # 构建 + 本地预览 http://127.0.0.1:8765
+bun run publish   # 一键发布：构建 + 打包，强推 out/ 到 gh-pages 分支
 ```
+
+生成物一律不进代码库：`out/`、`docs/`、`*.tar.xz` 都在 `.gitignore` 里。GitHub Pages 从 `gh-pages`
+分支提供站点与素材包，`publish.js` 每次发布都从头构建（75 个页面、素材与 tar.xz）。
 
 ### 参考
 
