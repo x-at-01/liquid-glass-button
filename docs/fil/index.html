@@ -2,7 +2,7 @@
   --font: "SF Pro Display","SF Pro Text",-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans",sans-serif;
   --mono: "SF Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --ink:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --surface:#f5f5f7; --blue:#0071e3;
-  --radius:22px;
+  --radius:22px; --w:1000px; --pad:24px;
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box}
@@ -11,7 +11,7 @@ body{
   margin:0;background:#fff;color:var(--ink);
   font:400 17px/1.47059 var(--font);letter-spacing:-.022em;
 }
-.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+.wrap{width:100%;max-width:var(--w);margin:0 auto;padding:0 var(--pad);box-sizing:border-box}
 h1{font-size:52px;line-height:1.07;font-weight:600;letter-spacing:-.012em;margin:0 0 16px}
 h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:0 0 10px}
 .lead{font-size:21px;line-height:1.38;letter-spacing:.008em;color:var(--muted);margin:0 auto;max-width:680px;text-wrap:balance}
@@ -24,18 +24,15 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
   backdrop-filter:saturate(180%) blur(20px);
   position:sticky;top:0;z-index:20}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
-.brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;letter-spacing:-.01em}
-.brand i{width:9px;height:9px;border-radius:50%;background:linear-gradient(140deg,#6ea8ff,#b46bff 60%,#ff8ad4);
-  box-shadow:0 2px 6px rgba(110,168,255,.5)}
+.brand{font-size:14px;font-weight:600;letter-spacing:-.01em}
 .topbar nav{display:flex;align-items:center;gap:6px}
 /* 顶栏按钮统一走 webc 的 .BtnC；这里只兜住纯文字链接 */
 .topbar a:not(.BtnC){color:var(--muted);text-decoration:none;font-size:13px;padding:7px 11px;border-radius:999px}
 .topbar a:not(.BtnC):hover{color:var(--ink);background:rgba(0,0,0,.05)}
 /* ---------- Hero ---------- */
 .hero{padding:76px 0 0;text-align:center}
-.hero .head{max-width:1000px;margin:0 auto;padding:0 24px}
 .stage{
-  position:relative;margin:52px auto 0;max-width:1000px;border-radius:var(--radius);overflow:hidden;
+  position:relative;margin:52px 0 0;border-radius:var(--radius);overflow:hidden;
   padding:64px 32px 56px;
   background:
     radial-gradient(58% 130% at 14% 18%, rgba(110,168,255,.95) 0%, transparent 60%),
@@ -68,8 +65,9 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
   font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
   white-space:nowrap;cursor:pointer;text-decoration:none;
   isolation:isolate; /* 两个伪元素的负 z-index 落在底色之上、文字之下 */
-  box-shadow:inset 0 -12px 16px -12px rgba(255,255,255,.10),
-    0 10px 22px -8px rgba(0,0,0,.32), 0 2px 6px rgba(0,0,0,.14);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.22),
+    inset 0 -16px 20px -16px rgba(0,0,0,.50),
+    inset 0 14px 18px -16px rgba(255,255,255,.10);
   backdrop-filter:blur(20px) saturate(180%);
   transition:box-shadow .18s ease,transform .18s ease,color .18s ease,text-shadow .12s ease;
 }
@@ -86,16 +84,18 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .btn img{display:block;flex:none;height:1.2em;width:1.2em}
 .btn img.ap{height:1.02em;width:1.02em}
 .btn:hover{color:#fff;transform:translateY(-1px);
-  box-shadow:inset 0 -12px 16px -12px rgba(255,255,255,.14),
-    0 14px 28px -10px rgba(0,0,0,.36), 0 2px 6px rgba(0,0,0,.12)}
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.32),
+    inset 0 -16px 20px -16px rgba(0,0,0,.46),
+    inset 0 14px 18px -16px rgba(255,255,255,.16)}
 .btn:hover::before{opacity:1}
 /* 按下：文字像被压进玻璃里 —— 左上暗影（凹）+ 右下微亮棱边（凸），零模糊不改变字宽 */
 .btn:active{color:#fff;
   text-shadow:-1px -1px 0 rgba(0,0,0,.55), 1px 1px 0 rgba(255,255,255,.14),
               .3px 0 0 #fff, -.3px 0 0 #fff;
   transform:translateY(0) scale(.972);
-  box-shadow:inset 0 10px 16px -10px rgba(0,0,0,.35), inset 0 -8px 12px -10px rgba(255,255,255,.08),
-    0 3px 8px rgba(0,0,0,.20), 0 1px 2px rgba(0,0,0,.10)}
+  box-shadow:inset 0 12px 18px -12px rgba(0,0,0,.55),
+    inset 0 -10px 14px -12px rgba(255,255,255,.10),
+    inset 0 1px 1px rgba(255,255,255,.16)}
 .btn:active::before{opacity:0}
 .btn:active::after{opacity:.6}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
@@ -117,7 +117,7 @@ pre{margin:26px 0 0;padding:20px 22px;background:var(--surface);border:1px solid
   overflow:auto;font:400 12.5px/1.65 var(--mono);color:var(--ink)}
 code{font-family:var(--mono)}
 
-.principles{display:grid;gap:16px;margin:30px 0 0;max-width:760px}
+.principles{display:grid;gap:16px;margin:30px 0 0}
 .principle{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
   border-top:1px solid var(--line);padding-top:14px}
 .principle .n{font:400 12px/1 var(--mono);color:var(--muted)}
@@ -226,7 +226,7 @@ dialog.Box.X>a.X:active::before{opacity:.7}
   .I18n .Btn.Main{border-bottom:1px solid currentColor;border-radius:0;color:#000}
   .I18n .Btn.Main:hover, .I18n .Btn.Main:active{color:#0071e3}
 }
-</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Liquid Glass na button</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Palitan ang wika" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>Liquid Glass na button</h1><p class="lead">Isang liquid glass na button na humahaba kasama ng label, may totoong refraction sa mga gilid.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>I-download</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Ilipat ang pointer sa button.</p></section></header><section class="pack-sec"><div class="wrap"><div class="pack"><div class="pack-head"><h2>Ang bundle</h2><p>I-unzip at buksan: standalone na demo, ang mga estilo, ang runtime at ang template ng filter.</p><ul class="pack-files"><li>demo.html</li><li>style.css</li><li>app.js</li><li>glass-filters.svg</li><li>icons/</li></ul></div><a class="btn btn--blue" href="../liquid-glass-button.tar.xz" download><img class="dl" src="../assets/icons/download.svg" alt=""><span>I-download ang bundle (tar.xz)</span></a></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Ang lapad ay galing sa teksto</h2><p class="sub">Habang humahaba ang label, lumalapad ang button — hindi nagbabago ang kurba ng dulo.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>I-download</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>I-download para sa macOS</span></button><span class="w"></span></div></div><p class="hint">Ang salamin ay maputla sa maliwanag na ibabaw; pinapanatili ng tint na madaling basahin ang teksto.</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Paano gumagana ang SVG</h2><p class="sub">Ang likidong pakiramdam ay galing sa gilid: ang displacement map ay ginagawa para sa eksaktong sukat, tatlong pass ang gumagawa ng dispersion, at pinapanatili ng gilid na mask na matalas ang gitna.</p></div><div class="principles"><div class="principle"><span class="n">01</span><p>Displacement map: ginagawa para sa eksaktong sukat ng button — R ay may x offset, G ang y offset, B ang lakas ng gilid (0 sa gitna, 255 sa gilid).</p></div><div class="principle"><span class="n">02</span><p>Dispersion: tatlong pass sa parehong mapa na may bahagyang ibang scale; hinihiwalay ang R/G/B channel at pinagsasama sa screen, kaya nagkakalat ang gilid tulad ng totoong salamin.</p></div><div class="principle"><span class="n">03</span><p>Gilid na mask: ginagamit ng B channel na mask ang resulta — gilid lang ang nagre-refract, hindi nagagalaw ang gitna sa ilalim ng label.</p></div></div><pre><code>/* 1) 按按钮实际尺寸生成位移图（app.js → canvas） */
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand">Liquid Glass na button</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="Palitan ang wika" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="wrap"><h1>Liquid Glass na button</h1><p class="lead">Isang liquid glass na button na humahaba kasama ng label, may totoong refraction sa mga gilid.</p><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>I-download</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button></div><p class="hint">Ilipat ang pointer sa button.</p></section></div></header><section class="pack-sec"><div class="wrap"><div class="pack"><div class="pack-head"><h2>Ang bundle</h2><p>I-unzip at buksan: standalone na demo, ang mga estilo, ang runtime at ang template ng filter.</p><ul class="pack-files"><li>demo.html</li><li>style.css</li><li>app.js</li><li>glass-filters.svg</li><li>icons/</li></ul></div><a class="btn btn--blue" href="../liquid-glass-button.tar.xz" download><img class="dl" src="../assets/icons/download.svg" alt=""><span>I-download ang bundle (tar.xz)</span></a></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Ang lapad ay galing sa teksto</h2><p class="sub">Habang humahaba ang label, lumalapad ang button — hindi nagbabago ang kurba ng dulo.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>I-download</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>I-download para sa macOS</span></button><span class="w"></span></div></div><p class="hint">Ang salamin ay maputla sa maliwanag na ibabaw; pinapanatili ng tint na madaling basahin ang teksto.</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Paano gumagana ang SVG</h2><p class="sub">Ang likidong pakiramdam ay galing sa gilid: ang displacement map ay ginagawa para sa eksaktong sukat, tatlong pass ang gumagawa ng dispersion, at pinapanatili ng gilid na mask na matalas ang gitna.</p></div><div class="principles"><div class="principle"><span class="n">01</span><p>Displacement map: ginagawa para sa eksaktong sukat ng button — R ay may x offset, G ang y offset, B ang lakas ng gilid (0 sa gitna, 255 sa gilid).</p></div><div class="principle"><span class="n">02</span><p>Dispersion: tatlong pass sa parehong mapa na may bahagyang ibang scale; hinihiwalay ang R/G/B channel at pinagsasama sa screen, kaya nagkakalat ang gilid tulad ng totoong salamin.</p></div><div class="principle"><span class="n">03</span><p>Gilid na mask: ginagamit ng B channel na mask ang resulta — gilid lang ang nagre-refract, hindi nagagalaw ang gitna sa ilalim ng label.</p></div></div><pre><code>/* 1) 按按钮实际尺寸生成位移图（app.js → canvas） */
 R = 128 + x 位移 · G = 128 + y 位移 · B = 边缘强度（中心 0 → 贴边 255）
 
 /* 2) 同一张图做三次位移，scale 略有差异，分离 R/G/B 后 screen 叠加 → 色散 */

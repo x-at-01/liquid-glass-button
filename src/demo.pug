@@ -8,17 +8,17 @@ html(lang="en")
     style!= css
   body
     header.hero
-      .head
+      .wrap
         h1 Liquid Glass Button
         p.lead A liquid-glass button whose width follows its label. One element — the rim refracts through an SVG displacement filter.
-      section.stage
-        .cta
-          button.btn.btn--blue(type="button")
-            img.dl(src="./icons/download.svg", alt="")
-            span Download
-          button.btn.btn--black(type="button")
-            img.ap(src="./icons/apple.svg", alt="")
-            span App Store
+        section.stage
+          .cta
+            button.btn.btn--blue(type="button")
+              img.dl(src="./icons/download.svg", alt="")
+              span Download
+            button.btn.btn--black(type="button")
+              img.ap(src="./icons/apple.svg", alt="")
+              span App Store
     section.section
       .wrap
         .card

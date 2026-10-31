@@ -14,9 +14,7 @@ html(lang=code, dir=dir)
     header.topbar
       .wrap
         //- 品牌名直接用该语言的标题（各语言 i18n 的 title），避免再维护一份
-        span.brand
-          i
-          = t.title
+        span.brand= t.title
         nav
           //- 顶栏两个按钮共用 webc 的 .BtnC；只有图标不同（Ico / Ico.github）
           a.BtnC(href="https://github.com/x-at-01/liquid-glass-button", aria-label="GitHub", title="GitHub")
@@ -26,18 +24,18 @@ html(lang=code, dir=dir)
             i.Ico
 
     header.hero
-      .head
+      .wrap
         h1= t.title
         p.lead= t.lead
-      section.stage
-        .cta
-          button.btn.btn--blue(type="button")
-            img.dl(src="../assets/icons/download.svg", alt="")
-            span= t.btn_download
-          button.btn.btn--black(type="button")
-            img.ap(src="../assets/icons/apple.svg", alt="")
-            span= t.btn_appstore
-        p.hint= t.stage_hint
+        section.stage
+          .cta
+            button.btn.btn--blue(type="button")
+              img.dl(src="../assets/icons/download.svg", alt="")
+              span= t.btn_download
+            button.btn.btn--black(type="button")
+              img.ap(src="../assets/icons/apple.svg", alt="")
+              span= t.btn_appstore
+          p.hint= t.stage_hint
 
     //- 素材包：开头独立区块，按钮本身就是示范
     section.pack-sec
