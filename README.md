@@ -74,6 +74,10 @@ by itself.
 ### SVG assets & git hook
 
 - `assets/icons/*.svg` — icons (download / App Store mark / GitHub / globe), all SVGO-minified.
+  Every icon paints with `currentColor` and is used through CSS `mask-image` +
+  `background-color: currentColor`, so the icon follows the button's `color` on hover / active. The
+  topbar GitHub link and the language switcher are the same `webc` `.BtnC` component — only the mask
+  differs (`.Ico.github` vs `.BtnC.lang .Ico`), so they stay pixel-identical by construction.
 - `assets/glass-filters.svg` — the filter template as a standalone SVG. It is referenced from CSS at
   runtime, so `svgo.config.mjs` **disables** `removeUselessDefs`, `removeHiddenElems`, `cleanupIds` and
   `removeUnknownsAndDefaults`; otherwise SVGO would delete the whole `<defs>` or rename
@@ -124,7 +128,10 @@ Apple 风格的**液态玻璃按钮**：三段式 4× 素材 + SVG `feDisplaceme
 
 ### 素材与 git hook
 
-- `assets/icons/*.svg`：图标（下载 / App Store / GitHub / 地球），全部 SVGO 压缩过；
+- `assets/icons/*.svg`：图标（下载 / App Store / GitHub / 地球），全部 SVGO 压缩过；图标一律
+  用 `currentColor` 上色，CSS 侧走 `mask-image` + `background-color: currentColor`，所以颜色跟随
+  按钮的 `color`（hover / active 会一起变）。顶栏的 GitHub 链接和语言按钮就是同一个 webc `.BtnC`
+  组件，只有 mask 不同（`.Ico.github` / `.BtnC.lang .Ico`），规格天然一致；
 - `assets/glass-filters.svg`：滤镜模板，独立成文件，运行时被 CSS 引用；因此 `svgo.config.mjs` 里
   **关掉了** `removeUselessDefs`、`removeHiddenElems`、`cleanupIds`、`removeUnknownsAndDefaults`——
   默认预设会把整份 `<defs>` 当“无用”删掉，或者把 `#glass-template` / `.g-map` / `.g-disp` 改名，
