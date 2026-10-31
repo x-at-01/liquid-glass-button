@@ -76,27 +76,36 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
    边缘折射复用同一个运行时 SVG 位移滤镜（.btn 的玻璃滤镜对 .btn.svg 一并生效）。 ---------- */
 .btn.svg{
   border:0;border-radius:980px;padding:0 var(--cap,28px);
+  /* 瓶身：一道很低的斜向天光（Apple 光从左上来），结构感全部交给内阴影 */
   background:
-    linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04) 34%,rgba(255,255,255,.02) 60%,rgba(255,255,255,.09)),
-    radial-gradient(140% 220% at 50% -60%,rgba(255,255,255,.10),rgba(255,255,255,0) 55%),
+    linear-gradient(172deg,rgba(255,255,255,.20),rgba(255,255,255,.05) 30%,rgba(255,255,255,0) 52%,rgba(255,255,255,.09) 88%),
     var(--tint,rgba(10,10,12,.62));
   box-shadow:
-    inset 0 1px 1px rgba(255,255,255,.28), inset 0 -1px 1px rgba(255,255,255,.10),
-    0 4px 10px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.10);
+    /* 厚度：顶缘内侧一道暗带（玻璃翻进来的曲面），底缘一道回光 —— shuding 的做法 */
+    inset 0 12px 18px -12px rgba(0,0,0,.50),
+    inset 0 -12px 16px -12px rgba(255,255,255,.11),
+    /* 棱边发丝高光：0.5px 模糊的锐线，比渐变环更「玻璃」 */
+    inset 0 1px .5px rgba(255,255,255,.45),
+    inset 0 -1px .5px rgba(255,255,255,.18),
+    0 10px 22px -8px rgba(0,0,0,.32), 0 2px 6px rgba(0,0,0,.14);
 }
 /* SVG 版没有素材自身的浓度，瓶身 tint 相应加深 */
-.btn.svg.btn--black{--tint:rgba(10,10,12,.86)}
-.btn.svg.btn--blue{--tint:rgba(8,38,140,.86)}
-/* 菲涅尔棱边：1px 渐变环。mask-composite:exclude 只留下边框环本身，越贴边越亮 */
+.btn.svg.btn--black{--tint:rgba(12,12,14,.82)}
+.btn.svg.btn--blue{--tint:rgba(16,54,178,.82)}
+/* 菲涅尔棱边：1px 渐变环，135° 光向；mask-composite:exclude 只留下环本身 */
 .btn.svg::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;
-  background:linear-gradient(180deg,rgba(255,255,255,.60),rgba(255,255,255,.14) 32%,rgba(255,255,255,.06) 58%,rgba(255,255,255,.34));
+  background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.12) 26%,rgba(255,255,255,.04) 50%,rgba(255,255,255,.14) 74%,rgba(255,255,255,.40));
   mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
   pointer-events:none}
-.btn.svg:hover{box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10),
-  inset 0 1px 1px rgba(255,255,255,.36), inset 0 0 12px rgba(255,255,255,.07)}
-.btn.svg:active{box-shadow:0 2px 6px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.10),
-  inset 0 1px 0 rgba(255,255,255,.24), inset 0 -1px 2px rgba(0,0,0,.24)}
-.btn.svg:active::after{opacity:.75}
+.btn.svg:hover{box-shadow:inset 0 12px 18px -12px rgba(0,0,0,.44),
+  inset 0 -12px 16px -12px rgba(255,255,255,.19),
+  inset 0 1px .5px rgba(255,255,255,.55), inset 0 -1px .5px rgba(255,255,255,.30),
+  0 14px 28px -10px rgba(0,0,0,.36), 0 2px 6px rgba(0,0,0,.12)}
+.btn.svg:active{box-shadow:inset 0 14px 20px -14px rgba(0,0,0,.60),
+  inset 0 -8px 12px -10px rgba(255,255,255,.10),
+  inset 0 1px .5px rgba(255,255,255,.30), inset 0 -1px .5px rgba(255,255,255,.16),
+  0 3px 8px rgba(0,0,0,.20), 0 1px 2px rgba(0,0,0,.10)}
+.btn.svg:active::after{opacity:.7}
 .btn img{display:block;flex:none;height:1.2em;width:1.2em}
 .btn img.ap{height:1.02em;width:1.02em}
 .btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
@@ -241,13 +250,15 @@ dialog.Box.X>a.X:active::before{opacity:.7}
 }
 </style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>液态玻璃按钮</span><nav><a class="BtnC" href="https://github.com/x-at-01/liquid-glass-button" aria-label="GitHub" title="GitHub"><i class="Ico github"></i></a><button class="BtnC lang" id="langBtn" type="button" aria-label="切换语言" aria-haspopup="dialog"><i class="Ico"></i></button></nav></div></header><header class="hero"><div class="head"><h1>液态玻璃按钮</h1><p class="lead">可按文字拉伸的液态玻璃按钮，边缘有真实折射。</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>下载</span></button><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>应用商店安装</span></button></div><p class="hint">把鼠标移到按钮上试试。</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>宽度由文字决定</h2><p class="sub">同一套素材：文案越长按钮越宽，端帽不变。</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>下载</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>应用商店安装</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>立即下载 macOS 版本</span></button><span class="w"></span></div></div><p class="hint">浅色底上玻璃偏淡，用底色保持文字对比。</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>纯 SVG</h2><p class="sub">完全不使用位图：瓶身、棱边高光和深度都是 CSS 渐变与阴影，边缘折射仍由 SVG 位移滤镜完成。</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn svg btn--black" type="button"><span>下载</span></button><span class="w"></span></div><div class="measure"><button class="btn svg btn--black" type="button"><img class="ap" src="../assets/icons/apple.svg" alt=""><span>应用商店安装</span></button><span class="w"></span></div><div class="measure"><button class="btn svg btn--blue" type="button"><img class="dl" src="../assets/icons/download.svg" alt=""><span>立即下载 macOS 版本</span></button><span class="w"></span></div></div><p class="hint">浅色底上玻璃偏淡，用底色保持文字对比。</p></div><pre><code>.btn.svg {
   border: 0; border-radius: 980px; padding: 0 28px;
-  background: linear-gradient(180deg, #ffffff29, #ffffff0d 34%, #ffffff05 60%, #ffffff1a),
+  background: linear-gradient(172deg, #ffffff33, #ffffff0d 30%, transparent 52%, #ffffff17 88%),
               var(--tint);
-  box-shadow: inset 0 1px 1px #ffffff4d, inset 0 -1px 1px #ffffff1a,
-              0 4px 10px #0000002e;
+  box-shadow: inset 0 12px 18px -12px #00000080,   /* 顶缘内侧暗带：厚度 */
+              inset 0 -12px 16px -12px #ffffff1c,  /* 底缘内侧回光 */
+              inset 0 1px .5px #ffffff73, inset 0 -1px .5px #ffffff2e,
+              0 10px 22px -8px #00000052, 0 2px 6px #00000024;
   backdrop-filter: url(#glass-1) blur(6px) saturate(170%); /* 同一个 SVG 折射滤镜 */
 }
-/* 棱边菲涅尔高光：::after 画 1px 渐变环，mask-composite: exclude 只留环 */
+/* 棱边菲涅尔高光：::after 画 1px 渐变环（135° 光向），mask-composite: exclude 只留环 */
 </code></pre></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>三段式素材（4×）</h2><p class="sub">端帽 112px，中间块可无限平铺，接缝逐像素一致。</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>整张</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>左端</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>中间</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>右端</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">repeat-x，任意宽度不变形</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>用法</h2><p class="sub">一个元素完成九宫格拉伸，hover / active 换滤镜。</p></div><pre><code>.btn {
   display: inline-flex; align-items: center; gap: 9px;
   height: 56px; width: auto;              /* width comes from the label */
