@@ -41,12 +41,14 @@ rim highlight that fades at the corners, a faint bottom edge, and one very light
 sheen from the upper left. No drop shadow and no thick bevel in any state — depth comes from the refraction,
 not from painted shading.
 
-Hover and active swap in pre-built filter variants (displacement ×1.45 / ×0.6) and darken the surface with
-**inset** shadows only — hover adds a black inner ring plus a deeper top band, pressed deepens it and
-scales down slightly; there is no outer drop shadow in any state. The pressed label also gets an engraved
-`text-shadow` so it reads as pushed into the glass. `backdrop-filter` does not interpolate between `url()`
-values, so smoothness comes from the `box-shadow` / `transform` / `color` transitions. `outline` is
-reserved for `:focus-visible`, never for the pressed state.
+Hover swaps in a stronger filter variant (displacement ×1.45) and adds two things: a faint **inset** ring
+(the surface presses in) and one **specular sweep** — a skewed light band that crosses the pill once and is
+clipped by its rounded corners (`overflow: hidden`, 1.4s). That sweep is the "liquid highlight"; it costs
+nothing, whereas a second SVG specular pass (feSpecularLighting / a highlight map) would double the filter
+work for the same read. Pressed deepens the inset ring and scales down slightly; the pressed label gets an
+engraved `text-shadow`. No outer drop shadow in any state. `backdrop-filter` does not interpolate between
+`url()` values, so smoothness comes from the `box-shadow` / `transform` / `color` transitions; `outline` is
+reserved for `:focus-visible`.
 
 Caveat: SVG filters inside `backdrop-filter` are Chromium-only today. Safari and Firefox keep the blur,
 the tint and the rim light, and simply skip the refraction.
@@ -143,9 +145,10 @@ RGB 分通道后 screen 叠加做**边缘色散**，再用边缘遮罩让中心�
 底缘，加上左上角一层很淡的 `mix-blend-mode: screen` 天光。任何状态都没有外投影、没有厚倒角——深度交给
 折射，而不是画上去的明暗。
 
-hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6），明暗**只用内阴影**表达：hover 加一圈黑色内阴影
-和一道更深的顶缘暗带，按下再加深并轻微缩小，任何状态都没有外投影。hover 文字转纯白，按下时加凹陷的
-`text-shadow`，读起来像被压进玻璃里。
+hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6）。hover 只做两件事：一圈很淡的内阴影（表面被按进去），
+以及一次**掠过的斜向光带**——`overflow: hidden` 按圆角裁切、1.4s 走完，这就是“液体高光”，比再加一层
+`feSpecularLighting` / 高光图便宜得多，观感一样。按下时内阴影加深并轻微缩小，文字加凹陷 `text-shadow`。
+任何状态都没有外投影。
 `backdrop-filter` 在两组 `url()` 之间不会插值，所以顺滑感来自 transform / box-shadow / opacity 过渡；
 `outline` 只留给 `:focus-visible`，不用于按下态。
 

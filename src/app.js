@@ -22,7 +22,7 @@ const SPECULAR_STEP = 0.08;
 const HOVER_RATIO = 1.45;
 const ACTIVE_RATIO = 0.6;
 const BLUR_NORMAL = "blur(6px) contrast(1.15) brightness(1.04) saturate(170%)";
-const BLUR_HOVER = "blur(6px) contrast(1.18) brightness(1.14) saturate(190%)";
+const BLUR_HOVER = "blur(6px) contrast(1.16) brightness(1.08) saturate(180%)";
 const BLUR_ACTIVE = "blur(10px) contrast(1.08) brightness(.94) saturate(140%)";
 const RESIZE_DELAY = 200;
 

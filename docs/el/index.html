@@ -64,7 +64,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
   color:rgba(255,255,255,.90);
   font:inherit;font-size:17px;line-height:1;
   white-space:nowrap;cursor:pointer;text-decoration:none;
-  isolation:isolate; /* 两个伪元素的负 z-index 落在底色之上、文字之下 */
+  isolation:isolate;overflow:hidden; /* 扫光按圆角裁切 */
   box-shadow:inset 0 1px 1px rgba(255,255,255,.18),
     inset 0 -1px 1px rgba(0,0,0,.20),
     inset 0 -10px 14px -12px rgba(0,0,0,.22);
@@ -74,18 +74,27 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
 .btn--black{--tint:rgba(12,12,14,.82)}
 /* 蓝色：扁平化的 azure，只留一点竖向明度差；白字对比约 4.4:1 */
 .btn--blue{background:linear-gradient(180deg,#125fd8 0%,#0746a4 100%)}
-/* 天光：左上角极淡的一层，screen 混合 */
-.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
-  background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.10),transparent 58%);
-  mix-blend-mode:screen;pointer-events:none}
+/* hover 液体高光：一条斜光带从左向右掠过一次（overflow:hidden 按圆角裁切），不额外加滤镜 */
+.btn::before{content:"";position:absolute;top:0;bottom:0;left:-45%;width:45%;z-index:1;pointer-events:none;
+  opacity:0;transform:skewX(-12deg);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.38) 50%,transparent)}
+.btn:hover::before{opacity:1;animation:glass-sweep 1.4s cubic-bezier(.4,0,.2,1) both}
+@keyframes glass-sweep{
+  0%{transform:translateX(0) skewX(-12deg)}
+  100%{transform:translateX(340%) skewX(-12deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  .btn:hover::before{animation:none}
+}
+
+.btn>span, .btn>img{position:relative;z-index:2}
 .btn img{display:block;flex:none;height:20px;width:20px}
 .btn img.ap{height:17px;width:17px}
 .btn:hover{color:#fff;
-  /* hover = 向内压：环形内阴影 + 顶缘更深的一道，整体变暗 */
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.12),
-    inset 0 0 9px rgba(0,0,0,.34),
-    inset 0 4px 12px rgba(0,0,0,.28),
-    inset 0 18px 24px -16px rgba(0,0,0,.58)}
+  /* hover：只留很淡的一圈内阴影，高光交给掠过的那道扫光 */
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.14),
+    inset 0 0 8px rgba(0,0,0,.16),
+    inset 0 14px 18px -14px rgba(0,0,0,.38)}
 /* 按下：文字像被压进玻璃里 —— 左上暗影（凹）+ 右下微亮棱边（凸），零模糊不改变字宽 */
 .btn:active{color:#fff;
   text-shadow:-1px -1px 0 rgba(0,0,0,.55), 1px 1px 0 rgba(255,255,255,.14);
@@ -93,7 +102,6 @@ h2{font-size:28px;line-height:1.14;font-weight:600;margin:0 0 10px}
   box-shadow:inset 0 3px 10px rgba(0,0,0,.45),
     inset 0 22px 30px -18px rgba(0,0,0,.70),
     inset 0 -10px 14px -12px rgba(255,255,255,.08)}
-.btn:active::after{opacity:.6}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
 
 /* ---------- 区块 ---------- */
@@ -281,7 +289,7 @@ const SPECULAR_STEP = 0.08;
 const HOVER_RATIO = 1.45;
 const ACTIVE_RATIO = 0.6;
 const BLUR_NORMAL = "blur(6px) contrast(1.15) brightness(1.04) saturate(170%)";
-const BLUR_HOVER = "blur(6px) contrast(1.18) brightness(1.14) saturate(190%)";
+const BLUR_HOVER = "blur(6px) contrast(1.16) brightness(1.08) saturate(180%)";
 const BLUR_ACTIVE = "blur(10px) contrast(1.08) brightness(.94) saturate(140%)";
 const RESIZE_DELAY = 200;
 
