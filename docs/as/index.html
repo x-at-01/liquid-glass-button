@@ -71,7 +71,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
   white-space:nowrap;cursor:pointer;text-decoration:none;
   box-shadow:0 4px 10px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.16);
   backdrop-filter:blur(20px) saturate(180%);
-  transition:box-shadow .18s ease,transform .18s ease,background-color .18s ease,color .18s ease;
+  transition:box-shadow .18s ease,transform .18s ease,background-color .18s ease,color .18s ease,text-shadow .12s ease;
 }
 .btn--black{border-image-source:url(../assets/glass/black-sheet.webp);--tint:rgba(10,10,12,.62)}
 .btn--blue{border-image-source:url(../assets/glass/blue-sheet.webp);--tint:rgba(8,38,140,.66)}
@@ -79,7 +79,10 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .btn img.ap{height:1.02em;width:1.02em}
 .btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
 /* 按下：文字保持纯白并加粗（text-stroke，不动字重，宽度不会跳），按钮下沉、投影收紧 */
-.btn:active{color:#fff;text-shadow:.4px 0 0 currentColor, -.4px 0 0 currentColor;
+/* 按下：文字像被压进玻璃里 —— 左上暗影（凹）+ 右下微亮棱边（凸），零模糊不改变字宽 */
+.btn:active{color:#fff;
+  text-shadow:-1px -1px 0 rgba(0,0,0,.55), 1px 1px 0 rgba(255,255,255,.14),
+              .3px 0 0 #fff, -.3px 0 0 #fff;
   transform:translateY(0) scale(.972);
   box-shadow:0 2px 6px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.20)}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
