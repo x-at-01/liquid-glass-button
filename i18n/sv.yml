@@ -13,7 +13,7 @@ sec_usage_h: Användning
 sec_usage_p: 'Ett element är hela glaset: form, kant och djup är gradienter och skuggor; kantbrytningen kommer från ett filter skapat i exakt storlek.'
 sec_spec_h: Specifikation
 spec_font_h: Typografi
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, teckenavstånd -0.022em; rubriker 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, teckenavstånd -0.374px; rubriker 48px/1.08.
 spec_btn_h: Knapp
 spec_btn_p: 56px hög (48px mobil), 28px i sidled, radie 980px.
 spec_icon_h: Ikoner

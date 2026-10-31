@@ -13,7 +13,7 @@ sec_usage_h: 用法
 sec_usage_p: 一个元素就是整颗玻璃：形体、棱边与深度用渐变和阴影绘制，边缘折射来自按尺寸生成的滤镜。
 sec_spec_h: 设计规格
 spec_font_h: 字体
-spec_font_p: SF Pro Display / SF Pro Text；正文 17px/1.47，字距 -0.022em；标题 48px/1.08。
+spec_font_p: SF Pro Display / SF Pro Text；正文 17px/1.47，字距 -0.374px；标题 48px/1.08。
 spec_btn_h: 按钮
 spec_btn_p: 高 56px（移动端 48px），左右内缩 28px，圆角 980px。
 spec_icon_h: 图标

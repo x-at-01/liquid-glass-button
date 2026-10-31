@@ -13,7 +13,7 @@ sec_usage_h: Usage
 sec_usage_p: 'One element is the whole glass: shape, rim and depth are gradients and shadows; the edge refraction comes from a filter generated for the exact size.'
 sec_spec_h: Specs
 spec_font_h: Type
-spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47 body, letter-spacing -0.022em; 48px/1.08 headings.
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47 body, letter-spacing -0.374px; 48px/1.08 headings.
 spec_btn_h: Button
 spec_btn_p: 56px tall (48px on mobile), 28px insets, 980px radius.
 spec_icon_h: Icons

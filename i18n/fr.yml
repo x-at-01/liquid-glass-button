@@ -13,7 +13,7 @@ sec_usage_h: Utilisation
 sec_usage_p: 'Un seul élément suffit : forme, bord et profondeur sont des dégradés et des ombres ; la réfraction du bord vient d''un filtre généré à la taille exacte.'
 sec_spec_h: Spécifications
 spec_font_h: Typographie
-spec_font_p: SF Pro Display / SF Pro Text ; corps 17px/1.47, interlettrage -0.022em ; titres 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text ; corps 17px/1.47, interlettrage -0.374px ; titres 48px/1.08.
 spec_btn_h: Bouton
 spec_btn_p: 56px de haut (48px sur mobile), 28px sur les côtés, rayon 980px.
 spec_icon_h: Icônes

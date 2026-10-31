@@ -13,7 +13,7 @@ sec_usage_h: الاستخدام
 sec_usage_p: 'عنصر واحد هو الزجاج كله: الشكل والحافة والعمق تدرجات وظلال؛ وانكسار الحافة يأتي من فلتر يُنشأ بالمقاس الدقيق.'
 sec_spec_h: المواصفات
 spec_font_h: الخط
-spec_font_p: SF Pro Display / SF Pro Text؛ 17px/1.47، تباعد -0.022em؛ العناوين 48px/1.08.
+spec_font_p: SF Pro Display / SF Pro Text؛ 17px/1.47، تباعد -0.374px؛ العناوين 48px/1.08.
 spec_btn_h: الزر
 spec_btn_p: ارتفاع 56px (48px على الجوال)، 28px على الجانبين، نصف قطر 980px.
 spec_icon_h: الأيقونات

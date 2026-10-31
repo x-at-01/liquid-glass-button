@@ -9,12 +9,12 @@
 html{text-size-adjust:100%}
 body{
   margin:0;background:#fff;color:var(--ink);
-  font:400 17px/1.47059 var(--font);letter-spacing:-.022em;
+  font:400 17px/1.47059 var(--font);letter-spacing:-0.374px;
 }
 .wrap{width:100%;max-width:var(--w);margin:0 auto;padding:0 var(--pad);box-sizing:border-box}
-h1{font-size:52px;line-height:1.07;font-weight:600;letter-spacing:-.012em;margin:0 0 16px}
-h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:0 0 10px}
-.lead{font-size:21px;line-height:1.38;letter-spacing:.008em;color:var(--muted);margin:0 auto;max-width:680px;text-wrap:balance}
+h1{font-size:52px;line-height:1.07;font-weight:600;letter-spacing:-0.624px;margin:0 0 16px}
+h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:0.056px;margin:0 0 10px}
+.lead{font-size:21px;line-height:1.38;letter-spacing:0.168px;color:var(--muted);margin:0 auto;max-width:680px;text-wrap:balance}
 .sub{font-size:17px;line-height:1.5;color:var(--muted);margin:0 0 26px;max-width:660px}
 .hint{font-size:13px;line-height:1.45;color:var(--muted);margin:18px 0 0}
 .stage .hint{color:rgba(255,255,255,.78)}
@@ -24,7 +24,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
   backdrop-filter:saturate(180%) blur(20px);
   position:sticky;top:0;z-index:20}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
-.brand{font-size:14px;font-weight:600;letter-spacing:-.01em}
+.brand{font-size:14px;font-weight:600;letter-spacing:-0.14px}
 .topbar nav{display:flex;align-items:center;gap:6px}
 /* 顶栏按钮统一走 webc 的 .BtnC；这里只兜住纯文字链接 */
 .topbar a:not(.BtnC){color:var(--muted);text-decoration:none;font-size:13px;padding:7px 11px;border-radius:999px}
@@ -62,7 +62,7 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
     linear-gradient(180deg,transparent 66%,rgba(0,0,0,.10)),
     var(--tint,rgba(12,12,14,.82));
   color:rgba(255,255,255,.90);
-  font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
+  font:inherit;font-size:17px;line-height:1;letter-spacing:-0.374px;
   white-space:nowrap;cursor:pointer;text-decoration:none;
   isolation:isolate; /* 两个伪元素的负 z-index 落在底色之上、文字之下 */
   box-shadow:inset 0 1px 1px rgba(255,255,255,.18),
@@ -78,8 +78,8 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
 .btn::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
   background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.10),transparent 58%);
   mix-blend-mode:screen;pointer-events:none}
-.btn img{display:block;flex:none;height:1.2em;width:1.2em}
-.btn img.ap{height:1.02em;width:1.02em}
+.btn img{display:block;flex:none;height:20.4px;width:20.4px}
+.btn img.ap{height:17.34px;width:17.34px}
 .btn:hover{color:#fff;
   /* hover = 向内压：环形内阴影 + 顶缘更深的一道，整体变暗 */
   box-shadow:inset 0 1px 1px rgba(255,255,255,.12),
@@ -136,7 +136,7 @@ code{font-family:var(--mono)}
 
 .specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 44px;margin-top:34px}
 .spec{border-top:1px solid var(--line);padding-top:16px}
-.spec h3{font-size:15px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.spec h3{font-size:15px;font-weight:600;margin:0 0 6px;letter-spacing:-0.15px}
 .spec p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
 
 footer{border-top:1px solid var(--line);padding:36px 0 64px;color:var(--muted);font-size:12.5px;line-height:1.7}
@@ -147,13 +147,15 @@ footer p{margin:0 0 10px}
 :where(a){color:var(--blue)}
 
 @media (max-width:734px){
-  h1{font-size:34px;line-height:1.12}
-  .lead{font-size:19px;line-height:1.42}
-  h2{font-size:24px}
+  h1{font-size:34px;line-height:1.12;letter-spacing:-0.408px}
+  .lead{font-size:19px;line-height:1.42;letter-spacing:0.152px}
+  h2{font-size:24px;letter-spacing:0.048px}
   .section{padding:64px 0}
   .stage{padding:48px 18px 40px;border-radius:18px}
   .card{padding:26px 20px 22px}
-  .btn{--pill-h:48px;--cap:24px;font-size:16px}
+  .btn{--pill-h:48px;--cap:24px;font-size:16px;letter-spacing:-0.352px}
+  .btn img{height:19.2px;width:19.2px}
+  .btn img.ap{height:16.32px;width:16.32px}
   .pack{flex-direction:column;align-items:stretch;gap:20px;padding:24px 20px}
   .pack .btn{justify-content:center}
   .topbar .wrap{height:52px}
@@ -256,7 +258,7 @@ backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) saturate(170%)
 }
 /* 天光：::after 径向柔光 + mix-blend-mode:screen（负 z-index，压在底色上、文字下） */
 /* 折射滤镜：./glass-filters.svg 是模板，app.js 按按钮尺寸 clone 出常态 / hover / active 三份 */
-</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>विनिर्देश</h2><div class="specs"><div class="spec"><h3>टाइप</h3><p>SF Pro Display / SF Pro Text; बॉडी 17px/1.47, letter-spacing -0.022em; शीर्षक 48px/1.08।</p></div><div class="spec"><h3>बटन</h3><p>ऊँचाई 56px (मोबाइल पर 48px), दोनों ओर 28px, त्रिज्या 980px।</p></div><div class="spec"><h3>आइकन</h3><p>24px SVG स्रोत, SVGO से संपीड़ित, 20px पर प्रदर्शित।</p></div></div></div></section><footer><div class="wrap"><div class="foot-links"><a href="https://github.com/x-at-01/liquid-glass-button">GitHub रिपॉज़िटरी</a><a href="https://developer.apple.com/design/human-interface-guidelines/materials">Apple HIG · सामग्री</a></div><p>Apple लोगो Apple Inc. का ट्रेडमार्क है, केवल App Store बटन के प्रदर्शन के लिए उपयोग किया गया।</p></div></footer><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs><filter id="glass-template" width="200" height="56" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feImage width="200" height="56" x="0" y="0" class="g-map" result="map"/><feColorMatrix in="map" result="edgeRGB" type="matrix" values="0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 0"/><feComponentTransfer in="edgeRGB" result="edgeMask"><feFuncA tableValues="0 1" type="table"/></feComponentTransfer><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dR" scale="12" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dR" result="Rc" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dG" scale="11" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dG" result="Gc" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dB" scale="10" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dB" result="Bc" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"/><feBlend in="Gc" in2="Bc" mode="screen" result="GB"/><feBlend in="Rc" in2="GB" mode="screen" result="RGB"/><feGaussianBlur in="RGB" result="RGBsoft" stdDeviation=".4"/><feComposite in="RGBsoft" in2="edgeMask" operator="in" result="edge"/><feComponentTransfer in="edgeMask" result="innerMask"><feFuncA tableValues="1 0" type="table"/></feComponentTransfer><feComposite in="SourceGraphic" in2="innerMask" operator="in" result="center"/><feComposite in="edge" in2="center" operator="over"/></filter></defs></svg><style id="glass-styles"></style><script>window.__GLASS__ = {"code":"hi","idx":3,"lang_li":["en","zh","de","hi","ja","fr","it","ru","ko","es","id","tr","ar","nl","pl","zh-TW","sv","no","th","vi","ceb","bn","fa","ms","mr","af","da","ro","ur","cs","ta","fi","pt","kn","ca","gu","kk","el","hu","uk","te","sk","sw","bg","cy","eu","hr","lb","si","az","lt","or","sr","be","gl","my","sd","sl","as","et","lv","km","ne","hy","bs","ka","is","lo","mk","mt","sq","fil","iw","jv","uz"],"name_li":["English","中文","Deutsch","हिन्दी","日本語","Français","Italiano","Русский","한국어","Español","Indonesia","Türkçe","العربية","Nederlands","Polski","正體中文","Svenska","Norsk Bokmål","ไทย","Tiếng Việt","Binisaya","বাংলা","فارسی","Bahasa Melayu","मराठी","Afrikaans","Dansk","Română","اردو","Čeština","தமிழ்","Suomi","Português","ಕನ್ನಡ","Català","ગુજરાતી","Қазақ Тілі","Ελληνικά","Magyar","Українська","తెలుగు","Slovenčina","Kiswahili","Български","Cymraeg","Euskara","Hrvatski","Lëtzebuergesch","සිංහල","Azərbaycanca","Lietuvių Kalba","ଓଡ଼ିଆ","Српски Језик","Беларуская","Galego","မြန်မာစာ","سنڌي","Slovenščina","অসমীয়া","Eesti","Latviešu Valoda","ភាសាខ្មែរ","नेपाली","Հայերեն","Bosanski","ქართული","Íslenska","ພາສາລາວ","Македонски Јазик","Malti","Shqip","Wikang Filipino","עברית","Basa Jawa","O'zbek"],"choose":"भाषा चुनें"};</script><script>// 液态玻璃按钮 · 运行时（浏览器端，无需 shebang）
+</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>विनिर्देश</h2><div class="specs"><div class="spec"><h3>टाइप</h3><p>SF Pro Display / SF Pro Text; बॉडी 17px/1.47, letter-spacing -0.374px; शीर्षक 48px/1.08।</p></div><div class="spec"><h3>बटन</h3><p>ऊँचाई 56px (मोबाइल पर 48px), दोनों ओर 28px, त्रिज्या 980px।</p></div><div class="spec"><h3>आइकन</h3><p>24px SVG स्रोत, SVGO से संपीड़ित, 20px पर प्रदर्शित।</p></div></div></div></section><footer><div class="wrap"><div class="foot-links"><a href="https://github.com/x-at-01/liquid-glass-button">GitHub रिपॉज़िटरी</a><a href="https://developer.apple.com/design/human-interface-guidelines/materials">Apple HIG · सामग्री</a></div><p>Apple लोगो Apple Inc. का ट्रेडमार्क है, केवल App Store बटन के प्रदर्शन के लिए उपयोग किया गया।</p></div></footer><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs><filter id="glass-template" width="200" height="56" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feImage width="200" height="56" x="0" y="0" class="g-map" result="map"/><feColorMatrix in="map" result="edgeRGB" type="matrix" values="0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 0"/><feComponentTransfer in="edgeRGB" result="edgeMask"><feFuncA tableValues="0 1" type="table"/></feComponentTransfer><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dR" scale="12" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dR" result="Rc" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dG" scale="11" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dG" result="Gc" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/><feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" result="dB" scale="10" xChannelSelector="R" yChannelSelector="G"/><feColorMatrix in="dB" result="Bc" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"/><feBlend in="Gc" in2="Bc" mode="screen" result="GB"/><feBlend in="Rc" in2="GB" mode="screen" result="RGB"/><feGaussianBlur in="RGB" result="RGBsoft" stdDeviation=".4"/><feComposite in="RGBsoft" in2="edgeMask" operator="in" result="edge"/><feComponentTransfer in="edgeMask" result="innerMask"><feFuncA tableValues="1 0" type="table"/></feComponentTransfer><feComposite in="SourceGraphic" in2="innerMask" operator="in" result="center"/><feComposite in="edge" in2="center" operator="over"/></filter></defs></svg><style id="glass-styles"></style><script>window.__GLASS__ = {"code":"hi","idx":3,"lang_li":["en","zh","de","hi","ja","fr","it","ru","ko","es","id","tr","ar","nl","pl","zh-TW","sv","no","th","vi","ceb","bn","fa","ms","mr","af","da","ro","ur","cs","ta","fi","pt","kn","ca","gu","kk","el","hu","uk","te","sk","sw","bg","cy","eu","hr","lb","si","az","lt","or","sr","be","gl","my","sd","sl","as","et","lv","km","ne","hy","bs","ka","is","lo","mk","mt","sq","fil","iw","jv","uz"],"name_li":["English","中文","Deutsch","हिन्दी","日本語","Français","Italiano","Русский","한국어","Español","Indonesia","Türkçe","العربية","Nederlands","Polski","正體中文","Svenska","Norsk Bokmål","ไทย","Tiếng Việt","Binisaya","বাংলা","فارسی","Bahasa Melayu","मराठी","Afrikaans","Dansk","Română","اردو","Čeština","தமிழ்","Suomi","Português","ಕನ್ನಡ","Català","ગુજરાતી","Қазақ Тілі","Ελληνικά","Magyar","Українська","తెలుగు","Slovenčina","Kiswahili","Български","Cymraeg","Euskara","Hrvatski","Lëtzebuergesch","සිංහල","Azərbaycanca","Lietuvių Kalba","ଓଡ଼ିଆ","Српски Језик","Беларуская","Galego","မြန်မာစာ","سنڌي","Slovenščina","অসমীয়া","Eesti","Latviešu Valoda","ភាសាខ្មែរ","नेपाली","Հայերեն","Bosanski","ქართული","Íslenska","ພາສາລາວ","Македонски Јазик","Malti","Shqip","Wikang Filipino","עברית","Basa Jawa","O'zbek"],"choose":"भाषा चुनें"};</script><script>// 液态玻璃按钮 · 运行时（浏览器端，无需 shebang）
 // 语言：沿用 webc 的机制与组件结构 —— localStorage 存索引、BroadcastChannel 同步、
 //      弹层用 BoxX 的 dialog.Box.X.FFF + I18n 的 .I18n > c-vs > b > .Btn(.Main) + a.X
 // 玻璃：按按钮尺寸生成位移图，clone assets/glass-filters.svg 的滤镜模板，生成常态/hover/active 三份

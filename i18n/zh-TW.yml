@@ -13,7 +13,7 @@ sec_usage_h: 用法
 sec_usage_p: 一個元素就是整顆玻璃：形體、稜邊與深度用漸層和陰影繪製，邊緣折射來自按尺寸生成的濾鏡。
 sec_spec_h: 設計規格
 spec_font_h: 字體
-spec_font_p: SF Pro Display / SF Pro Text；內文 17px/1.47，字距 -0.022em；標題 48px/1.08。
+spec_font_p: SF Pro Display / SF Pro Text；內文 17px/1.47，字距 -0.374px；標題 48px/1.08。
 spec_btn_h: 按鈕
 spec_btn_p: 高 56px（行動裝置 48px），左右內縮 28px，圓角 980px。
 spec_icon_h: 圖示
