@@ -19,7 +19,7 @@ html(lang=code, dir=dir)
         nav
           a(href="https://github.com/x-at-01/liquid-glass-button") GitHub
           button.lang-btn#langBtn(type="button", aria-label=t.lang_aria, aria-haspopup="dialog")
-            img(src="./assets/icons/globe.svg", alt="", width="18", height="18")
+            img(src="../assets/icons/globe.svg", alt="", width="18", height="18")
 
     header.hero
       .head
@@ -29,10 +29,10 @@ html(lang=code, dir=dir)
       section.stage
         .cta
           button.btn.btn--blue(type="button")
-            img(src="./assets/icons/download.svg", alt="", width="20", height="20")
+            img(src="../assets/icons/download.svg", alt="", width="20", height="20")
             span= t.btn_download
           button.btn.btn--black(type="button")
-            img(src="./assets/icons/apple.svg", alt="", width="20", height="20")
+            img(src="../assets/icons/apple.svg", alt="", width="20", height="20")
             span= t.btn_appstore
         p.hint= t.stage_hint
 
@@ -49,11 +49,12 @@ html(lang=code, dir=dir)
               span.w
             .measure
               button.btn.btn--black(type="button")
+                img(src="../assets/icons/apple.svg", alt="", width="20", height="20")
                 span= t.w_appstore
               span.w
             .measure
               button.btn.btn--blue(type="button")
-                img(src="./assets/icons/download.svg", alt="", width="20", height="20")
+                img(src="../assets/icons/download.svg", alt="", width="20", height="20")
                 span= t.w_long
               span.w
           p.hint= t.light_hint
@@ -66,25 +67,25 @@ html(lang=code, dir=dir)
         .pieces
           figure
             .shot
-              img(src="./assets/glass/black-sheet.webp", alt="")
+              img(src="../assets/glass/black-sheet.webp", alt="")
             figcaption
               b= t.cap_sheet
               |  · 352×224 · 4×
           figure
             .shot
-              img(src="./assets/glass/black-left.webp", alt="")
+              img(src="../assets/glass/black-left.webp", alt="")
             figcaption
               b= t.cap_left
               |  · 112×224
           figure
             .shot
-              img(src="./assets/glass/black-mid.webp", alt="")
+              img(src="../assets/glass/black-mid.webp", alt="")
             figcaption
               b= t.cap_mid
               |  · 128×224
           figure
             .shot
-              img(src="./assets/glass/black-right.webp", alt="")
+              img(src="../assets/glass/black-right.webp", alt="")
             figcaption
               b= t.cap_right
               |  · 112×224
@@ -142,13 +143,16 @@ html(lang=code, dir=dir)
       ul.lang-list#langList
         each l in langs
           li
-            button(type="button", data-lang=l.code, aria-current=(l.code === code ? "true" : "false"))
+            button(type="button", data-idx=l.idx, aria-current=(l.code === code ? "true" : "false"))
               span= l.name
-              span.code= l.code
+              span.code
+                | #{l.code}
+                if !l.own
+                  i.fb en
 
     //- SVG 滤镜（构建时从 assets/glass-filters.svg 内联；运行时按按钮尺寸 clone）
-    svg.glass-defs(width="0", height="0", aria-hidden="true")!= filtersSvg
+    svg.glass-defs(width="0", height="0", aria-hidden="true")!= filterSvg
     style#glass-styles
     script.
-      window.__GLASS__ = !{JSON.stringify({ code: code, langs: langs.map(function (l) { return l.code; }) })};
+      window.__GLASS__ = !{JSON.stringify({ code: code, idx: langs.findIndex(function (l) { return l.code === code; }), lang_li: langs.map(function (l) { return l.code; }) })};
     script!= appJs

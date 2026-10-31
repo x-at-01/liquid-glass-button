@@ -1,65 +1,88 @@
-/* 构建：i18n/*.yml + src/index.pug → out/<lang>/index.html（静态多语言页面）
-   同时把 out/ 同步到 docs/（GitHub Pages 用）。 */
-import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync, existsSync } from "node:fs";
+#!/usr/bin/env -S bun
+// 构建：tran.yml + i18n/*.yml + src/index.pug → out/<lang>/index.html（静态多语言站点）
+// 语言表、语言寻址（索引）、回退策略都与 webc 的 src/js/i18n 一致。
+import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import yaml from "js-yaml";
 import pug from "pug";
 
-const ROOT = import.meta.dir;
-const RTL = new Set(["ar", "he", "fa", "ur"]);
+const ROOT = import.meta.dirname;
+const I18N_DIR = join(ROOT, "i18n");
+const SRC_DIR = join(ROOT, "src");
+const OUT_DIR = join(ROOT, "out");
+const DOCS_DIR = join(ROOT, "docs");
+const ASSETS_DIR = join(ROOT, "assets");
+const LANG_FILE = join(I18N_DIR, "langs.yml");
+const PAGE_TMPL = join(SRC_DIR, "index.pug");
+const CSS_FILE = join(SRC_DIR, "style.css");
+const APP_FILE = join(SRC_DIR, "app.js");
+const FILTER_FILE = join(ASSETS_DIR, "glass-filters.svg");
 
-const LANGS = readdirSync(join(ROOT, "i18n"))
-  .filter((f) => f.endsWith(".yml"))
-  .map((f) => f.replace(/\.yml$/, ""))
-  .sort();
+const T = 0, DICT = 1, IS_OWN = 2; // 多值返回的位置语义：[code, dict, isOwn]
+const RTL_CODE_LI = ["ar", "fa", "ur", "sd", "iw"];
+const FALLBACK_CODE = "en";
+const RTL = "rtl", LTR = "ltr";
 
-const css = readFileSync(join(ROOT, "src/style.css"), "utf8");
-const appJs = readFileSync(join(ROOT, "src/app.js"), "utf8");
+const textRead = (path) => readFileSync(path, "utf8");
+const ymlRead = (path) => yaml.load(textRead(path));
 
-// assets/glass-filters.svg 是独立可预览的 SVG；内联时去掉最外层 <svg> 包裹
-const filtersSvg = readFileSync(join(ROOT, "assets/glass-filters.svg"), "utf8")
+// assets/glass-filters.svg 可独立预览；内联时去掉最外层 <svg> 包裹
+const filterSvg = textRead(FILTER_FILE)
   .replace(/^[\s\S]*?<svg[^>]*>/, "")
   .replace(/<\/svg\s*>\s*$/, "")
   .trim();
 
-const langs = LANGS.map((code) => {
-  const dict = yaml.load(readFileSync(join(ROOT, "i18n", `${code}.yml`), "utf8"));
-  return { code, name: dict.lang_name };
-});
+const langLi = ymlRead(LANG_FILE);
+const ownLi = readdirSync(I18N_DIR)
+  .filter((name) => name.endsWith(".yml") && name !== "langs.yml")
+  .map((name) => name.replace(/\.yml$/, ""));
 
-rmSync(join(ROOT, "out"), { recursive: true, force: true });
+const dictLi = langLi.map(({ code }) => [
+  code,
+  ymlRead(join(I18N_DIR, (ownLi.includes(code) ? code : FALLBACK_CODE) + ".yml")),
+  ownLi.includes(code),
+]);
 
-for (const code of LANGS) {
-  const t = yaml.load(readFileSync(join(ROOT, "i18n", `${code}.yml`), "utf8"));
-  const html = pug.renderFile(join(ROOT, "src/index.pug"), {
-    t,
+const pageDir = (code) => join(OUT_DIR, code);
+
+const pageBuild = ({ code, name }, dict, isOwn) => {
+  const html = pug.renderFile(PAGE_TMPL, {
+    t: dict,
     code,
-    dir: RTL.has(code) ? "rtl" : "ltr",
-    langs,
-    css,
-    appJs,
-    filtersSvg,
+    dir: RTL_CODE_LI.includes(code) ? RTL : LTR,
+    langs: langLi.map((lang, idx) => ({ ...lang, idx, own: ownLi.includes(lang.code) })),
+    css: textRead(CSS_FILE),
+    appJs: textRead(APP_FILE),
+    filterSvg,
+    fallback: !isOwn,
   });
-  const dir = join(ROOT, "out", code);
-  mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, "index.html"), html);
-  cpSync(join(ROOT, "assets"), join(dir, "assets"), { recursive: true });
-}
+  mkdirSync(pageDir(code), { recursive: true });
+  writeFileSync(join(pageDir(code), "index.html"), html);
+};
 
-// 根页面：按 localStorage / 浏览器语言跳转到对应语言
-writeFileSync(
-  join(ROOT, "out/index.html"),
-  `<!doctype html><meta charset="utf-8"><title>Liquid Glass Button</title>
-<script>(function(){var L=${JSON.stringify(LANGS)},s=null;try{s=localStorage.lang}catch(e){}
-var n=(navigator.language||"en").toLowerCase(),m=n.split("-")[0];
-var c=L.indexOf(s)>=0?s:(L.indexOf(n)>=0?n:(L.indexOf(m)>=0?m:"en"));
-location.replace("./"+c+"/index.html");})();</script>
-<p>Loading… <a href="./en/index.html">en</a></p>`
+// 首页：与 webc store.js 相同的取语言逻辑（localStorage 存索引 → navigator.language → 前缀 → 0）
+const rootPage = `<!doctype html><meta charset="utf-8"><title>Liquid Glass Button</title>
+<script>const CODE = ${JSON.stringify(langLi.map(({ code }) => code))};
+const KEY = "lang", local = localStorage[KEY];
+const idx = local !== undefined && local !== ""
+  ? +local
+  : (() => {
+      const nav = navigator.language || "en";
+      const hit = CODE.indexOf(nav);
+      return hit >= 0 ? hit : Math.max(0, CODE.indexOf(nav.split("-")[0]));
+    })();
+location.replace("./" + CODE[idx] + "/index.html");</script>
+<p>Loading… <a href="./en/index.html">en</a></p>
+`;
+
+rmSync(OUT_DIR, { recursive: true, force: true });
+dictLi.forEach(([code, dict, isOwn]) => pageBuild({ code }, dict, isOwn));
+writeFileSync(join(OUT_DIR, "index.html"), rootPage);
+cpSync(ASSETS_DIR, join(OUT_DIR, "assets"), { recursive: true });
+
+rmSync(DOCS_DIR, { recursive: true, force: true });
+cpSync(OUT_DIR, DOCS_DIR, { recursive: true });
+
+console.log(
+  `built ${langLi.length} languages (${ownLi.length} translated, ${langLi.length - ownLi.length} fallback to ${FALLBACK_CODE}) → out/ + docs/`
 );
-
-// GitHub Pages：docs/ 与 out/ 保持同步
-rmSync(join(ROOT, "docs"), { recursive: true, force: true });
-cpSync(join(ROOT, "out"), join(ROOT, "docs"), { recursive: true });
-
-console.log(`built ${LANGS.length} languages (${LANGS.join(", ")}) → out/ + docs/`);
-if (!existsSync(join(ROOT, "docs/en/index.html"))) process.exit(1);

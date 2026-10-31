@@ -1,0 +1,39 @@
+code: sv
+lang_name: Svenska
+title: Liquid Glass-knapp
+eyebrow: Liquid Glass · 4×-tillgångar
+lead: 'Enligt Apples webbtypografi: SF Pro, text 17px, knapp 56px. Bredden följer texten, tillgångarna är 4× och mitten upprepas oändligt.'
+btn_download: Hämta
+btn_appstore: App Store
+sec_width_h: Bredden kommer från texten
+sec_width_p: 'Ingen fast bredd. En uppsättning i tre delar: längre text ger bredare knapp, medan ändarna är oförändrade.'
+w_short: Hämta
+w_appstore: App Store
+w_long: Hämta för macOS
+sec_assets_h: Tillgångar i tre delar (4×)
+sec_assets_p: 224px höga (4×, visas i 56px). Ändar 112px, mittplattan 128px; skarvarna är pixelidentiska.
+cap_sheet: hela
+cap_left: vänster
+cap_mid: mitten
+cap_right: höger
+cap_tile: mittplatta · repeat-x · valfri bredd utan förvrängning
+sec_usage_h: Användning
+sec_usage_p: Ett element sköter nio-delars-töjningen; hover och active byter SVG-filtret.
+sec_spec_h: Specifikation
+spec_font_h: Typografi
+spec_font_p: SF Pro Display / SF Pro Text; 17px/1.47, teckenavstånd -0.022em; rubriker 48px/1.08.
+spec_btn_h: Knapp
+spec_btn_p: 56px hög (48px i mobil), 28px i sidled, radie 980px, ikon 20px.
+spec_asset_h: Tillgångar
+spec_asset_p: '4×: 224px hög, ändar 112px, platta 128px; förlustfri WebP behåller transparens.'
+spec_icon_h: Ikoner
+spec_icon_p: SVG-källor 24px, minifierade med SVGO, visas i 20px.
+footer_1: Materialet skapat med Qwen-Image-2.1 (nativ alfa); form och ljus ritade igen av en procedurell liquid glass-renderare; kantbrytning via SVG feDisplacementMap.
+footer_2: Apple-logotypen är ett varumärke som tillhör Apple Inc. och används bara för att visa App Store-knappen.
+lang_choose: Välj språk
+lang_aria: Byt språk
+stage_hint: 'Håll muspekaren över en knapp: kanten bryter det som ligger bakom.'
+light_hint: På ljus botten ser glaset ljusare ut; tonen håller texten läsbar.
+link_repo: GitHub-repositoriet
+link_hig: Apple HIG · Material
+link_model: 'Material: Qwen-Image-2.1'

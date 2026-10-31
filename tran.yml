@@ -1,0 +1,7 @@
+# 与 webc 的 tran.yml 同构：源语言 zh，目标语言全部（to_li: "*"）
+# build.js 读取本文件：存在 i18n/<code>.yml 就用它；缺失的语言回退到 en 并在切换器上标注
+tran:
+  from: zh
+  to_li: "*"
+dir:
+  - i18n

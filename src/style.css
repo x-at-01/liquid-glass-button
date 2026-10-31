@@ -53,7 +53,9 @@ dialog.lang h2{font-size:15px;font-weight:600;margin:0;padding:18px 20px 10px;co
   color:var(--ink);cursor:pointer;text-align:start}
 .lang-list button:hover{background:rgba(0,0,0,.05)}
 .lang-list button[aria-current="true"]{background:rgba(0,113,227,.1);color:var(--blue);font-weight:600}
-.lang-list .code{color:var(--muted);font:400 12px/1 var(--mono)}
+.lang-list .code{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font:400 12px/1 var(--mono)}
+.lang-list .fb{font-style:normal;font-size:10px;letter-spacing:.04em;padding:2px 5px;border-radius:5px;
+  background:rgba(0,0,0,.06);color:var(--muted)}
 .lang-list button[aria-current="true"] .code{color:inherit}
 
 /* ---------- Hero ---------- */
@@ -84,19 +86,19 @@ dialog.lang h2{font-size:15px;font-weight:600;margin:0;padding:18px 20px 10px;co
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
   height:var(--pill-h,56px);width:auto;padding:0;margin:0;
   border:0 solid transparent;border-left-width:var(--cap,28px);border-right-width:var(--cap,28px);
-  border-image-source:url(./assets/glass/black-sheet.webp);
+  border-image-source:url(../assets/glass/black-sheet.webp);
   border-image-slice:0 112 0 112 fill;
   border-image-width:0 var(--cap,28px) 0 var(--cap,28px);
   border-image-repeat:stretch;
-  border-radius:980px;background:var(--tint,rgba(12,12,14,.46));color:rgba(255,255,255,.90);
+  border-radius:980px;background:var(--tint,rgba(10,10,12,.62));color:rgba(255,255,255,.90);
   font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
   white-space:nowrap;cursor:pointer;text-decoration:none;
   box-shadow:0 4px 10px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.16);
   -webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);
   transition:box-shadow .18s ease,transform .18s ease,background-color .18s ease,color .18s ease;
 }
-.btn--black{border-image-source:url(./assets/glass/black-sheet.webp);--tint:rgba(12,12,14,.46)}
-.btn--blue{border-image-source:url(./assets/glass/blue-sheet.webp);--tint:rgba(12,50,160,.50)}
+.btn--black{border-image-source:url(../assets/glass/black-sheet.webp);--tint:rgba(10,10,12,.62)}
+.btn--blue{border-image-source:url(../assets/glass/blue-sheet.webp);--tint:rgba(8,38,140,.66)}
 .btn img{width:20px;height:20px;display:block;flex:none}
 .btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
 .btn::after{content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(0,0,0,.65);opacity:0;transition:opacity .14s ease;pointer-events:none}

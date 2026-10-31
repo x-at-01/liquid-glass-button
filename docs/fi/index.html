@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="fi" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Liquid Glass Button</title><meta name="description" content="Built to Apple's web typography: SF Pro, 17px body, 56px button. Width follows the label — no fixed width. Assets are 4× and the middle slice tiles forever."><meta property="og:title" content="Liquid Glass Button"><meta property="og:description" content="Built to Apple's web typography: SF Pro, 17px body, 56px button. Width follows the label — no fixed width. Assets are 4× and the middle slice tiles forever."><meta property="og:type" content="website"><style>:root{
+  --font: "SF Pro Display","SF Pro Text",-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans",sans-serif;
+  --mono: "SF Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ink:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --surface:#f5f5f7; --blue:#0071e3;
+  --radius:22px;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:#fff;color:var(--ink);
+  font:400 17px/1.47059 var(--font);letter-spacing:-.022em;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+h1{font-size:52px;line-height:1.07;font-weight:600;letter-spacing:-.012em;margin:0 0 16px}
+h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:0 0 10px}
+.lead{font-size:21px;line-height:1.38;letter-spacing:.008em;color:var(--muted);margin:0 auto;max-width:680px;text-wrap:balance}
+.sub{font-size:17px;line-height:1.5;color:var(--muted);margin:0 0 26px;max-width:660px}
+.hint{font-size:13px;line-height:1.45;color:var(--muted);margin:18px 0 0}
+.stage .hint{color:rgba(255,255,255,.78)}
+
+/* ---------- 顶栏 ---------- */
+.topbar{border-bottom:1px solid var(--line);background:rgba(255,255,255,.8);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+  position:sticky;top:0;z-index:20}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;letter-spacing:-.01em}
+.brand i{width:9px;height:9px;border-radius:50%;background:linear-gradient(140deg,#6ea8ff,#b46bff 60%,#ff8ad4);
+  box-shadow:0 2px 6px rgba(110,168,255,.5)}
+.topbar nav{display:flex;align-items:center;gap:6px}
+.topbar a{color:var(--muted);text-decoration:none;font-size:13px;padding:7px 11px;border-radius:999px}
+.topbar a:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+.lang-btn{
+  width:34px;height:34px;display:grid;place-items:center;margin-inline-start:4px;
+  border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease}
+.lang-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.12)}
+.lang-btn:active{transform:scale(.94)}
+.lang-btn:focus-visible{outline:3px solid rgba(0,113,227,.5);outline-offset:2px}
+.lang-btn img{width:18px;height:18px;display:block}
+
+/* ---------- 语言弹窗 ---------- */
+dialog.lang{border:0;padding:0;border-radius:20px;width:min(420px,calc(100vw - 32px));color:var(--ink);
+  background:rgba(255,255,255,.86);box-shadow:0 24px 60px rgba(0,0,0,.28);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%)}
+dialog.lang::backdrop{background:rgba(0,0,0,.3);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+dialog.lang h2{font-size:15px;font-weight:600;margin:0;padding:18px 20px 10px;color:var(--muted)}
+.lang-list{list-style:none;margin:0;padding:0 8px 12px;max-height:60vh;overflow:auto}
+.lang-list button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 12px;border:0;border-radius:12px;background:transparent;font:inherit;font-size:15px;
+  color:var(--ink);cursor:pointer;text-align:start}
+.lang-list button:hover{background:rgba(0,0,0,.05)}
+.lang-list button[aria-current="true"]{background:rgba(0,113,227,.1);color:var(--blue);font-weight:600}
+.lang-list .code{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font:400 12px/1 var(--mono)}
+.lang-list .fb{font-style:normal;font-size:10px;letter-spacing:.04em;padding:2px 5px;border-radius:5px;
+  background:rgba(0,0,0,.06);color:var(--muted)}
+.lang-list button[aria-current="true"] .code{color:inherit}
+
+/* ---------- Hero ---------- */
+.hero{padding:76px 0 0;text-align:center}
+.hero .head{max-width:1000px;margin:0 auto;padding:0 24px}
+.stage{
+  position:relative;margin:52px auto 0;max-width:1000px;border-radius:var(--radius);overflow:hidden;
+  padding:64px 32px 56px;
+  background:
+    radial-gradient(58% 130% at 14% 18%, rgba(110,168,255,.95) 0%, transparent 60%),
+    radial-gradient(52% 120% at 86% 22%, rgba(255,138,212,.9) 0%, transparent 58%),
+    radial-gradient(70% 150% at 52% 116%, rgba(255,212,121,.85) 0%, transparent 60%),
+    radial-gradient(40% 90% at 70% 85%, rgba(180,107,255,.75) 0%, transparent 60%),
+    linear-gradient(118deg, #16224a 0%, #2f1c52 48%, #4d2418 100%);
+  box-shadow:0 40px 80px -40px rgba(22,24,54,.55), 0 2px 6px rgba(22,24,54,.18);
+}
+/* 暗角 + 颗粒：让它像“场景”，而不是一条纯色渐变 */
+.stage::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 100% at 50% 45%, transparent 40%, rgba(10,10,24,.42) 100%)}
+.stage::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background-image:var(--grain);background-size:140px 140px}
+.stage>*{position:relative;z-index:1}
+.cta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center}
+
+/* ---------- 按钮 ---------- */
+.btn{
+  -webkit-appearance:none;appearance:none;position:relative;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  height:var(--pill-h,56px);width:auto;padding:0;margin:0;
+  border:0 solid transparent;border-left-width:var(--cap,28px);border-right-width:var(--cap,28px);
+  border-image-source:url(../assets/glass/black-sheet.webp);
+  border-image-slice:0 112 0 112 fill;
+  border-image-width:0 var(--cap,28px) 0 var(--cap,28px);
+  border-image-repeat:stretch;
+  border-radius:980px;background:var(--tint,rgba(10,10,12,.62));color:rgba(255,255,255,.90);
+  font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
+  white-space:nowrap;cursor:pointer;text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,.18), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);
+  transition:box-shadow .18s ease,transform .18s ease,background-color .18s ease,color .18s ease;
+}
+.btn--black{border-image-source:url(../assets/glass/black-sheet.webp);--tint:rgba(10,10,12,.62)}
+.btn--blue{border-image-source:url(../assets/glass/blue-sheet.webp);--tint:rgba(8,38,140,.66)}
+.btn img{width:20px;height:20px;display:block;flex:none}
+.btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
+.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(0,0,0,.65);opacity:0;transition:opacity .14s ease;pointer-events:none}
+.btn:active{color:rgba(255,255,255,.86);transform:translateY(0) scale(.972)}
+.btn:active::after{opacity:.16}
+.btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
+
+/* ---------- 区块 ---------- */
+.section{padding:92px 0}
+.section--tint{background:var(--surface)}
+.section-head{max-width:680px;margin-bottom:6px}
+
+/* 浅色卡片：展示玻璃在浅色表面上的样子 */
+.card{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:36px 32px 30px;box-shadow:0 18px 40px -30px rgba(16,24,40,.35)}
+.measure-row{display:flex;flex-wrap:wrap;gap:20px 32px;align-items:flex-end}
+.measure{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.measure .w{font:400 12px/1 var(--mono);color:#86868b}
+.card .hint{margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
+
+/* 素材陈列 */
+.pieces{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:18px;margin-top:30px}
+.pieces figure{margin:0;display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--line);
+  border-radius:16px;padding:18px 16px 14px;box-shadow:0 12px 30px -26px rgba(16,24,40,.5)}
+.pieces .shot{display:grid;place-items:center;min-height:calc(var(--pill-h,56px) + 20px);border-radius:10px;
+  background-color:#fff;background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
+  background-image:linear-gradient(45deg,#eef1f6 25%,transparent 25%),linear-gradient(-45deg,#eef1f6 25%,transparent 25%),
+                   linear-gradient(45deg,transparent 75%,#eef1f6 75%),linear-gradient(-45deg,transparent 75%,#eef1f6 75%)}
+.pieces img{display:block;height:var(--pill-h,56px);width:auto;max-width:100%}
+.pieces figcaption{font:400 12px/1.3 var(--mono);color:var(--muted)}
+.pieces figcaption b{color:var(--ink);font-weight:600}
+.tile-wrap{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;
+  box-shadow:0 12px 30px -26px rgba(16,24,40,.5)}
+.checker{border-radius:10px;padding:10px;background-color:#fff;background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;
+  background-image:linear-gradient(45deg,#eef1f6 25%,transparent 25%),linear-gradient(-45deg,#eef1f6 25%,transparent 25%),
+                   linear-gradient(45deg,transparent 75%,#eef1f6 75%),linear-gradient(-45deg,transparent 75%,#eef1f6 75%)}
+.tile-strip{height:var(--pill-h,56px);width:100%;background-repeat:repeat-x;background-position:left center;background-size:auto 100%}
+.cap{font:400 12px/1.3 var(--mono);color:var(--muted);margin:12px 0 0}
+
+pre{margin:26px 0 0;padding:20px 22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;
+  overflow:auto;font:400 12.5px/1.65 var(--mono);color:var(--ink)}
+.section--tint pre{background:#fff}
+code{font-family:var(--mono)}
+
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 44px;margin-top:34px}
+.spec{border-top:1px solid var(--line);padding-top:16px}
+.spec h3{font-size:15px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.spec p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+
+footer{border-top:1px solid var(--line);padding:36px 0 64px;color:var(--muted);font-size:12.5px;line-height:1.7}
+footer p{margin:0 0 10px}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 14px}
+.foot-links a{color:var(--ink);text-decoration:none;font-size:13px;border-bottom:1px solid var(--line);padding-bottom:1px}
+.foot-links a:hover{border-color:var(--ink)}
+:where(a){color:var(--blue)}
+
+@media (max-width:900px){
+  .pieces{grid-template-columns:1fr 1fr}
+}
+@media (max-width:734px){
+  h1{font-size:34px;line-height:1.12}
+  .lead{font-size:19px;line-height:1.42}
+  h2{font-size:24px}
+  .section{padding:64px 0}
+  .stage{padding:48px 18px 40px;border-radius:18px}
+  .card{padding:26px 20px 22px}
+  .btn{--pill-h:48px;--cap:24px;font-size:16px}
+  .pieces{grid-template-columns:1fr}
+  .topbar .wrap{height:52px}
+}
+</style></head><body><header class="topbar"><div class="wrap"><span class="brand"><i></i>Liquid Glass Button</span><nav><a href="https://github.com/x-at-01/liquid-glass-button">GitHub</a><button class="lang-btn" id="langBtn" type="button" aria-label="Change language" aria-haspopup="dialog"><img src="../assets/icons/globe.svg" alt="" width="18" height="18"></button></nav></div></header><header class="hero"><div class="head"><p class="eyebrow">Liquid Glass · 4× Assets</p><h1>Liquid Glass Button</h1><p class="lead">Built to Apple's web typography: SF Pro, 17px body, 56px button. Width follows the label — no fixed width. Assets are 4× and the middle slice tiles forever.</p></div><section class="stage"><div class="cta"><button class="btn btn--blue" type="button"><img src="../assets/icons/download.svg" alt="" width="20" height="20"><span>Download</span></button><button class="btn btn--black" type="button"><img src="../assets/icons/apple.svg" alt="" width="20" height="20"><span>App Store</span></button></div><p class="hint">Hover a button — the rim refracts what is behind it.</p></section></header><section class="section"><div class="wrap"><div class="section-head"><h2>Width comes from the text</h2><p class="sub">No `width`. One set of three-slice assets; the longer the label, the wider the button, while the caps stay the same size.</p></div><div class="card"><div class="measure-row"><div class="measure"><button class="btn btn--black" type="button"><span>Download</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--black" type="button"><img src="../assets/icons/apple.svg" alt="" width="20" height="20"><span>App Store</span></button><span class="w"></span></div><div class="measure"><button class="btn btn--blue" type="button"><img src="../assets/icons/download.svg" alt="" width="20" height="20"><span>Download for macOS</span></button><span class="w"></span></div></div><p class="hint">On a light surface the glass reads lighter; the tint keeps the label legible.</p></div></div></section><section class="section section--tint"><div class="wrap"><div class="section-head"><h2>Three-slice assets (4×)</h2><p class="sub">Assets are 224px tall (4×, shown at 56px). Caps are 112px each, the middle tile is 128px; seams are pixel-identical.</p></div><div class="pieces"><figure><div class="shot"><img src="../assets/glass/black-sheet.webp" alt=""></div><figcaption><b>sheet</b> · 352×224 · 4×</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-left.webp" alt=""></div><figcaption><b>left</b> · 112×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-mid.webp" alt=""></div><figcaption><b>mid</b> · 128×224</figcaption></figure><figure><div class="shot"><img src="../assets/glass/black-right.webp" alt=""></div><figcaption><b>right</b> · 112×224</figcaption></figure></div><div class="tile-wrap"><div class="checker"><div class="tile-strip" id="tileStrip"></div></div><p class="cap">mid · repeat-x · any width, no distortion</p></div></div></section><section class="section"><div class="wrap"><div class="section-head"><h2>Usage</h2><p class="sub">One element does the nine-patch stretch; hover and active swap the SVG filter.</p></div><pre><code>.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  height: 56px; width: auto;              /* width comes from the label */
+  border: 0 solid transparent;
+  border-left-width: 28px; border-right-width: 28px;
+  border-image: url(./assets/glass/black-sheet.webp) 0 112 0 112 fill stretch;
+  border-radius: 980px; color: #fff;
+  backdrop-filter: url(#glass-1) blur(6px) contrast(1.15) saturate(170%);
+}
+/* displacement map + filter template: ./assets/glass-filters.svg */
+</code></pre></div></section><section class="section section--tint"><div class="wrap"><h2>Specs</h2><div class="specs"><div class="spec"><h3>Type</h3><p>SF Pro Display / SF Pro Text; 17px/1.47 body, letter-spacing -0.022em; 48px/1.08 headings.</p></div><div class="spec"><h3>Button</h3><p>56px tall (48px on mobile), 28px caps, 980px radius, 20px icon.</p></div><div class="spec"><h3>Assets</h3><p>4×: 224px tall, 112px caps, 128px tile; lossless WebP keeps transparency.</p></div><div class="spec"><h3>Icons</h3><p>24px SVG sources, minified with SVGO, rendered at 20px.</p></div></div></div></section><footer><div class="wrap"><div class="foot-links"><a href="https://github.com/x-at-01/liquid-glass-button">GitHub repository</a><a href="https://developer.apple.com/design/human-interface-guidelines/materials">Apple HIG · Materials</a><a href="https://huggingface.co/Qwen/Qwen-Image-2.1">Material: Qwen-Image-2.1</a></div><p>Material generated with Qwen-Image-2.1 (native alpha); shape and lighting redrawn by a procedural liquid-glass renderer; edge refraction via SVG feDisplacementMap.</p><p>Apple logo is a trademark of Apple Inc., used only to demonstrate the App Store button layout.</p></div></footer><dialog class="lang" id="langDialog"><h2>Choose language</h2><ul class="lang-list" id="langList"><li><button type="button" data-idx="0" aria-current="false"><span>English</span><span class="code">en</span></button></li><li><button type="button" data-idx="1" aria-current="false"><span>中文</span><span class="code">zh</span></button></li><li><button type="button" data-idx="2" aria-current="false"><span>Deutsch</span><span class="code">de</span></button></li><li><button type="button" data-idx="3" aria-current="false"><span>हिन्दी</span><span class="code">hi<i class="fb">en</i></span></button></li><li><button type="button" data-idx="4" aria-current="false"><span>日本語</span><span class="code">ja</span></button></li><li><button type="button" data-idx="5" aria-current="false"><span>Français</span><span class="code">fr</span></button></li><li><button type="button" data-idx="6" aria-current="false"><span>Italiano</span><span class="code">it</span></button></li><li><button type="button" data-idx="7" aria-current="false"><span>Русский</span><span class="code">ru</span></button></li><li><button type="button" data-idx="8" aria-current="false"><span>한국어</span><span class="code">ko</span></button></li><li><button type="button" data-idx="9" aria-current="false"><span>Español</span><span class="code">es</span></button></li><li><button type="button" data-idx="10" aria-current="false"><span>Indonesia</span><span class="code">id</span></button></li><li><button type="button" data-idx="11" aria-current="false"><span>Türkçe</span><span class="code">tr</span></button></li><li><button type="button" data-idx="12" aria-current="false"><span>العربية</span><span class="code">ar</span></button></li><li><button type="button" data-idx="13" aria-current="false"><span>Nederlands</span><span class="code">nl</span></button></li><li><button type="button" data-idx="14" aria-current="false"><span>Polski</span><span class="code">pl</span></button></li><li><button type="button" data-idx="15" aria-current="false"><span>正體中文</span><span class="code">zh-TW</span></button></li><li><button type="button" data-idx="16" aria-current="false"><span>Svenska</span><span class="code">sv</span></button></li><li><button type="button" data-idx="17" aria-current="false"><span>Norsk Bokmål</span><span class="code">no<i class="fb">en</i></span></button></li><li><button type="button" data-idx="18" aria-current="false"><span>ไทย</span><span class="code">th<i class="fb">en</i></span></button></li><li><button type="button" data-idx="19" aria-current="false"><span>Tiếng Việt</span><span class="code">vi</span></button></li><li><button type="button" data-idx="20" aria-current="false"><span>Binisaya</span><span class="code">ceb<i class="fb">en</i></span></button></li><li><button type="button" data-idx="21" aria-current="false"><span>বাংলা</span><span class="code">bn<i class="fb">en</i></span></button></li><li><button type="button" data-idx="22" aria-current="false"><span>فارسی</span><span class="code">fa<i class="fb">en</i></span></button></li><li><button type="button" data-idx="23" aria-current="false"><span>Bahasa Melayu</span><span class="code">ms<i class="fb">en</i></span></button></li><li><button type="button" data-idx="24" aria-current="false"><span>मराठी</span><span class="code">mr<i class="fb">en</i></span></button></li><li><button type="button" data-idx="25" aria-current="false"><span>Afrikaans</span><span class="code">af<i class="fb">en</i></span></button></li><li><button type="button" data-idx="26" aria-current="false"><span>Dansk</span><span class="code">da<i class="fb">en</i></span></button></li><li><button type="button" data-idx="27" aria-current="false"><span>Română</span><span class="code">ro<i class="fb">en</i></span></button></li><li><button type="button" data-idx="28" aria-current="false"><span>اردو</span><span class="code">ur<i class="fb">en</i></span></button></li><li><button type="button" data-idx="29" aria-current="false"><span>Čeština</span><span class="code">cs<i class="fb">en</i></span></button></li><li><button type="button" data-idx="30" aria-current="false"><span>தமிழ்</span><span class="code">ta<i class="fb">en</i></span></button></li><li><button type="button" data-idx="31" aria-current="true"><span>Suomi</span><span class="code">fi<i class="fb">en</i></span></button></li><li><button type="button" data-idx="32" aria-current="false"><span>Português</span><span class="code">pt</span></button></li><li><button type="button" data-idx="33" aria-current="false"><span>ಕನ್ನಡ</span><span class="code">kn<i class="fb">en</i></span></button></li><li><button type="button" data-idx="34" aria-current="false"><span>Català</span><span class="code">ca<i class="fb">en</i></span></button></li><li><button type="button" data-idx="35" aria-current="false"><span>ગુજરાતી</span><span class="code">gu<i class="fb">en</i></span></button></li><li><button type="button" data-idx="36" aria-current="false"><span>Қазақ Тілі</span><span class="code">kk<i class="fb">en</i></span></button></li><li><button type="button" data-idx="37" aria-current="false"><span>Ελληνικά</span><span class="code">el<i class="fb">en</i></span></button></li><li><button type="button" data-idx="38" aria-current="false"><span>Magyar</span><span class="code">hu<i class="fb">en</i></span></button></li><li><button type="button" data-idx="39" aria-current="false"><span>Українська</span><span class="code">uk<i class="fb">en</i></span></button></li><li><button type="button" data-idx="40" aria-current="false"><span>తెలుగు</span><span class="code">te<i class="fb">en</i></span></button></li><li><button type="button" data-idx="41" aria-current="false"><span>Slovenčina</span><span class="code">sk<i class="fb">en</i></span></button></li><li><button type="button" data-idx="42" aria-current="false"><span>Kiswahili</span><span class="code">sw<i class="fb">en</i></span></button></li><li><button type="button" data-idx="43" aria-current="false"><span>Български</span><span class="code">bg<i class="fb">en</i></span></button></li><li><button type="button" data-idx="44" aria-current="false"><span>Cymraeg</span><span class="code">cy<i class="fb">en</i></span></button></li><li><button type="button" data-idx="45" aria-current="false"><span>Euskara</span><span class="code">eu<i class="fb">en</i></span></button></li><li><button type="button" data-idx="46" aria-current="false"><span>Hrvatski</span><span class="code">hr<i class="fb">en</i></span></button></li><li><button type="button" data-idx="47" aria-current="false"><span>Lëtzebuergesch</span><span class="code">lb<i class="fb">en</i></span></button></li><li><button type="button" data-idx="48" aria-current="false"><span>සිංහල</span><span class="code">si<i class="fb">en</i></span></button></li><li><button type="button" data-idx="49" aria-current="false"><span>Azərbaycanca</span><span class="code">az<i class="fb">en</i></span></button></li><li><button type="button" data-idx="50" aria-current="false"><span>Lietuvių Kalba</span><span class="code">lt<i class="fb">en</i></span></button></li><li><button type="button" data-idx="51" aria-current="false"><span>ଓଡ଼ିଆ</span><span class="code">or<i class="fb">en</i></span></button></li><li><button type="button" data-idx="52" aria-current="false"><span>Српски Језик</span><span class="code">sr<i class="fb">en</i></span></button></li><li><button type="button" data-idx="53" aria-current="false"><span>Беларуская</span><span class="code">be<i class="fb">en</i></span></button></li><li><button type="button" data-idx="54" aria-current="false"><span>Galego</span><span class="code">gl<i class="fb">en</i></span></button></li><li><button type="button" data-idx="55" aria-current="false"><span>မြန်မာစာ</span><span class="code">my<i class="fb">en</i></span></button></li><li><button type="button" data-idx="56" aria-current="false"><span>سنڌي</span><span class="code">sd<i class="fb">en</i></span></button></li><li><button type="button" data-idx="57" aria-current="false"><span>Slovenščina</span><span class="code">sl<i class="fb">en</i></span></button></li><li><button type="button" data-idx="58" aria-current="false"><span>অসমীয়া</span><span class="code">as<i class="fb">en</i></span></button></li><li><button type="button" data-idx="59" aria-current="false"><span>Eesti</span><span class="code">et<i class="fb">en</i></span></button></li><li><button type="button" data-idx="60" aria-current="false"><span>Latviešu Valoda</span><span class="code">lv<i class="fb">en</i></span></button></li><li><button type="button" data-idx="61" aria-current="false"><span>ភាសាខ្មែរ</span><span class="code">km<i class="fb">en</i></span></button></li><li><button type="button" data-idx="62" aria-current="false"><span>नेपाली</span><span class="code">ne<i class="fb">en</i></span></button></li><li><button type="button" data-idx="63" aria-current="false"><span>Հայերեն</span><span class="code">hy<i class="fb">en</i></span></button></li><li><button type="button" data-idx="64" aria-current="false"><span>Bosanski</span><span class="code">bs<i class="fb">en</i></span></button></li><li><button type="button" data-idx="65" aria-current="false"><span>ქართული</span><span class="code">ka<i class="fb">en</i></span></button></li><li><button type="button" data-idx="66" aria-current="false"><span>Íslenska</span><span class="code">is<i class="fb">en</i></span></button></li><li><button type="button" data-idx="67" aria-current="false"><span>ພາສາລາວ</span><span class="code">lo<i class="fb">en</i></span></button></li><li><button type="button" data-idx="68" aria-current="false"><span>Македонски Јазик</span><span class="code">mk<i class="fb">en</i></span></button></li><li><button type="button" data-idx="69" aria-current="false"><span>Malti</span><span class="code">mt<i class="fb">en</i></span></button></li><li><button type="button" data-idx="70" aria-current="false"><span>Shqip</span><span class="code">sq<i class="fb">en</i></span></button></li><li><button type="button" data-idx="71" aria-current="false"><span>Wikang Filipino</span><span class="code">fil<i class="fb">en</i></span></button></li><li><button type="button" data-idx="72" aria-current="false"><span>עברית</span><span class="code">iw<i class="fb">en</i></span></button></li><li><button type="button" data-idx="73" aria-current="false"><span>Basa Jawa</span><span class="code">jv<i class="fb">en</i></span></button></li><li><button type="button" data-idx="74" aria-current="false"><span>O'zbek</span><span class="code">uz<i class="fb">en</i></span></button></li></ul></dialog><svg class="glass-defs" width="0" height="0" aria-hidden="true"><defs>
+    <!--
+      Liquid Glass 滤镜模板。
+      构建时整份内联进页面；运行时对每个按钮 clone 一份，改 id / 尺寸 /
+      feImage 的位移图，以及三个 .g-disp 的 scale（常态 / hover / active）。
+      背景模糊只是磨砂；真正的“液态”来自 feDisplacementMap 的边缘折射。
+    -->
+    <filter id="glass-template" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"
+            x="0" y="0" width="200" height="56">
+      <feImage class="g-map" href="" x="0" y="0" width="200" height="56" result="map"/>
+
+      <!-- 用位移图的 B 通道（边缘强度）做边缘遮罩 -->
+      <feColorMatrix in="map" type="matrix"
+                     values="0 0 1 0 0  0 0 1 0 0  0 0 1 0 0  0 0 0 1 0" result="edgeRGB"/>
+      <feComponentTransfer in="edgeRGB" result="edgeMask">
+        <feFuncA type="table" tableValues="0 1"/>
+      </feComponentTransfer>
+
+      <!-- 三个通道用略微不同的位移 → 边缘色散 -->
+      <feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" scale="12"
+                         xChannelSelector="R" yChannelSelector="G" result="dR"/>
+      <feColorMatrix in="dR" type="matrix"
+                     values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="Rc"/>
+      <feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" scale="11"
+                         xChannelSelector="R" yChannelSelector="G" result="dG"/>
+      <feColorMatrix in="dG" type="matrix"
+                     values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0" result="Gc"/>
+      <feDisplacementMap class="g-disp" in="SourceGraphic" in2="map" scale="10"
+                         xChannelSelector="R" yChannelSelector="G" result="dB"/>
+      <feColorMatrix in="dB" type="matrix"
+                     values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0" result="Bc"/>
+
+      <feBlend in="Gc" in2="Bc" mode="screen" result="GB"/>
+      <feBlend in="Rc" in2="GB" mode="screen" result="RGB"/>
+      <feGaussianBlur in="RGB" stdDeviation="0.4" result="RGBsoft"/>
+
+      <!-- 只有边缘参与折射/色散，中心保持清晰 -->
+      <feComposite in="RGBsoft" in2="edgeMask" operator="in" result="edge"/>
+      <feComponentTransfer in="edgeMask" result="innerMask">
+        <feFuncA type="table" tableValues="1 0"/>
+      </feComponentTransfer>
+      <feComposite in="SourceGraphic" in2="innerMask" operator="in" result="center"/>
+      <feComposite in="edge" in2="center" operator="over"/>
+    </filter>
+  </defs></svg><style id="glass-styles"></style><script>window.__GLASS__ = {"code":"fi","idx":31,"lang_li":["en","zh","de","hi","ja","fr","it","ru","ko","es","id","tr","ar","nl","pl","zh-TW","sv","no","th","vi","ceb","bn","fa","ms","mr","af","da","ro","ur","cs","ta","fi","pt","kn","ca","gu","kk","el","hu","uk","te","sk","sw","bg","cy","eu","hr","lb","si","az","lt","or","sr","be","gl","my","sd","sl","as","et","lv","km","ne","hy","bs","ka","is","lo","mk","mt","sq","fil","iw","jv","uz"]};</script><script>// 液态玻璃按钮 · 运行时（浏览器端，无需 shebang）
+// 语言：与 webc src/js/i18n 相同机制 —— localStorage 存索引、BroadcastChannel 同步、语言表由构建注入
+// 玻璃：按按钮尺寸生成位移图，clone assets/glass-filters.svg 的滤镜模板，生成常态/hover/active 三份
+const LANG_KEY = "lang";
+const CH_LANG = "lang";
+const TILE_IMG = "url(../assets/glass/black-mid.webp)";
+const BTN_SEL = ".btn";
+const MAP_SEL = ".g-map";
+const DISP_SEL = ".g-disp";
+const STYLE_ID = "glass-styles";
+const DEFS_SEL = ".glass-defs";
+const MEASURE_SEL = ".measure";
+const DIALOG_ID = "langDialog";
+const BTN_ID = "langBtn";
+const TILE_ID = "tileStrip";
+const TMPL_ID = "glass-template";
+const MAP_X = 0, MAP_Y = 1, MAP_EDGE = 2; // 位移图通道语义
+const BAND_RATIO = 0.42; // 折射带宽度（相对高度）
+const SCALE_RATIO = 0.34;
+const SPECULAR_STEP = 0.08;
+const HOVER_RATIO = 1.45;
+const ACTIVE_RATIO = 0.6;
+const BLUR_NORMAL = "blur(6px) contrast(1.15) brightness(1.04) saturate(170%)";
+const BLUR_HOVER = "blur(6px) contrast(1.18) brightness(1.14) saturate(190%)";
+const BLUR_ACTIVE = "blur(10px) contrast(1.08) brightness(.94) saturate(140%)";
+const RESIZE_DELAY = 200;
+
+const { code: CUR_CODE, idx: CUR_IDX, lang_li: LANG_LI } = window.__GLASS__;
+const { localStorage: STORE, BroadcastChannel: CH } = window;
+const dialog = document.getElementById(DIALOG_ID);
+const langBtn = document.getElementById(BTN_ID);
+const defs = document.querySelector(DEFS_SEL);
+const styles = document.getElementById(STYLE_ID);
+const tile = document.getElementById(TILE_ID);
+const rand = () => Math.random().toString(36).slice(2, 9);
+
+const langGo = (idx) => {
+  STORE[LANG_KEY] = idx;
+  if (idx === CUR_IDX) return dialog.close();
+  if (CH) new CH(CH_LANG).postMessage(idx);
+  location.href = "../" + LANG_LI[idx] + "/index.html";
+};
+
+// 位移图：R = x 位移、G = y 位移、B = 边缘强度（0 中心 → 255 贴边）
+const dispMapDraw = (w, h) => {
+  const canvas = document.createElement("canvas"),
+    ctx = canvas.getContext("2d"),
+    img = ctx.createImageData(w, h),
+    data = img.data,
+    radius = h / 2,
+    cx = w / 2,
+    cy = h / 2,
+    band = Math.max(5, h * BAND_RATIO);
+  canvas.width = w;
+  canvas.height = h;
+  for (let y = 0; y < h; ++y) {
+    for (let x = 0; x < w; ++x) {
+      const qx = Math.abs(x - cx) - (w / 2 - radius),
+        qy = Math.abs(y - cy),
+        dist = Math.hypot(Math.max(qx, 0), Math.max(qy, 0)) + Math.min(Math.max(qx, qy), 0) - radius,
+        gx = (x - cx) / (w / 2),
+        gy = (y - cy) / (h / 2),
+        len = Math.hypot(gx, gy) || 1,
+        nx = dist < 0 ? gx / len : 0,
+        ny = dist < 0 ? gy / len : 0,
+        edge = (Math.max(0, 1 - Math.abs(dist) / band)) ** 2,
+        at = (y * w + x) * 4;
+      data[at + MAP_X] = 128 + nx * edge * 127;
+      data[at + MAP_Y] = 128 + ny * edge * 127;
+      data[at + MAP_EDGE] = edge * 255;
+      data[at + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+  return canvas;
+};
+
+const filterBuild = (id, w, h, mapUrl, scale) => {
+  const filter = document.getElementById(TMPL_ID).cloneNode(true),
+    map = filter.querySelector(MAP_SEL),
+    disp_li = filter.querySelectorAll(DISP_SEL);
+  filter.id = id;
+  filter.setAttribute("width", w);
+  filter.setAttribute("height", h);
+  map.setAttribute("href", mapUrl);
+  map.setAttribute("width", w);
+  map.setAttribute("height", h);
+  disp_li.forEach((disp, i) => disp.setAttribute("scale", (scale * (1 - SPECULAR_STEP * i)).toFixed(2)));
+  defs.appendChild(filter);
+};
+
+const glassRule = (cls, sel, id, blur) =>
+  `.${cls}${sel}{backdrop-filter:url(#${id}) ${blur};-webkit-backdrop-filter:url(#${id}) ${blur}}`;
+
+const glassBtnBuild = (btn) => {
+  const rect = btn.getBoundingClientRect(),
+    w = Math.max(2, Math.round(rect.width)),
+    h = Math.max(2, Math.round(rect.height)),
+    id = "glass-" + rand(),
+    scale = Math.max(6, Math.round(h * SCALE_RATIO)),
+    mapUrl = dispMapDraw(w, h).toDataURL(),
+    cls = "glass-btn-" + rand();
+  filterBuild(id, w, h, mapUrl, scale);
+  filterBuild(id + "-h", w, h, mapUrl, scale * HOVER_RATIO);
+  filterBuild(id + "-a", w, h, mapUrl, scale * ACTIVE_RATIO);
+  btn.classList.add(cls);
+  styles.textContent +=
+    glassRule(cls, "", id, BLUR_NORMAL) +
+    glassRule(cls, ":hover", id + "-h", BLUR_HOVER) +
+    glassRule(cls, ":active", id + "-a", BLUR_ACTIVE);
+};
+
+const captionFit = () =>
+  document.querySelectorAll(MEASURE_SEL).forEach((box) => {
+    const btn = box.querySelector(BTN_SEL),
+      tip = box.querySelector(".w");
+    tip.textContent = Math.round(btn.getBoundingClientRect().width) + " px";
+  });
+
+const glassRebuild = () => {
+  defs.querySelectorAll("filter").forEach((filter) => filter.remove());
+  styles.textContent = "";
+  document.querySelectorAll(BTN_SEL).forEach((btn) => {
+    [...btn.classList].filter((cls) => cls.startsWith("glass-btn-")).forEach((cls) => btn.classList.remove(cls));
+    glassBtnBuild(btn);
+  });
+};
+
+const langInit = () => {
+  STORE[LANG_KEY] = CUR_IDX;
+  langBtn.addEventListener("click", () => dialog.showModal());
+  dialog.addEventListener("click", (e) => {
+    const item = e.target.closest("[data-idx]");
+    if (item) return langGo(+item.getAttribute("data-idx"));
+    if (e.target === dialog) return dialog.close();
+  });
+  if (CH) {
+    new CH(CH_LANG).addEventListener("message", (e) => {
+      if (e.data !== CUR_IDX) location.href = "../" + LANG_LI[e.data] + "/index.html";
+    });
+  }
+};
+
+let resizeTimer;
+const onResize = () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    glassRebuild();
+    captionFit();
+  }, RESIZE_DELAY);
+};
+
+tile.style.backgroundImage = TILE_IMG;
+langInit();
+glassRebuild();
+captionFit();
+window.addEventListener("resize", onResize);
+</script></body></html>
