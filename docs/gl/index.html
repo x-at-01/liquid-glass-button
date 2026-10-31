@@ -104,9 +104,10 @@ dialog.lang h2{font-size:15px;font-weight:600;margin:0;padding:18px 20px 10px;co
 .btn--blue{border-image-source:url(../assets/glass/blue-sheet.webp);--tint:rgba(8,38,140,.66)}
 .btn img{width:20px;height:20px;display:block;flex:none}
 .btn:hover{color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.24), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.26);transform:translateY(-1px)}
-.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;background:rgba(0,0,0,.65);opacity:0;transition:opacity .14s ease;pointer-events:none}
-.btn:active{color:rgba(255,255,255,.86);transform:translateY(0) scale(.972)}
-.btn:active::after{opacity:.16}
+/* 按下：文字保持纯白并加粗（text-stroke，不动字重，宽度不会跳），按钮下沉、投影收紧 */
+.btn:active{color:#fff;-webkit-text-stroke:.5px #fff;
+  transform:translateY(0) scale(.972);
+  box-shadow:0 2px 6px rgba(0,0,0,.16), 0 1px 2px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.20)}
 .btn:focus-visible{outline:3px solid rgba(140,190,255,.85);outline-offset:3px}
 
 /* ---------- 区块 ---------- */
