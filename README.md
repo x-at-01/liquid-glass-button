@@ -36,9 +36,10 @@ Background blur alone gives you *frosted* glass, not liquid glass. The “liquid
 3. an edge mask (from the map's `B` channel) keeps the centre crisp and un-displaced;
 4. `backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) brightness(1.04) saturate(170%)`.
 
-The material itself is three CSS layers over a tint: a wide soft light band along the top edge (brightest
-at the rim, fading inward, gone at the corners — no hard 1px line, which reads as plastic), a faint inner
-bounce at the bottom, and a diagonal `mix-blend-mode: screen` sheen from the upper left.
+The surface is deliberately flat: a near-solid tint (the blue variant is a ~6% vertical gradient), a hairline
+rim highlight that fades at the corners, a faint bottom edge, and one very light `mix-blend-mode: screen`
+sheen from the upper left. No drop shadow and no thick bevel in any state — depth comes from the refraction,
+not from painted shading.
 
 Hover and active swap in pre-built filter variants (displacement ×1.45 / ×0.6) and darken the surface with
 **inset** shadows only — hover adds a black inner ring plus a deeper top band, pressed deepens it and
@@ -138,8 +139,9 @@ SVG `feDisplacementMap` 滤镜完成，带 hover / 按下状态。演示页是 *
 RGB 分通道后 screen 叠加做**边缘色散**，再用边缘遮罩让中心保持清晰，最后
 `backdrop-filter: url(#glass-N) blur(6px) contrast(1.15) brightness(1.04) saturate(170%)`。
 
-材质本身是暗色 tint 上的三层 CSS：顶缘一条宽而柔的亮带（贴边最亮、往里 6–8px 渐隐、到转角消失——
-没有 1px 硬线，那会读成塑料），底部一道很弱的内侧回光，左上角一团 `mix-blend-mode: screen` 的斜向天光。
+表面刻意做扁：近乎平色的 tint（蓝色是约 6% 的竖向渐变），一圈到转角渐隐的发丝级棱边高光，一道极浅的
+底缘，加上左上角一层很淡的 `mix-blend-mode: screen` 天光。任何状态都没有外投影、没有厚倒角——深度交给
+折射，而不是画上去的明暗。
 
 hover / active 切换预生成的滤镜变体（位移 ×1.45 / ×0.6），明暗**只用内阴影**表达：hover 加一圈黑色内阴影
 和一道更深的顶缘暗带，按下再加深并轻微缩小，任何状态都没有外投影。hover 文字转纯白，按下时加凹陷的

@@ -56,32 +56,27 @@ h2{font-size:28px;line-height:1.14;font-weight:600;letter-spacing:.002em;margin:
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
   height:var(--pill-h,56px);width:auto;padding:0 var(--cap,28px);margin:0;
   border:0;border-radius:980px;
-  /* 顶缘一条宽而柔的亮带：贴边最亮、往里 6–8px 渐隐；底部极轻的压暗 */
+  /* 扁平瓶身：几乎平色，只有极轻的顶缘受光与底部压暗 */
   background:
-    radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.26),rgba(255,255,255,.08) 30%,rgba(255,255,255,.02) 48%,transparent 62%),
-    linear-gradient(180deg,transparent 62%,rgba(0,0,0,.18)),
+    radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.12),rgba(255,255,255,.03) 30%,transparent 55%),
+    linear-gradient(180deg,transparent 66%,rgba(0,0,0,.10)),
     var(--tint,rgba(12,12,14,.82));
   color:rgba(255,255,255,.90);
   font:inherit;font-size:17px;line-height:1;letter-spacing:-.022em;
   white-space:nowrap;cursor:pointer;text-decoration:none;
   isolation:isolate; /* 两个伪元素的负 z-index 落在底色之上、文字之下 */
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.22),
-    inset 0 -16px 20px -16px rgba(0,0,0,.50),
-    inset 0 14px 18px -16px rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.18),
+    inset 0 -1px 1px rgba(0,0,0,.20),
+    inset 0 -10px 14px -12px rgba(0,0,0,.22);
   backdrop-filter:blur(20px) saturate(180%);
   transition:box-shadow .18s ease,transform .18s ease,color .18s ease,text-shadow .12s ease;
 }
 .btn--black{--tint:rgba(12,12,14,.82)}
-/* 蓝色：独立的竖向渐变（亮 azure → 深蓝），白字对比约 5.5:1；
-   不用 tint + 黑纱，浅背景下不会发灰发闷 */
-.btn--blue{
-  background:
-    radial-gradient(125% 112% at 50% -26%,rgba(255,255,255,.26),rgba(255,255,255,.08) 30%,rgba(255,255,255,.02) 48%,transparent 62%),
-    linear-gradient(180deg,#2b83ff 0%,#0a63d8 55%,#0b4aa6 100%);
-}
-/* 天光：左上角一团柔光，screen 混合 */
+/* 蓝色：扁平化的 azure，只留一点竖向明度差；白字对比约 4.4:1 */
+.btn--blue{background:linear-gradient(180deg,#125fd8 0%,#0746a4 100%)}
+/* 天光：左上角极淡的一层，screen 混合 */
 .btn::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
-  background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.17),transparent 58%);
+  background:radial-gradient(92% 155% at 16% -18%,rgba(255,255,255,.10),transparent 58%);
   mix-blend-mode:screen;pointer-events:none}
 .btn img{display:block;flex:none;height:1.2em;width:1.2em}
 .btn img.ap{height:1.02em;width:1.02em}
