@@ -13,9 +13,10 @@ html(lang=code, dir=dir)
   body
     header.topbar
       .wrap
+        //- 品牌名直接用该语言的标题（各语言 i18n 的 title），避免再维护一份
         span.brand
           i
-          | Liquid Glass Button
+          = t.title
         nav
           a.ico-link(href="https://github.com/x-at-01/liquid-glass-button", aria-label="GitHub", title="GitHub")
             img(src="../assets/icons/github.svg", alt="", width="18", height="18")
